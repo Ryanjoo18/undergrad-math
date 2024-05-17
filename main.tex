@@ -1,0 +1,178 @@
+\documentclass[10pt,a4 paper]{extreport}
+\usepackage{ryan}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\slshape\nouppercase{\leftmark}}
+\fancyhead[R]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\arraystretch}{1.5}
+
+\makeglossaries
+
+\newacronym{h3math}{H3M}{H3 Mathematics}
+\newacronym{h2fmath}{H2FM}{H2 Further Mathematics}
+\newacronym{mat}{MAT}{Oxford Maths Admissions Test}
+\newacronym{putnam}{PUTNAM}{William Lowell Putnam Mathematics Competition}
+
+\begin{document}
+%\includepdf{cover_page_uni}
+% https://docs.google.com/document/d/1BnYV-5DkLfizphAaOHeH5S_hUeFZTAGS0Cg6YEeL7oA/edit?usp=sharing
+
+\begin{titlepage}
+\title{\scshape Fons}
+\author{\scshape Ryan Joo Rui An}
+\date{}
+\end{titlepage}
+
+\maketitle
+\pagebreak
+
+\
+
+\vfill
+
+\begin{quote}
+\textit{The mathematician does not study mathematics because it is useful; he studies it because he delights in it and he delights in it because it is beautiful.}
+
+\begin{flushright}--- Henri Poincar\'{e} (1854--1912)\\
+French mathematician and theoretical physicist\end{flushright}
+\end{quote}
+
+\vfill
+
+\copyright 2024 Ryan Joo Rui An.\\
+Text licensed under \href{https://creativecommons.org/licenses/by-sa/4.0/}{CC-by-SA-4.0}. Source files licensed under \href{https://choosealicense.com/licenses/gpl-3.0/}{GNU GPL v3}.
+
+This is (still!) an incomplete draft. Please send corrections and comments to \url{ryanjooruian18@gmail.com}, or pull-request at \url{https://github.com/Ryanjoo18/latex}.
+
+Last updated \today.
+
+\chapter*{Preface}
+\emph{Fons}, derived from the Latin word for source or fountain, introduces the core concepts of university-level mathematics. Just as a fountain provides a continuous wellspring of water, \emph{Fons} aims to be a continuous source of knowledge for you.
+
+\section*{About the author}
+At this moment of writing, I am a high school student working on my A Level studies in Singapore. I have about 11 years of participating in mathematics competitions, including three years of experience in mental arithmetic and the rest few years in mathematics olympiad.
+
+\section*{About this book}
+This book mainly serves as my notes when studying mathematics at the university level. Feel free to refer to it too.
+
+\section*{References}
+\begin{itemize}
+\item Lecture notes by the University of Oxford.
+\item Lecture notes on MIT OpenCourseWare.
+\item Rudin, W. (1953). \textit{Principles of Mathematical Analysis}. McGraw-Hill.
+\item Dummit, D. S., \& Foote, R. M. (2004). \textit{Abstract Algebra} (3rd ed.). John Wiley \& Sons.
+\item Hoffman, K., \& Kunze, R. (1971). \textit{Linear Algebra} (2nd ed.). Prentice-Hall.
+\item Munkres, J. R. (2018). \textit{Topology} (2nd ed.). Pearson Education Limited.
+\item Spivak, M. (2008). \textit{Calculus} (4th ed.). Publish or Perish, Inc.
+\end{itemize}
+\pagebreak
+
+\section*{Problem Solving}
+In his book ``How to Solve It'', George P\'{o}lya outlined the following problem solving cycle:
+\begin{enumerate}
+\item \textbf{Understand the problem}
+
+Ask yourself the following questions:
+\begin{itemize}
+\item Do you understand all the words used in stating the problem?
+\item Is it possible to satisfy the condition? Is the condition sufficient to determine the unknown? Or is it insufficient? Or redundant? Or contradictory?
+\item What are you asked to find or show? Can you restate the problem in your own words?
+\item Draw a figure. Introduce suitable notation.
+\item Is there enough information to enable you to find a solution?
+\end{itemize}
+
+\item \textbf{Devise a plan}
+
+A partial list of heuristics -- good rules of thumb to solve problems -- is included:
+\begin{itemize}
+\item Guess and check
+\item Look for a pattern
+\item Make an orderly list
+\item Draw a picture
+\item Eliminate possibilities
+\item Solve a simpler problem
+\item Use symmetry
+\item Use a model
+\item Consider special cases
+\item Work backwards
+\item Use direct reasoning
+\item Use a formula
+\item Solve an equation
+\item Be ingenious
+\end{itemize}
+
+\item \textbf{Execute the plan}
+
+This step is usually easier than devising the plan. In general, all you need is care and patience, given that you have the necessary skills. Persist with the plan that you have chosen. If it continues not to work discard it and choose another. Don't be misled, this is how mathematics is done, even by professionals.
+
+\begin{itemize}
+\item Carrying out your plan of the solution, check each step. Can you see clearly that the step is correct? Can you prove that it is correct?
+\end{itemize}
+
+\item \textbf{Check and expand}
+
+P\'{o}lya mentions that much can be gained by taking the time to reflect and look back at what you have done, what worked, and what didn't. Doing this will enable you to predict what strategy to use to solve future problems.
+
+Look back reviewing and checking your results. Ask yourself the following questions:
+\begin{itemize}
+\item Can you check the result? Can you check the argument?
+\item Can you derive the solution differently? Can you see it at a glance?
+\item Can you use the result, or the method, for some other problem?
+\end{itemize}
+\end{enumerate}
+\pagebreak
+
+Building on P\'{o}lya's problem solving strategy, Schoenfeld came up with the following framework for problem solving, consisting of four components:
+\begin{enumerate}
+\item \textbf{Cognitive resources}: the body of facts and procedures at one’s disposal.
+\item \textbf{Heuristics}: `rules of thumb' for making progress in difficult situations.
+\item \textbf{Control}: having to do with the efficiency with which individuals utilise the knowledge at their disposal. Sometimes, this is referred to as metacognition, which can be roughly translated as `thinking about one’s own thinking'.
+\begin{enumerate}
+\item These are questions to ask oneself to monitor one’s thinking.
+\begin{itemize}
+    \item What (exactly) am I doing? [Describe it precisely.] Be clear what I am doing NOW. Why am I doing it? [Tell how it fits into the solution.]
+    \item Be clear what I am doing in the context of the BIG picture -- the solution. Be clear what I am going to do NEXT.
+\end{itemize}
+
+\item Stop and reassess your options when you
+\begin{itemize}
+    \item cannot answer the questions satisfactorily [probably you are on the wrong track]; OR
+    \item are stuck in what you are doing [the track may not be right or it is right but it is at that moment too difficult for you].
+\end{itemize}
+
+\item Decide if you want to
+\begin{itemize}
+    \item carry on with the plan,
+    \item abandon the plan, OR
+    \item put on hold and try another plan.
+\end{itemize}
+\end{enumerate}
+
+\item \textbf{Belief system}: one’s perspectives regarding the nature of a
+discipline and how one goes about working on it.
+\end{enumerate}
+\pagebreak
+
+\tableofcontents
+\pagebreak
+
+\printglossary[type=\acronymtype]
+
+% Materials to be cleared:
+% https://www.seab.gov.sg/docs/default-source/national-examinations/syllabus/alevel/2022syllabus/9649_y22_sy.pdf
+% https://www.cambridgeinternational.org/Images/597381-2023-2025-syllabus.pdf
+
+\input{intro}
+\input{real_analysis}
+%\input{topology}
+\input{linear_algebra}
+\input{abstract_algebra}
+%\input{calculus}
+%\input{complex_analysis}
+%\input{harmonic_analysis}
+%\input{discrete}
+%\input{stats}
+\input{appendix}
+\end{document}

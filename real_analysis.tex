@@ -1,0 +1,2572 @@
+\part{Real Analysis}
+\chapter{The Real Number System}
+\section{Rational numbers $\QQ$}
+\subsection{Construction of $\QQ$}
+\begin{notation}
+$\ZZ^+=\ZZ\setminus\{0\}$.
+\end{notation}
+
+\begin{definition}
+Let $\sim$ be the binary relation defined on $\ZZ\times\ZZ^+$ by
+\[ (a,b)\sim(c,d) \iff ad=bc. \]
+\end{definition}
+
+\begin{theorem}
+$\sim$ is an equivalence on $\ZZ\times\ZZ^+$.
+\end{theorem}
+
+\begin{proof}
+We just check that $\sim$ is transitive. So suppose that $(a,b)\sim(c,d)$ and $(c,d)\sim(e,f)$. Then
+\begin{equation*}\tag{1}
+ad=bc
+\end{equation*}
+\begin{equation*}\tag{2}
+cf=de
+\end{equation*}
+Multiplying (1) by $f$ and (2) by $b$, we obtain
+\begin{equation*}\tag{3}
+adf=bcf
+\end{equation*}
+\begin{equation*}\tag{4}
+bcf=bde
+\end{equation*}
+Hence $adf=bde$. Since $d\neq0$, the Cancellation Law implies that $af=bc$. Hence $(a,b)\sim(e,f)$.
+\end{proof}
+
+\begin{definition}
+The set $\QQ$ of rational numbers is defined by
+\[ \QQ\coloneqq\ZZ\times\ZZ^+/\sim \]
+i.e. $\QQ$ is the set of $\sim$ equivalence classes.
+\end{definition}
+
+
+
+%https://homepages.warwick.ac.uk/~masgar/Teach/2006_361/2006_10_25lec_QQ.pdf
+
+\begin{prbm}[Set of Rational Numbers] 
+Let $\ZZ$ be the set of integers, and let $\ZZ^\ast$ be the set of nonzero integers. We define
+\[ \QQ = \{(a, b) \mid a \in \ZZ, b \in \ZZ^\ast\}/\sim \]
+where
+\[ (a, b) \sim (c, d) \iff ad = bc.\]
+Let $\dfrac{a}{b}$ denote the equivalence class for $(a,b)$. Such an equivalence class is called a rational number.
+\begin{enumerate}[label=(\alph*)]
+\item For any two rational numbers $\dfrac{a}{b}$ and $\dfrac{c}{d}$, their sum is determined by
+\[ \frac{a}{b}+\frac{c}{d}=\frac{ad+bc}{bd} \]
+Show that the above definition is well-defined.
+
+\item Define the product of two rational numbers and show that such a definition is well-defined.
+
+\item Prove that for every equivalence class $\dfrac{a}{b} \in \QQ$, there exists a unique integer pair $(p,q)$ satisfying the following properties:
+\[ q>0, (p,q) = 1 \text{ and } (p,q) \in \frac{a}{b}.\]
+
+\item Using the partial order of $\ZZ$, define the partial order of $\QQ$.
+\end{enumerate}
+\end{prbm}
+
+\begin{solution} \ 
+\begin{enumerate}[label=(\alph*)]
+\item For this problem, we are dealing with a ``hidden'' equivalence class.
+
+The expressions $\frac{a}{b}$ and $\frac{c}{d}$ themselves are derived from their representatives $(a,b)$ and $(c,d)$.
+
+So suppose that we choose other representatives $(a^\prime,b^\prime)$ and $(c^\prime,d^\prime)$, then the sum would be
+\[ \frac{a^\prime}{b^\prime} + \frac{c^\prime}{d^\prime} = \frac{a^\prime d^\prime + b^\prime c^\prime}{b^\prime d^\prime} \]
+
+We now have to show that $\frac{ad+bc}{bd} = \frac{a^\prime d^\prime + b^\prime c^\prime}{b^\prime d^\prime}$:
+\begin{align*}
+\frac{ad+bc}{bd} 
+&\iff (ad+bc,bd) \sim (a^\prime d^\prime+b^\prime c^\prime,b^\prime d^\prime) \\
+&\iff (ad+bc)b^\prime d^\prime =(a^\prime d^\prime+b^\prime c^\prime)bd
+\end{align*}
+
+\begin{align*}
+\frac{a}{b} &= \frac{a^\prime}{b^\prime} \\
+(a,b) &\sim (a^\prime,b^\prime) \\
+ab^\prime &= a^\prime b
+\end{align*}
+
+Hence
+\begin{align*}
+(ad+bc)b^\prime d^\prime
+&= ab^\prime dd^\prime + bb^\prime cd^\prime \\
+&= a^\prime bdd^\prime + bb^\prime c^\prime d \\
+&= (a^\prime d^\prime + b^\prime c^\prime )bd
+\end{align*}
+
+\item The definition would be $\frac{a}{b} \cdot \frac{c}{d} = \frac{ac}{bd}$.
+
+This is actually a lot simpler to check.
+\[ a^\prime c^\prime bd=(a^\prime b)(c^\prime d)=(ab^\prime)(cd^\prime)=acb^\prime d^\prime \]
+Hence $\frac{a^\prime c^\prime}{b^\prime d^\prime} = \frac{ac}{bd}$.
+
+\item We basically try to do this step by step as we would in simplifying fractions.
+
+First pick $b$ to be positive, otherwise we swap $a$ and $b$ with $-a$ and $-b$.
+
+Then simplify the common factors. For this one we let $(a,b)=d$, and $a=dp,b=dq$. Then $(p,q)$ is the pair that we need
+
+\item In order to define the partial order we need to account for whether the denominators are negative.
+
+$\frac{a}{b} \le \frac{c}{d}$, and if $b,d>0$ then we can safely draw a connection to the expression $ad \le bc$
+
+In order to show that this does in fact give a partial order we check that
+\begin{enumerate}
+\item 1: $ab \le ab$ and hence $\frac{a}{b} \le \frac{a}{b}$
+
+\item 2: If $\frac{a}{b} \le \frac{c}{d}$ and $\frac{c}{d} \le \frac{a}{b}$, then $ad \le bc$ and $bc \le ad$, hence $ad=bc$ and thus $\frac{a}{b}=\frac{c}{d}$
+
+\item 3: This is trickier due to complications arising from inequalities and multiplication
+
+If $\frac{a}{b}\le\frac{c}{d}$ and $\frac{c}{d}\le\frac{e}{f}$, note that $b,d,f>0$ and so $ad \le bc$ and $cf \le de$.
+
+i) $e<0$, then $c<0$ and $a<0$, thus $-ad \ge -bc$, $-cf \ge -de$ and we have $acdf \ge bcde$
+
+$af \le be (c<0,d>0)$
+
+Thus $\frac{a}{b} \le \frac{e}{f}$
+
+ii) $e \ge 0$ but $a<0$, then $af<0 \le be$ and thus $\frac{a}{b}<\frac{e}{f}$
+
+iii) $a \ge 0$, then $c \ge 0$ and $e \ge 0$, and we have the ordinary case.
+\end{enumerate}
+
+Hence proven.
+\end{enumerate}
+\end{solution}
+
+%%%%%%%%%%%%%%%%
+
+Rational numbers $\QQ$ can be introduced following a general procedure called the construction of field of fractions. Every rational number can be written as
+\[ \frac{m}{n}, \quad m,n\in\ZZ,n\neq0. \]
+Moreover, every nonzero rational number can be uniquely written as
+\[ \frac{p}{q}, \quad \in\ZZ^+,q\in\ZZ,\gcd(p,q)=1. \]
+
+\subsection{$\QQ$ is a field}
+We explain the meaning of a \vocab{field} using $\QQ$ as an example.
+
+\begin{proposition}
+$(\QQ,+,\cdot)$ is a field, which means
+\begin{itemize}
+\item $(\QQ,+)$ is an abelian group with identity $0$:
+\begin{itemize}
+    \item $\QQ$ is closed under addition $+$ ($+$ is a binary operation over $\QQ$).
+    \item Addition $+$ is associative: $(a+b)+c=a+(b+c)$.
+    \item Addition $+$ has identity element $0$: $a+0=0=0+a=a$.
+    \item Any element has inverse element: $a+(-a)=(-a)+a=0$.
+    \item Addition $+$ is commutative: $a+b=b+a$.
+\end{itemize}
+
+\item $(\QQ,+,\cdot)$ is a commutative, unital ring:
+\begin{itemize}
+    \item $\QQ$ is closed under multiplication $\cdot$ ($\cdot$ is a binary operation over $\QQ$).
+    \item Multiplication $\cdot$ is associative: $(a\cdot b)\cdot c=a\cdot(b\cdot c)$.
+    \item Multiplication $\cdot$ has unity element 1: $a\cdot1=1\cdot a=a$.
+    \item Multiplication $\cdot$ is commutative: $a\cdot b=b\cdot a$.
+    \item Addition and multiplication satisfy distribution law: $(a+b)\cdot c=a\cdot c+b\cdot c$.
+\end{itemize}
+
+\item Any nonzero element has a multiplicative inverse: $a\cdot\frac{1}{a}=\frac{1}{a}\cdot a=1$ for any $a\in\QQ,a\neq0$.
+\end{itemize}
+\end{proposition}
+
+\begin{exercise}{}{}
+Prove that $(\ZZ,+,\cdot)$ is a commutative, unital ring, but it is not a field.
+\end{exercise}
+
+\begin{proof} \
+\begin{itemize}
+\item Check $(\ZZ,+,\cdot)$ is a commutative, unital ring.
+\item The number $2\in\ZZ$ (in fact, every nonzero number except $\pm1$) has no multiplication inverse in $\ZZ$.
+\end{itemize}
+\end{proof}
+
+\subsection{$\QQ$ is an ordered set}
+\begin{definition}
+Let $S$ be a set. An \vocab{order} on $S$ is a relation, denoted by $<$, with the following two properties:
+\begin{enumerate}[label=(\roman*)]
+\item (\textbf{trichotomy}) $\forall x,y \in S$, one and only one of the statements
+\[ x<y, \quad x=y, \quad y<x \]
+is true.
+\item (\textbf{transitivity}) $\forall x,y,z \in S$, if $x<y$ and $y<z$, then $x<z$.
+\end{enumerate}
+\end{definition}
+
+\begin{notation}
+The notation $x \le y$ indicates that $x<y$ or $x = y$, without specifying which of these two is to hold. In other words, $x\le y$ is the negation of $x>y$.
+\end{notation}
+
+\begin{definition}
+An \vocab{ordered set} is a set $S$ in which an order is defined.
+\end{definition}
+
+\begin{example}
+$\QQ$ is an ordered set if $r<s$ is defined to mean that $s-r$ is a positive rational number.
+\end{example}
+
+\begin{definition}
+Suppose $S$ is an ordered set, and $E\subset S$. $E$ is \vocab{bounded above} if there exists an \vocab{upper bound} $M\in S$ such that $x \le M$ for all $x\in E$.
+
+Similarly, $E$ is \vocab{bounded below} if there exists a \vocab{lower bound} $m\in S$ such that $x\ge m$ for all $x\in E$.
+
+$E$ is \vocab{bounded} in $S$ if it is bounded above and below.
+\end{definition}
+
+\begin{definition}
+Suppose $S$ is an ordered set, $E\subset S$, and $E$ is bounded above. Suppose there exists $\alpha\in S$ with the following properties:
+\begin{enumerate}[label=(\roman*)]
+\item $\alpha$ is an upper bound for $E$;
+\item if $\beta<\alpha$ then $\beta$ is not an upper bound of $E$.
+\end{enumerate}
+Then we call $\alpha$ the \vocab{supremum} (or \emph{least upper bound}) of $E$, and we write
+\[ \alpha=\sup E. \]
+\end{definition}
+
+\begin{definition}
+Suppose there exists $\alpha\in S$ with the following properties:
+\begin{enumerate}[label=(\roman*)]
+\item $\alpha$ is a lower bound for $E$;
+\item if $\beta>\alpha$ then $\beta$ is not a lower bound of $E$.
+\end{enumerate}
+Then we call $\alpha$ the \vocab{infimum} (or \emph{greatest lower bound}) of $E$, and we write
+\[ \alpha=\inf E. \]
+\end{definition}
+
+\begin{definition}
+An ordered set $S$ is said to have the \vocab{least-upper-bound property} if the following is true: If $E\subset S$, $E$ is not empty, and $E$ is bounded above, then $\sup E$ exists in $S$. 
+\end{definition}
+
+We shall now show that there is a close relation between greatest lower bounds and least upper bounds, and that every ordered set with the least-upper-bound property also has the greatest-lower-bound property.
+
+\begin{theorem}
+Suppose $S$ is an ordered set with the least-upper-bound property, $B\subset S$, $B$ is not empty, and $B$ is bounded below. Let $L$ be the set of all lower bounds of $B$. Then
+\[ \alpha=\sup L \]
+exists in $S$, and $\alpha=\inf B$.
+
+In particular, $\inf B$ exists in $S$.
+\end{theorem}
+
+\begin{proof}
+Since $B$ is bounded below, $L$ is not empty. Since $L$ consists of exactly those $y\in S$ which satisfy the inequality $y\le x$ for every $x\in B$, we see that every $x\in B$ is an upper bound of $L$. Thus $L$ is bounded above. Our hypothesis about $S$ thus implies that $L$ has a supremum in $S$; call it $\alpha$.
+
+If $\gamma<\alpha$ then $\gamma$ is not an upper bound of $L$, hence $\gamma\notin B$. It follows that $\alpha\le x$ for every $x\in B$. Thus $\alpha\in L$.
+
+If $\alpha<\beta$ then $\beta\notin L$, since $\alpha$ is an upper bound of $L$.
+
+We have shown that $\alpha\in L$ but $\beta\notin L$ if $\beta>\alpha$. In other words, $\alpha$ is a lower bound of $B$, but $\beta$ is not if $\beta>\alpha$. This means that $\alpha=\inf B$.
+\end{proof}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{proposition}[Uniqueness of suprenum]
+If a set $A \subset \RR$ has a supremum, then it is unique.
+\end{proposition}
+
+\begin{proof}
+Assume that $M$ and $N$ are suprema of a set $A$.
+
+Since $N$ is a supremum, it is an upper bound for $A$. Since $M$ is a supremum, then it is the least upper bound and thus $M \le N$. 
+
+Similarly, since $M$ is a supremum, it is an upper bound for $A$; since $N$ is a supremum, it is a least upper bound and thus $N \le M$. 
+
+Since $N \le M$ and $M \le N$, thus $M = N$. Therefore, a supremum for a set is unique if it exists.
+\end{proof}
+
+\begin{theorem}[Comparison Theorem]
+Let $S, T \subset \RR$ be non-empty sets such that $s \le t$ for every $s \in S$ and $t \in T$. If $T$ has a supremum, then so does $S$, and $\sup S \le \sup T$.
+\end{theorem}
+
+\begin{proof}
+Let $\tau = \sup T$. Since $\tau$ is a supremum for $T$, then $t \le \tau$ for all $t \in T$. Let $s \in S$ and choose any $t \in T$. Then, since $s \le t$ and $t \le \tau$ , then $s \le t$. Thus, $\tau$ is an upper bound for $S$. 
+
+By the Completeness Axiom, $S$ has a supremum, say $\sigma = \sup S$. We will show that $\sigma \le \tau$. Notice that, by the above, $\tau$ is an upper bound for $S$. Since $\sigma$ is the least upper bound for $S$, then $\sigma \le \tau$. Therefore,
+\[\sup S \le \sup T.\]
+\end{proof}
+
+Let's explore some useful properties of sup and inf.
+
+\begin{proposition}
+Let $S, T$ be non-empty subsets of $\RR$, with $S \subseteq T$ and with $T$ bounded above. Then $S$ is bounded above, and $\sup S \le \sup T$.
+\end{proposition}
+\begin{proof}
+Since $T$ is bounded above, it has an upper bound, say $b$. Then $t \le b$ for all $t \in T$, so certainly $t \le b$ for all $t \in S$, so $b$ is an upper bound for $S$.
+
+Now $S, T$ are non-empty and bounded above, so by completeness each has a supremum. Note that $\sup T$ is an upper bound for $T$ and hence also for $S$, so $\sup T \ge \sup S$ (since $\sup S$ is the least upper bound for $S$).
+\end{proof}
+
+\begin{proposition}
+Let $T \subseteq \RR$ be non-empty and bounded below. Let $S = \{-t \mid t \in T\}$. Then $S$ is non-empty and bounded above. Furthermore, $\inf T$ exists, and $\inf T = -\sup S$.
+\end{proposition}
+\begin{proof}
+Since $T$ is non-empty, so is $S$. Let $b$ be a lower bound for $T$, so $t \ge b$ for all $t \in T$. Then $-t \le -b$ for all $t \in T$, so $s \le -b$ for all $s \in S$, so $-b$ is an upper
+bound for $S$.
+
+Now $S$ is non-empty and bounded above, so by completeness it has a
+supremum. Then $s \le \sup S$ for all $s \in S$, so $t \ge -\sup S$ for all $t \in T$, so $-\sup S$ is a lower bound for $T$.
+
+Also, we saw before that if $b$ is a lower bound for $T$ then $-b$ is an upper bound for $S$. Then $-b \ge \sup S$ (since $\sup S$ is the least upper bound), so $b \le -\sup S$. So $-\sup S$ is the greatest lower bound.
+
+So $\inf T$ exists and $\inf T = -\sup S$.
+\end{proof}
+
+\begin{proposition}[Approximation Property]
+Let $S \subseteq \RR$ be non-empty and bounded above. For any $\epsilon > 0$, there is $s_\epsilon \in S$ such that $\sup S-\epsilon < s_\epsilon \le \sup S$.
+\end{proposition}
+\begin{proof}
+Take $\epsilon > 0$.
+
+Note that by definition of the supremum we have $s \le \sup S$ for all $s \in S$. Suppose, for a contradiction, that $\sup S-\epsilon \ge s$ for all $s \in S$.
+
+Then $\sup S-\epsilon$ is an upper bound for $S$, but $\sup S-\epsilon < \sup S$, which is a contradiction.
+
+Hence there is $s_\epsilon \in S$ with $\sup S-\epsilon<s_\epsilon$.
+\end{proof}
+
+\begin{theorem}
+Any set bounded from above/below must have a supremum/infimum.
+\end{theorem}
+
+\begin{proof}
+We prove the above theorem for supremum, using Dedekind cuts.
+
+Let $S$ be a real number set. We consider the rational number set\footnote{very important that you remember this for the definition of Dedekind cuts}
+\[ A = \{x \in \QQ \mid \exists y \in S, x<y\} \]
+
+Now we go through the definitions to check that $(A|B)$ is a Dedekind cut
+\begin{enumerate}
+\item Since $S\neq\emptyset$, pick $y\in S$, then $[y]-1$ is a real number smaller than some element in $S$, hence $[y]-1 \in A$ and thus $A\neq\emptyset$.
+
+Also, since we are given that $S$ is bounded, there exists a positive integer $M$ as an upper bound for $S$, thus $B\neq\emptyset$. (Note that an upper bound is simply a number that is bigger than anything from the set, and is not the supremum.)
+
+\item We define $B$ to be the complement of $A$ in $\QQ$ so condition 2 is trivial.
+
+\item For any $x,y\in A$, if $x<y$ and $y\in A$, then there exists $z\in S$ such that $y<z$, hence $x<z$ and thus $x\in A$.
+
+\item Suppose otherwise that $x\in A$ is the largest element in $A$, then there exists $y\in S$ such that $x<y$.
+
+We then pick a rational number $z$ between $x$ and $y$. Since we still have $z<y$, we have $z\in A$ but $z>x$, contradictory to $z$ being the largest.
+\end{enumerate}
+
+Now there is actually an issue with the proof for property 4 here: How exactly are we finding $z$?
+
+First $x\in Q$. Then $y\in\RR$ so we rewrite it as $y=(C|D)$ via definition.
+
+$x<y$ translates to the fact that $x\in C$. Now, since $y$ is real, by definition we know that $C$ must not have a largest element. In particular, $x$ is not largest and we can pick $z\in C$ such that $z>x$. This is in fact the $z$ that we need.
+
+Now that all the properties of a real number are validated, we may finally conclude that $\alpha=(A|B)$ is indeed a real number.
+
+
+Now we need to show that $\alpha$ is in fact the supremum of $S$.
+
+Let $x\in S$. If $x$ is not the maximum value of $S$, i.e. $\exists y \in S$ such that $x<y$. Then $x\in A$ and thus $x<\alpha$.
+
+If $x$ is the maximum value of $S$, then for any rational number $y<x$ we have $y\in A$, and for any rational number $y\ge x$ we have $y\in B$. Thus $x=(A|B)=\alpha$.
+
+In conclusion, $x\le\alpha$ for all $x\in S$.
+
+For any upper bound x of S, since $\forall y\in S, x\ge y$ we have $x\in B$ and thus $x\ge \alpha$.
+
+Therefore, $\alpha$ is the smallest upper bound of $S$ and thus $\sup S=\alpha$ exists.
+\end{proof}
+\pagebreak
+
+\begin{prbm}
+Consider the set $\{\frac{1}{n} \mid n\in\ZZ^{+}\}$.
+\begin{enumerate}[label=(\alph*)]
+\item Show that $\max S = 1$.
+\item Show that if $d$ is a lower bound for $S$, then $d \le 0$.
+\item Use (b) to show that $0 = \inf S$.
+\end{enumerate}
+\end{prbm}
+
+\begin{proof}
+
+\end{proof}
+
+If we are dealing with rational numbers, the sup/inf of a set may not exist. For example, a set of numbers in $\QQ$, defined by $\{[\pi\cdot10^n]/10^n\}$.
+3,3.1,3.14,3.141,3.1415,3.14159,...
+But this set does not have an infimum in $\QQ$.
+
+By ZFC, we have the Completeness Axiom, which states that any non-empty set $A \subset \RR$ that is bounded above has a supremum; in other words, if $A$ is a non-empty set of real numbers that is bounded above, there exists a $M \in \RR$ such that $M = \sup A$.
+
+
+
+
+\begin{prbm}
+Find, with proof, the supremum and/or infimum of $\{\frac{1}{n}\}$.
+\end{prbm}
+
+\begin{proof}
+For the suprenum,
+\[ \sup\crbrac{\frac{1}{n}} = \max\crbrac{\frac{1}{n}} = 1. \]
+For the infinum, for all positive $a$ we can pick $n=[\frac{1}{a}]+1$, then $a>\frac{1}{n}$. Hence 
+\[ \inf\crbrac{\frac{1}{n}}=0. \]
+\end{proof}
+
+\begin{prbm}
+Find, with proof, the supremum and/or infimum of $\{\sin n\}$.
+\end{prbm}
+
+\begin{proof}
+The answer is easy to guess: $\pm1$
+
+For the supremum, we need to show that $1$ is the smallest we can pick, so for any $a=1-\epsilon<1$ we want to find an integer $n$ close enough to $2k\pi+\dfrac{\pi}{2}$ so that $\sin n > a$.
+
+Whenever we want to show the approximations between rational and irrational numbers we should think of the \textbf{pigeonhole principle}.
+\[ 2k\pi+\frac{\pi}{2}=6k+(2\pi-6)k+\frac{\pi}{2} \]
+Consider the set of fractional parts $\{(2\pi-6)k\}$. Since this an infinite set, for any small number $\delta$ there is always two elements $\{(2\pi-6)a\}<\{(2\pi-6)b\}$ such that
+\[ |\{(2\pi-6)b\}-\{(2\pi-6)a\}|<\epsilon \]
+
+Then $\{(2\pi-6)(b-a)\}<\delta$
+
+We then multiply by some number $m$ (basically adding one by one) so that
+\[ 0 \le \{(2\pi-6)\cdot m(b-a)\}-\brac{2-\frac{\pi}{2}}<\delta \]
+
+Picking $k=m(b-a)$ thus gives
+\begin{align*}
+2k\pi+\frac{\pi}{2} &= 6k+(2\pi-6)k+\frac{\pi}{2} \\
+&= 6k+[(2\pi-6)k]+2+{(2\pi-6)k}-\brac{2-\frac{\pi}{2}}
+\end{align*}
+
+Thus $n=6k+[(2\pi-6)k]+2$ satisfies $\absolute{2k\pi+\dfrac{\pi}{2}-n}<\delta$
+
+Now we're not exactly done here because we still need to talk about how well $\sin n$ approximates to 1.
+
+We need one trigonometric fact: $\sin x<x$ for $x>0$. (This simply states that the area of a sector in the unit circle is larger than the triangle determined by its endpoints.)
+
+\begin{align*}
+\sin n &= sin\brac{n-\brac{2k\pi+\frac{\pi}{2}}+\brac{2k\pi+\frac{\pi}{2}}} \\
+&= \cos\brac{n-\brac{2k\pi+\frac{\pi}{2}}} \\
+&= \cos\theta
+\end{align*}
+
+\[ 1 - \sin n = 2 \sin^2 \frac{\theta}{2} = 2 \sin^2 \absolute{\frac{\theta}{2}} \le \frac{\theta^2}{2}<\delta \]
+
+Hence we simply pick $\delta=\epsilon$ to ensure that $1 - \sin n<\epsilon$, and we're done.
+\end{proof}
+
+\begin{theorem}{Archimedean Principle}{}
+If $a,b \in \RR$ with $a>0$, then there exists $n \in \NN$ such that $na>b$.
+\end{theorem}
+\begin{proof}
+We prove by contradiction: suppose otherwise, that the Archimedean Property is false. Then there exists $a, b \in \RR, a > 0$ such that $na \le b$ for all $n \in \NN$.
+
+For these particular $a$ and $b$, we can say that $b$ is an upper bound of $S \coloneqq \{na \mid n \in \NN\}$. From the completeness axiom, $s_0 \coloneqq \sup S$ exists. Let $n \in \NN$, we have $n+1 \in \NN$. So $s_0 \ge (n+1)a = na+a$.
+
+Then we have $s_0-a \ge na$. This is true for all $n \in \NN$. So $s_0-a$ is an upper bound of $S$. However, $s_0-a<s_0$, which contradicts that $s_0$ is the least upper bound of $S$. This contradiction shows that the Archimedean Property is true.
+\end{proof}
+% https://mth32015.files.wordpress.com/2015/01/jan-26-30.pdf
+\pagebreak
+
+
+
+\section{Real Numbers $\RR$}
+\subsection{Dedekind cuts}
+We shall construct $\RR$ from $\QQ$.
+
+\begin{definition}
+A \vocab{Dedekind cut} $\alpha\subset\QQ$ satisfies the following properties:
+\begin{enumerate}[label=(\roman*)]
+\item $\alpha\neq\emptyset$, $\alpha\neq\QQ$;
+\item if $p\in\alpha$, $q\in\QQ$ and $q<p$, then $q\in\alpha$;
+\item if $p\in\alpha$, then $p<r$ for some $r\in\alpha$.
+\end{enumerate}
+\end{definition}
+
+Note that (iii) simply says that $\alpha$ has no largest member; (ii) implies two facts which will be used freely:
+\begin{itemize}
+\item If $p\in\alpha$ and $q\notin\alpha$ then $p<q$.
+\item If $r\notin\alpha$ and $r<s$ then $s\notin\alpha$.
+\end{itemize}
+
+\begin{example}
+Let $r\in\QQ$ and define
+\[ \alpha_r\coloneqq\{p\in\QQ\mid p<r\}. \]
+We now check that this is indeed a Dedekind cut.
+\begin{enumerate}[label=(\arabic*)]
+\item $p=1+r\notin\alpha_r$ thus $\alpha_r\neq\QQ$. $p=r-1\in\alpha_r$ thus $\alpha_r\neq\emptyset$.
+
+\item Suppose that $q\in\alpha_r$ and $q^\prime<q$. Then $q^\prime<q<r$ which implies that $q^\prime<r$ thus $q^\prime\in\alpha_r$.
+
+\item Suppose that $q\in\alpha_r$. Consider $\dfrac{q+r}{2}\in\QQ$ and $q<\dfrac{q+r}{2}<r$. Thus $\dfrac{q+r}{2}\in\alpha_r$.
+\end{enumerate}
+\end{example}
+
+This example shows that every rational $r$ corresponds to a Dedekind cut $\alpha_r$.
+
+\begin{example}
+$\sqrt[3]{2}$ is not rational, but it is real. $\sqrt[3]{2}$ corresponds to the cut
+\[ \alpha=\{p\in\QQ\mid p^3<2\}. \]
+\begin{enumerate}[label=(\arabic*)]
+\item Trivial.
+\item If $q<p$, by the monotonicity of the cubic function, this implies that $q^3<p^3<2$ thus $q\in\alpha$.
+\item If $p\in\alpha$, consider $\brac{p+\frac{1}{n}}^3<2$.
+\end{enumerate}
+\end{example}
+
+\begin{definition}
+The set of real numbers, denoted by $\RR$, is the set of all Dedekind cuts.
+\[ \RR\coloneqq\{\alpha\mid\alpha\text{ is a Dedekind cut}\} \]
+\end{definition}
+
+\begin{proposition}
+$\RR$ has an order.
+\end{proposition}
+
+\begin{proof}
+We define $\alpha<\beta$ to mean that $\alpha\subset\beta$. Let us check if this is an order (check for transitivity and trichotomy).
+\begin{enumerate}[label=(\arabic*)]
+\item For $\alpha,\beta,\gamma\in\RR$, if $\alpha<\beta$ and $\beta<\gamma$ it is clear that $\alpha<\gamma$. (A proper subset of a proper subset is a proper subset.)
+
+\item It is clear that at most one of the three relations
+\[ \alpha<\beta, \quad \alpha=\beta, \quad \beta<\alpha \]
+can hold for any pair $\alpha,\beta$. 
+
+To show that at least one holds, assume that the first two fail. Then $\alpha$ is not a subset of $\beta$. Hence there exists some $p\in\alpha$ with $p\in\beta$.
+
+If $q\in\beta$, it follows that $q<p$ (since $p\notin\beta$), hence $q\in\alpha$, by (ii). Thus $\beta\subset\alpha$. Since $\beta\neq\alpha$, we conclude that $\beta<\alpha$.
+\end{enumerate}
+Thus $\RR$ is an ordered set.
+\end{proof}
+
+\begin{proposition}
+The ordered set $\RR$ has the least-upper-bound property.
+\end{proposition}
+
+\begin{proof}
+Let $A\neq\emptyset$, $A\subset\RR$. Assume that $\beta\in\RR$ is an upper bound of $A$.
+
+Define $\beta$ to be the union of all $\alpha\in A$; in other words, $p\in\gamma$ if and only if $p\in\alpha$ for some $\alpha\in A$. We shall prove that $\gamma\in\RR$ by checking the definition of Dedekind cuts:
+\begin{enumerate}[label=(\arabic*)]
+\item Since $A$ is not empty, there exists an $\alpha_0\in A$. This $\alpha_0$ is not empty. Since $\alpha_0\subset\gamma$, $\gamma$ is not empty.
+
+Next, $\gamma\subset\beta$ (since $\alpha\subset\beta$ for every $\alpha\in A$), and therefore $\gamma\neq\QQ$.
+
+\item Pick $p\in\gamma$. Then $p\in\alpha_1$ for some $\alpha_1\in A$. If $q<p$, then $q\in\alpha_1$, hence $q\in\gamma$.
+
+\item If $r\in\alpha_1$ is so chosen that $r>p$, we see that $r\in\gamma$ (since $\alpha_1\subset\gamma$).
+\end{enumerate}
+
+Next we prove that $\gamma=\sup A$.
+\begin{enumerate}[label=(\arabic*)]
+\item It is clear that $\alpha\le\gamma$ for every $\alpha\in A$.
+\item Suppose $\delta<\gamma$. Then there is an $s\in\gamma$ and that $s\notin\delta$. Since $s\in\gamma$, $s\in\alpha$ for some $\alpha\in A$. Hence $\delta<\alpha$, and $\delta$ is not an upper bound of $A$.
+\end{enumerate}
+\end{proof}
+
+\begin{proposition}
+$\RR$ is closed under addition.
+\end{proposition}
+
+\begin{proof}
+Let $\alpha = (A,B)$, $\beta = (C,D)$, then $\alpha + \beta = (X,Y)$ where
+\[ X = \{a+c \mid a \in A, c \in C\} \]
+
+To show that $(X,Y)$ is a Dedekind cut, we simply need to check the conditions for Dedekind cuts. 
+\begin{itemize}
+\item Property 1 is trivial.
+
+\item Property 2 is by definition.
+
+\item Property 3:
+
+Let $x,y \in X$ satisfy $x<y$, $y \in X$. 
+
+Let $y = a + c$, $a \in A$, $c \in C$.
+
+Let $\epsilon = y - x$.
+
+Let $a^\prime = a - \dfrac{\epsilon}{2}$, $c^\prime = c - \dfrac{\epsilon}{2}$.
+
+Then \[ a^\prime + c^\prime = a + c - \epsilon = x \]
+$a^\prime < a, a \in A \implies a^\prime \in A$. Similarly, $c^\prime \in C$.\\
+$\therefore\:x = a^\prime +c^\prime \in X$.
+
+\item Property 4:
+
+$\forall a+c \in X, a \in A, c \in C$, $\exists a^\prime \in A, c^\prime \in C$ such that $a<a^\prime, c<c^\prime$.
+
+$\therefore\:a^\prime +c^\prime \in X$ satisfies $a+c < a^\prime+c^\prime$.
+\end{itemize}
+\end{proof}
+
+We now prove that the set of real numbers satisfies the commutative, associative, and identity field axioms with respect to addition.
+
+\begin{proposition}
+Addition is commutative on $\RR$: $\forall\alpha,\beta\in\RR$,
+\[ \alpha+\beta=\beta+\alpha \]
+\end{proposition}
+
+\begin{proof}
+We need to show that $\alpha+\beta\subseteq\beta+\alpha$ and $\beta+\alpha\subseteq\alpha+\beta$.
+
+Let $r\in\alpha+\beta$. Then $r=a+b$ for $a\in\alpha$ and $b\in\beta$. Thus $r=b+a$ since $+$ is commutative on $\QQ$. Hence $r\in\beta+\alpha$. Therefore $\alpha+\beta\subseteq\beta+\alpha$.
+
+Similarly, $\beta+\alpha\subseteq\alpha+\beta$.
+
+Therefore $\alpha+\beta=\beta+\alpha$.
+\end{proof}
+
+\begin{proposition}
+Addition is associative on $\RR$: $\forall\alpha,\beta,\gamma\in\RR$,
+\[ \alpha+(\beta+\gamma)=(\alpha+\beta)+\gamma. \]
+\end{proposition}
+
+\begin{proof}
+Let $r\in\alpha+(\beta+\gamma)$. Then $r=a+(b+c)$ where $a\in\alpha,b\in\beta,c\in\gamma$. Thus $r=(a+b)+c$ by associativity of $+$ on $\QQ$. Therefore $r\in(\alpha+\beta)+\gamma$, hence $\alpha+(\beta+\gamma)\subseteq(\alpha+\beta)+\gamma$.
+
+Similarly, $(\alpha+\beta)+\gamma\subseteq\alpha+(\beta+\gamma)$.
+\end{proof}
+
+\begin{proposition}
+Define $0^*\coloneqq\{p\in\QQ\mid p<0\}$. Then $\alpha+0^*=\alpha$.
+\end{proposition}
+
+\begin{proof}
+Let $r\in\alpha+0^*$. Then $r=a+p$ for some $a\in\alpha,p\in0^*$. Thus $r=a+p<a+0=a$ by ordering on $\QQ$ and identity on $\QQ$. Hence $\alpha+0^*\subseteq\alpha$.
+
+Let $r\in\alpha$. Then there exists $r^\prime>p$ where $r^\prime\in\alpha$. Thus $r-r^\prime<0$, so $r-r^\prime\in0^*$. We see that
+\[ r=\underbrace{r^\prime}_{\in\alpha}+\underbrace{(r-r^\prime)}_{\in0^*}. \]
+Hence $\alpha\subseteq\alpha+0*$.
+\end{proof}
+
+%%%%%%%%%%%%%%%%
+
+\begin{exercise}{}{}
+Express $-\alpha$ in terms of $\alpha$; show
+\[ \alpha+(-\alpha)=0=(-\alpha)+\alpha \]
+\end{exercise}
+
+\begin{proof}
+We split this into two cases.
+
+\textbf{Case 1}: $\alpha$ is a rational number, then $\alpha=(A,B)$ where $A = \{x \mid x < \alpha\}$, $B = \{x \mid x \ge \alpha\}$.
+
+Let $-\alpha=(A^\prime,B^\prime)$, where $A^\prime = \{x \mid x < -\alpha\}$, $B^\prime = \{x \mid x\ge -\alpha\}$. 
+We see that $\alpha+(-\alpha) \le 0$ is obvious.
+
+On the other hand, since $0=(O,O^\prime)$, for any $\epsilon<0$ we have
+\[ \epsilon = \brac{\alpha+\frac{\epsilon}{2}} + \brac{-\alpha+\frac{\epsilon}{2}} \in A+A^\prime \]
+Hence $\alpha+(-\alpha)=0$.
+
+\
+
+\textbf{Case 2}: $\alpha$ is irrational, let $\alpha = (A,B)$ where $B$ does not have a lowest value. 
+Then $-B = \{-x \mid x \in B\}$ does not have a highest value.
+
+We wish to define $-\alpha=(-B,-A)$, but first we need to show that this is well-defined by checking through all the conditions.
+
+\begin{itemize}
+\item Property 1: This is trivial.
+
+\item Property 2: Prove that $- A$ and $B$ are disjoint.
+
+Note that $\forall x \in \RR$, if $x=-y$, then exactly one out of $y \in A$ and $y \in B$ is true $\implies$ exactly one out of $x \in -B$ and $x \in -A$ is true.
+
+\item Property 3: Prove $-B$ is closed downwards.
+
+Suppose otherwise, that $x<y, y \in -B$ but $x \notin -B$. Then $-y \in B$, $-x \notin B$. Since $A$ is the complement of $B$, $-y \notin A$, $-x \in A$. But $-y<-x$, which is a contradiction.
+
+\item Property 4 is already guaranteed by the irrationality of $\alpha$.
+\end{itemize}
+
+All of these properties imply that the real numbers form a commutative group by addition.
+\end{proof}
+
+\subsubsection{Negation}
+Given any set $X \subset \RR$, let $-X$ denote the set of the negatives of those rational numbers. That is $x \in X$ if and only if $-x \in -X$. 
+
+If $(A,B)$ is a Dedekind cut, then $-(A,B)$ is defined to be
+$(-B,-A)$.
+
+This is pretty clearly a Dedekind cut. - proof
+
+\subsubsection{Signs}
+A Dedekind cut $(A,B)$ is \textbf{positive} if $0 \in A$ and \textbf{negative} if $0 \in B$. If $(A,B)$ is neither positive nor negative, then $(A,B)$ is the cut representing 0.
+
+If $(A,B)$ is positive, then $-(A,B)$ is negative. Likewise, if $(A,B)$ is negative, then $-(A,B)$ is positive. The cut $(A,B)$ is non-negative if it is either positive or 0.
+
+\subsubsection{Multiplication}
+% Define multiplication of real numbers; you will need to define them for positive real numbers first
+
+%\subsubsection{Positive multiplication}
+Let $\alpha = (A,B)$ and $\beta = (C,D)$ where $\alpha, \beta$ are both non-negative.
+
+We define $\alpha \times \beta$ to be the pair $(X,Y)$ where
+
+$X$ is the set of all products $ac$ where $a \in A, c \in C$ and at least one of the two numbers is non-negative. 
+$Y$ is the set of all products $bd$ where $b \in B, d \in D$.
+
+%\subsubsection{General Multiplication}
+
+
+% https://www.math.brown.edu/reschwar/INF/handout3.pdf
+
+Intermediate Value Theorem
+
+Bolzano-Weiersstrass Theorem
+
+Connectedness of $\RR$
+
+\subsection{$\RR$ is archimedian}
+\begin{theorem}[Archimedian Principle]\label{thrm:archimedian}
+For any $x\in\RR^+$ and $y\in\RR$, there exists some $n\in\ZZ^+$ such that
+\[ n\cdot x>y. \]
+\end{theorem}
+
+In particular, if we take $n=1$ from this theorem, we immediately get the following statement.
+
+\begin{proposition}\label{prop:archimedian}
+For any $y\in\RR$, there exists some positive integer $n$ such that $n>y$.
+\end{proposition}
+
+We now give a proof of Proposition \ref{prop:archimedian} directly without using Theorem \ref{thrm:archimedian}, and then we prove \ref{thrm:archimedian} from Proposition \ref{prop:archimedian}. This shows that these two statements are in fact equivalent, though Proposition \ref{prop:archimedian} looks much simpler.
+
+\subsection{$\QQ$ is dense in $\RR$}
+
+\subsection{$\RR$ is closed under taking roots}
+
+\subsection{The extended real number system}
+\begin{definition}
+The extended real number system consists of the real field $\RR$ and two symbols, $+\infty$ and $-\infty$. We preserve the original order in $\RR$, and define
+\[ -\infty<x<+\infty \]
+for every $x\in\RR$.
+\end{definition}
+
+It is then clear that $+\infty$ is an upper bound of every subset of the extended real number system, and that every nonempty subset has a least upper bound. If, for example, $E$ is a nonempty set of real numbers which is not bounded above in $\RR$, then $\sup E=+\infty$ in the extended real number system.
+
+Exactly the same remarks apply to lower bounds.
+
+The extended real number system does not form a field, but it is customary to make the following conventions:
+\begin{enumerate}[label=(\arabic*)]
+\item If $x$ is real then
+\[ x+\infty=+\infty, \quad x-\infty=-\infty, \quad \frac{x}{+\infty}=\frac{x}{-\infty}=0. \]
+\item If $x>0$ then $x\cdot(+\infty)=+\infty$, $x\cdot(-\infty)=-\infty$.
+\item If $x<0$ then $x\cdot(+\infty)=-\infty$, $x\cdot(-\infty)=+\infty$.
+\end{enumerate}
+When it is desired to make the distinction between real numbers on the one hand and the symbols $+\infty$ and $-\infty$ on the other quite explicit, the former are called \emph{finite}.
+\pagebreak
+
+\section{Euclidean Plane $\RR^2$}
+We consider the Cartesian product of $\RR$ with $\RR$; that is,
+\[ \RR^2\coloneqq\RR\times\RR\coloneqq\{(x_1,x_2)\mid x_1,x_2\in\RR\}. \]
+Over $\RR^2$, we can define operations
+\begin{itemize}
+\item Addition $+$: $(x_1,x_2)+(y_1,y_2)=(x_1+y_1,x_2+y_2)$;
+\item Scalar multiplication $\RR\times\RR^2\to\RR^2$: $c\cdot(x_1,x_2)=(c\cdot x_1,c\cdot x_2)$.
+\end{itemize}
+
+This two operations make $\RR^2$ a 2-dimensional vector space (linear space) over the real field $\RR$. We also say $\RR^2$ is a $\RR$-linear space of real dimension 2. For example, $\{(1,0),(0,1)\}$ form a basis of $\RR^2$.
+
+Moreover, over the linear space $\RR^2$, one can define an inner product as
+\[ \langle(x_1,x_2),(y_1,y_2)\rangle=x_1y_1+x_2y_2. \]
+The inner product induces a norm
+\[ |(x_1,x_2)|=\sqrt{\langle(x_1,x_2),(x_1,x_2)\rangle}=\sqrt{x_1^2+x_2^2}. \]
+From now on, we use $\vec{x}$ to denote $(x_1,x_2)$.
+\begin{proposition} \
+\begin{itemize}
+\item $|\vec{x}|\ge0$, where equality holds if and only if $\vec{x}=\vec{0}$.
+\item $|c\cdot\vec{x}|=|c||\vec{x}|$
+\item $|\vec{x}+\vec{y}|\le|\vec{x}|+|\vec{y}|$
+\item $|\langle\vec{x},\vec{y}\rangle|\le|\vec{x}||\vec{y}|$
+\end{itemize}
+\end{proposition}
+
+All constructions here can be easily generalised to any $\RR^n$ with $n\in\ZZ^+$.
+
+\section{Complex Numbers $\CC$}
+
+
+Over $\RR^2$, we can define a multiplication $\cdot$ as
+\[ (a,b)\cdot(c,d)=(ac-bd,ad+bc). \]
+If we identity $\RR^2$ with
+\[ \CC\coloneqq\{x+yi\mid x,y\in\RR\} \]
+via $(x,y)\mapsto x+yi$, then all structures defined above are induced to $\CC$. In particular, the multiplication is induced to $\CC$ via requiring $i^2=-1$. A nontrivial fact is that $(\CC,+,\cdot)$ is a field. A element in $\CC$ is called a complex number. Usually, people prefer to use $z=x+yi$, $x,y\in\RR$, to denote a complex number. Here $x$ is called the real part of $z$ and $y$ is called the imaginary part of $z$. We use $|z|$ to denote its norm.
+\pagebreak
+
+\section{Euclidean Spaces}
+For each positive integer $n$, let $\RR^n$ be the set of all ordered $n$-tuples
+\[ \vb{x}=(x_1,x_2,\dots,x_n), \]
+where $x_1,\dots,x_n$ are real numbers, called the \emph{coordinates} of $\vb{x}$. The elements of $\RR^n$ are called points, or vectors, especially when $n>1$. We shall denote vectors by boldfaced letters.
+
+Since $\RR^n$ is a vector space (over $\RR$), $\RR^n$ has the following extra properties
+\begin{itemize}
+\item For any two vectors $\vb{x}$ and $\vb{y}$ we may perform addition:
+\[ \vb{x}+\vb{y}=(x_1+y_1,\dots,x_n+y_n) \]
+Properties of addition:
+\begin{enumerate}
+\item $\vb{x}+\vb{y}=\vb{y}+\vb{x}$
+\item $(\vb{x}+\vb{y})+\vb{z}=\vb{x}+(\vb{y}+\vb{z})$
+\item Zero vector $\vb{0}=(0,\dots,0)$ satisfies $\vb{x}+\vb{0}=\vb{0}+\vb{x}=\vb{x}$
+\item For any vector $\vb{x}$, its negative $-\vb{x}$ satisfies $\vb{x}+(-\vb{x})=(-\vb{x})+\vb{x}=\vb{0}$
+\end{enumerate}
+\item For any vector $\vb{x}$ and scalar $k\in\RR$ we may perform scalar multiplication:
+\[ k\vb{x}=(kx_1,\dots,kx_n) \]
+Properties of scalar multiplication:
+\begin{enumerate}
+\item $0\cdot\vb{x}=\vb{0},1\cdot\vb{x}=\vb{x}$
+\item $(kl)\vb{x}=k(l\vb{x})=l(k\vb{x})$
+\item $k(\vb{x}+\vb{y})=k\vb{x}+k\vb{y}$
+\item $(k+l)\vb{x}=k\vb{x}+l\vb{x}$
+\end{enumerate}
+\end{itemize}
+
+We define the \textbf{inner product} (or scalar product) of $\vb{x}$ and $\vb{y}$ by
+\[ \vb{x}\cdot\vb{y}\coloneqq\sum_{i=1}^nx_iy_i. \]
+
+The Euclidean space builds upon the vector space $\RR^n$; specifically speaking, it is $\RR^n$ endowed with two extra notions:
+\begin{itemize}
+\item The \textbf{norm} of the Euclidean space $\norm{\cdot}$ is a real-valued function $\norm{\cdot}:\RR^n\to\RR$. Given a vector $\vb{x}=(x_1,\dots,x_n)$ in $\RR^n$, the norm of $\vb{x}$ is defined as
+\[ \norm{\vb{x}}\coloneqq\sqrt{\vb{x}\cdot\vb{x}}=\sqrt{\sum_{i=1}^nx_i^2}=\sqrt{x_1^2+\cdots+x_n^2}. \]
+\item The \textbf{metric} $d$ of the Euclidean space is a real-valued function $d:\RR^n\times\RR^n\to\RR$. Given two vectors $\vb{x}=(x_1,\dots,x_n)$ and $\vb{y}=(y_1,\dots,y_n)$, the distance between $\vb{x}$ and $\vb{y}$ is defined as
+\[ d(\vb{x},\vb{y})\coloneqq\norm{\vb{x}-\vb{y}}=\sqrt{\sum_{i=1}^n(x_i-y_i)^2}=\sqrt{(x_1-y_1)^2+\cdots+(x_n-y_n)^2}. \]
+\end{itemize}
+
+\begin{remark}
+The norm is something like the length of the vector itself (distant to the origin); the metric refers to the distance function which measures the length between two points in $\RR^n$ (determined by their positional vectors $\vb{x}$ and $\vb{y}$). Essentially, the metric is a much more general notion than the norm: the norm can only be defined on vector spaces; the metric can literally be defined on any set.
+\end{remark}
+
+Norms are required to satisfy the following properties:
+\begin{enumerate}[label=(\arabic*)]
+\item (\textbf{positive definiteness}) for any vector $\vb{x}$, $\norm{\vb{x}}\ge0$, and equality holds if and only if $\vb{x}=\vb{0}$.
+\item (\textbf{absolute homogeneity}) for any vector $\vb{x}$ and scalar $a$, $\norm{a\vb{x}}=|a|\norm{\vb{x}}$.
+\item (\textbf{triangle inequality}) for any two vectors $\vb{x}$ and $\vb{y}$, $\norm{\vb{x}+\vb{y}}\le\norm{\vb{x}}+\norm{\vb{y}}$.
+\end{enumerate}
+
+Metrics are required to satisfy the following properties:
+\begin{enumerate}[label=(\arabic*)]
+\item (\textbf{positive definiteness}) for any two elements $\vb{x}$ and $\vb{y}$, $d(\vb{x},\vb{y})\ge0$, equality holds if and only if $\vb{x}=\vb{y}$.
+\item (\textbf{symmetry}) for any two elements $\vb{x}$ and $\vb{y}$, $d(\vb{x},\vb{y})=d(\vb{y},\vb{x})$.
+\item (\textbf{triangle inequality}) for any three elements $\vb{x}$, $\vb{y}$ and $\vb{z}$, $d(\vb{x},\vb{z})\le d(\vb{x},\vb{y})+d(\vb{y},\vb{z})$.
+\end{enumerate}
+
+Generally, if there is a norm $\norm{\cdot}$ on some vector space, then this norm naturally determines a metric $d(x,y)=\norm{x-y}$, which is precisely the case for Euclidean spaces.
+
+\subsection{Bounded Sets}
+\begin{definition}
+A set $E$ in $\RR^n$ is called a \vocab{bounded set} if there exists $M>0$ such that $\norm{x}\le M$ for all $x$ in $E$.
+\end{definition}
+
+\begin{exercise}{}{}
+Given $E$ and $F$ in $\RR^n$ and real number $k$, define
+\[ kE=\{kx \mid x\in E\} \]
+\[ E+F=\{x+y \mid x\in E,y\in F\} \]
+\begin{enumerate}[label=(\alph*)]
+\item Show that if $E$ is bounded, then $kE$ is bounded;
+\item Show that if $E$ and $F$ are bounded, then $E+F$ is bounded.
+\end{enumerate}
+\end{exercise}
+
+\subsection{Diameter}
+\begin{definition}
+Given a set $E\subset\RR^n$, the \vocab{diameter} of $E$ is defined as
+\[ \diam E\coloneqq\sup_{x,y\in E}d(x,y). \]
+\end{definition}
+
+\begin{exercise}{}{}
+Find the diameter of the open unit ball in $\RR^n$ given by
+\[ B=\{x\in\RR^n \mid \norm{x}<1\}. \]
+\end{exercise}
+\begin{solution}
+First note that
+\[ d(x,y)=\norm{x-y}\le\norm{x}+\norm{-y}=\norm{x}+\norm{y}<1+1=2. \]
+On the other hand, for any $\epsilon>0$, we pick
+\[ x=\brac{1-\frac{\epsilon}{4},0,\dots,0}, \quad y=\brac{-\brac{1-\frac{\epsilon}{4}},0,\dots,0}. \]
+Then $d(x,y)=2-\dfrac{\epsilon}{2}>2-\epsilon$.
+
+Therefore $\diam B = 2$.
+\end{solution}
+
+\begin{exercise}{}{}
+Given a set $E$ in $\RR^n$, show that $E$ is bounded iff $\diam E<+\infty$.
+\end{exercise}
+\begin{proof} \
+
+($\implies$) If $E$ is bounded, then there exists $M>0$ such that $\norm{x}\le M$ for all $x \in E$.
+
+Thus for any $x,y \in E$,
+\[ d(x,y)=\norm{x-y}\le\norm{x}+\norm{y}\le2M. \]
+Thus $\diam E = \sup d(x,y) \le 2M<+\infty$.
+
+($\impliedby$) Suppose that $\diam E=r$. Pick a random point $x \in E$, suppose that $\norm{x}=R$.
+
+Then for any other $y \in E$,
+\[ \norm{y}=\norm{x+(y-x)}\le\norm{x}+\norm{y-x}\le R+r. \]
+Thus, by picking $M=R+r$, we obtain $\norm{y}\le M$ for all $y \in E$, and we are done.
+
+\begin{remark}
+Basically you use $x$ to confine $E$ within a ball, which is then confined within an even bigger ball centered at the origin.
+\end{remark}
+\end{proof}
+
+\subsection{Distance Between Sets}
+\begin{definition}
+Given two sets $E,F\subset\RR^n$, the \vocab{distance between sets} $E$ and $F$ is defined as
+\[ d(E,F)\coloneqq\inf_{x\in E,y\in F}\norm{x-y}. \]
+\end{definition}
+
+Obviously $d(E,F)>0$ implies that $E$ and $F$ are disjoint, but $E$ and $F$ may still be disjoint even if $d(E,F)=0$. For example, the closed intervals $E=(-1,0)$ and $F=(0,1)$.
+
+\begin{exercise}{}{}
+Suppose that $E$ and $F$ are sets in $\RR^n$ where $E$ and $F$ is finite. Prove that $E$ and $F$ are disjoint iff $d(E,F)>0$.
+\end{exercise}
+\pagebreak
+
+\section{Completeness}
+\subsection{Completeness axiom}
+\begin{theorem}[Completeness axiom for the real numbers]
+Let $A$ be a non-empty subset of $\RR$ that is bounded above. Then $A$ has a supremum.
+\end{theorem}
+
+Any set in the reals bounded from above/below must have a supremum/infimum.
+
+\begin{proof}
+We prove this using Dedekind cuts.
+
+Let $S$ be a real number set. 
+We consider the rational number set $A = \{x \in \QQ \mid \exists y \in S\}$. Set $B$ is defined to be the complement of $A$ in $\QQ$.
+
+We go through the definitions to check that $(A|B)$ is a Dedekind cut.
+\begin{enumerate}
+\item Since $S \neq \emptyset$, pick $y \in S$, then $[y]-1$ is a real number smaller than some element in $S$, hence $[y]-1 \in A$ and thus $A \neq \emptyset$.
+
+Since we're given that $S$ is bounded, $\exists M>0$ as the upper bound for $S$, thus $B \neq \emptyset$.
+
+(Note that an upper bound is simply a number that is bigger than anything from the set, and is not the supremum
+
+\item We defined $B$ to be the complement of $A$ in $\QQ$, so this condition is trivial.
+
+\item For any $x,y \in A$, if $x<y$ and $y\in A$, then $\exists z \in S$ such that $y<z \implies x<z \implies x \in A$.
+
+\item Suppose otherwise that $x \in A$ is the largest element in A, then $\exists y \in S$ such that $x<y$
+We then pick a rational number $z$ between $x$ and $y$. 
+Since we still have $z<y$, we have $z \in A$ but $z>x$, contradictory to $z$ being the largest.
+
+Now there's actually an issue with the proof for property 4 here
+How exactly are we finding z?
+
+First $x \in \QQ$. 
+Then $y \in \RR$ so we rewrite it as $y=(C|D)$ via definition.
+
+$x<y$ translates to the fact that $x \in C$.
+
+Since $y$ is real, by definition we know that $C$ must not have a largest element.
+
+In particular, $x$ is not largest and we can pick $z \in C$ such that $z>x$. 
+This is in fact the $z$ that we need
+\end{enumerate}
+
+Now that all the properties of a real number are validated, we may finally conclude that $\alpha=(A|B)$ is indeed a real number.
+
+Now we need to show that $\alpha = \sup S$.
+
+Let $x \in S$. 
+If $x$ is not the maximum value of $S$, i.e. $\exists y \in S,x<y$, then $x \in A$ and thus $x<\alpha$.
+
+If $x$ is the maximum value of $S$, then for any rational number $y<x$ we have $y \in A$, and for any rational number $y \ge x$ we have $y \in B$.
+Thus $x=(A|B)=\alpha$.
+
+In conclusion, $x \le \alpha$ for all $x \in S$.
+
+For any upper bound $x$ of $S$, since $\forall y \in S, x \ge y$ we have $x \in B$ and thus $x \ge \alpha$.
+
+$\therefore$ $\alpha$ is the smallest upper bound of $S$ and thus $\sup S = \alpha$ exists.
+\end{proof}
+
+\begin{theorem}[Archimedean property of $\NN$]
+$\NN$ is not bounded above.
+\end{theorem}
+\begin{proof}
+Suppose, for a contradiction, that $\NN$ is bounded above. Then $\NN$ is non-empty and bounded above, so by completeness (of $\RR$) $\NN$ has a supremum.
+
+By the Approximation property with $\epsilon=\frac{1}{2}$, there is a natural number $n\in\NN$ such that $\sup\NN-\frac{1}{2}<n\le\sup\NN$.
+
+Now $n+1\in\NN$ and $n+1>\sup\NN$. This is a contradiction.
+\end{proof}
+
+\chapter{Basic Topology}
+\section{Metric Space}
+\begin{definition}
+A set $X$, whose elements we shall call \emph{points}, is a \vocab{metric space} if for any two points $p,q\in X$ there is associated a real value function (called distance function or \emph{metric}) $d:X\times X\to\RR$ which satisfies the following properties:
+\begin{enumerate}[label=(\roman*)]
+\item (\textbf{positive definitiveness}) $d(p,q)\ge0$, where equality holds if and only if $x=y$;
+\item (\textbf{symmetry}) $d(p,q)=d(q,p)$;
+\item (\textbf{triangle inequality}) $d(p,q)\le d(p,r)+d(r,q)$ for any $r\in X$.
+\end{enumerate}
+\end{definition}
+
+\begin{example}
+The most important examples of metric spaces are the euclidean spaces $\RR^n$, especially $\RR^1$ (the real line) and $\RR^2$ (the complex plane); the distance in $\RR^n$ is defined by
+\[ d(\vb{x},\vb{y})=|\vb{x}-\vb{y}|. \]
+\end{example}
+
+A metric space $(X,d)$ naturally induces a metric on any of its subsets.
+
+\begin{definition}
+For any $x\in X$, $r>0$, the subset $B_r(x)\coloneqq\{y\in X\mid d(y,x)<r\}$ is called the \vocab{open ball} centred at $x$ with radius $r$.
+
+Similarly, the subset $\bar{B}_r(x)\coloneqq\{y\in X\mid d(y,x)\le r\}$ is called the \vocab{closed ball} centred at $x$ with radius $r$.
+\end{definition}
+
+An open ball centred at $x$ is also called a \vocab{neighbourhood} of $x$.
+
+\begin{example}
+An open (closed) ball in $\RR$ is equivalent to a finite open (closed) interval, i.e. $(a,b)$ ($[a,b]$), $a,b\in\RR$.
+\end{example}
+
+\begin{definition}
+Let $X$ be a metric space. All points and sets mentioned below are understood to be elements and subsets of $X$.
+\begin{enumerate}[label=(\arabic*)]
+\item $p$ is a \vocab{limit point} of $E$ if every neighborhood of $p$ contains $q\neq p$ such that $q\in E$:
+\[ \forall r>0,\exists q\in E, q\neq p\suchthat q\in B_r(p). \]
+\item $p$ is an \vocab{isolated point} of $E$ if it not a limit point of $E$.
+\item $E$ is \vocab{closed} if every limit point of $E$ is a point of $E$.
+\item $p$ is an \vocab{interior point} of $E$ if there is a neighborhood $N$ of $p$ such that $N\subset E$:
+\[ \exists r>0, B_r(p)\subset E. \]
+\item $E$ is \vocab{open} if every point of $E$ is an interior point of $E$.
+\item $E$ is \vocab{perfect} if $E$ is closed and if every point of E is a limit point of $E$.
+\item $E$ is \vocab{bounded} if 
+\[ \exists M\in\RR, q\in X\suchthat\forall p\in E, d(p,q)<M. \]
+\item $E$ is \vocab{dense} in $X$ if every point of $X$ is a limit point of $E$, or a point of $E$ (or both). 
+\end{enumerate}
+\end{definition}
+
+\begin{proposition}
+Any open ball is open.
+\end{proposition}
+
+\begin{proof}
+Assume $B_r(x)$ is an open ball in a metric space $(X,d)$. Then for any point $y\in B_r(x)$, there is
+\[ d(y,x)<r. \]
+Now we define $r^\prime\coloneqq r-d(y,x)$, which is positive.
+
+Consider the ball $B_{r^\prime}(y)$. We shall show it lives in $B_r(x)$. For this, take any point $z\in B_{r^\prime}(y)$. Using the triangle inequality of a metric, we have
+\begin{align*}
+d(z,x)&\le d(z,y)+d(y,x)\\
+&<r^\prime+d(y,x)\\
+&=r.
+\end{align*}
+Hence $z\in B_r(x)$, and $B_{r^\prime}(y)\subset B_r(x)$.
+\end{proof}
+
+\begin{proposition}
+Assume $(X,d)$ is a metric space.
+\begin{enumerate}[label=(\arabic*)]
+\item Both $\emptyset$ and $X$ are open.
+\item If $S_1,S_2$ are open, then $S_1\cap S_2$ is open.
+\item For any set $\Lambda$ such that for any $\alpha\in\Lambda$, $S_\alpha$ is an open subset of $X$, the union $\bigcup_{\alpha\in\Lambda}S_\alpha$ is open.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof} \
+\begin{enumerate}[label=(\arabic*)]
+\item Obvious by definition.
+\item Take a point $x\in S_1\cap S_2$, we need to find an open ball with radius $r>0$ such that $x\in B_r(x)\subset S_1\cap S_2$.
+
+To find such $r>0$, notice that since both $S_1$ and $S_2$ are open, there are open balls
+\begin{align*}
+&x\in B_{r_1}(x)\subset S_1\\
+&x\in B_{r_2}(x)\subset S_2
+\end{align*}
+Take $r\coloneqq\min\{r_1,r_2\}$. Then $B_r(x)\subset B_{r_1}(x)\subset S_1$ and $B_r(x)\subset B_{r_2}(x)\subset S_2$, and hence $B_r(x)\subset S_1\cap S_2$.
+
+\item Take a point $x\in\bigcup_{\alpha\in\Lambda}S_\alpha$, then we can assume $x$ lives in some $S_{\alpha_0}$, $\alpha_0\in\Lambda$. Since $S_{\alpha_0}$ is open, take an open ball 
+\[ B_r(x)\subset S_{\alpha_0}. \]
+It follows
+\[ B_r(x)\subset S_{\alpha_0}\subset\bigcup_{\alpha\in\Lambda}S_\alpha. \]
+Hence $\bigcup_{\alpha\in\Lambda}S_\alpha$ is open.
+\end{enumerate}
+\end{proof}
+
+\begin{example}
+We know $I_n\coloneqq\brac{-\frac{1}{n},\frac{1}{n}}\subset\RR$ is open for any $n\in\ZZ^+$. However, $\bigcap_{n\in\ZZ^+}I_n=\{0\}$ is not open.
+\end{example}
+
+\begin{proposition}
+Assume $(X,d)$ is a metric space.
+\begin{enumerate}[label=(\arabic*)]
+\item Both $\emptyset$ and $X$ are closed.
+\item If $S_1$ and $S_2$ are closed, then $S_1\cup S_2$ is closed.
+\item For any set $\Lambda$ so that any $\alpha\in\Lambda$, $S_\alpha$ is a closed subset of $X$, the intersection $\bigcap_{\alpha\in\Lambda}S_\alpha$ is closed.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof} \
+\begin{enumerate}[label=(\arabic*)]
+\item It follows immediately from $\emptyset=X^c$ and $X=\emptyset^c$.
+\item It follows from above that
+\[ (S_1\cup S_2)^c=S_1^c\cap S_2^c \]
+is open, and hence $S_1\cup S_2$ is closed.
+\item It follows from above that
+\[ \brac{\bigcap_{\alpha\in\Lambda}S_\alpha}^c=\bigcup_{\alpha\in\Lambda}S_\alpha^c \]
+is open, and hence $\bigcap_{\alpha\in\Lambda}S_\alpha$ is closed.
+\end{enumerate}
+\end{proof}
+
+\begin{proposition}
+If $p$ is a limit point of $E$, then every neighbourhood of $p$ contains infinitely many points of $E$.
+\end{proposition}
+
+\begin{proof}
+Prove by contradiction. Suppose there is a neighborhood $B_r(p)$ which contains only a finite number of points of $E$: $q_1,\dots,q_n$, which are distinct from $p$. Define
+\[ r=\min_{1\le m\le n} d(p,q_m). \]
+The minimum of a finite set of positive numbers is clearly positive, so that $r>0$.
+
+The neighborhood $B_r(p)$ contains no point $q\in E,q\neq p$ so that $p$ is not a limit point of $E$, a contradiction.
+\end{proof}
+
+\begin{corollary}
+A finite point set has no limit points.
+\end{corollary}
+
+\begin{proposition}
+$E$ is open if and only if its complement $E^c$ is closed.
+\end{proposition}
+
+\begin{proof} \
+
+($\implies$) Suppose $E$ is open. Let $x$ be a limit point of $E^c$. Then every neighbourhood of $x$ contains a point of $E^c$, so that $x$ is not an interior point of $E$. Since $E$ is open, this means that $x\in E^c$. It follows that $E^c$ is closed.
+
+($\impliedby$) Suppose $E^c$ is closed. Choose $x\in E$. Then $x\notin E^c$, and $x$ is not a limit point of $E^c$. Hence there exists $B_r(x)$ such that $E^c\cap B_r(x)$ is empty, that is, $B_r(x)\subset E$. Thus $x$ is an interior point of $E$, and $E$ is open.
+\end{proof}
+
+\begin{definition}
+$E\subset X$, $E^\prime$ denotes the set of all limits points of $E$ in $X$. Then the \vocab{closure} of $E$ is the set $\bar{E}=E\cup E^\prime$.
+\end{definition}
+
+\begin{proposition}
+If $X$ is a metric space and $E\subset X$, then
+\begin{enumerate}[label=(\arabic*)]
+\item $\bar{E}$ is closed;
+\item $E=\bar{E}$ if and only if $E$ is closed;
+\item $\bar{E}\subset F$ for every closed set $F\subset X$ such that $E\subset F$.
+\end{enumerate}
+By (1) and (3), $\bar{E}$ is the \emph{smallest} closed subset of $X$ that contains $E$.
+\end{proposition}
+
+\begin{proof} \
+\begin{enumerate}[label=(\arabic*)]
+\item 
+\item 
+\item 
+\end{enumerate}
+\end{proof}
+
+\section{Compact Sets}
+\begin{definition}
+Assume $(X,d)$ is a metric space. A collection of open sets $\{U_\alpha\mid\alpha\in\Lambda\}$ is called an \vocab{open cover} of a subset $S$ of $X$, if
+\[ S\subset\bigcup_{\alpha\in\Lambda}U_\alpha. \]
+For $\Lambda^\prime\subset\Lambda$, if the subcollection $\{U_\alpha\mid\alpha\in\Lambda^\prime\}$ is also an open cover of $S$; that is,
+\[ S\subset\bigcup_{\alpha\in\Lambda^\prime}U_\alpha, \]
+then $\{U_\alpha\mid\alpha\in\Lambda^\prime\}$ is called a \vocab{subcover}. If moreover, $\Lambda^\prime$ is finite, then it is called a finite subcover.
+\end{definition}
+
+
+
+\section{Perfect Sets}
+
+
+\section{Connected Sets}
+\begin{definition}
+Two subsets $A$ and $B$ of a metric space $X$ are said to be \vocab{separated} if both $A\cap\bar{B}$ and $\bar{A}\cap B$ are empty, i.e. no point of $A$ lies in the closure of $B$ and no point of $B$ lies in the closure of $A$.
+
+A set $E\subset X$ is said to be \vocab{connected} if $E$ is not a union of two non-empty separated sets. 
+\end{definition}
+
+\begin{remark}
+Separated sets are of course disjoint, but disjoint sets need not be separated. For example, the interval $[0,1]$ and the segment $(1,2)$ are not separated, since $1$ is a limit point of $(1,2)$. However, the segments $(0,1)$ and $(1,2)$ are separated.
+\end{remark}
+
+The connected subsets of the line have a particularly simple structure: 
+
+\begin{proposition}
+A subset $E\subset\RR^1$ is connected if and only if it has the following property: if $x,y\in E$ and $x<z<y$, then $z\in E$.
+\end{proposition}
+
+\begin{proof}
+($\impliedby$) If there exists $x,y\in E$ and some $z\in(x,y)$ such that $z\notin E$, then $E=A_z\cup B_z$ where
+\[ A_z=E\cap(-\infty,z), \quad B_z=E\cap(z,\infty). \]
+Since 
+
+($\implies$) 
+\end{proof}
+
+\chapter{Numerical Sequences and Series}
+\section{Sequences in $\RR$}
+\subsection{Convergent Sequences}
+\begin{definition}
+A sequence, which we denote by $\{x_n\}$, in $\RR$ is a map from $\ZZ^+\to\RR$, which maps $n\in\ZZ^+$ to $x_n\in\RR$. The range of the map is called the range of the sequence.
+
+A \vocab{subsequence} of $\{x_n\}$ is defined via an injective map $s$ from $\ZZ^+$ to a subset of $\ZZ^+$ satisfying
+\[ s(k_1)<s(k_2) \quad \forall k_1,k_2\in\ZZ^+,k_1<k_2, \]
+and denoted as $\{x_{n_k}\}$ with $x_{n_k}=x_{s(k)}$.
+
+A sequence $\{x_n\}$ in $\RR$ is called \vocab{convergent}, if there exists some $L\in\RR$ such that for any $\epsilon>0$, there exists some $N\in\ZZ^+$ so that for all $n>N$, $|x_n-L|<\epsilon$. We denote it as $\lim_{n\to\infty}x_n=L$, and call $L$ the \vocab{limit} of the sequence $\{x_n\}$.
+
+A sequence $\{x_n\}$ in $\RR$ is called \vocab{divergent}, if it has no limit in $\RR$.
+\end{definition}
+
+\begin{remark}
+Take note of the use of logical statements:
+\begin{itemize}
+\item $\epsilon$ is independent, so it is literally for all $\epsilon>0$.
+\item $N$ is dependent on $\epsilon$; if $\epsilon$ is very small we would expect the sequence $\{a_n\}$ to get close enough to $L$ further down the line.
+\item The order of the quantifiers matters.
+\end{itemize}
+\end{remark}
+
+\begin{proposition} \
+\begin{itemize}
+\item The limit of a convergent sequence in $\RR$ is unique.
+\item The sequence $\{x_n\}$ converges to $L\in\RR$ if and only if every open disk centred at $L$ contains all but finitely many of terms in the sequence.
+\item The sequence $\{x_n\}$ converges to $L\in\RR$ if and only if every subsequence of it converges to $L\in\RR$.
+\item If a sequence $\{x_n\}$ in $\RR$ is convergent, then it must be bounded.
+\item The set of all subsequential limits of a sequence $\{x_n\}$ in $\RR$ is closed.
+\end{itemize}
+\end{proposition}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\begin{exercise}{}{}
+What do we really mean by saying that $\frac{1}{n}\to 0$ as $n\to\infty$?
+
+We mean that the sequence of numbers $\frac{1}{n}$ converges to 0, proven as follows:
+
+\begin{proof}
+$\forall\epsilon>0$, pick $N=\frac{1}{\epsilon}+1$. Then $\forall n>N$,
+\[ \frac{1}{n} < \frac{1}{N} < \frac{1}{\frac{1}{\epsilon}} = \epsilon. \]
+\end{proof}
+\end{exercise}
+
+We shall cover some characteristics of limits.
+
+\begin{proposition}
+Given a sequence of points $\{x_k\}$ and a point $x\in\RR^n$, $x_k$ converges to $x$ if and only if all neighbourhoods of x ``eventually'' contain all $x_k$.
+
+By ``eventually'' we mean something similar to the definition above: there exists some large $N$ such that the property is satisfied for all $n>N$.
+\end{proposition}
+
+\begin{proof}
+
+\textbf{Forward direction:} 
+
+If $\{x_k\}$ converges to $x$, we wish to prove: given any neighbourhood $U$ of $x$, $U$ eventually contains all $x_k$.
+
+Since $U$ is a neighbourhood of $x$, we pick a ball of radius $\epsilon$ centered at x, $B(x,\epsilon)$, so that $B(x,\epsilon)$ is contained in $U$.
+
+Then since $B(x,\epsilon)$ is precisely the set of points whose distance to $x$ is no larger than $\epsilon$, we then apply the fact that $\{x_k\}$ converges to $x$.
+
+So for this particular $\epsilon$, we take a natural number $N$ so that $|x_k-x|<\epsilon$, or $x_k \in B(x,\epsilon)$, for all $k>N$.
+
+Then simultaneously $x_k$ are in $U$ since $B(x,\epsilon)$ is a subset of $U$, thus we've shown that $U$ will contain all $x_k$ after a certain point $N$.
+
+\vspace{.5cm}
+
+\textbf{Backward direction:}
+
+Suppose that all neighbourhoods of $x$ will eventually contain all $x_k$, then in particular for any $\epsilon>0$, since $B(x,\epsilon)$ is a neighbourhood of $x$, it will also eventually contain all $x_k$.
+
+This then easily translates to the fact that $\{x_k\}$ converges to $x$.
+\end{proof}
+
+\begin{proposition}[Uniqueness of the limit]
+Suppose that $\{x_k\}$ converges to both $x$ and $x^\prime$, then $x=x^\prime$.
+\end{proposition}
+
+\begin{proof}
+$\forall \epsilon>0$, we know that the terms in $\{x_k\}$ must be less than $\epsilon$ away from its limit after a certain point. 
+
+However, this certain point may not be the same for both limits; for the two limits $x$ and $x^\prime$, we must first assume two separate numbers $N$ and $N^\prime$ so that $|x_k-x|<\epsilon$ when $k>N$, and $|x_k-x^\prime|<\epsilon$ when $k>N^\prime$.
+
+Now if you look at the book here, it says that we have a stronger requirement:
+$|x_k-x|<\frac{\epsilon}{2}$ when $k>N$,
+$|x_k-x^\prime|<\frac{\epsilon}{2}$ when $k>N^\prime$.
+This is simply because we want to prove certain statements strictly by definition
+
+
+
+There is an important detail to take note, regarding $\max\{N,N^\prime\}$.
+
+We're taking the larger one of these, so it means that, after this certain point, we in fact have $|x_k-x|<\frac{\epsilon}{2}$ and $|x_k-x^\prime|<\frac{\epsilon}{2}$ at the same time.
+
+Therefore by triangle inequality,
+\[ |x-x^\prime| \le |x_k-x| + |x_k-x|<\epsilon \]
+The choice of k actually vanished in the final statement; you can think of this as if picking this particular choice of k helps us to establish some kind of property for the original objects
+
+Finally, since we've in fact proven that $|x-x^\prime|<\epsilon$ holds for any given positive $\epsilon>0$, we must have $|x-x^\prime|=0$ and therefore $x=x^\prime$.
+
+Strictly speaking, for the first part we need to explain why $a<\epsilon$ for any positive $\epsilon$ implies that $a \le 0$. 
+This is very easy to prove (by contradiction) so let's not be too redundant
+The second part simply relies on the fact that |x-y| is the Euclidean metric and so by positive definiteness |x-y|=0 if and only if x=y.
+\end{proof}
+
+\begin{proposition}[Boundedness of converging sequences]
+If $\{x_k\}$ converges, then $\{x_k\}$ is bounded.
+\end{proposition}
+
+We simply take the limit $x$ and note that the sequence is eventually contained in some ball centered at $x$, say $B(x,1)$.
+
+There are several outlying points prior to this, but since there are only a finite number of these, it doesn't change the fact that the sequence (viewed as a set) is bounded nevertheless.
+
+This argument is precisely expressed by the construction of r given in the book: let $|x_k-x|<1$ whenever $k>N$, then $\{x_k\}$ is in $B(x,r)$ where $r=\max\{1,|x_1-x|,\dots,|x_N-x|\}$
+
+
+
+\begin{enumerate}
+\item We talk about the relationship between the limit of a sequence and the limit points of a set.
+
+Generally, limit points are a weaker construction.
+
+
+Suppose that $\{x_k\}$ converges to $x$
+If we view $\{x_k\}$ as a set, then $x$ will be a limit point of this set
+
+The converse, however, is not true
+
+Exercise 1: Construct a sequence in R that is bounded and contains a single limit point but is divergent (not convergent)
+
+The thing about convergence of a series is that, unlike for limit points where we only require that there are other points that get arbitrarily close, but moreover we have to ensure that this pattern ensues for each and every term in the sequence
+
+Me:Suppose that $\{x_k\}$ converges to $x$
+If we view $\{x_k\}$ as a set, then $x$ will be a limit point of this set”
+- - - - - - - - - - - - - - -
+Sorry I forgot something crucial about this
+:
+There is the strange possibility that the sequence $\{x_k\}$ is constant
+:
+(or at least eventually constant)
+:
+Then in fact $x$ by definition is not a limit point of $x_k$ because you can find a ball around $x$ that only contains the element $x$ itself, since that point is merely what the entire sequence $\{x_k\}$ amounts to
+:
+Anyways, we simply can't say that a sequence $\{x_k\}$ converges to $x$ if we're only provided with the fact that $x$ is a limit point of $\{x_k\}$
+
+However, we can say the following:
+(d) If $x$ is a limit point of $E$, then there exists a sequence $\{x_n\}$ in $E\setminus x$ such that $\{x_n\}$ converges to $x$
+
+In fact this is correct in both ways so let's rewrite this as follows:
+(d) x is a limit point of $E$, if and only if there exists a sequence $\{x_n\}$ in $E\setminus x$ such that $\{x_n\}$ converges to $x$
+
+($E\setminus x$ is important here, otherwise we simply pick the constant sequence $x_k=x$)
+
+→: If x is a limit point, then for all $\epsilon>0$, $B_0(x,\epsilon)$ contains points in $E$
+We then construct such a sequence $\{x_k\}$ in $E\setminus x$: pick any $x_k \in E$ so that $x_k$ is contained in $B_0(x,1/k)$
+
+Then it is easy to show that $\{x_k\}$ is a sequence in $E\setminus x$ which converges to $x$.
+
+←: Suppose that there exists a sequence $\{x_n\}$ in $E\setminus x$ such that $\{x_n\}$ converges to $x$
+We wish to show that $B_0(x,\epsilon)$ contains points in $E$ for all $\epsilon>0$
+
+Since $\{x_n\}$ converges to $x$, for all $\epsilon>0$ the sequence is eventually contained in $B(x,\epsilon)$
+However because we have the precondition that $\{x_n\}$ has to be in $E\setminus x$, the sequence is in fact eventually contained in $B_0(x,\epsilon)$.
+\end{enumerate}
+
+%\section{Subsequences}
+
+\begin{proposition}
+$\{x_k\}$ converges to $x$ if and only if every subsequence of $\{x_k\}$ converges to $x$.
+\end{proposition}
+
+\begin{proof}
+We only need to prove this in the forwards direction
+Every subsequence of $\{x_k\}$ can be written in the form $\{x_{k_i}\}$ where $k_1<k_2<\dots$ is a strictly increasing sequence of natural numbers
+
+Intuitively, if every neighbourhood of x eventually contains all $x_k$, then since $\{x_{k_i}\}$ is just a subset of $\{x_k\}$ they should all be contained in the neighbourhood eventually as well.
+For every $\epsilon>0$, pick $N$ such that for $k>N$, $|x_k-x|<\epsilon$.
+Pick $M$ such that $k_M>N$, then for all $i>M$ we have $|x_(k_i)-x|<\epsilon$.
+\end{proof}
+
+\begin{proposition}
+Subsequential limits of a sequence are precisely the limit points of the sequence (viewed as a set)
+\end{proposition}
+
+\begin{proof}
+This is just part (d) of the previous section.
+
+Again, to make this work, we need to assume that nothing funny is going on at subsequential limits
+If the limits appear due to eventually constant subsequences, then they need not be limit points of the original sequence when viewed as a set
+
+3.6, 3.7 are precisely the statements we've prepared for last week
+\end{proof}
+
+\begin{proposition}
+If $\{x_n\}$ is a sequence in a compact set (bounded closed set), then there exists a convergent subsequence of $\{x_n\}$
+\end{proposition}
+
+\begin{proof}
+This is Weierstrass-Bolzano together with part (b)
+
+Ah yes, regarding compact sets
+I need to emphasize this again, but the definition that we are currently using for compact sets is not the actual definition
+
+I've sent a video before the lesson which talks about the real definition for compact sets % www.youtube.com/watch?v=td7Nz9ATyWY
+Essentially, compact sets satisfies the property akin to the statement in Heine-Borel:
+Given a topological space $(X,\tau)$, a compact set $K$ in $X$ is a set satisfying that, given any open covering $\{U_i\}$ of $X$, there exists a finite open cover $\{U_1,\dots,U_n\}$ of $X$
+
+This is difficult to process at this stage
+Since we're currently only working with Euclidean spaces it would be more beneficial if you consider the Heine-Borel Theorem as a property first
+It would be a lot easier to accept the definition after you're more accustomed to applying the theorem
+\end{proof}
+
+\begin{proposition}
+(Rudin 3.7) Subsequential limits form a closed subset
+\end{proposition}
+
+\begin{proof}
+Actually we've done this two weeks before, it is simply saying that A'' is a subset of A'.
+
+(A'' is not always A'; consider the set in R² given by
+{(1/n,1/m)|n,m in N}
+Then (1,0),(0,1) are in A' but not in A''
+\end{proof}
+
+\subsection{Cauchy Sequences}
+This is a very very helpful way to determine whether a sequence is convergent or divergent, as it does not require the limit to be known. In the future you will see many instances where the convergence of all sorts of limits are compared with similar counterparts; generally we describe such properties as \vocab{Cauchy criteria}.
+
+Cauchy sequences have to deal with the differences between terms within the sequence itself.
+
+\begin{definition}
+A sequence $\{x_k\}$ in $\RR^n$ is \vocab{Cauchy}, if the distances between any two terms is sufficiently small after a certain point.
+
+Strictly speaking, $\forall \epsilon>0$, there exists integer $N$ such that 
+\[ \forall k,l>N, |x_k-x_l|<\epsilon. \]
+\end{definition}
+
+It is easy to prove that a converging sequence is Cauchy using the triangle inequality. The idea is that, if all the points are becoming arbitrarily close to a given point p, then they are also becoming close to each other. The converse is not always true, however.
+
+\begin{proposition}
+A sequence $\{x_k\}$ in $\RR^n$ is convergent if and only if it is Cauchy.
+\end{proposition}
+
+\begin{proof}
+\textbf{Forward direction:}
+
+Suppose that $\{x_k\}$ converges to $x$, then there exists $N$ such that for $k>N$, $|x_k-x|<\dfrac{\epsilon}{2}$
+Then for $k,l>N$, 
+\[ |x-k-x_l| \le |x_k-x|+|x_l-x| < \epsilon \]
+
+\textbf{Backward direction:}
+
+First, we show that $\{x_k\}$ must be bounded. 
+Pick $N$ such that for all $k,l>N$ we have $|x_k-x_l|<1$. 
+Centered at $x_k$, we show that $\{x_k\}$ is bounded; to do this we pick
+\[ r = \max\{1,|x_k-x_1|,\dots,|x_k-x_N|\} \]
+Then the sequence ${x_k}$ is in $B(x_k,r)$ and thus is bounded.
+
+Since $\{x_k\}$ is bounded, by the collolary of Bolzano-Weierstrass we know that $\{x_k\}$ contains a subsequence $\{x_{k_i}\}$ that converges to a limit $x$.
+
+Then for all $\epsilon>0$, pick $N_1$ such that for all $k,l>N$, $|x_k-x_l|<\dfrac{\epsilon}{2}$. 
+Simultaneously, since $\{x_{k_i}\}$ converges to $x$, pick $M$ such that for $i>M$, $|x_{k_i}-x|<\dfrac{\epsilon}{2}$.
+
+Now, since $k_1<k_2<\dots$ is a sequence of strictly increasing natural numbers, we can pick $i>M$ such that $k_i>N$. Then for all $k>N$, by setting $l=k_i$ we obtain
+\[ |x_k-x_{k_i}| < \frac{\epsilon}{2}, \quad |x_{k_i}-x| < \frac{\epsilon}{2} \]
+and hence
+\[ |x_k-x| \le |x_k-x_{k_i}|+|x_{k_i}-x| < \epsilon \]
+\end{proof}
+
+\subsection{Upper and Lower Limits}
+
+
+% Rudin 3.20
+\subsection{Limits of Multiple Sequences}
+We shall cover some of the more basic aspects of limits in this section.
+
+\subsubsection{Inequalities}
+
+First let's consider two converging sequences $\{a_n\}$ and $\{b_n\}$
+
+If $a_n \le b_n$, then $\lim a_n \le \lim b_n$.
+
+\begin{remark}
+One important thing to take note for limits is that, even if you have $a_n<b_n$, you cannot say that $\lim a_n<\lim b_n$; for example, $\frac{1}{n}>-\frac{1}{n}$ but their limits are both $0$.
+\end{remark}
+
+\begin{proof}
+Let's say that $A=\lim a_n$ and $B=\lim b_n$. Suppose otherwise that $A>B$, then we try to cause some chaos with $\epsilon=A-B>0$.
+
+Since $\frac{\epsilon}{2}>0$, then there exists $N_1$ such that for $n>N_1$ we have $|a_n-A|<\frac{\epsilon}{2}$; and there exists $N_2$ such that for $n>N_2$ we have $|b_n-B|<\frac{\epsilon}{2}$.
+
+Let $N=\max\{N_1,N_2\}$, then for any $n>N$, the two inequalities above will hold simultaneously
+But then we would have
+\[ a_n>A-\frac{\epsilon}{2}, b_n<B+\frac{\epsilon}{2} \]
+and thus
+\[ a_n-b_n>A-B-\epsilon=0, \]
+so $a_n>b_n$, a contradiction
+\end{proof}
+
+A corollary is that limits essentially preserve signs, if you include 0 in your consideration
+
+A converging sequence of nonnegative numbers will always be nonnegative, and same goes to nonpositive numbers
+:
+Now as we can see in the proof above, there is actually a place where the restrictions of limits overpower the statement itself
+:
+What I mean by that is, suppose that you want to form a proof by contradiction
+:
+What you need here is just one term $a_n>b_n$
+But you actually have $a_n>b_n$ eventually for all terms in the sequence
+:
+In fact, a better exercise would have been to show that limsups and liminfs also preserves inequalities
+
+I'll just use limsups for example
+If $a_n\le b_n$, let $A=\limsup a_n$, $B=\limsup b_n$. Suppose otherwise that $A>B$. Let $\epsilon=A-B>0$; since $\frac{\epsilon}{2}>0$, then for all $N_1$, there exists $n>N_1$ such that $a_n>A-\frac{\epsilon}{2}$; and there exists $N_2$ such that for all $n>N_2$, $b_n<B+\frac{\epsilon}{2}$.
+
+Now we arrange our thoughts logically
+First, we pick $N_2=N$ such that for all $n>N$, $b_n<B+\frac{\epsilon}{2}$. Then we may fix $N_1=N$.
+
+Due to the first condition, we see that it is possible to pick $n_0>N$ such that $a_{n_0}>A-\frac{\epsilon}{2}$.
+Now due to the second condition, since $n_0>N$, this exact same $n_0$ would satisfy $b_{n_0}<B+\frac{\epsilon}{2}$.
+
+Therefore, $n_0$ satisfies $a_{n_0}-b_{n_0}>A-B-\epsilon=0$ and we are done.
+
+\subsubsection{Sandwich Theorem}
+\begin{theorem}[Sandwich Theorem]
+Let $a_n\le c_n\le b_n$ where $\{a_n\},\{b_n\}$ are converging sequences such that $\lim a_n=\lim b_n=L$, then $\{c_n\}$ is also a converging sequence and $\lim c_n=L$.
+\end{theorem}
+
+
+Now, one very very very important thing about this theorem
+
+The purpose of this theorem is to investigate some difficult sequence $\{c_n\}$ with two simpler sequences $\{a_n\}$ and $\{b_n\}$ which bounds it from below and from above respectively
+If you look closely at the statement, you may realize that we're only working under the condition that $\{a_n\}$ and $\{b_n\}$ are converging sequences
+
+In other words, at this point we don't know whether $\{c_n\}$ is convergent.
+
+In fact, this is supposed to be the main implication
+
+Of course, $\lim c_n=L$ is proven at the exact same time, so both implications constitute the two parts of the conclusion
+
+What I want to say is that you cannot simply take $\lim$ over $a_n\le c_n\le b_n$ and say that $\lim$ preserves inequalities, because in order to apply this inequality-preserving property, you need to ensure that all sequences are converging before you can apply it; clearly, this does not work here since we have not shown that $c_n$ is convergent, therefore this idea does not work.
+
+There are two ways to circumvent this
+One is to use $\epsilon-N$; basically, just do it
+
+But if you're really lazy, then the second method is to use the idea above except you first take limsup and liminf
+
+The advantage of these two is that you don't need the original sequences to be convergent in order to apply them, and that they preserve inequalities even if the original sequences show no signs of convergence
+
+So basically,
+\[ \limsup a_n\le\limsup c_n\le\limsup b_n, \]
+and
+\[ \liminf a_n\le\liminf c_n\le\liminf b_n. \]
+Then since $\{a_n\}$ and $\{b_n\}$ actually converge to $L$, all the liminfs and limsups of $a_n$ and $b_n$ are $L$, so we obtain $\limsup c_n=L$ and $\liminf c_n=L$.
+
+In particular, $\limsup c_n=\liminf c_n$, thus $c_n$ is convergent and it follows that $\lim c_n=L$.
+
+\subsubsection{Arithmetic properties}
+\begin{proposition}\label{prop:limit-scalarmultiplication}
+For converging $\{a_n\}$ and real constant $k$,
+\[ \lim ka_n=k\lim a_n. \]
+\end{proposition}
+
+\begin{proof}
+The proof is left as an exercise. You will need to $k$ into cases where it is positive, negative or $0$.
+\end{proof}
+
+\begin{remark}
+In multivariable calculus there's a similar property that is more interesting:
+
+If $T$ is a linear map on $\RR^n$, and $\{x_n\}$ is a converging sequence of points, then $\{Tx_n\}$ is also converging; moreover if $x_n\to x_0$ then $Tx_n\to Tx_0$.
+\end{remark}
+
+\begin{proposition}\label{prop:limit-addition}
+If $\{a_n\}$ and $\{b_n\}$ are converging sequences of real numbers, then
+\[ \lim(a_n+b_n)=\lim a_n+\lim b_n. \]
+\end{proposition}
+
+\begin{proof}
+Let $A=\lim a_n$ and $B=\lim b_n$, then for all $\epsilon>0$, there exists $N_1$ such that for all $n>N_1$, $|a_n-A|<\frac{\epsilon}{2}$; there exists $N_2$ such that for all $n>N_2$, $|b_n-B|<\frac{\epsilon}{2}$.
+
+Let $N=\max\{N_1,N_2\}$, then for all $n>N$, by the triangle inequality we have
+\[ |(a_n+b_n)-(A+B)|\le|a_n-A|+|b_n-B|<\epsilon. \]
+\end{proof}
+
+\begin{remark}
+This proof is simple enough to generalise to any normed vector spaces.
+\end{remark}
+
+The following corollary can be easily derived from the above.
+
+\begin{corollary}
+If $\{a_n\}$ and $\{b_n\}$ are converging sequences of real numbers, then
+\[ \lim(a_n-b_n)=\lim a_n-\lim b_n. \]
+\end{corollary}
+
+\begin{proposition}
+If $\{a_n\}$ and $\{b_n\}$ are converging, then
+\[ \lim(a_nb_n)=\lim a_n \cdot \lim b_n. \]
+\end{proposition}
+
+\begin{proof}
+Let $A=\lim a_n$ and $B=\lim b_n$.
+
+Consider the limit $\lim(a_nb_n-AB)$, as it would be sufficient to prove that this is equal to $0$.
+
+Now we will use a common technique to deal with such products:
+\[ \lim(a_nb_n-AB)=\lim(a_nb_n-Ab_n+Ab_n-AB) \]
+The idea is to show that this is equal to
+\[ \lim(a_nb_n-Ab_n)+\lim(Ab_n-AB) \]
+(Note that we cannot write this yet because we have not shown that these two sequences are convergent)
+
+So let's examine these two sequences. The second one is easier since we have proved \cref{prop:limit-addition}:
+\[ \lim b_n=B \implies \lim(b_n-B)=0 \]
+Thus $\lim(Ab_n-AB)=A\lim(b_n-B)=0$.
+
+As for the first one, we want to show that $\lim(a_n-A)b_n=0$. Since we know that $b_n$ is itself a converging sequence, thus in particular $b_n$ is bounded, so suppose that $M>0$ is a bound of $b_n$, i.e. for all natural number $n$, $|b_n|\le M$.
+
+Since $\lim a_n=a$, for all $\epsilon>0$, there exists $N$ such that for all $n>N$, $|a_n-a|<\frac{\epsilon}{M}$.
+
+Combining the two above, we then conclude that for all $\epsilon>0$, there exists $N$ such that for all $n>N$,
+\[ |a_nb_n-Ab_n|=|(a_n-A)b_n|<\frac{\epsilon}{M}\cdot M=\epsilon. \]
+Therefore, this implies that $\lim(a_nb_n-Ab_n)=0$.
+
+Since we have shown that the two parts are equal to $0$, we can conclude that $\lim(a_nb_n-AB)=0$.
+\end{proof}
+
+\begin{proposition}
+If $\{a_n\}$ and $\{b_n\}$ are converging, $b_n$ is never $0$ and $\lim b_n \neq 0$, then \[ \lim\frac{a_n}{b_n}=\frac{\lim a_n}{\lim b_n}. \]
+\end{proposition}
+
+\begin{proof}
+Since we already have third proposition, it is sufficient for us to show that $\lim\frac{1}{b_n}=\frac{1}{\lim b_n}$.
+
+Let $b=\lim b_n$, then we consider the limit
+\[ \lim\brac{\frac{1}{b_n}-\frac{1}{b}}=\lim\brac{\frac{b-b_n}{b_nb}}. \]
+
+Again, the important term here is $b-b_n$, but there is an extra term of $\frac{1}{b_nb}$, so we'll need to control this.
+
+Since we need this to be bounded, we actually cannot have $b_n$ to be close to $0$. The good thing here is that $b\neq0$, so we can restrict $b_n$ to be close enough to $b$ so that it stays away from $0$.
+
+So we can first pick $N_1$ such that for all $n>N_1$,
+\[ |b_n-b|<\frac{|b|}{2}. \]
+
+Then
+\begin{align*}
+|b_nb-b^2|&<\frac{b^2}{2}\\
+\frac{b^2}{2}<b_nb<\frac{3b^2}{2}
+\end{align*}
+
+This show that if $n>N_1$, $b_nb$ would always be positive, and $\frac{1}{b_nb}<\frac{2}{b^2}$.
+
+Let $M=\frac{2}{b^2}$, then we may refer back to the original statement
+\[ \absolute{\frac{b-b_n}{b_nb}}<M|b-b_n| \]
+We pick $N_2$ such that for all $n>N_2$, $|b_n-b|<\frac{\epsilon}{M}$.
+
+Let $N=\max\{N_1,N_2\}$, then for all $n>N$,
+\[ \absolute{\frac{b-b_n}{b_nb}}<M\cdot\frac{\epsilon}{M}=\epsilon. \]
+\end{proof}
+
+Now let's talk a little bit about the arithmetic properties of limsups and liminfs
+:
+There are quite a number of differences for this; essentially the arithmetical properties aren't as well-behaved as the more specific case of limits
+:
+(i) $\limsup ka_n = k \limsup a_n$ holds if $k>0$
+However, if $k<0$, then $\limsup ka_n = k \liminf a_n$.
+
+(ii) $\limsup(a_n+b_n)$ is in general not equal to $\limsup a_n + \limsup b_n$
+However, we do have the following:
+\[ \limsup(a_n+b_n)\le\limsup a_n+\limsup b_n \]
+Moreover, $\limsup(a_n+b_n)$ may be bounded from below as follows:
+\[ \limsup(a_n+b_n)\ge\limsup a_n+\liminf b_n \]
+
+Your homework for today is to write down the analogous properties for liminf, and to prove (i) and (ii)
+
+Now you should try to prove (i) for liminf as well; as for (ii), try to explain why properties (i),(ii) for limsup and property (i) for liminf would imply property (ii) for $\liminf$
+
+\begin{prbm}
+Let $\{x_n\}$ be a sequence of real numbers and let $\alpha\ge2$ be a constant. Define the sequence $\{y_n\}$ as follows:
+\[ y_n=x_n+\alpha x_{n+1}, n=1,2,\dots \]
+Show that if $\{y_n\}$ is convergent, then $\{x_n\}$ is also convergent.
+\end{prbm}
+
+\section{Series in $\RR$ ($\CC$)}
+\subsection{Definition and basic properties}
+\subsection{Comparison test}
+\subsection{Root and ratio tests}
+\subsection{Addition and multiplication of series}
+\subsection{Rearrangement}
+
+
+\chapter{Continuity}
+\section{Limit of Functions}
+Assume $(X,d_x)$ is metric space and $E\subset X$ is a subset of $X$. Then the metric $d_X$ induces a metric on $E$. We now consider another metric space $(Y,d_Y)$. A map $f:E\to Y$ is also called a function over $E$ with values in $Y$. In particular, if $Y=\RR$, then $f$ is called a real-valued function; and if $Y=\CC$, $f$ is called a complex-valued function.
+
+\begin{definition}\label{defn:limit-function}
+Consider a limit point $p\in E$ and a point $q\in Y$. We say the \vocab{limit} of the funcion $f(x)$ at $p$ is $q$, denoted as
+\[ \lim_{x\to p}f(x)=q \]
+if for any $\epsilon>0$, there exists some $\delta>0$ such that for any $x\in E$ with $0<d_X(x,p)<\delta$, there is
+\[ d_Y\brac{f(x), q}<\epsilon. \]
+\end{definition}
+%%%%%%%%%%%%%%%%%%%%%%%%
+We can recast this definition in terms of limits of sequences:
+\[ \lim_{n\to\infty}f(p_n)=q \]
+for every sequence $(p_n) \in E$ so that $p_n \neq p$ and $\lim_{n\to\infty} p_n = p$.
+
+By the same proofs as for sequences, limits are unique, and in $\RR$ they add/multiply/divide as expected.
+
+\begin{definition}
+$f$ is \vocab{continuous} at $p$ if
+\[ \lim_{x\to p}f(x) = f(p). \]
+In the case where $p$ is not a limit point of the domain $E$, we say $f$ is continuous at $p$. If $f$ is continuous at all points of $E$, then we say $f$ is continuous on $E$.
+\end{definition}
+
+The sequential definition of continuity follows almost directly from the sequential definition of limits: 
+$f$ is continuous at $p$ if for every sequence $x_n$ converging to $p$, the sequence $f(x_n)$ converges to $f(p)$.
+
+
+
+\section{Continuous Functions}
+
+\section{Continuity and Compactness}
+
+\section{Continuity and Connectedness}
+
+\section{Discontinuities}
+
+\section{Monotonic Functions}
+
+\section{Infinite Limits and Limits at Infinity}
+
+
+\chapter{Differentiation}
+We focus on real valued functions defined on open or closed intervals.
+
+\section{The Derivative of a Real Function}
+\begin{definition}
+A function $f:[a,b]\to\RR$ is called \vocab{differentiable} at $x_0\in[a,b]$, if the limit of the function
+\[ \phi(t)\coloneqq\frac{f(t)-f(x_0)}{t-x_0}, \quad a<t<b, t\neq x_0 \]
+exists as $t\to x_0$. For this case, we write
+\begin{equation}\label{eqn:derivative}
+f^\prime(x_0)=\lim_{t\to x_0}\phi(t)=\lim_{t\to x_0}\frac{f(t)-f(x_0)}{t-x_0}.
+\end{equation}
+\end{definition}
+
+The function $f$ is differentiable over $[a,b]$ if it is differentiable for each $x\in[a,b]$. It induces the function
+\[ \dv{f}{x}=f^\prime:[a,b]\to\RR, \]
+which is called the \vocab{derivative} of $f$.
+
+\begin{theorem}\label{thrm:diff-cont}
+If $f:[a,b]\to\RR$ is differentiable at $x_0\in[a,b]$, then it must be continuous at $x_0$.
+\end{theorem}
+
+\begin{proof}
+As $t\to x$,
+\[ f(t)-f(x)=\frac{f(t)-f(x)}{t-x}\cdot(t-x)\to f^\prime(x)\cdot0=0. \]
+\end{proof}
+
+\begin{remark}
+The converse of this theorem is not true. It is easy to construct continuous functions which fail to be differentiable at isolated points.
+\end{remark}
+
+\begin{notation}
+We use $C_1[a,b]$ to denote the set of differentiable functions over $[a,b]$ whose derivative is continuous. More generally, we use $C_k[a,b]$ to denote the set of functions whose $k$-th ordered derivative is continuous. In particular, $C_0[a,b]$ is the set of continuous functions over $[a,b]$.
+\end{notation}
+
+Later on when we talk about properties of differentiation such as the intermediate value theorems, we usually have the following requirement on the function:
+\begin{quote}
+$f$ is a continuous function on $[a,b]$ which is differentiable in $(a,b)$.
+\end{quote}
+
+\begin{theorem}[Differentiation rules]
+Suppose $f,g:[a,b]\to\RR$ are differentiable at $x_0\in[a,b]$. Then $f\pm g$, $fg$ and $\dfrac{f}{g}$ (when $g(x_0)\neq0$) are differentiable at $x_0$. Moreover,
+\begin{enumerate}
+\item $(f\pm g)^\prime(x_0)=f^\prime(x_0)\pm g^\prime(x_0)$;
+\item $(fg)^\prime(x_0)=f^\prime(x_0)g(x_0)+f(x_0)g^\prime(x_0)$;
+\item $\displaystyle\brac{\frac{f}{g}}^\prime(x_0)=\frac{f^\prime(x_0)g(x_0)-f(x_0)g^\prime(x_0)}{g(x_0)^2}$
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+We take (2) as an example.
+
+We calculate
+\begin{align*}
+\frac{f(x)g(x)-f(x_0)g(x_0)}{x-x_0}&=\frac{\brac{f(x)-f(x_0)}g(x)+f(x_0)\brac{g(x)-g(x_0)}}{x-x_0}\\
+&=\frac{f(x)-f(x_0)}{x-x_0}\cdot g(x)+f(x_0)\cdot\frac{g(x)-g(x_0)}{x-x_0}\\
+&\to f^\prime(x_0)g(x_0)+f(x_0)g^\prime(x_0)\text{ as }x\to x_0
+\end{align*}
+where we use $f$ and $g$ are differentiable at $x_0$ and Theorem \ref{thrm:diff-cont}.
+\end{proof}
+
+\begin{theorem}[Chain rule]
+Let $f:[a,b]\to\RR$ be a real-valued function that is differentiable at $x_0\in[a,b]$. Let $g$ be a real-valued function defined on an interval that contains $f([a,b])$, and $g$ is differentiable at $f(x_0)$. Then the composition
+\[ h(x)\coloneqq g\circ f(x)\coloneqq g\brac{f(x)}:[a,b]\to\RR \]
+is differentiable at $x_0$ and the derivative at $x_0$ can be calculated as
+\[ h^\prime(x_0)=g^\prime\brac{f(x_0)}f^\prime(x_0). \]
+\end{theorem}
+
+\begin{proof}
+We know that
+\[ f^\prime(x)=\lim_{t\to x}\frac{f(t)-f(x)}{t-x}, \]
+so under the assumption that $t$ stays within the domain of $f$, $\frac{f(t)-f(x)}{t-x}$ should be a good approximation to $f^\prime(x)$.
+
+To actually quantify this, let $u(t)=\frac{f(t)-f(x)}{t-x}-f^\prime(x)$.
+
+Then the differentiability of $f$ tells us that $\lim_{t\to x}u(t)=0$.
+
+Similarly, let $v(s)=\frac{g(s)-g(y)}{s-y}-g^\prime(y)$, then $\lim_{s\to y}v(s)=0$, as long as $s$ stays in the domain of $g$
+
+What's nice here is that we can let $s=f(t)$, then by our assumption s always stays in the domain of g, so nothing fishy will happen
+
+Ah I forgot a small detail here
+Additionally we also need to define u(x)=0 and v(y)=0
+
+Now let $h(t)=g(f(t))$, then $h$ is defined on $[a,b]$, and we deduce that
+\[ h(t)-h(x)=(t-x)[f^\prime(x)+u(t)][g^\prime(y)+v(s)] \]
+
+We then check that
+\[ \lim_{t\to x}\frac{h(t)-h(x)}{t-x} = \lim_{t\to x}[f^\prime(x)+u(t)][g^\prime(y)+v(s)] = f^\prime(x)g^\prime(f(x)) \]
+and we are done.
+\end{proof}
+
+%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+\begin{example}
+One of the best (worst?) family of pathological examples in calculus are functions of the form
+\[ f(x)=x^p\sin\frac{1}{x}. \]
+\begin{itemize}
+\item For $p=1$, the function is continuous and differentiable everywhere other than $x=0$.
+\item For $p=2$, the function is differentiable everywhere, but the derivative is discontinuous.
+\end{itemize}
+
+Other more advanced pathological results (just for fun):
+\begin{itemize}
+\item The graph for $y=\sin\dfrac{1}{x}$ on $(0,1]$, together with the interval $[-1,1]$ on the $y$-axis, is a connected closed set that is not path-connected.
+\item For $0<p<1$, we obtain functions that are continuous and bounded, but the graphs are of infinite length (ps. I think that this is also true for $p=1$).
+\end{itemize}
+Regarding continuous but not differentiable functions, a more pathological example is the Weierstrass function, which is continuous everywhere over $\RR$ but differentiable nowhere.
+\end{example}
+
+\section{Mean Value Theorems}
+\begin{definition}
+Let $f$ be a real valued function defined over a metric space $X$. We say $f$ has a \vocab{local maximum} at $x_0\in X$ if $\exists\delta>0\suchthat\forall x\in B_\delta(x_0)$,
+\[ f(x_0)\ge f(x). \]
+Similarly, we say $f$ has \vocab{local minimum} at $x_0\in X$ if $\exists\delta>0\suchthat\forall x\in B_\delta(x_0)$,
+\[ f(x_0)\le f(x). \]
+\end{definition}
+
+\begin{definition}
+For a function $f:(a,b)\to\RR$, a point $x_0\in[a,b]$ is called a \vocab{critical point} if $f$ is not differentiable at $x_0$ or $f^\prime(x_0)=0$.
+\end{definition}
+
+\begin{theorem}
+Assume $f$ is defined over $[a,b]$. If $f$ has a local maximum or local minimum at some $x_0\in(a,b)$, then $x_0$ is a critical point of $f$.
+\end{theorem}
+
+\begin{proof}
+If $f$ is not differentiable at $x_0$, we are done. Assume now $f$ is differentiable at $x_0$ and $x_0$ is a local maximum.
+
+Then $\exists\delta>0\suchthat\forall x\in B_\delta(x_0)$,
+\[ f(x_0)\le f(x). \]
+It follows
+\[ \frac{f(x)-f(x_0)}{x-x_0}\begin{cases}
+\ge0 & x_0-\delta<x<x+\delta\\
+\le0 & x_0<x<x_0+\delta
+\end{cases} \]
+Further since $f^\prime(x_0)$ exists, there is
+\[ f^\prime(x_0-)\ge0, \quad f^\prime(x_0+)\le0, \]
+but $f^\prime(x_0-)=f^\prime(x_0+)=f^\prime(x_0)$. Hence $f^\prime(x_0)=0.$
+\end{proof}
+
+%We say that $x$ is a \vocab{stationary point} of $f$ if $f^\prime(x)=0$.
+
+\begin{theorem}[Fermat's Theorem (Interior Extremum Theorem)]
+If the differential exists, then by comparing the left and right limits it is easy to see that the differential for a local maximum/maximum can only be $0$.
+
+To summarize in four words: Local extrema are stationary
+\end{theorem}
+
+There are three mean value theorems, from specific to general:
+\begin{enumerate}
+\item Rolle's Theorem
+\item (Lagrange's) Mean Value Theorem
+\item Generalised (Cauchy's) Mean Value Theorem
+\end{enumerate}
+
+\begin{theorem}[Rolle's Theorem]
+If $f$ is continuous on $[a,b]$, differentiable in $(a,b)$ and $f(a)=f(b)$, then there exists $c\in(a,b)$ such that 
+\[ f^\prime(c)=0. \]
+\end{theorem}
+
+\begin{proof}
+Let $h(x)$ be a function defined on $[a,b]$ where $h(a)=h(b)$.
+
+The idea is to show that $h$ has a local maximum/minimum, then by Fermat's Theorem this will then be the stationary point that we're trying to find.
+
+First note that $h$ is continuous on $[a,b]$, so $h$ must have a maximum $M$ and a minimum $m$.
+
+If $M$ and $m$ were both equal to $h(a)=h(b)$, then $h$ is just a constant function and so $h^\prime(x)=0$ everywhere.
+
+Otherwise, $h$ has a maximum/minimum that is not $h(a)=h(b)$, so this extremal point lies in $(a,b)$.
+
+In particular, this extremal point is also a local extremum.
+Since $h$ is differentiable on $(a,b)$, by Fermat's theorem this extremum point is stationary, thus Rolle's Theorem is proven.
+\end{proof}
+
+\begin{theorem}[Mean Value Theorem]
+If $f$ is continuous on $[a,b]$ and differentiable in $(a,b)$, then there exists $c\in(a,b)$ such that
+\[ f^\prime(c)=\frac{f(b)-f(a)}{b-a}. \]
+\end{theorem}
+
+Exercise 2: Show that the Mean Value Theorem results directly from Rolle's Theorem (the other direction is trivial)
+:
+This isn't a very significant exercise because we're going to prove something more general
+
+\begin{theorem}[Generalised Mean Value Theorem]
+If $f$ and $g$ are continuous on $[a,b]$ and differentiable in $(a,b)$, then there exists $c\in(a,b)$ such that
+\[ \frac{f^\prime(c)}{g^\prime(c)}=\frac{f(b)-f(a)}{g(b)-g(a)}. \]
+\end{theorem}
+
+
+Now we return to the proof of the generalized MVT
+
+We set the function $h(t)=[f(b)-f(a)]g(t)-[g(b)-g(a)]f(t)$, then $h$ is continuous on $[a,b]$ and differentiable on $(a,b)$
+
+Moreover, $h(a)=f(b)g(a)-f(a)g(b)=h(b)$, thus by Rolle's Theorem, there exists $c\in(a,b)$ such that $h^\prime(c)=0$, i.e. $[g(b)-g(a)]f^\prime(c)=[f(b)-f(a)]g^\prime(c)$
+
+Corollary: If $f$ and $g$ are continuous on $[a,b]$ and differentiable in $(a,b)$, and $g^\prime(x)\neq0$ for all $x\in(a,b)$, then there exists \[ c\in(a,b) \suchthat f^\prime(c)/g^\prime(c)=[f(b)-f(a)]/[g(b)-g(a)] \]
+
+This form of the generalized MVT will be used to prove the most beloved rule of high school students
+
+exercises for the Mean Value Theorem
+
+\begin{exercise}{}{}
+Let $f$ and $g$ be continuous on $[a,b]$ and differentiable on $(a,b)$. If $f^\prime(x)=g^\prime(x)$, then $f(x)=g(x)+C$.
+\end{exercise}
+
+\begin{exercise}{}{}
+Given that $f(x)=x^\alpha$ where $0<\alpha<1$. Prove that $f$ is uniformly continuous on $[0,+\infty)$.
+\end{exercise}
+
+\begin{exercise}{Olympiad level}{}
+Let $f$ be a function continuous on $[0,1]$ and differentiable on $(0,1)$ where $f(0)=f(1)=0$. Prove that there exists $c\in(0,1)$ such that
+\[ f(x)+f^\prime(x)=0. \]
+\end{exercise}
+
+\section{Darboux's Theorem}
+Darboux's Theorem implies some sort of a 'intermediate value' property of derivatives that is similar to continuous functions
+
+This is Theorem 5.12 in the book
+
+Now first and foremost, the requirement for this statement is that f must be differentiable on [a,b], not just in (a,b)
+Otherwise f'(a) and f'(b) may not make sense
+:
+One common theme in many of these problems is to construct auxiliary functions
+Suppose that $f^\prime(a)<\lambda<f^\prime(b)$, then we construct the auxiliary function $g(x)=f(x)-\lambda x$
+:
+Then we only need to find a point $x\in(a,b)$ such that g'(x)=0
+:
+This means that we only need to find a local maximum/minimum, which by Fermat's Theorem has to be a stationary point as well
+:
+Now we look at the values of g near a and b
+:
+Exercise 1: Using the fact that $g^\prime(a)<0$ and $g^\prime(b)>0$, show that a and b are local maxima of $g$
+
+Here we regard g as simply a function on $[a,b]$, so we only need to show that a,b are maximum and corresponding semi-open neighbourhoods $[a,a+\epsilon)$ and $(b-\epsilon,b]$
+:
+Let m=g'(a)<0 be the slope of the tangent at a
+:
+Then lim(h→0+)[g(a+h)-g(a)]/h=m<0
+:
+This means that there should exist $\delta>0$ such that for $0<h<\delta$, [g(a+h)-g(a)]/h<m/2<0
+:
+Now we can rewrite the above as
+g(a+h)<g(a)+mh/2
+:
+Since m<0 and h>0, we obtain
+$g(a+h)<g(a)$ for $0<h<\delta$
+:
+Thus this proves that x=a is a local maximum of g
+A similar proof applies for x=b
+:
+Now since g is differentiable on [a,b], in particular it has to be continuous on [a,b]
+:
+Since [a,b] is compact, g([a,b]) is compact in R and thus g has both maximum and minimum values in [a,b]
+:
+Here we'll just focus on the minimum value
+:
+As we've shown, x=a is a 'strict' local maxima, in the sense that for any point $x\in(a,a+\epsilon)$, we actually have the strict inequality $g(x)<g(a)$
+:
+This means that x=a cannot be a local minimum
+:
+Similarly, x=b cannot be a local minimum, and therefore g achieves its minimum strictly inside (a,b)
+:
+Only then we can say that this local minimum is stationary
+(This will not work otherwise; note that a and b are both local maxima but are not stationary points of g)
+:
+An interesting implication of Darboux's Theorem is that if f is differentiable on [a,b], then f' cannot have simple discontinuities (removable or jump discontinuities), simply because these discontinuities do not allow this 'intermediate value' property
+:
+However, we should recall certain pathological examples like f(x)=x² sin 1/x (f(0)=0)
+Here f'(0)=lim(h→0)[x² sin 1/x-0]/x=0, but f'(x)=2x sin 1/x - cos 1/x, so f' is discontinuous at x=0
+
+\section{L'Hopital's Rule}
+First, a counterexamples
+:
+Let's say that we apply this rule to $\lim_{x\to\infty}\frac{\sin x}{x}$
+:
+Then we have
+\[ \lim_{x\to\infty}\frac{\sin x}{x}=\lim_{x\to\infty}\frac{\cos x}{1} \]
+
+The limit on the RHS doesn't exist because cos x oscillates between -1 and 1
+:
+However, the limit on the LHS does in fact exist and is equal to 0
+:
+So this tells us that there are certain cases where we can apply L'Hopital, and other cases where we can't
+That being said, the case that we can apply the rule is actually the more useful case, so this situation does not jeopardize the effectiveness of L'Hopital
+
+The entire statement is consequently rather long, so we'll split it into a few sections
+
+1. f and g are differentiable in (a,b) and $g^\prime(x)\neq0$ in (a,b) (or at least in a small neighbourhood of a)
+
+2. f(x)/g(x) is an indeterminate of the form 0/0 or $\frac{\infty}{\infty}$ (Now for the second one here we only really need $g(x)\to\infty$, but if f(x) does not approach infinity then the limit would simply be zero, so L'Hopital's Rule would not be required here)
+
+3. lim(x→a)f'(x)/g'(x) = A
+This is the most important one
+:
+From this we obtain lim(x→a)f(x)/g(x) = A
+:
+So for example, let's say that we want to calculate the following limit:
+lim(x→0) (sin x - x)/x³
+:
+Repeated application of L'Hopital gives
+lim(x→0) (sin x - x)/x³
+=lim(x→0) (cos x - 1)/3x²
+=lim(x→0) -sin x/6x =-1/6
+:
+Now what we're really doing here is that, first we know that lim(x→0) sin x/x =1, so lim(x→0) -sin x/6x =-1/6
+:
+Then by L'Hopital, lim(x→0) (cos x - 1)/3x²=-1/6
+:
+Finally, again by L'Hopital, lim(x→0) (sin x - x)/x³=-1/6
+:
+So, one very important thing to take note is that if you're calculating some complicated limit and you end up with the conclusion that it doesn't exist, you must make sure that you have not used L'Hopital during the process, because the rule never applies in such situations
+:
+As a side note, from the above calculation we see that as x→0, $\sin x \approx x-\frac{x^3}{6}$
+This will later lead to the discussion of the Taylor series of sin x
+
+Now the entire proof is quite tedious because there's actually eight main cases to think of
+1. $\frac{0}{0}$ or $\frac{\infty}{\infty}$
+2. a is normal or $a=-\infty$
+3. A is normal or $A=\pm\infty$
+
+We'll only prove the most basic one here:
+0/0, a and A are normal
+This is the case which will be required for Taylor series
+
+First we define f(a)=g(a)=0, so that $f$ and $g$ are continuous at $x=a$
+
+Now let $x\in(a,b)$, then $f$ and $g$ are continuous on $[a,x]$ and differentiable in $(a,x)$
+:
+Thus by Cauchy's Mean Value Theorem, there exists $\xi\in(a,x)$ such that
+\[ \frac{f^\prime(\xi)}{g^\prime(\xi)}=\frac{f(x)-f(a)}{g(x)-g(a)}=\frac{f(x)}{g(x)} \]
+
+For each $x$, we pick $\xi$ which satisfies the above, so that $\xi$ may be seen as a function of $x$ satisfying $a<\xi(x)<x$
+
+Then by squeezing we have $\lim_{x\to a^+}\xi(x)=a$.
+
+Since $\frac{f^\prime}{g^\prime}$ is continuous near $a$, the theorem regarding the limit of composite functions give
+\[ \lim_{x\to a^+}\frac{f(x)}{g(x)} = \lim_{x\to a^+}\frac{f'(\xi)}{g'(\xi)} = \lim_{x\to a^+}\brac{\frac{f^\prime}{g^\prime}}(\xi(x)) = A \]
+
+Now the same reasoning can be used for $b$ where we will use lim(x→b-) to replace all the $\lim_{x\to a^+}$, and $\xi$ will be a function which maps to $(x,b)$.
+
+\section{Taylor Expansion}
+Consider a function $f:[a,b]\to\RR$. We first look at the mean value theorem from the viewpoint of approximations for $f(x)$ near a point $x=a$. We can regard the constant function
+\[ f_0(x)=f(a) \]
+as the \emph{zero order approximation} of $f(x)$. Then we ask if we can understand the remainder
+\[ R_1(x)\coloneqq f(x)-f(a), \quad x\in[a,b] \]
+for this approximation. For this, if we assume $f\in C_0[a,b]$ and $f^\prime$ exists over $(a,b)$, then the mean value theorem tells us that there exists some $a<\xi_x<x$ (here $\xi_x$ emphasises that $\xi$ depends on $x$) so that we can write $R_1$ as
+\[ R_1(x)=f^\prime(\xi_x)(x-a). \]
+This is saying that the derivative of $f$ can control the remainder $R_1(x)$ as an order 1 monomial.
+
+
+
+%%%%%%%%%%%%%%%%
+
+The main expression is as follows:
+\begin{equation}
+f(x)=f(a)+\frac{f^\prime(a)}{1!}(x-a)+\frac{f^{\prime\prime}(a)}{2!}(x-a)^2+\frac{f^{\prime\prime\prime}(a)}{3!}(x-a)^3+\cdots
+\end{equation}
+
+So for example we have the following (we've used the ones for $e^x$ and $\ln x$ for generating functions):
+\begin{align*}
+e^x &= 1+x+\frac{x^2}{2!}+\frac{x^3}{3!}+\cdots \\
+\sin x &= x-\frac{x^3}{3!}+\frac{x^5}{5!}-\frac{x^7}{7!}+\cdots \\
+\cos x &= 1-\frac{x^2}{2!}+\frac{x^4}{4!}-\frac{x^6}{6!}+\cdots \\
+\ln(1+x) &= x-\frac{x^2}{2}+\frac{x^3}{3}-\frac{x^4}{4}+\cdots
+\end{align*}
+
+There's a lot of things to say about these equations, for example the one for $\ln(1+x)$ only works for $|x|<1$
+
+Also, if you want the RHS of the expression to be an infinite power series, $f(x)$ has to be smooth (infinitely differentiable)
+
+Even then, the power series may never converge to $f(x)$ at any interval, no matter how small
+The most common example given here is $f(x)=e^\frac{-1}{x^2}$ (f(0)=0); the Taylor series for $f(x)$ is just $0$
+
+Now sometimes we don't actually that nice of a property for f, we're often given that fact that $f$ is only finitely differentiable
+
+Then we will have something along the lines of
+\[ f(x)\approx f(a)+\frac{f^\prime(a)}{1!}(x-a)+\frac{f^{\prime\prime}(a)}{2!}(x-a)^2+\cdots+\frac{f^{(n)}(a)}{n!}(x-a)^n \]
+where $f^{(n)}$ denotes the $n$-th differential.
+
+There are two main forms of the statement regarding the error between the original function and the Taylor series estimate
+
+The simpler form is what's known as the Peano form: Given that f is n times differentiable at $a$, then
+\[ f(x)=f(a)+\frac{f^\prime(a)}{1!}(x-a)+\frac{f^{\prime\prime}(a)}{2!}(x-a)^2+\cdots+\frac{f^{(n)}(a)}{n!}(x-a)^n+o((x-a)^n) \]
+
+To show this, we only need to show that we have the following limit:
+\[ \lim_{x\to a}\frac{f(x)-{f(a)+\frac{f^\prime(a)}{1!}(x-a)+\frac{f^{\prime\prime}(a)}{2!}(x-a)^2+\cdots+\frac{f^{(n)}(a)}{n!}(x-a)^n}}{(x-a)^n}=0 \]
+
+The basic idea is to use the L'Hopital Rule n times. The numerator becomes $f^{(n)}(x)-f^{(n)}(a)$ which approaches $0$, whereas the denominater is just $n!$, so the limit exists and is equal to $0$.
+
+However, we need to verify all the necessary conditions for L'Hopital
+:
+Here the main problem is that we don't know if we have the 0/0 indeterminate at each step, so we'll need to check this for the k-th step where k=1,...,n
+
+Fortunately, the k-th derivative of the numerator is
+$f^{(k)}(x)-f^{(k)}(a)-(x-a)F_k(x)$ where $F_k$ is just a bunch of random stuff, so the numerator approaches $0$ as $x\to a$
+The $k$-th derivative of the denominator is $n(n-1)\cdots(n-k+1)(x-a)^{n-k}$ so it also approaches $0$, and we're done
+
+The other form is actually a family of similar statements which gives more precise values for the error
+The Peano form has a fundamental obstacle when used in approximation, we don't have any control on the size of the final term other than its asymptotic behaviour
+:
+We'll be talking about the one given in the book, known as the Lagrange form:
+:
+Given that f is n times differentiable on $(a,b)$ such that $f^{(n-1)}$ is continuous on $[a,b]$, then
+\[ f(x)=f(a)+\frac{f^\prime(a)}{1!}(x-a)+\frac{f^{\prime\prime}(a)}{2!}(x-a)^2+\cdots+\frac{f^{(n-1)}(a)}{(n-1)!}(x-a)^(n-1)+\frac{f^{(n)}(\xi)}{n!}(x-a)^n \]
+
+Just like in L'Hopital, we intuitively think of $(a,b)$ as just a very small interval at the right hand side of x=a
+:
+Here we are giving up on the second final term of Peano by combining it with the infinitesimal (small o) term to give an accurate description of the error
+
+For the proof of this one we'll be using Cauchy's MVT
+
+Fix any $x\in(a,b)$, then we construct the functions
+\[ F(t)=f(x)-\brac{f(t)+\frac{f^\prime(t)}{1!}(x-t)+\frac{f^{\prime\prime}(t)}{2!}(x-t)^2+\cdots+\frac{f^{(n-1)}(t)}{(n-1)!}(x-t)^{n-1}} \]
+\[ G(t)=(x-t)^n \]
+
+We calculate $F^\prime(t)$ as follows:
+\[ -[f^\prime(t)+\frac{f^{\prime\prime}(t)}{1!}-f^\prime(t)+\frac{f^{\prime\prime\prime}(t)}{2!}-\frac{f^{\prime\prime}(t)}{1!}+\cdots+\frac{f^{(n)}(t)}{(n-1)!}(x-t)^{n-1}-\frac{f^{(n-1)}(t)}{(n-2)!}(x-t)^{n-2}]=-\frac{f^{(n)}(t)}{(n-1)!}(x-t)^{n-1} \]
+
+$G^\prime(t)=-n(x-t)^{n-1}$, so we have
+\[ \frac{F^\prime(t)}{G^\prime(t)}=\frac{f^{(n)}(t)}{n!} \]
+
+The main reason for why we come up with the strange-looking $F$ and $G$ is that we specifically swap out $a$ for $t$ so that $F(x)=G(x)=0$, in hopes of getting rid of $x$:
+
+We apply Cauchy's MVT to $F$ and $G$ on $[a,x]$, so that we obtain $\xi\in(a,x)$ satisfying
+\[ \frac{F^\prime(\xi)}{G^\prime(\xi)}=\frac{F(x)-F(a)}{G(x)-G(a)}=\frac{F(a)}{G(a)}. \]
+Thus the Lagrange form of the remainder is given by 
+\[ F(a)=\frac{f^{(n)}(\xi)}{n!}G(a). \]
+
+Theorem 5.19 is important, so do go through that proof as an exercise
+
+\chapter{Riemann--Stieltjes Integral}
+\section{Definition of Riemann--Stieltjes Integral}
+Assume $[a,b]$ is a closed interval in $\RR$. By a \vocab{partition} $P$, we mean a finite set of points $x_0,x_1,\dots,x_n$ where
+\[ a=x_0\le x_1\le\cdots\le x_{n-1}\le x_n=b. \]
+Assume $f$ is a bounded real-valued function over $[a,b]$ and $\alpha$ is an increasing function over $[a,b]$. Denote by
+\[ M_i=\sup_{[x_{i-1},x_i]}f(x), \quad m_i=\inf_{[x_{i-1},x_i]}f(x) \]
+and by
+\[ \Delta\alpha_i=\alpha(x_i)-\alpha(x_{i-1}). \]
+Define the \vocab{upper sum} of $f$ with respect to the partition $P$ and $\alpha$ as
+\[ U(f,\alpha;P)=\sum_{i=1}^n M_i \Delta \alpha_i \]
+and the \vocab{lower sum} of $f$ with respect to the partition $P$ and $\alpha$ as
+\[ L(f,\alpha;P)=\sum_{i=1}^n m_i \Delta \alpha_i. \]
+Define the upper Riemann--Stieltjes integral as
+\[ \upperint_a^bf(x)\dd{\alpha(x)}\coloneqq\inf_P U(f,\alpha;P) \]
+and the lower Riemann--Stieltjes integral as
+\[ \lowerint_a^bf(x)\dd{\alpha(x)}\coloneqq\sup_P L(f,\alpha;P). \]
+It is easy to see from definition that
+\[ \lowerint_a^bf(x)\dd{\alpha(x)}\le\upperint_a^bf(x)\dd{\alpha(x)}. \]
+
+\begin{definition}
+A function $f$ is \vocab{Riemann--Stieltjes integrable} with respect to $\alpha$ over $[a,b]$, if
+\[ \lowerint_a^bf(x)\dd{\alpha(x)}=\upperint_a^bf(x)\dd{\alpha(x)}. \]
+\end{definition}
+
+\begin{notation}
+We use $\displaystyle\int_a^bf(x)\dd{\alpha(x)}$ to denote the common value, and call it the Riemann--Stieltjes of $f$ with respect to $\alpha$ over $[a,b]$.
+\end{notation}
+
+\begin{notation}
+We use the notation $R_\alpha[a,b]$ to denote the set of Riemann--Stieljes integrable functions with respect to $\alpha$ over $[a,b]$.
+\end{notation}
+
+In particular, when $\alpha(x)=x$, we call the corresponding Riemann--Stieljes integration the \vocab{Riemann integration}, and use $R[a,b]$ to denote the set of Riemann integrable functions.
+
+\begin{definition}
+The partition $P^\prime$ is a \vocab{refinement} of $P$ if $P^\prime\supset P$. Given two partitions $P_1$ and $P_2$, we say that $P^\prime$ is their \vocab{common refinement} if $P^\prime=P_1\cup P_2$.
+\end{definition}
+
+Intuitively, a refinement will give a better estimation than the original partition, so the upper and lower sums of a refinement should be more restrictive.
+
+\begin{proposition}
+If $P^\prime$ is a refinement of $P$, then
+\[ L(f,\alpha;P)\le L(f,\alpha;P^\prime) \]
+and
+\[ U(f,\alpha;P^\prime)\le U(f,\alpha;P). \]
+\end{proposition}
+
+\begin{proof}
+Suppose that
+\[ P: a\le x_0\le x_1\le ...\le x_n=b \]
+and
+\[ P^\prime: a\le y_0\le y_1\le ...\le y_m=b. \]
+Then there exists a strictly increasing sequence of indices $j_0=0,j_1,\dots,j_n=m$ such that $y_{j_k}=x_k$.
+
+Now consider each closed interval $[x_{i-1},x_i]$
+%(From my definition of partitions, points may be equal; though if $x_{i-1}=x_i$, then both the set of points $\{x_{i-1},x_i\}$ in $P$ and $\{y_{j_{i-1}}, y_{j_{i-1}_1},\dots,y_{j_i}\}$ in $P^\prime$ will contribute nothing towards the upper and lower sums of P and $P^\prime$ respectively)
+
+Focusing on the upper sum, we have
+\[ \sup_{[x_{i-1},x_i]} f \ge \sup_{[y_{k-1},y_k]} f \]
+for $k=j_{i-1}+1,\dots,j_i$. 
+This is because $[y_{k-1},y_k]$ is contained in $[x_{i-1},x_i]$
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{images/RSintegral-partitions.png}
+    \caption{Partitions}
+\end{figure}
+
+Continuing from
+\[ \sup_{[x_{i-1},x_i]} f \ge \sup_{[y_{k-1},y_k]} f, \]
+We then multiply by $\alpha(y_k)-\alpha(y_{k-1})$ on both sides and then take the sum from $k=j_{i-1}+1$ to $k=j_i$
+:
+The RHS corresponds to the (weighted) sum of the thin rectangles that you see in the above picture
+:
+The LHS is actually a telescoping sum, and the sum would be
+\[ (\sup_{[x_{i-1},x_i]} f) \cdot [\alpha(y_{j_i})-\alpha(y_{j_{i-1}})] = (\sup_{[x_{i-1},x_i]} f) \cdot [\alpha(x_i)-\alpha(x_{i-1})] \]
+Finally, we take the sum from $i=1$ to $i=n$ of the above inequality
+LHS $\ge$ RHS (sorry I don't know of a better way to put it)
+We then obtain $U(P,f,\alpha)\ge U(P^\prime,f,\alpha)$
+
+(On the LHS we're collecting all the rectangles for the upper sum wrt $P$, but on the RHS we're collecting up collections of upper rectangles to obtain the entire collective of upper rectangles for the upper sum wrt $P^\prime$)
+:
+Lower sum is similar
+:
+Now, a lemma used to prove 6.5
+Given any two partitions $P_1$ and $P_2$, we have
+\[ L(P_1,f,\alpha)\le U(P_2,f,\alpha) \]
+So a lower sum will always be no larger than any other upper sum
+:
+So this includes the cases where we have the most refined of $P_1$'s and $P_2$'s, with no information regarding the partition points whatsoever
+To be honest, the result seems to be both intuitive and unclear at the same time
+
+The key here is to use common refinements as a link for both sums
+The idea is stated in the proof of 6.5 and I don't think I need to elaborate further
+
+What's nice here is that now we have two completely independent partitions $P_1$ and $P_2$, so by fixing one partition, say $P_2$, and taking the 'limit' over the other (here we take the supremum over all possible $P_1$) we then obtain an inequality between a Darboux integral and a Darboux sum (here it's the lower integral and an upper sum)
+
+Since the Darboux integral is just a number, we can then safely take the 'limit' over the other partition to obtain the inequality in 6.5
+\end{proof}
+
+\begin{proposition}
+\[ \lowerint_a^bf\dd{\alpha}=\upperint_a^bf\dd{\alpha}. \]
+\end{proposition}
+
+\begin{proof}
+
+\end{proof}
+
+Now we move on to integrability conditions for $f$. The first one looks a lot like the $\epsilon-N$ or $\epsilon-\delta$ definition of limits:
+
+\begin{theorem}
+$f\in R_\alpha[a,b]$ if and only if for each $\epsilon>0$, there exists some partition $P$ such that
+\[ U(f,\alpha;P)-L(f,\alpha;P)<\epsilon. \]
+\end{theorem}
+%%%%%%%%%%%%%%%%%%%%
+
+\begin{proof} \
+
+($\implies$) Assume $f\in R_\alpha[a,b]$. By definition,
+\[ \inf_PU(f,\alpha;P)=\int_a^bf\dd{\alpha}=\sup_PL(f,\alpha;P). \]
+For every $\epsilon>0$, 
+
+($\impliedby$) 
+\end{proof}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+% Darboux sums, Darboux integrals
+
+\begin{exmp}{Dirichlet function}{}
+The Dirichlet function is given by
+\[ f(x)=\begin{cases}
+1 & x\in\QQ \\
+0 & x\notin\QQ
+\end{cases} \]
+We try to calculate the two on the interval $[0,1]$.
+
+The Dirichlet function is pathological because for each subinterval $[x_{i-1},x_i]$, the supremum is always $1$ and the infimum is always $0$.
+
+So no matter what partition we use, $U(f,P)$ is always $1$ whereas $L(f,P)$ is always $0$. This means that $U(f)=1$ and $L(f)=0$, so there are two different values for ``the integral of $f$''.
+
+This is like the case where we try to find the limit of the Dirichlet function where $x$ is approaching any given real number $r$, there exists two sequences approaching $r$ whose image approaches two different values.
+\end{exmp}
+
+Now, a very important and fun case about the more general RS-integral, which we'll discuss next week (do try the exercise yourself first)
+
+\begin{exercise}{}{}
+The Heaviside step function $H$ is a real-valued function defined by the following:
+\[ H(x)=\begin{cases}
+0 & x<0 \\
+1 & x\ge0
+\end{cases} \]
+For the purpose of this question we assume the convention $\infty\cdot0=0$.
+\begin{enumerate}[label=(\alph*)]
+\item Let $f$ be a real-valued function over $\RR$. Show that $f\in\RR_H [a,b]$ iff $f$ is continuous at $0$, and find the RS-integral $\int_{-\infty}^\infty f\dd{H}$.
+\item Suppose that the definition for $H$ is changed for $x=0$, say $H(0)=\frac{1}{2}$. Show that the above result still holds.
+\item Examine the RS-integral of $f$ over $\RR\setminus\{0\}$ wrt $H$, where $f$ is a real-valued function over $\RR\setminus\{0\}$ such that $\lim_{x\to0}f(x)=\infty$ or $-\infty$.
+\end{enumerate}
+(You may read up on more information regarding the Heaviside function, and the (in)famous Dirac delta function)
+\end{exercise}
+
+
+
+
+
+
+
+
+
+
+
+Now we've been talking a lot about upper and lower sums because they're arguably the simplest way to define integrals, in the sense that there's not a whole lot of things that we could go wrong here
+By considering only upper and lower bound, we're essentially picking the most conservative route possible
+
+It would be nice if we could just pick like one random point within each interval and consequently calculate the Riemann(-Stieltjes) sums
+
+This method, of course, fails to be well defined for pathological functions like the Dirichlet function
+On the other hand, by using upper and lower sums, we could give a persuasive explanation as to why the Dirichlet function is not Riemann integrable
+
+However, instead of throwing this idea away, there's actually a way for us to make this into a strict definition
+
+When we were talking about the sequential definition for limits of functions, we noted that there are certain scenarios where the limit cannot exist because there may be two distinct sequences may give different limit
+Based on this observation, we then gave a reasonable condition as follows:
+"$\lim_{x\to a} f(x)$ exists and is equal to $L$ iff for all sequences $x_n$ converging but not containing a, $f(x_n)$ converges to $L$"
+
+Well here, it's actually the same kind of scenario
+Given any partition $P$, we consider the Riemann sum $\sum f(\xi_i)\Delta x_i$ where $\xi_i$ is any point where $x_{i-1}\le\xi_i\le x_i$
+
+For the Dirichlet function over [0,1], given any partition P (here we may assume that the partition points are distinct), we will always be able to specifically pick $\xi_i,\eta_i\in[x_{i-1},x_i]$ such that $\xi_i$ is rational but $\eta_i$ is irrational
+
+Then $\sum f(\xi_i)\Delta x_i=1$ but $\sum f(\eta_i)\Delta x_i=0$
+
+Now be very mindful that this alone cannot be evidence that f is non-integrable
+The key is that this somehow occured for all partitions P, no matter how refined they are; for every single partition P, there exists two sets of 'representing points' $\xi_i,\eta_i$ such that the two Riemann sums are constantly far apart (1 and 0 in this case)
+
+Let $\epsilon_0=1$, then this ultimately translates to the following:
+The Dirichlet function cannot be Riemann integrable because
+There exists some $\epsilon_0>0$, such that for any given partition $P$, there exists two sets of representing points $\xi_i,\eta_i$ such that their corresponding Riemann sums satisfy that
+\[ |\sum f(\xi_i)\Delta x_i - \sum f(\eta_i)\Delta x_i|\ge\epsilon_0. \]
+
+Now if we always pick the representatives such that $\xi_i>\eta_i$ then we can neglect the absolute value
+
+So now, let's take the converse
+A function $f$ is said to be RS-integrable if
+For every $\epsilon>0$,
+There exists a partition P, such that
+For any two sets of representing points $\xi_i,\eta_i$,
+Their corresponding Riemann sums satisfy that
+\[ \sum[f(\xi_i)-f(\eta_i)]\Delta x_i<\epsilon \]
+(The last one should be $\Delta \alpha_i$ for RS-integrals, not $\Delta x_i$)
+
+Unfortunately this is still not quite the correct definition according to Apostol, but we're pretty close
+The problem with this definition is that it is too weak if we're considering general $\alpha$ of bounded variation; if we were only talking about monotonically increasing $\alpha$ then this will actually be an equivalent definition
+
+The official definition for the RS-integral wrt $\alpha$ of bounded variation is as follows:
+\begin{definition}
+For every $\epsilon>0$, there exists a partition $P$, such that
+[For any refinement $P^\prime$ of P, and]
+For any two sets of representing points $\xi_i,\eta_i$ [of $P^\prime$], their corresponding Riemann sums satisfy that
+\[ \sum[f(\xi_i)-f(\eta_i)]\Delta x_i<\epsilon. \]
+\end{definition}
+
+Now this definition is what mathematicians would refer to as a 'Cauchy' definition, since it defines a notion by comparing a pair of arbitrary values that are similar to one another, and if they agree in some sense then we say that that something satisfies some property.
+
+The integral is then obtained as follows: If $f$ were to satisfy the above Cauchy definition, then we may pick an arbitrary sequence of refinements
+\[ P_1 \subset P_2 \subset P_3 \subset ...; \]
+and for each partition we pick a set of representatives to obtain a sequence RS-sum
+$I_1, I_2, I_3, ...$
+:
+This sequence will be a Cauchy sequence of real numbers, and so will converge to a specific value $I$ which we consider to be RS-integral of f
+:
+Now the reason why Apostol needed to strengthen the definition is that, otherwise this value $I$ may not be unique
+:
+So if you look at the statement you see in 6.7(b)(c), then they correspond to the Cauchy definition and the 'value-based' definition respectively
+For monotonically increasing $\alpha$, it is much easier to discuss them using upper and lower sums
+So your exercise today will be to read the statements and proofs in Theorem 6.7
+
+
+\section{Properties of the Integral}
+\begin{theorem} \
+\begin{enumerate}[label=(\arabic*)]
+\item If $f_1,f_2\in R_\alpha[a,b]$, then 
+\[ f_1+f_2\in R_\alpha[a,b]; \]
+$cf\in R_\alpha[a,b]$ for every $c\in\RR$, and
+\[ \int_a^b(f_1+f_2)\dd{\alpha}=\int_a^bf_1\dd{\alpha}+\int_a^bf_2\dd{\alpha}, \]
+\[ \int_a^b(cf)\dd{\alpha}=c\int_a^bf\dd{\alpha}. \]
+
+\item If $f_1,f_2\in R_\alpha[a,b]$ and $f_1\le f_2$, then
+\[ \int_a^bf_1\dd{\alpha}\le\int_a^bf_2\dd{\alpha}. \]
+
+\item If $f\in R_\alpha[a,b]$ and $c\in[a,b]$, then $f\in R_\alpha[a,c]$ and $f\in R_\alpha[c,b]$, and
+\[ \int_a^bf\dd{\alpha}=\int_a^c\dd{\alpha}+\int_c^b\dd{\alpha}. \]
+
+\item If $f\in R_\alpha[a,b]$ and $|f|\le M$, then
+\[ \absolute{\int_a^bf\dd{\alpha}}\le M\sqbrac{\alpha(b)-\alpha(a)}. \]
+
+\item If $f\in R_{\alpha_1}[a,b]$ and $f\in R_{\alpha_2}[a,b]$, then $f\in R_{\alpha_1+\alpha_2}[a,b]$ and
+\[ \int_a^bf\dd{(\alpha_1+\alpha_2)}=\int_a^bf\dd{\alpha_1}+\int_a^bf\dd{\alpha_2}; \]
+if $f\in R_\alpha[a,b]$ and $c$ is a positive constant, then $f\in R_{c\alpha}[a,b]$ and
+\[ \int_a^bf\dd{(c\alpha)}=c\int_a^bf\dd{\alpha}. \]
+\end{enumerate}
+\end{theorem}
+
+\begin{proof} \
+\begin{enumerate}[label=(\arabic*)]
+\item If $f=f_1+f_2$ and $P$ is any partition of $[a,b]$, we have
+\begin{align*}
+L(f_1,\alpha;P)+L(f_2,\alpha;P)&\le L(f,\alpha;P)\\
+&\le U(f,\alpha;P)\\
+&\le U(f_1,\alpha;P)+U(f_2,\alpha;P).
+\end{align*}
+
+If $f_1\in R_\alpha[a,b]$ and $f_2\in R_\alpha[a,b]$, let $\epsilon>0$ be given. There are partitions $P_1$ and $P_2$ such that
+
+
+\item 
+\item 
+\item 
+\item 
+\end{enumerate}
+\end{proof}
+
+theorem 6.13
+\begin{theorem}[Triangle inequality]
+$f\in R_\alpha[a,b]$, then $|f|\in R_\alpha[a,b]$,
+\[ \absolute{\int_a^bf\dd{\alpha}}\le\int_a^b|f|\dd{\alpha}. \]
+\end{theorem}
+
+theorem 6.13
+\begin{theorem}
+$f\in R_\alpha[a,b]$, $\phi$ is uniformly continuous on $\RR$, then
+\[ \phi\circ f\in R_\alpha[a,b]. \]
+\end{theorem}
+refer to book, split into two cases
+
+6.14 6.15
+Heaviside step function
+
+6.16 corollary
+for intinite sum, need $\sum c_n$ to converge
+(23) comparison test
+
+6.17 integration by substitution
+\begin{theorem}
+$\alpha$ increasing, $\alpha^\prime\in R[a,b]$, $f$ bounded on $[a,b]$, then
+\[ f\in R_\alpha[a,b]\iff f\alpha^\prime\in R[a,b]. \]
+\end{theorem}
+
+6.19 change of variables
+
+\section{Fundamental Theorem of Calculus}
+6.20 6.21
+
+\begin{theorem}
+
+\end{theorem}
+
+6.22 integration by parts
+
+\chapter{Sequence and Series of Functions}
+\section{Uniform Convergence}
+\begin{definition}
+Suppose $\{f_n\}$, $n=1,2,3,\dots$ is a sequence of functions defined on a set $E$, and suppose that the sequence of numbers $\{f_n(x)\}$ converges for every $x\in E$. We can then define a function $f$ by
+\[ f(x)=\lim_{n\to\infty}f_n(x). \]
+We say that $\{f_n\}$ \vocab{converges pointwise} to $f$ on $E$, denoted by $f_n\to f$.
+
+Similarly, if $\sum f_n(x)$ converges for every $x\in E$, and if we define
+\[ f(x)=\sum_{n=1}^\infty f_n(x) \]
+the function $f$ is called the \vocab{sum of the series} $\sum f_n$.
+\end{definition}
+pointwise convergence
+
+\begin{definition}
+Assume $\{f_n\}$ is a sequence of functions defined over a set $X$ and $f$ is also a function defined over $X$. We say $\{f_n\}$ \vocab{uniformly converges} to $f$ over $X$, if for any $\epsilon>0$, there exists $N>0$ (which is independent of $x$) so that for any $x\in X$,
+\[ |f_n(x)-f(x)|<\epsilon. \]
+\end{definition}
+
+\begin{notation}
+We denote this uniform convergence over $X$ by $f_n\rightrightarrows f$.
+\end{notation}
+
+\section{Uniform Convergence and Continuity}
+
+\section{Uniform Convergence and Integration}
+\begin{theorem}
+Assume $\{f_n\}$ is a sequence of functions defined over $[a,b]$ and each $f_n\in R_\alpha[a,b]$. If $f_n\to f$, then $f\in R_\alpha[a,b]$, and
+\[ \lim_{n\to\infty}\int_a^bf_n\dd{\alpha}=\int_a^bf\dd{\alpha}. \]
+\end{theorem}
+
+\begin{proof}
+Define
+\end{proof}
+
+\begin{corollary}
+Assume $a_n\in R_\alpha[a,b]$ and
+\[ f(x)\coloneqq\sum_{n=0}^\infty a_n(x) \]
+converges uniformly. Then it follows
+\[ \int_a^bf\dd{\alpha}=\sum_{n=0}^\infty a_n\dd{\alpha}. \]
+\end{corollary}
+
+\begin{proof}
+Consider the sequence of partial sums 
+\[ f_n(x)\coloneqq\sum_{k=0}^na_k(x), \quad n=0,1,\dots \]
+It follows $f_n\in R_\alpha[a,b]$ and $f_n\rightrightarrows f$. Apply above theorem to $\{f_n\}$ and the conclusion follows.
+\end{proof}
+
+\section{Uniform Convergence and Differentiation}
+\begin{theorem}
+Assume $\{f_n\}$ is a sequence of functions defined over $[a,b]$ and differentiable. If $\{f_n^\prime\}$ uniformly converges on $[a,b]$ and $\{f_n\}$ converges at some point $x_0\in[a,b]$, then $\{f_n\}$ uniformly converges on $[a,b]$ to some function $f$. Moreover, $f$ is differentiable and
+\[ f^\prime(x)=\lim_{n\to\infty}f_n^\prime(x) \]
+for any $x\in[a,b]$.
+\end{theorem}
+
+\begin{proof}
+
+\end{proof}
+
+\section{Stone--Weierstrass Approximation Theorem}
+
+
+\chapter{Some Special Functions}
+\section{Power Series}
+We derive some properties of functions represented by \vocab{power series}, i.e. functions of the form
+\[ f(x)=\sum_{n=0}^\infty c_nx^n \]
+or, more generally,
+\[ f(x)=\sum_{n=0}^\infty c_n(x-a)^n. \]
+These are called \vocab{analytic functions}.
+
+If $f(x)$ converges for $|x-a|<R$, $f$ is said to be expanded in a power series about the point $x=a$. For convenience, we take $a=0$ without loss of generality. We call $R$ the \vocab{radius of convergence}.
+
+\begin{theorem}
+Suppose the series 
+\[ \sum_{n=0}^\infty c_nx^n \]
+converges for $x\in(-R,R)$. Then
+\begin{enumerate}[label=(\arabic*)]
+\item $\sum_{n=0}^\infty c_nx^n$ converges uniformly on the closed interval $[-R,R]$;
+\item $f(x)$ is continuous and differentiable on $(-R,R)$, and 
+\[ f^\prime(x)=\sum_{n=1}^\infty nc_nx^{n-1}. \]
+\end{enumerate}
+\end{theorem}
+
+\begin{proof} \
+\begin{enumerate}[label=(\roman*)]
+\item 
+\item 
+\end{enumerate}
+\end{proof}

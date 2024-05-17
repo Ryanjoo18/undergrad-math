@@ -1,0 +1,122 @@
+\part{Statistics}
+\chapter{Events and Probability}
+\section{Introduction}
+We will think of performing an experiment which has a set of possible outcomes $\Omega$. We call $\Omega$ the \vocab{sample space}. For example,
+\begin{enumerate}[label=(\alph*)]
+\item tossing a coin: $\Omega=\{H,T\}$;
+\item throwing two dice: $\Omega=\{(i,j)\mid1\le i,j\le 6\}$.
+\end{enumerate}
+
+An \vocab{event} is a subset of $\Omega$. An event $A\subseteq\Omega$ occurs if, when the experiment is performed, the outcome $\omega\in\Omega$ satisfies $\omega\in A$. You should think of events as things you can decide have or have not happened by looking at the outcome of your experiment. For example,
+\begin{enumerate}[label=(\alph*)]
+\item coming up heads: $A=\{H\}$;
+\item getting a total of 4: $A=\{(1,3),(2,2),(3,1)\}$.
+\end{enumerate}
+
+The \vocab{complement} of $A$ is $A^c\coloneqq \Omega\setminus A$ and means ``$A$ does not occur''. For events $A$ and $B$,
+
+\begin{itemize}
+\item $A\cup B$ means ``at least one of $A$ and $B$ occurs'';
+\item $A\cap B$ means ``both $A$ and $B$ occur'';
+\item $A\setminus B$ means ``$A$ occurs but $B$ does not''.
+\end{itemize}
+
+If $A\cap B=\emptyset$ we say that $A$ and $B$ are disjoint -- they cannot both occur.
+
+We will assign a \vocab{probability} $\PP(A)$ to each event $A$. Later on we will discuss general rules (or ``axioms'') governing how these probabilities ought to behave. For now, let’s consider a simple and special case, where $\Omega$ is a finite set, and the probability assigned to a subset $A$ of $\Omega$ is proportional to the size of $A$; that is,
+\[ \PP(A)=\frac{|A|}{|\Omega|}. \]
+
+In that case for our examples above, we get:
+\begin{enumerate}[label=(\alph*)]
+\item for a fair coin, $\PP(A)=\frac{1}{2}$;
+\item for the two dice, $\PP(A)=\frac{1}{12}$.
+\end{enumerate}
+
+Example (b) demonstrates illustrates the need for counting in the situation where we have a finite number of possible outcomes to our experiment, all equally likely. The sample space $\Omega$ has $36$ elements ($6$ ways of choosing $i$ and $6$ ways of choosing $j$). Since $A=\{(1,3),(2,2),(3,1)\}$ contains $3$ sample points, and all sample points are equally likely, we get $\PP(A)=\frac{3}{36}=\frac{1}{12}$.
+
+We want to be able to tackle much more complicated counting problems.
+
+\section{Counting}
+You will have seen before the basic ideas involving permutations and combinations.
+
+\subsection{Arranging distinguishable objects}
+Suppose that we have $n$ distinguishable objects (e.g. the numbers $1,2,\dots,n$). How many ways to order them (permutations) are there? If we have three objects $a,b,c$, then the answer is $6$: $abc$, $acb$, $bac$, $bca$, $cab$ and $cba$.
+
+In general, there are $n$ choices for the first object in our ordering. Then, whatever the first object was, we have $n-1$ choices for the second object. Carrying on, we have $n-m+1$ choices for the $m$-th object and, finally, a single choice for the $n$-th. So there are
+\[ n(n-1)\cdots2\cdot1=n! \]
+different orderings.
+
+\subsection{Arrangements when not all objects are distinguishable}
+The number of arrangements of $n$ objects where $\alpha_i$ appears $m_i$ times and $m_1 + \dots + m_k = n$ is
+\begin{equation}
+\frac{n!}{m_1!m_2!\cdots m_k!}
+\end{equation}
+
+If there are just two types of object then, since $m_1 + m_2 = n$, the expression above is just a binomial coefficient
+\[ \binom{n}{m_1} = \frac{n!}{m_1!(n-m_1)!} = \binom{n}{m_2} \]
+Note: we will always use the notation
+\[ \binom{n}{m} = \frac{n!}{m!(n-m)!} \]
+Recall the \vocab{binomial theorem}:
+\begin{equation}
+(x+y)^n = \sum_{m=0}^n \binom{n}{m} x^m y^{n-m}
+\end{equation}
+You can see where the binomial coefficient comes from because writing
+\[ (x+y)^n = (x+y)(x+y)\cdots(x+y) \]
+and multiplying out, each term involves one pick from each bracket. The coefficient of $x^my^{n-m}$ is the number of sequences of picks that give $x$ exactly $m$ times and $y$ exactly $n-m$ times and that's the number of ways of choosing the $m$ ``slots'' for the $x$'s.
+
+\begin{exercise}{}{}
+How many distinct non-negative integer-valued solutions of the equation
+\[ x_1+x_2+\cdots+x_m=n \]
+are there?
+\end{exercise}
+\begin{solution}
+Consider a sequence of $n$ $\ast$'s and $m-1$ $|$'s. There is a bijection between such sequences and non-negative integer-valued solutions to the equation. For example, if $m=4$ and $n=3$,
+\[ \ast\ast|\quad|\ast| \]
+gives the solution $(2,0,1,0)$.
+
+There are $\begin{pmatrix}n+m-1\\n\end{pmatrix}$ sequences of $n$ $\ast$'s and $m-1$ $|$'s and, hence, the same number of solutions to the equation.
+\end{solution}
+
+It is often possible to perform quite complex counting arguments by manipulating binomial coefficients. Conversely, sometimes one wants to prove relationships between binomial coefficients and this can most easily be done by a counting argument. One example here is a Vandermonde's Identity: for $k,m,n\ge0$,
+\[ \begin{pmatrix}m+n\\k\end{pmatrix}=\sum_{j=0}^k\begin{pmatrix}m\\j\end{pmatrix}\begin{pmatrix}n\\k-j\end{pmatrix} \]
+where we use the convention $\begin{pmatrix}m\\j\end{pmatrix}=0$ for $j>m$.
+
+\subsection{An aside on sizes of sets}
+In this course, we will often deal with finite collections of objects, as in our counting examples. We will also want to be able to deal with infinite sets, and we will want to distinguish between those that are countable and those that are uncountable.
+
+An infinite set $S$ is called \vocab{countable} (or \vocab{countably infinite}) if there is a bijection between $S$ and the natural numbers $\NN$. That is, we can write $S$ as a list: $S=\{x_1,x_2,x_3,\dots\}=\{x_i\mid i\in\NN\}$. Otherwise $S$ is called \vocab{uncountable}. The natural numbers are themselves countable (take $x_i=i$), as are the rational numbers, but the real numbers, for example, are not.
+\pagebreak
+
+\section{The axiomatic approach}
+\begin{definition}
+A \vocab{probability space} is a triple $(\Omega,\mathcal{F},\PP)$ where
+\begin{itemize}
+\item $\Omega$ is a set, called the \vocab{sample space};
+\item $\mathcal{F}$ is a collection of subsets of $\Omega$, called \vocab{events}, satisfying axioms F1--F3 below.
+\item $\PP$ is a \vocab{probability measure}, which is a function $\PP:\mathcal{F}\to\RR$ satisfying axioms P1--P3 below.
+\end{itemize}
+Axioms of probability:
+\begin{itemize}
+\item $\mathcal{F}$ is a collection of subsets of $\Omega$, with:
+\begin{enumerate}[label=F\arabic*:]
+    \item $\Omega\in\mathcal{F}$.
+    \item If $A\in\mathcal{F}$, then also $A^c\in\mathcal{F}$.
+    \item If $\{A_i,i\in I\}$ is a finite or countably infinite collection of members of $\mathcal{F}$, then $\bigcup_{i\in I}A_i\in\mathcal{F}$.
+\end{enumerate}
+\item $\PP$ is a function from $\mathcal{F}$ to $\RR$, with:
+\begin{enumerate}[label=P\arabic*:]
+    \item For all $A\in\mathcal{F}$, $\PP(A)\ge0$.
+    \item $\PP(\Omega)=1$.
+    \item If $\{A_i,i\in I\}$ is a finite or countably infinite collection of members of $\mathcal{F}$, and $A_i\cap A_j=\emptyset$ for $i\neq j$, then $\PP\brac{\bigcup_{i\in I}A_i}=\sum_{i\in I}\PP(A_i)$.
+\end{enumerate}
+\end{itemize}
+\end{definition}
+
+\chapter{Discrete Random Variables}
+A \vocab{discrete random variable} $X$ on a probability space $(\Omega,F,\PP)$ is a function $X : \Omega \to \RR$ such that
+\begin{enumerate}[label=(\alph*)]
+\item $\{\omega \in \Omega: X(\omega) = x\} \in F$ for each $x \in \RR$
+\item $\Im{X} \coloneqq X(\Omega) = \{X(\omega): \omega \in \Omega\}$ is a finite or countable subset of $\RR$.
+
+% https://courses.maths.ox.ac.uk/pluginfile.php/93417/mod_resource/content/8/PrelimsProb_MT23_26Sep2023.pdf
+\end{enumerate}

@@ -1,0 +1,2116 @@
+\part{Preliminaries}
+\chapter{Mathematical Reasoning and Logic}
+% https://www.maths.ox.ac.uk/system/files/attachments/study_public_0.pdf
+
+\section{Logical statements and notation}
+It is useful to be familiar with the following terminology.
+\begin{itemize}
+\item A \vocab{definition} is a precise and unambiguous description of the meaning of a mathematical term. It characterises the meaning of a word by giving all the properties and only those properties that must be true.
+\item A \vocab{theorem} is a true mathematical statement that can be proven mathematically. In a mathematical paper, the term theorem is often reserved for the most important results.
+\item A \vocab{lemma} is a minor result whose sole purpose is to help in proving a theorem. It is a stepping stone on the path to proving a theorem. Very occasionally lemmas can take on a life of their own.
+\item A \vocab{corollary} is a result in which the (usually short) proof relies heavily on a given theorem. We often say that ``this is a corollary of Theorem A''.
+\item A \vocab{proposition} is a proven and often interesting result, but generally less important than a theorem.
+\item A \vocab{conjecture} is a statement that is unproved, but is believed to be true.
+\item An \vocab{axiom} is a statement that is assumed to be true without proof. These are the basic building blocks from which all theorems are proven.
+\item An \vocab{identity} is a mathematical expression giving the equality of two (often variable) quantities.
+\item A \vocab{paradox} is a statement that can be shown, using a given set of axioms and definitions, to be both true and false. Paradoxes are often used to show the inconsistencies in a flawed theory.
+\end{itemize}
+
+\subsection{Notation}
+A \vocab{proposition} is a sentence which has exactly one truth value, i.e. it is either true or false, but not both and not neither. A proposition is denoted by uppercase letters such as $P$ and $Q$. If the proposition $P$ depends on a variable $x$, it is sometimes helpful to denote it by $P(x)$. 
+
+We can so some algebra on propositions, which include
+\begin{enumerate}[label=(\roman*)]
+\item \vocab{equivalence}, denoted by $P \equiv Q$, which means $P$ and $Q$ are logically equivalent statements;
+
+\item \vocab{conjunction}, denoted by $P \land Q$, which means ``$P$ and $Q$'';
+
+\item \vocab{disjunction}, denoted by $P \lor Q$, which means ``$P$ or $Q$'';
+
+\item \vocab{negation}, denoted by $\lnot P$, which means ``not $P$''.
+\end{enumerate}
+
+Here are some useful properties when handling logical statements. You can easily prove all of them using truth tables.
+\begin{itemize}
+\item Double negation law:
+\[ P \equiv \lnot(\lnot P) \]
+
+\item Commutative property:
+\[ P \land Q \equiv Q \land P, \quad P \lor Q \equiv Q \lor P \]
+
+\item Associative property for conjunction: 
+\[ (P\land Q)\land R \equiv P\land (Q\land R) \]
+
+\item Associative property for disjunction: 
+\[ (P\lor Q)\lor R \equiv P\lor (Q\lor R) \]
+
+\item Distributive property for conjunction across disjunction: 
+\[ P\land(Q\lor R) \equiv (P\land Q)\lor(P\land Q) \]
+
+\item Distributive property for disjunction across conjunction: 
+\[ P\lor(Q\land R) \equiv (P\lor Q)\land(P\lor R) \]
+
+\item \textbf{De Morgan's Laws}:
+\[ \lnot(P \lor Q) \equiv (\lnot P \land \lnot Q) \]
+\[ \lnot (P\land Q) \equiv (\lnot P\lor \lnot Q) \]
+\end{itemize}
+
+\begin{exercise}{}{}
+Assume that $x$ is a fixed real number. What is the negation of the statement $1<x<2$?
+\end{exercise}
+\begin{solution}
+The negation of $1<x<2$ is ``it is not the case that $1<x<2$”. However this is not useful.
+
+Note that $1<x<2$ means $1<x$ and $x<2$. Let $P:1<x$ and $Q:x<2$. Then the statement $1<x<2$ is $P \land Q$.
+
+By De Morgan's Laws, we have $\lnot (P \land Q) \equiv \lnot P \lor \lnot Q$.
+
+The \emph{Trichotomy Axiom of real numbers} states that given fixed real numbers $a$ and $b$, exactly one of the statements $a<b, a=b, b<a$ is true. Hence $\lnot P \equiv \lnot (1<x) \equiv (x \le 1)$ and $\lnot Q \equiv \lnot (x<2) \equiv (x \ge 2)$.
+
+Thus
+\[ \lnot (1<x<2) \equiv \lnot (P \land Q) \equiv \lnot P \lor \lnot Q \equiv (1 \ge x) \lor (x \ge 2). \]
+
+Therefore the negation of $1<x<2$ is logically equivalent to the statement $x \le 1$ or $x \ge 2$.
+\end{solution}
+
+\begin{exercise}{}{}
+Assume that $n$ is a fixed positive integer. Find a useful denial of the statement
+\[ n = 2 \text{ or } n \text{ is odd.} \]
+\end{exercise}
+\begin{solution}
+Using De Morgan's Laws,
+\begin{align*}
+\lnot [(n = 2) \lor (n \text{ is odd})] &\equiv \lnot(n = 2) \land \lnot(n \text{ is odd}) \\
+&\equiv (n \neq 2) \land (n \text{ is even})
+\end{align*}
+where we are using the fact that every integer is either even or odd, but not both.
+
+Thus a useful denial of the given statement is: $n$ is an even integer other than 2.
+\end{solution}
+\pagebreak
+
+\subsection{If, only if, $\implies$}
+\vocab{Implication} is denoted by $P \implies Q$, which means ``$P$ implies $Q$'', i.e. if $P$ holds then $Q$ also holds. It is equivalent to saying ``If $P$ then $Q$''. The only case when $P \implies Q$ is false is when the hypothesis $P$ is true and the conclusion $Q$ is false.
+
+$P \implies Q$ is known as a \vocab{conditional statement}. $P$ is known as the \vocab{hypothesis}, $Q$ is known as the \vocab{conclusion}.
+
+Statements of this form are probably the most common, although they may sometimes appear quite differently. The following all mean the same thing:
+\begin{enumerate}[label=(\roman*)]
+\item if $P$ then $Q$;
+\item $P$ implies $Q$;
+\item $P$ only if $Q$;
+\item $P$ is a sufficient condition for $Q$;
+\item $Q$ is a necessary condition for $P$.
+\end{enumerate}
+
+The \vocab{converse} of $P \implies Q$ is given by $Q \implies P$; both are not logically equivalent.
+
+The \vocab{inverse} of $P \implies Q$ is given by $\lnot P \implies \lnot Q$, i.e. the hypothesis and conclusion of the statement are both negated.
+
+The \vocab{contrapositive} of $P \implies Q$ is given by $\lnot Q \implies \lnot P$; both are logically equivalent.
+
+\textbf{How to prove:} To prove $P \implies Q$, start by assuming that $P$ holds and try to deduce through some logical steps that $Q$ holds too. Alternatively, start by assuming that $Q$ does not hold and show that $P$ does not hold (that is, we prove the contrapositive).
+\pagebreak
+
+\subsection{If and only if, iff, $\iff$}
+\vocab{Bidirectional implication} is denoted by $P \iff Q$, which means both $P \implies Q$ and $Q \implies P$. We can read this as ``$P$ if and only if $Q$''. The letters ``iff'' are also commonly used to stand for ‘if and only if’.
+\[ P \iff Q \equiv (P \implies Q) \land (Q \implies P) \]
+
+$P \iff Q$ is true exactly when $P$ and $Q$ have the same truth value.
+
+$P \iff Q$ is known as a \vocab{biconditional statement}.
+
+These statements are usually best thought of separately as ‘if’ and ‘only if’ statements.
+
+\textbf{How to prove:} To prove $P \iff Q$, prove the statement in both directions, i.e. prove both $P \implies Q$ and $Q \implies P$. Remember to make very clear, both to yourself and in your written proof, which direction you are doing.
+\pagebreak
+
+\subsection{Quantifiers}
+The \vocab{universal quantifier} is denoted by $\forall$, which means ``for all'' or ``for every''. An universal statement has the form $\forall x\in X, P(x)$.
+
+The \vocab{existential quantifier} is denoted by $\exists$, which means ``there exists''. An existential statement has the form $\exists x\in X, P(x)$, where $X$ is known as the \vocab{domain}.
+
+These are versions of De Morgan's laws for quantifiers:
+\[ \lnot \forall x\in X,P(x) \equiv \exists x\in X,\lnot P(x) \]
+\[ \lnot \exists x\in X,P(x) \equiv \forall x\in X,\lnot P(x) \]
+
+\begin{exercise}{}{}
+Find a useful denial of the statement
+\[ \text{for all real numbers } x, \text{ if } x>2, \text{ then } x^2>4 \]
+\end{exercise}
+\begin{solution}
+In logical notation, this statement is $(\forall x \in \RR)[x>2 \implies x^2>4]$.
+\begin{align*}
+\lnot\{(\forall x \in \RR)[x>2 \implies x^2>4]\} 
+&\equiv (\exists x \in \RR) \lnot[x>2 \implies x^2>4] \\
+&\equiv (\exists x \in \RR) \lnot [(x\le2) \lor (x^2>4)] \\
+&\equiv (\exists x \in \RR) [(x>2) \land (x^2\le4)]
+\end{align*}
+Therefore a useful denial of the statement is:
+\[ \text{there exists a real number } x \text{ such that } x>2 \text{ and } x^2\le4. \] 
+\end{solution}
+
+\begin{exercise}{}{}
+Negate surjectivity.
+\end{exercise}
+\begin{solution}
+If $f:X\to Y$ is not surjective, then it means that there exists $y \in Y$ not in the image of $X$, i.e. for all $x$ in $X$ we have $f(x)\neq y$.
+\begin{align*}
+\lnot \forall y \in Y, \exists x \in X, f(x)=y 
+&\iff \exists y \in Y, \lnot (\exists x \in X, f(x)=y) \\
+&\iff \exists y \in Y, \forall x \in X, \lnot (f(x)=y) \\
+&\iff \exists y \in Y, \forall x \in X, f(x) \neq y
+\end{align*}
+\end{solution}
+
+\textbf{How to prove:} To prove a statement of the form $\forall x \in X \suchthat P(x)$’, start the proof with ‘Let $x \in X$.’ or ‘Suppose $x \in X$ is given.’ to address the quantifier with an arbitrary $x$; provided no other assumptions about $x$ are made during the course of proving $P(x)$, this will prove the statement for all $x \in X$. 
+
+\textbf{How to prove:} To prove a statement of the form $\exists x \in X \suchthat P(x)$, there is not such a clear steer about how to continue: you may need to show the existence of an $x$ with the right properties; you may need to demonstrate logically that such an $x$ must exist because of some earlier assumption, or it may be that you can show constructively how to find one; or you may be able to prove by contradiction, supposing that there is no such $x$ and consequently arriving at some inconsistency.
+
+\begin{remark}
+Read from left to right, and as new elements or statements are introduced they are allowed to depend on previously introduced elements but cannot depend on things that are yet to be mentioned.
+\end{remark}
+
+\begin{remark}
+To avoid confusion, it is a good idea to keep to the convention that the quantifiers come first, before any statement to which they relate.
+\end{remark}
+\pagebreak
+
+\section{Proofs}
+\subsection{Direct Proof}
+A direct proof of $P \implies Q$ is a series of valid arguments that start with the hypothesis $P$ and end with the conclusion $Q$. It may be that we can start from $P$ and work directly to $Q$, or it may be that we make use of $P$ along the way.
+
+\subsection{Proof by Contrapositive}
+To prove $P \implies Q$, we can instead prove $\lnot Q \implies \lnot P$.
+
+\begin{exercise}{}{}
+For every integer $a$, prove that if $3a^2+1$ is even, then $a$ is odd.
+\end{exercise}
+\begin{proof}
+We prove this by contrapositive.
+
+Suppose $a$ is not odd. So $a=2k$ for some integer $k$. Then
+\[ 3a^2+1=3(2k)^2+1=2(6k^2)+1. \]
+Since $3a^2+1=2q+1$ for some integer $q$, hence $3a^2+1$ is odd.
+\end{proof}
+
+\begin{exercise}{}{}
+For $m\in\ZZ$, prove that if $3\mid m^2$ then $3\mid m$.
+\end{exercise}
+\begin{proof}
+We prove this by contrapositive.
+
+Suppose $3\nmid m$. We shall prove $3\nmid m^2$.
+
+\textbf{Case 1}: $m=3k+1$
+
+Then $m^2=(3k+1)^2=3(3k^2+2k)+1$ so $m^2$ has remainder $1$ when divided by $3$, hence $3\nmid m^2$.
+
+\textbf{Case 2}: $m=3k+2$
+
+This case shall be left as an exercise.
+\end{proof}
+
+\subsection{Disproof by Counterexample}
+Providing a counterexample is the best method for refuting, or dispoving, a conjecture. 
+
+In seeking counterexamples, it is a good idea to keep the cases you consider simple, rather than searching randomly. It is often helpful to consider ``extreme'' cases; for example, something is zero, a set is empty, or a function is constant.
+
+The counterexample must make the hypothesis a true statement, and the conclusion a false statement.
+
+\subsection{Proof by Cases}
+You can sometimes prove a statement by:
+\begin{enumerate}
+\item Dividing the situation into cases which exhaust all the possibilities; and
+\item Showing that the statement follows in all cases.
+\end{enumerate}
+
+\begin{remark}
+It is important to cover all the possibilities.
+\end{remark}
+
+\subsection{Proof by Contradiction}
+To prove $P$ by contradiction, suppose that $P$ is false, i.e. $\lnot P$. Similarly, to prove $P \implies Q$ by contradiction, suppose that $Q$ is false, i.e. $P\land\lnot Q$.
+
+Then show through some logical reasoning that this leads to a contradiction or inconsistency. We may arrive at something that contradicts the hypothesis $P$, or something that contradicts the initial supposition that $Q$ is not true, or we may arrive at something that we know to be universally false.
+
+\begin{exercise}{Irrationality of $\sqrt{2}$}{}
+Prove that $\sqrt{2}$ is irrational.
+\end{exercise}
+\begin{proof}
+We prove by contradiction. Suppose otherwise, that $\sqrt{2}$ is rational. Using the definition of rational numbers, we can write it as $\sqrt{2} = \dfrac{a}{b}$ for some $a,b\in\ZZ,b\neq 0$. 
+
+We also assume that $\dfrac{a}{b}$ is simplified to lowest terms, since that can obviously be done with any fraction. Notice that in order for $\dfrac{a}{b}$ to be in simplest terms, both $a$ and $b$ cannot be even; one or both must be odd, otherwise we could simplify the fraction further.
+
+Squaring both sides gives us
+\[ a^2 = 2b^2. \]
+Since RHS is even, LHS must also be even. Hence it follows that $a$ is even. Let $a=2k$ where $k\in\ZZ$. Substituting $a = 2k$ into the above equation and simplifying it gives us
+\[ b^2=2k^2. \]
+This means that $b^2$ is even, from which follows again that $b$ is even. 
+
+This is a contradiction, as we started out assuming that $\dfrac{a}{b}$ was simplified to lowest terms, and now it turns out that $a$ and $b$ both would be even. Hence proven.
+\end{proof}
+
+\begin{exercise}{}{}
+For any integer $n$, prove that there is no integer $a>1$ such that $a\mid n$ and $a\mid (n+1)$.
+\end{exercise}
+\begin{proof}
+Suppose there is an integer $n$ and integer $a>1$ such that $a\mid n$ and $a\mid (n+1)$.
+
+Then $n=ak$ and $n+1=ah$ for some integers $k$ and $h$.
+\[ ak+1=ah \implies 1=a(h-k) \implies a\mid 1 \implies a=\pm1 \]
+This contradicts $a>1$.
+
+Hence we conclude that, for any $n$, there is no integer $a>1$ such that $a\mid n$ and $a\mid (n+1)$.
+\end{proof}
+
+\subsection{Proof of Uniqueness}
+$\exists!$ means ``there exists a unique''.
+
+To prove uniqueness, we can do one of the following:
+\begin{itemize}
+\item Assume $\exists x,y \in S$ such that $P(x) \land P(y)$ is true and show $x=y$.
+\item Argue by assuming that $\exists x,y \in S$ are distinct such that $P(x) \land P(y)$, then derive a contradiction.
+\end{itemize}
+To prove uniqueness and existence, we also need to show that $\exists x \in S \suchthat P(x)$ is true.
+
+\subsection{Proof of Existence}
+To prove existential statements, we can adopt two approaches:
+\begin{enumerate}
+\item Constructive proof (direct proof)
+\item Non-constructive proof (indirect proof)
+\end{enumerate}
+
+\subsubsection{Constructive Proof}
+To prove statements of the form $\exists x\in X \suchthat P(x)$, find or construct \emph{a specific example} for $x$. To prove statements of the form $\forall y\in Y,\:\exists x\in X\suchthat P(x,y)$, construct example for $x$ \emph{in terms of $y$} (since $x$ is dependent on $y$).
+
+In both cases, you have to justify that your example $x$
+\begin{enumerate}
+\item belongs to the domain $X$, and
+\item satisfies the condition $P$.
+\end{enumerate}
+
+\begin{exercise}{}{}
+Prove that we can find $100$ consecutive positive integers which are all composite numbers.
+\end{exercise}
+
+\begin{proof}
+We can prove this existential statement via constructive proof.
+
+Our goal is to find integers $n,n+1,n+2,\dots,n+99$, all of which are composite.
+
+Take $n=101!+2$. Then $n$ has a factor of $2$ and hence is composite. Similarly, $n+k=101!+(k+2)$ has a factor $k+2$ and hence is composite for $k=1,2,\dots,99$.
+
+Hence the existential statement is proven.
+\end{proof}
+
+\begin{exercise}{}{}
+Prove that for all rational numbers $p$ and $q$ with $p<q$, there is a rational number $x$ such that $p<x<q$.
+\end{exercise}
+\begin{proof}
+We prove this by construction. Our goal is to find such a rational $x$ \emph{in terms of $p$ and $q$}.
+
+We take the average. Let $x=\dfrac{p+q}{2}$ which is a rational number.
+
+Since $p<q$, 
+\[ x=\frac{p+q}{2}<\frac{q+q}{2}=q \implies x<q \]
+Similarly,
+\[ x=\frac{p+q}{2}>\frac{p+p}{2}=p \implies p<x \]
+Hence we have shown the existence of rational number $x$ such that $p<x<q$.
+
+\begin{remark}
+For this type of question, there are two parts to prove: firstly, $x$ satisfies the given statement; secondly, $x$ is within the domain (for this question we do not have to prove $x$ is rational since $\QQ$ is closed under addition).
+\end{remark}
+\end{proof}
+
+\begin{exercise}{}{}
+Prove that for all rational numbers $p$ and $q$ with $p<q$, there is an irrational number $r$ such that $p<r<q$.
+\end{exercise}
+\begin{proof}
+We prove this by construction. Similarly, our goal is to find an irrational $r$ in terms of $p$ and $q$.
+
+Note that we cannot simply take $r=\dfrac{p+q}{2}$; a simple counterexample is the case $p=-1,q=1$ where $r=0$ is clearly not irrational.
+
+Since $p$ lies in between $p$ and $q$, let $r=p+c$ where $0<c<q-p$. Since $c<q-p$, we have $c=\dfrac{q-p}{k}$ for some $k>1$; to make $c$ irrational, we take $k$ to be irrational.
+
+Take $r=p+\dfrac{q-p}{\sqrt{2}}$. We need to show $r$ is irrational and $p<r<q$.
+
+\textbf{Part 1:} $p<r<q$
+
+Since $q<p$, $r=p+\text{(positive number)}>p$. On the other hand, $\dfrac{q-p}{\sqrt{2}}<q-p$ so $r<p+(q-p)=q$.
+
+\textbf{Part 2:} $r$ is irrational
+
+We prove by contradiction. Suppose $r$ is rational. We have $\sqrt{2}=\dfrac{q-p}{r-p}$. Since $p,q,r$ are all rational (and $r-p\neq0$), RHS is rational. This implies that LHS is rational, i.e. $\sqrt{2}$ is rational, a contradiction.
+\end{proof}
+
+\subsubsection{Non-constructive Proof}
+Use when specific examples are not easy or not possible to find or construct.
+Make arguments why such objects have to exist.
+May need to use proof by contradiction.
+Use definition, axioms or results that involve existential statements.
+
+\begin{exercise}{}{}
+Prove that every integer greater than $1$ is divisible by a prime.
+\end{exercise}
+
+\begin{proof}
+If $n$ is prime, then we are done as $n\mid n$.
+
+If $n$ is not prime, then $n$ is composite. So $n$ has a divisor $d_1$ such that $1<d_1<n$. If $d_1$ is prime then we are done as $d_1\mid n$. If $d_1$ is not prime then $d_1$ is composite, has divisor $d_2$ such that $1<d_2<n$.
+
+If $d_2$ is prime, then we are done as $d_2\mid d_1$ and $d_1\mid n$ imply $d_2\mid n$. If $d_2$ is not prime then $d_2$ is composite, has divisor $d_3$ such that $1<d_3<d_2$.
+
+Continuing in this manner after $k$ times, we will get
+\[ 1<d_k<d_{k-1}<\cdots<d_2<d_1<n \]
+where $d_i\mid n$ for all $i$.
+
+This process must stop after finite steps, as there can only be a finite number of $d_i$'s between $1$ and $n$. On the other hand, the process will stop only if there is a $d_i$ which is a prime. 
+
+Hence we conclude that there must be a divisor $d_i$ of $n$ that is prime.
+\end{proof}
+
+\begin{remark}
+This proof is also known as \emph{proof by infinite descent}, a method which relies on the well-ordering principle of the positive integers.
+\end{remark}
+
+\begin{exercise}{}{}
+Prove that the equation $x^2+y^2=3z^2$ has no solutions $(x,y,z)$ in integers where $z\neq0$.
+\end{exercise}
+
+\begin{proof}
+Suppose we have a solution $(x,y,z)$. Without loss of generality, we may assume that $z>0$. By the least integer principle, we may also assume that our solution has $z$ minimal. Taking remainders modulo $3$, we see that
+\[ x^2+y^2\equiv0\pmod3 \]
+Recalling that squares may only be congruent to $0$ or $1$ modulo $3$, we conclude that
+\[ x^2\equiv y^2\equiv 0 \implies x \equiv y \equiv 0 \pmod 3 \]
+Writing $x=3a$ and $y=3b$ we obtain
+\[ 9a^2+9b^2=3z^2 \implies 3(a^2+b^2)=z^2 \implies 3\mid z^2 \implies 3\mid z \]
+Now let $z=3c$ and cancel $3$'s to obtain
+\[ a^2+b^2=3c^2. \]
+We have therefore constructed another solution $(a,b,c)=\brac{\frac{x}{3},\frac{y}{3},\frac{z}{3}}$ to the original equation. However $0<c<z$ contradicts the minimality of $z$.
+\end{proof}
+
+\begin{exercise}{}{}
+An odd prime $p$ may be written as a sum of two squares if and only $p \equiv 1 \pmod 4$.
+\end{exercise}
+
+\begin{proof}
+We again use the method of descent, though this time \textit{constructively}.
+
+($\implies$) If $p=x^2+y^2$, then both $x$ and $y$ are non-zero modulo $p$. Taking Legendre symbols, we see that
+\[ 1=\brac{\frac{x^2}{p}}=\brac{\frac{-y^2}{p}}=\brac{\frac{-1}{p}} \implies p\equiv1\pmod4 \]
+
+($\impliedby$) Suppose that $p$ is a prime congruent to $1$ modulo $4$. We must show that there exist integers $x,y$ such that $x^2+y^2=p$. We do this by descent:
+\begin{enumerate}
+\item Modulo $p$, the congruence $x^2+1\equiv0$ has a solution $x$ since $-1$ is a quadratic residue. By taking $y=1$, we may therefore assume the existence of a solution to an equation $x^2+y^2=mp$ for some integer $1 \le m<p$. If $m=1$ we are done. Otherwise ...
+
+\item Define
+\[ \begin{cases}
+u\equiv x\pmod m \\
+v\equiv y\pmod m
+\end{cases} \quad \text{such that } |u|,|v|\le\frac{m}{2}. \]
+Since $xu+yv$, $xv-yu$ and $u^2+v^2$ are all divisible by $m$, we may divide the identity
+\[ (u^2+v^2)(x^2+y^2)=(xu+yv)^2+(xv-yu)^2 \]
+by $m^2$ to obtain an equation in integers:
+\[ kp=\brac{\frac{xu+yv}{m}}^2+\brac{\frac{xv-yu}{m}}^2 \text{ where } k=\frac{u^2+v^2}{m}\le\frac{m}{2} \]
+
+\item We have therefore constructed an integer solution to $X^2+Y^2=kp$ with $k<m$. If $k \ge 2$, simply repeat the process from step 2: by descent, we must eventually reach $k=1$.
+\end{enumerate}
+\end{proof}
+
+\subsection{Pigeonhole Principle}
+\begin{theorem}[Pigeonhole Principle (naive)]
+If $m$ objects are placed into $n$ boxes and $m>n$, then at least one box must contain more than one object.
+\end{theorem}
+
+\begin{theorem}[Pigeonhole Principle (general)]
+If more than $k\cdot n$ objects are placed into $n$ boxes, then at least one box must contain more than $k$ objects.
+\end{theorem}
+\pagebreak
+
+\subsection{Proof by Mathematical Induction}
+Induction is an extremely powerful method of proof used throughout mathematics. It deals with infinite families of statements which come in the form of lists. The idea behind induction is in showing how each statement follows from the previous one on the list -- all that remains is to kick off this logical chain reaction from some starting point.
+
+\begin{theorem}[Principle of Mathematical Induction (PMI)]
+Let $P(n)$ be a family of statements indexed by $\ZZ^+$. Suppose that 
+\begin{enumerate}[label=(\roman*)]
+\item (\textbf{base case}) $P(1)$ is true and
+\item (\textbf{inductive step}) for all $k\in\ZZ^+$, $P(k)\implies P(k+1)$.
+\end{enumerate}
+Then $P(n)$ is true for all $n\in\ZZ^+$.
+\end{theorem}
+
+Using logic notation, this is written as
+\[ \{P(1) \land (\forall n \in \ZZ^+) [P(k) \implies P(k+1)]\} \implies (\forall n \in \ZZ^+)P(n) \]
+
+Induction is often visualised like toppling dominoes. The inductive step (ii) corresponds to placing each domino sufficiently close that it will be hit when the previous one falls over, and base case (i) corresponds to knocking over the first one.
+\[ P(1) \implies P(2) \implies \cdots \implies P(k) \implies P(k+1) \implies \cdots \]
+
+\begin{exercise}{}{}
+Prove that for any $n \in \ZZ^+$,
+\[ \sum_{k=1}^n k = \frac{n(n+1)}{2} \]
+\end{exercise}
+
+\begin{proof}
+Let $P(n)$ be the statement $\sum_{k=1}^n k = \frac{n(n+1)}{2}$.
+
+Clearly $P(1)$ holds because for $n=1$, the sum on the LHS is 1 and the expression on the RHS is also 1.
+
+Now suppose $P(n)$ holds. Then we have
+\[ \sum_{k=1}^n k = \frac{n(n+1)}{2} \]
+Adding $n+1$ to both sides,
+\begin{align*}
+\sum_{k=1}^{n+1} k &= \frac{n(n+1)}{2}+(n+1) \\
+&= \frac{(n+1)(n+2)}{2} \\
+&= \frac{(n+1)[(n+1)+1]}{2}
+\end{align*}
+thus $P(n+1)$ is true.
+
+By PMI, $P(n)$ is true for all $n \in \ZZ^+$.
+\end{proof}
+
+\begin{remark}
+Do not write $P(n)=\frac{n(n+1)}{2}$, as $P(n)$ is a statement, not an expression (which does not have truth values).
+\end{remark}
+
+A corollary of induction is if the family of statements holds for $n \ge N$, rather than necessarily $n \ge 0$:
+
+\begin{corollary}
+Let $N$ be an integer and let $P(n)$ be a family of statements indexed by integers $n \ge N$. Suppose that 
+\begin{enumerate}[label=(\roman*)]
+\item (\textbf{base case}) $P(N)$ is true and
+\item (\textbf{inductive step}) for all $k \ge N$, $P(k) \implies P(k+1)$. 
+\end{enumerate}
+Then $P(n)$ is true for all $n \ge N$.
+\end{corollary}
+
+\begin{proof}
+This follows directly by applying the above theorem to the statement $Q(n) = P(n+N)$ for $n \in N$.
+\end{proof}
+
+\subsubsection{Strong Induction}
+Another variant on induction is when the inductive step relies on some earlier case(s) but not necessarily the immediately previous case. This is known as \vocab{strong induction}:
+
+\begin{theorem}[Strong Form of Induction]
+Let $P(n)$ be a family of statements indexed by the natural numbers. Suppose that
+\begin{enumerate}[label=(\roman*)]
+\item (\textbf{base case}) $P(1)$ is true and
+\item (\textbf{inductive step}) for all $m \in \ZZ^+$, if for integers $k$ with $1 \le k \le m$, $P(k)$ is true then $P(m+1)$ is true.
+\end{enumerate}
+Then $P(n)$ is true for all $n \in \NN$.
+\end{theorem}
+
+Using logic notation, this is written as
+\[ \{P(1) \land (\forall m \in \ZZ^+) [P(1) \land P(2) \land \cdots \land P(m) \implies P(m+1)]\} \implies (\forall n \in \ZZ^+)P(n) \]
+
+\begin{proof}
+We can this it to an instance of ``normal'' induction by defining a related family of statements $Q(n)$. 
+
+Let $Q(n)$ be the statement ``$P(k)$ holds for $k=0,1,\dots,n$''. Then the conditions for the strong form are equivalent to 
+\begin{enumerate}[label=(\roman*)]
+\item $Q(0)$ holds and 
+\item for any $n$, if $Q(n)$ is true then $Q(n+1)$ is also true.
+\end{enumerate}
+It follows by induction that $Q(n)$ holds for all $n$, and hence $P(n)$ holds for all $n$.
+\end{proof}
+
+The following example illustrates how the strong form of induction can be useful:
+
+\begin{exmp}{Fundamental Theorem of Arithmetic}{}
+Every natural number greater than 1 may be expressed as a product of one or more prime numbers.
+\end{exmp}
+
+\begin{proof}
+Let $P(n)$ be the statement that $n$ may be expressed as a product of prime numbers. 
+
+Clearly $P(2)$ holds, since $2$ is itself prime. 
+
+Let $n \ge 2$ be a natural number and suppose that $P(m)$ holds for all $m<n$.
+
+\begin{itemize}
+\item If $n$ is prime then it is trivially the product of the single prime number $n$. 
+
+\item If $n$ is not prime, then there must exist some $r, s > 1$ such that $n = rs$. By the inductive hypothesis, each of $r$ and $s$ can be written as a product of primes, and therefore $n = rs$ is also a product of primes.
+\end{itemize}
+
+Thus, whether $n$ is prime or not, we have have that $P(n)$ holds. By strong induction, $P(n)$ is true for all natural numbers. That is, every natural number greater than 1 may be expressed as a product of one or more primes.
+\end{proof}
+
+\subsubsection{Cauchy Induction}
+\begin{theorem}[Cauchy Induction]
+Let $P(n)$ be a family of statements indexed by $\ZZ^+_{\ge2}$. Suppose that
+\begin{enumerate}[label=(\roman*)]
+\item (\textbf{base case}) $P(2)$ is true and
+\item (\textbf{inductive step}) for all $k\in\ZZ^+$, $P(k)\implies P(2k)$ and $P(k)\implies (k-1)$.
+\end{enumerate}
+Then $P(n)$ is true for all $n\in\ZZ^+_{\ge2}$.
+\end{theorem}
+
+\begin{exercise}{}{}
+Using Cauchy Induction, prove the AM--GM Inequality for $n$ variables, which states that for positive reals $a_1, a_2,\dots a_n$,
+\[ \frac{a_1+a_2+\cdots+a_n}{n}\ge\sqrt[n]{a_1a_2\cdots a_n}. \]
+\end{exercise}
+\begin{proof}
+Let $P(n)$ be $\frac{a_1+a_2+\cdots+a_n}{n}\ge\sqrt[n]{a_1a_2\cdots a_n}$.
+
+Base case $P(2)$ is true because\[\frac{a_1+a_2}{2}\ge\sqrt{a_1a_2} \iff (a_1+a_2)^2\ge 4a_1a_2 \iff (a_1-a_2)^2\ge0\]
+
+Next we show that $P(n)\implies P(2n)$, i.e. if AM--GM holds for $n$ variables, it also holds for $2n$ variables:
+
+\[\frac{a_1+a_2+\cdots+a_{2n}}{2n}=\frac{\frac{a_1+a_2+\cdots+a_n}{n}+\frac{a_{n+1}+a_{n+2}+\cdots+a_{2n}}{n}}{2}\]\[\frac{\frac{a_1+a_2+\cdots+a_n}{n}+\frac{a_{n+1}+a_{n+2}+\cdots+a_{2n}}{n}}{2}\ge\frac{\sqrt[n]{a_1a_2\cdots a_n}+\sqrt[n]{a_{n+1}a_{n+2}\cdots a_{2n}}}{2}\]\[\frac{\sqrt[n]{a_1a_2\cdots a_n}+\sqrt[n]{a_{n+1}a_{n+2}\cdots a_{2n}}}{2}\ge\sqrt{\sqrt[n]{a_1a_2\cdots a_n}\sqrt[n]{a_{n+1}a_{n+2}\cdots a_{2n}}}\]\[\sqrt{\sqrt[n]{a_1a_2\cdots a_n}\sqrt[n]{a_{n+1}a_{n+2}\cdots a_{2n}}}=\sqrt[2n]{a_1a_2\cdots a_{2n}}\]
+The first inequality follows from $n$-variable AM--GM, which is true by assumption, and the second inequality follows from 2-variable AM--GM, which is proven above.
+
+Finally we show that $P(n)\implies P(n-1)$, i.e. if AM--GM holds for $n$ variables, it also holds for $n-1$ variables. By $n$-variable AM--GM, $\frac{a_1+a_2+\cdots+a_n}{n}\ge\sqrt[n]{a_1a_2\cdots a_n}$ Let $a_n=\frac{a_1+a_2+\cdots+a_{n-1}}{n-1}$ Then we have\[\frac{a_1+a_2+\cdots+a_{n-1}+\frac{a_1+a_2+\cdots+a_{n-1}}{n-1}}{n}=\frac{a_1+a_2+\cdots+a_{n-1}}{n-1}\]So,\[\frac{a_1+a_2+\cdots+a_{n-1}}{n-1}\ge\sqrt[n]{a_1a_2\cdots a_{n-1}\cdot \frac{a_1+a_2+\cdots+a_{n-1}}{n-1}}\]\[\Rightarrow\left(\frac{a_1+a_2+\cdots+a_{n-1}}{n-1}\right)^n\ge a_1a_2\cdots a_{n-1}\cdot \frac{a_1+a_2+\cdots+a_{n-1}}{n-1}\]\[\Rightarrow\left(\frac{a_1+a_2+\cdots+a_{n-1}}{n-1}\right)^{n-1}\ge a_1a_2\cdots a_{n-1}\]\[\Rightarrow \frac{a_1+a_2+\cdots+a_{n-1}}{n-1}\ge\sqrt[n-1]{a_1a_2\cdots a_{n-1}}\]
+By Cauchy Induction, this proves the AM--GM inequality for $n$ variables.
+\end{proof}
+
+\subsubsection{Other Variations}
+Apart from proving $P(n)$ indexed by $\ZZ^+$, we can also use PMI to prove statements of the form
+\begin{itemize}
+\item $(\forall n\in\ZZ) P(n)$
+
+\textbf{Base case:} $P(0)$
+
+\textbf{Inductive step:} $(\forall k\in\ZZ_{\ge0}) P(k)\implies P(k+1)$ and $(\forall k\in\ZZ_{\le0}) P(k)\implies P(k-1)$
+\[ \cdots \Longleftarrow P(-n) \Longleftarrow \cdots \Longleftarrow P(-1) \Longleftarrow P(0) \implies P(1) \implies \cdots \implies P(n) \implies \cdots \]
+
+\item $(\forall n\in\QQ) P(n)$
+
+\textbf{Base case:} $P(0)$
+
+\textbf{Inductive step:} $P(x)\implies P(-x)$ and $P\brac{\frac{a}{b}}\implies P\brac{\frac{a+1}{b}}$ and $P\brac{\frac{a}{b}}\implies P\brac{\frac{a}{b+1}}$
+\end{itemize}
+
+\subsubsection{A More Generalised Version}
+\begin{definition}
+A binary relation $\preceq$ on $X$ that satisfies the following conditions is called a \vocab{well-ordering} on $X$:
+\begin{enumerate}[label=(\roman*)]
+\item for every $a,b\in X$, $a\preceq b$ or $b\preceq a$,
+\item every non-empty subset $S$ of $X$ contains a least element wrt $\preceq$.
+\end{enumerate}
+\end{definition}
+
+\begin{theorem}[Well-ordering principle]
+Let $(X,\preceq)$ be a well-ordered set, with the least element $x_0$. Then $P(x)$ holds for all $x\in X$ if the following conditions hold:
+\begin{enumerate}[label=(\roman*)]
+\item (\textbf{base case}) $P(x_0)$ holds
+\item (\textbf{inductive step}) $\forall x^\prime\prec x$, $P(x^\prime)\implies P(x)$
+\end{enumerate}
+\end{theorem}
+
+The following principle allows us to apply induction in cases where there may not be a linear ordering.
+\pagebreak
+
+\subsection{Symmetry Principle}
+
+\subsection{Combinatorial Arguments and Proofs}
+\pagebreak
+
+\section*{Exercises}
+Some of the exercise problems here are from the ``Number and Proofs'' topic of H3 Mathematics, so the reader is assumed to have some basic knowledge in Number Theory, in particular modular arithmetic.
+
+\begin{prbm}
+Let $a,b$ be integers, not both $0$. Prove that $\gcd(a+b,a-b)\le\gcd(2a,2b)$.
+\end{prbm}
+
+\begin{proof}
+Direct proof.
+
+Let $e=\gcd(a+b,a-b)$. Then $e\mid(a+b)$ and $e\mid(a-b)$. So
+\[ e\mid(a+b)+(a-b) \implies e\mid 2a \]
+and
+\[ e\mid(a+b)-(a-b) \implies e\mid 2b \]
+This implies $e$ is a common divisor of $2a$ and $2b$. So $e\le\gcd(2a,2b)$.
+\end{proof}
+
+\begin{prbm}[Division Algorithm]
+Let $c$ and $d$ be integers, not both $0$. If $q$ and $r$ are integers such as $c=dq+r$, then $\gcd(c,d)=\gcd(d,r)$.
+\end{prbm}
+
+\begin{proof}
+Let $m=\gcd(c,d)$ and $n=\gcd(d,r)$. To prove $m=n$, we will show $m\le n$ and $n\le m$.
+
+\begin{enumerate}[label=(\roman*)]
+\item Show $n\le m$
+
+Since $n=\gcd(d,r)$, $n\mid d$ and $n\mid r$. There exists integers $x$ and $y$ such that $d=nx$ and $r=ny$.
+
+From $c=dq+r$, we have $c=(nx)q+ny=n(xq+y)$ thus $n\mid c$. $n$ is a common divisor of $c$ and $d$, so $n\le\gcd(c,d)$. Hence $n\le m$.
+
+\item Show $m\le n$
+
+This is left as an exercise.
+\end{enumerate}
+\end{proof}
+
+\begin{prbm}[Euclid's Lemma]
+Let $a,b,c$ be any integers. If $a\mid bc$ and $\gcd(a,b)=1$, then $a\mid c$.
+\end{prbm}
+
+\begin{proof}
+Since $a\mid bc$, $bc=ak$ for some $k\in\ZZ$.
+
+Since $\gcd(a,b)=1$,
+\begin{align*}
+ax+by&=1 \quad \text{for some } x,y\in\ZZ \\
+cax+cby&=c \\
+acx+aky&=c \\
+a(cx+ky)&=c
+\end{align*}
+thus $a\mid c$.
+\end{proof}
+
+\begin{prbm}
+Let $a$ and $b$ be integers, not both $0$. Show that $\gcd(a,b)$ is the smallest possible positive linear combination of $a$ and $b$. (i.e. There is no positive integer $c<\gcd(a,b)$ such that $c=ax+by$ for some integers $x$ and $y$.)
+\end{prbm}
+
+\begin{proof}
+Prove by contradiction.
+
+Suppose there is a positive integer $c<\gcd(a,b)$ such that $c=ax+by$ for some integers $x$ and $y$.
+
+Let $d=\gcd(a,b)$. Then $d\mid a$ and $d\mid b$, and hence $d\mid ax+by$. This means $d\mid c$.
+
+Since $c$ is positive, this implies $\gcd(a,b)=d\le c$. This contradicts $c<\gcd(a,b)$.
+
+Hence we conclude that there is no positive integer $c<\gcd(a,b)$ such that $c=ax+by$ for some integers $x$ and $y$.
+\end{proof}
+
+\begin{prbm}
+Use the Unique Factorisation Theorem to prove that, if a positive integer $n$ is not a perfect square, then $\sqrt{n}$ is irrational.
+
+[The Unique Factorisation Theorem states that every integer $n>1$ has a unique standard factored form, i.e. there is exactly one way to express $n=p_1^{k_1}p_2^{k_2}\cdots p_t^{k_t}$ where $p_1<p_2<\cdots<p_t$ are distinct primes and $k_1,k_2,\dots,k_t$ are some positive integers.]
+\end{prbm}
+
+\begin{proof}
+Prove by contradiction.
+
+Suppose $n$ is not a perfect square and $\sqrt{n}$ is rational.
+
+Then $\sqrt{n}=\frac{a}{b}$ for some integers $a$ and $b$. Squaring both sides and clearing denominator gives 
+\begin{equation*}\tag{$\ast$}
+nb^2=a^2.
+\end{equation*}
+
+Consider the standard factored forms of $n$, $a$ and $b$:
+\[ n=p_1^{k_1}p_2^{k_2}\cdots p_t^{k_t} \]
+\[ a=q_1^{e_1}q_2^{e_2}\cdots q_u^{e_u} \implies a^2=q_1^{2e_1}q_2^{2e_2}\cdots q_u^{2e_u} \]
+\[ b=r_1^{f_1}r_2^{f_2}\cdots r_v^{f_v} \implies b^2=r_1^{2f_1}r_2^{2f_2}\cdots r_v^{2f_v} \]
+i.e. the powers of primes in the standard factored form of $a^2$ and $b^2$ are all even integers. 
+
+This means the powers $k_i$ of primes $p_i$ in the standard factored form of $n$ are also even by Unique Factorisation Theorem (UFT):
+
+Note that all $p_i$ appear in the standard factored form of $a^2$ with even power $2c_i$, because of $(\ast)$. By UFT, $p_i$ must also appear in the standard factored form of $nb^2$ with the same even power $2c_i$.
+
+If $p_i\nmid b$, then $k_i=2c_i$ which is even. If $p_i\mid b$, then $p_i$ will appear in $b^2$ with even power $2d_i$. So $k_i+2d_i=2c_i$, and hence $k_i=2(c_i-d_i)$, which is again even.
+
+Hence $n=p_1^{k_1}p_2^{k_2}\cdots p_t^{k_t}=\brac{p_1^{\frac{k_1}{2}}p_2^{\frac{k_2}{2}}\cdots p_t^{\frac{k_t}{2}}}^2$.
+
+Since $\frac{k_i}{2}$ are all integers, $p_1^{\frac{k_1}{2}}p_2^{\frac{k_2}{2}}\cdots p_t^{\frac{k_t}{2}}$ is an integer and $n$ is a perfect square. This contradicts the given hypothesis that $n$ is not a perfect square.
+
+So we conclude that when a positive integer $n$ is not a perfect square, then $\sqrt{n}$ is irrational.
+\end{proof}
+
+\begin{prbm}[Sieve of Eratosthenes]
+If $p>1$ is an integer and $n\mid p$ for each integer $n$ for which $2\le n\le\sqrt{p}$, then $p$ is prime.
+\end{prbm}
+
+\begin{proof}
+Prove by contrapositive.
+
+Suppose that $p$ is not prime, so it factors as $p=mn$ for $1<m,n<p$.
+
+Observe that it is not the case that both $m>\sqrt{p}$ and $n>\sqrt{p}$, because if this were true the inequalities would multiply to give $mn>\sqrt{p}\sqrt{p}=p$, which contradicts $p=mn$.
+
+Therefore $m\le\sqrt{p}$ or $n\le\sqrt{p}$. Without loss of generality, say $n\le\sqrt{p}$. Then the equation $p=mn$ gives $n\mid p$, with $1<n\le\sqrt{p}$. Hence it is not true that $n\nmid p$ for each integer $n$ for which $2\le n\le\sqrt{p}$.
+\end{proof}
+
+\begin{prbm}[Euclid's proof]
+There are infinitely many primes.
+\end{prbm}
+
+\begin{proof}
+Prove by contradiction.
+
+Suppose otherwise, that the list of primes is finite. Let $p_1,\dots,p_r$ be our finite list of primes. We want to show this is not the full list of the primes.
+
+Consider the number
+\[ N=p_1\cdots p_r+1. \]
+Since $N>1$, it has a prime factor $p$. The prime $p$ cannot be any of $p_1,\dots,p_r$ since $N$ has remainder $1$ when divided by each $p_i$. Therefore $p$ is a prime not on our list, so the set of primes cannot be finite.
+\end{proof}
+
+\begin{prbm}
+If $n$ is an integer, prove that $3$ divides $n^3-n$.
+\end{prbm}
+
+\begin{proof}
+Prove by cases. This is done by partitioning $\ZZ$ according to remainders when divided by $d$ (i.e. equivalence classes).
+
+We prove the three cases: $n=3k$, $n=3k+1$, and $n=3k+2$.
+
+\textbf{Case 1:} $n=3k$ for some integer $k$
+
+Then
+\[ n^3-n=(3k)^3-(3k)=3(9k^3-k). \]
+Since $9k^3-k$ is an integer, $3\mid n^3-n$.
+
+\textbf{Case 2:} $n=3k+1$ for some integer $k$
+
+Then
+\[ n^3-n=(3k+1)^3-(3k+1)=3(9k^3+9k^2+2k). \]
+Since $9k^3+9k^2+2k$ is an integer, $3\mid n^3-n$.
+
+\textbf{Case 3:} $n=3k+2$ for some integer $k$
+
+The proof is similar and shall be left as an exercise.
+\end{proof}
+\pagebreak
+
+\begin{prbm}
+Prove that for every pair of irrational numbers $p$ and $q$ such that $p<q$, there is an irrational $x$ such that $p<x<q$.
+\end{prbm}
+
+\begin{proof}
+Consider the average of $p$ and $q$: $p<\dfrac{p+q}{2}<q$.
+
+If $\dfrac{p+q}{2}$ is irrational, take $x=\dfrac{p+q}{2}$ and we are done.
+
+If $\dfrac{p+q}{2}$ is rational, call it $r$, take the average of $p$ and $r$: $p<\dfrac{p+r}{2}<r<q$. Since $p$ is irrational and $r$ is rational, $\dfrac{p+r}{2}$ is irrational. In this case, we take $x=\dfrac{3p+q}{4}$.
+\end{proof}
+
+\begin{prbm}
+Given $n$ real numbers $a_1,a_2,\dots,a_n$. Show that there exists an $a_i$ ($1\le i\le n$) such that $a_i$ is greater than or equal to the mean (average) value of the $n$ numbers.
+\end{prbm}
+
+\begin{proof}
+Prove by contradiction.
+
+Let $\bar{a}$ denote the mean value of the $n$ given numbers. Suppose $a_i<\bar{a}$ for all $a_i$. Then
+\[ \bar{a}=\frac{a_1+a_2+\cdots+a_n}{n}<\frac{\bar{a}+\bar{a}+\cdots+\bar{a}}{n}=\frac{n\bar{a}}{n}=\bar{a}. \]
+We derive $\bar{a}<\bar{a}$, which is a contradiction.
+
+Hence there must be some $a_i$ such that $a_i>\bar{a}$.
+\end{proof}
+
+\begin{prbm}
+Prove that the following statement is false: there is an irrational number $a$ such that for all irrational number $b$, $ab$ is rational.
+\end{prbm}
+
+\textbf{Thought process:} prove the negation of the statement: for every irrational number $a$, there is an irrational number $b$ such that $ab$ is irrational.
+
+\textbf{Proving technique:} constructive proof (note that we can consider multiple cases and construct more than one $b$)
+
+\begin{proof}
+Given an irrational number $a$, let us consider $\dfrac{\sqrt{2}}{a}$.
+
+\textbf{Case 1:} $\dfrac{\sqrt{2}}{a}$ is irrational.
+
+Take $b=\dfrac{\sqrt{2}}{a}$. Then $ab=\sqrt{2}$ which is irrational.
+
+\textbf{Case 2:} $\dfrac{\sqrt{2}}{a}$ is rational.
+
+Then the reciprocal $\dfrac{a}{\sqrt{2}}$. Since $\sqrt{6}$ is irrational, the product $\brac{\dfrac{a}{\sqrt{2}}}\sqrt{6}=a\sqrt{3}$ is irrational. Take $b=\sqrt{3}$, which is irrational. Then $ab=a\sqrt{3}$ which is irrational.
+\end{proof}
+
+\begin{prbm}
+Prove that there are infinitely many prime numbers that are congruent to $3$ modulo $4$.
+\end{prbm}
+
+\begin{proof}
+Prove by contradiction.
+
+Suppose there are only finitely many primes that are congruent to $3$ modulo $4$. Let $p_1,p_2,\dots,p_m$ be the list of all the primes that are congruent to $3$ modulo $4$.
+
+We construct an integer $M$ by $M=(p_1p_2\cdots p_m)^2+2$.
+
+We have the following observation:
+\begin{enumerate}[label=(\roman*)]
+\item  $M\equiv 3 \mod 4$.
+\item Every $p_i$ divides $M-2$.
+\item None of the $p_i$ divides $M$. [Otherwise, together with (ii), this will imply $p_i$ divides $2$, which is impossible.]
+\item $M$ is not a prime number. [Otherwise, by (i), $M$ is a prime number congruent to $3$ modulo $4$. But $M\neq p_i$ for all $1\le i\le m$. This contradicts the assumption that $p_1,p_2,\dots,p_m$ are all the prime numbers congruent to $3$ modulo $4$.]
+\end{enumerate}
+
+From the above discussion, we know that $M$ is a composite number by (iv). So it has a prime factorization $M=q_1q_2\cdots q_k$.
+
+Since $M$ is odd, all these prime factors $q_j$ must be odd, and hence $q_j$ must be congruent to either $1$ or $3$ modulo $4$.
+
+By (iii), $q_j$ cannot be any of the $p_i$. So all $q_j$ must be congruent to $1$ modulo $4$. Then $M$, which is the product of $q_j$, must also be congruent to $1$ modulo $4$.
+
+This contradicts (i) that $M$ is congruent to $3$ modulo $4$.
+
+Hence we conclude that there must be infinitely many primes that are congruent to $3$ modulo $4$.
+\end{proof}
+
+\begin{prbm}
+Prove that, for any positive integer $n$, there is a perfect square $m^2$ ($m$ is an integer) such that $n\le m^2\le 2n$.
+\end{prbm}
+
+\begin{proof}
+Prove by contradiction.
+
+Suppose otherwise, that $n>m^2$ and $(m+1)^2>2n$ so that there is no square between $n$ and $2n$, then
+\[ (m+1)^2>2n>2m^2. \]
+Since we are dealing with integers and the inequalities are strict, we get
+\[ (m+1)^2\ge2m^2+2 \]
+which simplifies to
+\[ 0\ge m^2-2m+1=(m-1)^2 \]
+The only value for which this is possible is $m=1$, but you can eliminate that easily enough.
+\end{proof}
+
+
+
+
+
+\begin{prbm}
+Prove that for every positive integer $n\ge4$,
+\[ n!>2^n. \]
+\end{prbm}
+
+\begin{proof}
+Let $P(n):n!>2^n$
+
+\textbf{Base case:} $P(4)$
+
+LHS: $4!=4\times3\times2\times1=24$, RHS: $2^4=16<24$
+
+So $P(4)$ is true.
+
+\textbf{Inductive step:} $P(k) \implies P(k+1)$ for all $k\in\ZZ^+_{\ge4}$
+\begin{align*}
+k! &> 2^k \\
+(k+1)k! &> 2^k(k+1) \\
+&> 2^k2 \quad \text{since from $k\ge4$, $k+1\ge5>2$} \\
+&= 2^{k+1}
+\end{align*}
+hence proven $P(k) \implies P(k+1)$ for integers $k\ge4$.
+
+By PMI, we have proven $P(n)$ for all integers $n\ge4$.
+\end{proof}
+
+\begin{prbm}[\acrshort{h2fmath} TJC 2023]
+Prove by mathematical induction, for $n\ge2$,
+\[ \sqrt[n]{n}<2-\frac{1}{n}. \]
+\end{prbm}
+
+\begin{proof}
+Let $P(n):\sqrt[n]{n}<2 - \dfrac{1}{n}$ for $n \ge 2$.
+
+\textbf{Base case:} $P(2)$
+
+When $n=2$, $\sqrt{2}=1.41\dots<2-\dfrac{1}{2}=1.5$ which is true. Hence $P(2)$ is true.
+
+\textbf{Inductive step:} $P(k)\implies P(k+1)$ for all $k\in\ZZ^+_{\ge2}$
+
+Assume $P(k)$ is true for $k \ge 2, k \in \ZZ^+$, i.e.
+\[ \sqrt[k]{k}<2 - \dfrac{1}{k} \implies k<\brac{2-\frac{1}{k}}^k \]
+
+We want to prove that $P(k+1)$ is true, i.e.
+\[ k+1<\brac{2-\frac{1}{k+1}}^{k+1} \]
+
+Since $k>2$, we have 
+\begin{align*}
+\brac{2-\frac{1}{k+1}}^{k+1}
+&> \brac{2-\frac{1}{k}}^{k+1} \quad \because k>2 \\
+&= \brac{2-\frac{1}{k}}^k\brac{2-\frac{1}{k}} \\
+&> k\brac{2-\frac{1}{k}} \quad \text{[by inductive hypothesis]} \\
+&= 2k-1=k+k-1 > k-1 \because k>2
+\end{align*}
+Hence $P(k+1)$ is true.
+
+Since $P(2)$ is true and $P(k)\implies P(k+1)$, by mathematical induction $P(n)$ is true.
+\end{proof}
+
+\begin{prbm}
+Prove that for all integers $n \ge 3$, 
+\[ \brac{1+\frac{1}{n}}^n<n \]
+\end{prbm}
+
+\begin{proof}
+\textbf{Base case:} $P(3)$
+
+On the LHS, $\brac{1+\dfrac{1}{3}}^3=\dfrac{64}{27}=2\dfrac{10}{27}<3$. Hence $P(3)$ is true.
+
+\textbf{Inductive step:} $P(k)\implies P(k+1)$ for all $k\in\ZZ^+_{\ge3}$
+
+Our inductive hypothesis is
+\[ \brac{1+\frac{1}{k}}^k<k \]
+Multiplying both sides by $\brac{1+\dfrac{1}{k}}$ (to get a $k+1$ in the power),
+\[ \brac{1+\frac{1}{k}}^k\brac{1+\frac{1}{k}}=\brac{1+\frac{1}{k}}^{k+1}<k\brac{1+\frac{1}{k}}=k+1  \]
+Since $k<k+1 \iff \dfrac{1}{k}>\dfrac{1}{k+1}$, 
+\[ \brac{1+\frac{1}{k}}^{k+1} > \brac{1+\frac{1}{k+1}}^{k+1} \]
+The rest of the proof follows easily.
+\end{proof}
+
+A sequence of integers $F_i$, where integer $1\le i\le n$, is called the \emph{Fibonacci sequence} if and only if it is defined recursively by $F_1=1$, $F_2=1$, $F_n=F_{n-1}+F_{n-2}$ for $n>2$.
+
+\begin{prbm}
+Let $F_i$ be the Fibonacci sequence. Prove that $3\nmid n$ if and only if $F_n$ is odd.
+\end{prbm}
+
+\begin{proof}
+\textbf{Forward direction:} $3\nmid n \implies F_n \text{ is odd}$
+
+\textbf{Backward direction:} $F_n \text{ is odd} \implies 3\nmid n$ (We prove the contrapositive: $3\mid n \implies F_n \text{ is even}$)
+
+Hence we only need to prove the following via PMI:
+\begin{itemize}
+\item $(\forall n\in\ZZ^+\text{ and }3\nmid n), F_n\text{ is odd}$
+
+\textbf{Base case:} $P(1),P(2)$
+
+\textbf{Inductive step:} $P(k)\implies P(k+3)$ for all $k\ge1$
+
+\item $(\forall n\in\ZZ^+\text{ and }3\mid n), F_n\text{ is even}$
+
+\textbf{Base case:} $P(3)$
+
+\textbf{Inductive step:} $P(k)\implies P(k+3)$ for all $k\ge3$
+\end{itemize}
+[Note that we have partitioned the domain into two.]
+
+Hence to show $\forall n\in\ZZ^+\:P(n)$,
+
+\textbf{Base case:} $P(1),P(2),P(3)$
+
+\textbf{Inductive step:} $\forall k\in\ZZ^+\:P(k)\implies P(k+3)$
+\end{proof}
+\pagebreak
+
+\begin{prbm}
+Let $a_i$ where integer $1\le i\le n$ be a sequence of integers defined recursively by initial conditions $a_1=1$, $a_2=1$, $a_3=3$ and the recurrence relation $a_n=a_{n-1}+a_{n-2}+a_{n-3}$ for $n>3$.
+
+For all $n\in\ZZ^+$, prove that
+\[ a_n\le2^{n-1}. \]
+\end{prbm}
+
+\begin{proof}
+Let $P(n):a_n\le2^{n-1}$.
+
+Given the recurrence relation, it could be possible to use $P(k),P(k+1),P(k+2)$ to prove $P(k+3)$ for all $k\in\ZZ^+$.
+
+\textbf{Base case:} $P(1),P(2),P(3)$
+
+$P(1):a_1=1\le2^{1-1}=1$ is true.
+
+$P(2):a_2=1\le2^{2-1}=2$ is true.
+
+$P(3):a_3=3\le2^{3-1}=4$ is true.
+
+\textbf{Inductive step:} $P(k)\land P(k+1)\land P(k+2)\implies P(k+3)$ for all $k\in\ZZ^+$
+
+By inductive hypothesis, for $k\in\ZZ^+$ we have $a_k\le2^k, a_{k+1}\le2^{k+1}, a_{k+2}\le2^{k+2}$.
+\begin{align*}
+a_{k+3} &= a_k+a_{k+1}+a_{k+2} \quad \text{[start from recurrence relation]} \\
+&\le 2^k+2^{k+1}+2^{k+2} \quad \text{[use inductive hypothesis]} \\
+&= 2^k(1+2+2^2) \\
+&< 2^k(2^3) \quad \text{[approximation, since $1+2+2^2<2^3$]} \\
+&= 2^{k+3}
+\end{align*}
+which is precisely $P(k+3):a_{k+3}\le2^{k+3}$.
+\end{proof}
+\pagebreak
+
+\begin{prbm}[B\'{e}zout's lemma]
+Let $a$ and $b$ be integers, not both $0$. Prove that $\gcd(a,b)=ax_0+by_0$ for some integers $x_0$ and $y_0$.
+\end{prbm}
+
+\begin{solution}
+Given $a$ and $b$, consider the set
+\[ S=\{z\in\ZZ \mid z>0; \exists x,y\in\ZZ, z=ax+by\}. \]
+$S$ satisfies the conditions of well-ordering principle, and hence has a smallest element $c=ax_0+by_0$. We want to show that (i) $c$ is a common divisor of $a$ and $b$; (ii) $c=\gcd(a,b)$.
+
+\begin{enumerate}[label=(\roman*)]
+\item $c$ is a common divisor of $a$ and $b$
+
+Suppose $c\nmid a$. By quotient-remainder theorem, $a=cq+r$ where $0<r<c$.
+
+Then
+\[ a=(ax_0+by_0)q+r \implies r=a-(ax_0+by_0)q \implies r=a(1-x_0q)-b(y_0q) \]
+
+So $r$ is an element in $S$, and $r<c$. This contradicts the minimality of $c$ in $S$. Hence $c\mid a$. Then $a=(ax_0+by_0)q+r$.
+
+Similarly, $c\mid b$.
+
+\item $c=\gcd(a,b)$
+
+Suppose otherwise, that $c$ is not the greatest common divisor of $a$ and $b$.
+
+Let there exists some $d>c$ which satisfies $d\mid a$ and $d\mid b$.
+
+Then $d\mid (ax+by)$ for any $x$ and $y$. So $d$ divides all elements in $S$. In particular, $d\mid c$, which means $d \le c$, a contradiction.
+
+Hence $c=\gcd(a,b)$.
+\end{enumerate}
+This concludes the proof that $\gcd(a,b)=ax_0+by_0$ for some integers $x_0$ and $y_0$.
+\end{solution}
+\pagebreak
+
+\begin{prbm}[Wilson's Theorem]
+Let $p$ be a prime number. Prove that $(p-1)!+1$ is divisible by $p$.
+\end{prbm}
+
+\begin{proof}
+We first prove the uniqueness of inverse modulo $p$: for each $x\in Q=\{1,2,\dots,p-1\}$ for some prime $p$, there is precisely one integer $y$ such that $xy\equiv 1\pmod p$.
+\begin{proof}
+Suppose otherwise, that there are two distinct inverses for $x$ modulo $p$; that is, $xy_1\equiv 1\pmod p$ and $xy_2\equiv 1\pmod p$. Then $x(y_1-y_2)\equiv 0\pmod p$. Since $x\nmid p$, by Euclid's lemma, $y_1\equiv y_2\pmod p$ so $y_1=y_2+kp$ for some integer $k$. But we know that $0\le y_1,y_2<p$, so $kp=y_1-y_2$, $0\le kp<p$ thus $k=0$. Hence $y_1=y_2$.
+\end{proof}
+
+If $y\neq x$, we can pair up elements of $Q$ such that their product is congruent to $1$ modulo $p$.
+
+If $y=x$, then $x^2\equiv 1\pmod p$. Thus
+\[ p\mid x^2=1 \implies p\mid(x+1)(x-1) \implies p\mid x+1\text{ or }p\mid x-1 \implies x\equiv\pm1\pmod p \]
+which is $1^2\equiv1\pmod p$ and $(p-1)^2\equiv1\pmod p$. So aside $1$ and $p-1$, all other elements can be paired up. Hence,
+\begin{align*}
+(p-1)!+1&\equiv1(p-1)+1\pmod p\\
+&\equiv p-1+1\pmod p\\
+&\equiv p\pmod p
+\end{align*}
+Hence $(p-1)!+1$ is divisible by $p$.
+\end{proof}
+\pagebreak
+
+\begin{prbm}
+For $m,n\in\NN$, prove that
+\[ F_{n+m+1}=F_nF_m+F_{n+1}F_{m+1}. \]
+\end{prbm}
+
+\begin{proof}
+For $n\in\NN$, take $P(n):F_{n+m+1}=F_nF_m+F_{n+1}F_{m+1}$ for all $m\in\NN$ in the cases $k=n$ and $k=n+1$.
+
+So we are using induction to progress through $n$ and dealing with $m$ simultaneously at each stage. 
+
+To verify $P(0)$, we note that
+\[ F_{m+1}=F_0F_m+F_1F_{m+1} \]
+and
+\[ F_{m+2}=F_1F_m+F_2F_{m+1} \]
+for all $m$, as $F_0=0$ and $F_1=F_2=1$.
+
+For the inductive step we assume $P(n)$, i.e. that for all $m\in\NN$,
+Fn+m+1 = FnFm + Fn+1Fm+1,
+Fn+m+2 = Fn+1Fm + Fn+2Fm+1.
+To prove $P(n+1)$ it remains to show that for all $m\in\NN$,
+\[ F_{n+m+3}=F_{n+2}F_m+F_{n+3}F_{m+1}. \]
+From our $P(n)$ assumptions and the definition of the Fibonacci numbers,
+LHS of (5) = Fn+m+3
+= Fn+m+2 + Fn+m+1
+= FnFm + Fn+1Fm+1 + Fn+1Fm + Fn+2Fm+1
+= (Fn + Fn+1) Fm + (Fn+1 + Fn+2) Fm+1
+= Fn+2Fm + Fn+3Fm+1
+= RHS of (5).
+\end{proof}
+
+\chapter{Set Theory}
+\section{Basics}
+\subsection{Notation}
+You should, by now, be familiar with the following definitions and notation:
+\begin{itemize}
+\item A \vocab{set} $S$ can be loosely defined as a collection of objects.
+
+\item For a set $S$, we write $x \in S$ to mean that $x$ is an \vocab{element} of $S$, and $x \notin S$ if otherwise.
+
+\item A set can be defined in terms of some property $P(x)$ that the elements $x \in S$ satisfy, denoted by the following \vocab{set builder notation}:
+\[ \{x \in S \mid P(x)\} \]
+
+\item Some basic sets (of numbers) you should be familiar with:
+\begin{itemize}
+\item $\NN=\{0,1,2,3,\dots\}$ denotes the natural numbers (non-negative integers).
+\item $\ZZ=\{\dots,-2,-1,0,1,2,\dots\}$ denotes the integers.
+\item $\QQ=\{\frac{p}{q} \mid p,q\in\ZZ, q\neq0\}$ denotes the rational numbers.
+\item $\RR$ denotes the real numbers, which can be expressed in terms of decimal expansion.
+\item $\CC=\{x+yi \mid x,y\in\RR\}$ denotes the of complex numbers.
+\end{itemize}
+
+\item The \vocab{empty set} is the set with no elements, denoted by $\emptyset$.
+
+\item $A$ is a \vocab{subset} of $B$ if every element of $A$ is in $B$, denoted by $A \subseteq B$.
+\[ A \subseteq B \iff \forall x, x\in A \implies x\in B \]
+
+$\subseteq$ is transitive, i.e. if $A \subseteq B$ and $B \subseteq C$, then $A \subseteq C$.
+\begin{proof}
+Let $x\in A$. 
+Since $A \subseteq B$ and $x\in A$, $x\in B$. 
+Since $B \subseteq C$ and $x\in B$, $x\in C$. 
+Hence $A \subseteq C$.
+\end{proof}
+
+$A$ is a \vocab{proper subset} of $B$ if $A \subseteq B$ and $A \neq B$, denoted by $A \subset B$.
+
+Using this definition, we have the relationship 
+\[ \NN \subset \ZZ \subset \QQ \subset \RR \]
+
+\item $A$ and $B$ are \vocab{equal} if and only if they contain the same elements, denoted by $A=B$.
+
+To prove that $A$ and $B$ are equal, we simply need to prove that $A \subseteq B$ and $A \subseteq B$.
+
+\begin{proof}
+We have 
+\begin{align*}
+A = B &\iff (\forall x)[x \in A \iff x \in B] \\
+&\iff (\forall x)[(x \in A \implies x \in B) \land (x \in B \implies x \in A)] \\
+&\iff \{(\forall x)[x \in A \implies x \in B]\} \land {(\forall x)[x \in B \implies x \in A)]} \\
+&\iff (A \subseteq B) \land (B \subseteq A)
+\end{align*}
+\end{proof}
+
+\item Some frequently occurring subsets of the real numbers are known as \vocab{intervals}, which can be visualised as sections of the real line:
+\begin{itemize}
+\item Open interval
+\[ (a,b) = \{x\in\RR \mid a<x<b\} \]
+\item Closed interval
+\[ [a,b] = \{x\in\RR \mid a\le x<b\} \]
+\item Half open interval
+\[ (a,b] = \{x\in\RR \mid a<x\le b\} \]
+\end{itemize}
+
+\item The \vocab{power set} $\mathcal{P}(A)$ of $A$ is the set of all subsets of $A$ (including the set itself and the empty set).
+
+\item An \vocab{ordered pair} is denoted by $(a,b)$, where the order of the elements matters. Two pairs $(a_1,b_1)$ and $(a_2,b_2)$ are equal if and only if $a_1=a_2$ and $b_1=b_2$. 
+
+Similarly, we have ordered triples $(a,b,c)$, quadruples $(a,b,c,d)$ and so on. If there are $n$ elements it is called an $n$-tuple.
+
+\item The \vocab{Cartesian product} of sets $A$ and $B$, denoted by $A \times B$, is the set of all ordered pairs with the first element of the pair coming from $A$ and the
+second from $B$:
+\begin{equation}
+A \times B = \{(a,b) \mid a \in A, b \in B\}
+\end{equation}
+More generally, we define $A_1 \times A_2 \times \cdots \times A_n$ to be the set of all ordered $n$-tuples $(a_1, a_2, \dots, a_n)$, where $a_i \in A_i$ for $1 \le i \le n$. If all the $A_i$ are the same, we write the product as $A^n$.
+
+\begin{example}
+$\RR^2$ is the Euclidean plane, $\RR^3$ is the Euclidean space, and $\RR^n$ is the $n$-dimensional Euclidean space.
+\begin{align*}
+\RR \times \RR = \RR^2 &= \{(x,y) \mid x,y \in \RR\} \\
+\RR \times \RR \times \RR = \RR^3 &= \{(x,y,z) \mid x,y,z \in \RR\} \\
+\RR^n &= \{(x_1,x_2,\dots,x_n) \mid x_1,x_2,\dots,x_n \in \RR\}
+\end{align*}
+\end{example}
+\end{itemize}
+
+\subsection{Algebra of Sets}
+Given $A \subset S$ and $B \subset S$.
+\begin{itemize}
+\item The \vocab{union} $A \cup B$ is the set consisting of elements that are in $A$ or $B$ (or both):
+\[ A\cup B=\{x \in S \mid x\in A \lor x\in B\} \]
+
+\item The \vocab{intersection} $A \cap B$ is the set consisting of elements that are in both $A$ and $B$:
+\[ A\cap B=\{x \in S \mid x\in A \land x\in B\} \]
+
+$A$ and $B$ are \vocab{disjoint} if both sets have no element in common:
+\[ A\cap B = \emptyset \]
+
+More generally, we can take unions and intersections of arbitrary numbers of sets, even infinitely many. If we have a family of subsets $\{A_i \mid i \in I\}$, where $I$ is an \vocab{indexing set}, we write
+\[ \bigcup_{i\in I} A_i = \{x \mid \exists i\in I\,(x\in A_i)\} \]
+and
+\[ \bigcap_{i\in I} A_i = \{x \mid \forall i\in I\,(x\in A_i)\} \] 
+
+\item The \vocab{complement} of $A$, denoted by $A^c$ or $A^\prime$, is the set containing elements that are not in A:
+\[ A^c = \{x \in S \mid x \notin A\} \]
+
+\item The \vocab{set difference}, or complement of $B$ in $A$, denoted by $A\setminus B$, is the subset consisting of those elements that are in $A$ and not in $B$:
+\[ A\setminus B = \{x \in A \mid x \notin B\} \]
+Note that $A\setminus B = A \cap B^c$.
+\end{itemize}
+
+\begin{proposition}[Double Inclusion]
+Let $A\subset S$ and $B\subset S$. Then 
+\begin{equation}
+A = B \iff A \subseteq B \text{ and } B \subseteq A
+\end{equation}
+\end{proposition}
+\begin{proof} We prove both directions.
+
+\textbf{Forward direction:}
+
+If $A = B$, then every element in $A$ is an element in $B$, so certainly $A \subseteq B$, and
+similarly $B \subseteq A$. 
+
+\textbf{Backward direction:}
+
+Suppose $A \subseteq B$, and $B \subseteq A$. Then for every element $x \in S$, if $x \in A$ then $A \subseteq B$ implies that $x \in B$, and if $x \notin A$ then $B \subseteq A$ means $x \notin B$. So $x \in A$ if and only if $x \in B$, and therefore $A = B$.
+\end{proof}
+
+\begin{proposition}[Distributive Laws]
+Let $A\subset S$, $B\subset S$ and $C\subset S$. Then
+\begin{equation}
+(A\cup B)\cap C = (A\cap C)\cup(B\cap C)
+\end{equation}
+\begin{equation}
+(A\cap B)\cap C = (A\cup C)\cap(B\cup C)
+\end{equation}
+\end{proposition}
+\begin{proof}
+For the first one, suppose $x$ is in the LHS, that is $x \in A\cup(B \cap C)$. This means that $x \in A$ or $x \in B \cap C$ (or both). Thus either $x \in A$ or $x$ is in both $B$ and $C$ (or $x$ is in all three sets). If $x \in A$ then $x \in A\cup B$ and $x \in A\cup C$, and therefore $x$ is in the RHS. If $x$ is in both $B$ and $C$ then similarly $x$ is in both $A\cup B$ and $A\cup C$. Thus every element of the LHS is in the RHS, which means we have shown $A \cup (B \cap C) \subseteq (A \cup B) \cap (A \cup C)$.
+
+Conversely suppose that $x \in (A \cup B) \cap (A \cup C)$. Then $x$ is in both $A \cup B$ and $A\cup C$. Thus either $x \in A$ or, if $x \notin A$, then $x \in B$ and $x \in C$. Thus $x \in A\cup(B \cap C)$. Hence $(A \cup B) \cap (A \cup C) \subseteq A \cup (B \cap C)$.
+
+By double inclusion, $(A \cup B) \cap (A \cup C) = A \cup (B \cap C)$.
+
+The proof of the second one follows similarly and is left as an exercise.
+\end{proof}
+
+\begin{proposition}[De Morgan's Laws]
+Let $A \subset S$ and $B \subset S$. Then
+\begin{equation}
+(A \cup B)^c = A^c \cap B^c
+\end{equation}
+\begin{equation}
+(A \cap B)^c = A^c \cup B^c
+\end{equation}
+\end{proposition}
+\begin{proof}
+For the first one, suppose $x \in (A \cup B)^c$. Then $x$ is not in either $A$ or $B$. Thus $x \in A^c$ and $x \in B^c$, and therefore $x \in A^c \cap B^c$. 
+
+Conversely, suppose $x \in A^c \cap B^c$. Then $x \notin A$ and $x \notin B$, so $x$ is in neither $A$ nor $B$, and therefore $x \in (A \cup B)^c$.
+
+By double inclusion, the first result holds. The second result follows similarly and is left as an exercise.
+\end{proof}
+
+De Morgan’s laws extend naturally to any number of sets, so if $\{A_i \mid i \in I\}$ is a family of subsets of $S$, then
+\[ \brac{\bigcap_{i\in I}A_i}^c = \bigcup_{i\in I}A_i^c \quad \text{and} \quad \brac{\bigcup_{i\in I}A_i}^c = \bigcap_{i\in I}A_i^c \]
+
+\begin{exercise}{}{}
+Prove the following:
+\begin{enumerate}
+\item $\brac{\bigcup_{i\in I}A_i}\cup B=\bigcup_{i\in I}(A_i\cup B)$
+\item $\brac{\bigcap_{i\in I}A_i}\cup B=\bigcap_{i\in I}(A_i\cup B)$
+\item $\brac{\bigcup_{i\in I}A_i}\cup\brac{\bigcup_{j\in J}B_j}=\bigcup_{(i,j)\in I\times J}(A_i\cup B_j)$
+\item $\brac{\bigcap_{i\in I}A_i}\cup\brac{\bigcap_{j\in J}B_j}=\bigcap_{(i,j)\in I\times J}(A_i\cup B_j)$
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}{}{}
+Let $S\subset A\times B$. Express the set $A_S$ of all elements of $A$ which appear as the first entry in at least one of the elements in $S$.
+
+($A_S$ here may be called the projection of $S$ onto $A$.)
+\end{exercise}
+\pagebreak
+
+\subsection{Cardinality}
+Informally, the \vocab{cardinality} of $S$, denoted $|S|$, is a measure of its ``size''. We will be able to give a nicer definition of cardinality later, once we have discussed bijections, but the following provides a recursive definition of the cardinality for a finite set:
+
+\begin{definition}[Finiteness and the cardinality of a finite set]
+The empty set $\emptyset$ is finite, with $|\emptyset|=0$.
+
+$S$ is \vocab{finite} with $|S|=n+1$, if there exists $s \in S$ such that $|S\setminus \{s\}| = n$ for some $n \in \ZZ^+$. We call $|S|$ the \vocab{cardinality} of $S$. 
+
+Any set that is not finite is said to be \vocab{infinite}.
+\end{definition}
+
+It is not hard to see that this means that if $S = \{x_1,x_2,\dots,x_n\}$, and $x_i \neq x_j$ whenever $i \neq j$, then $|S| = n$. Conversely, if $|S| = n$ then $S$ is a set with $n$ elements.
+
+\begin{proposition}
+Let $A$ and $B$ be finite sets. Then $|A \cup B| = |A| + |B| - |A \cap B|$.
+\end{proposition}
+
+\begin{proof}
+The proof is left as an exercise.
+\end{proof}
+
+\begin{proposition}[Subsets of a finite set]
+If a set $A$ is finite with $|A| = n$, then its power set has $|\mathcal{P}(A)| = 2^n$.
+\end{proposition}
+
+\begin{proof}
+We use induction. For the initial step, note that if $|A| = 0$ then $A = \emptyset$ has no elements, so there is a single subset $\emptyset$, and therefore $|\mathcal{P}(A)| = 1 = 2^0$.
+
+Now suppose that $n \ge 0$ and that $|P(S)| = 2^n$ for any set S with $|S| = n$. Let $A$ be any set with $|A| = n+1$. By definition, this means that there is an element $a$ and a set $A_0 = A\setminus\{a\}$ with $|A_0| = n$. Any subset of A must either contain the element a or not, so we can partition $\mathcal{P}(A) = P(A_0) \cup \{S \cup \{a\} \mid S \in P(A_0)\}$. These two sets are disjoint, and each of them has cardinality $|P(A_0)| = 2^n$ by the inductive hypothesis. Hence $|\mathcal{P}(A)| = 2^n + 2^n = 2^{n+1}$.
+
+Thus, by induction, the result holds for all $n$.
+\end{proof}
+
+Another way to see this is through combinatorics: Consider the process of creating a subset. We can do this systematically by going through each of the $|A|$ elements in $A$ and making the yes/no decision whether to put it in the subset. Since there are $|A|$ such choices, that yields $2^{|A|}$ different combinations of elements and therefore $2^{|A|}$ different subsets.
+
+% to include more stuff before introducing PIE
+
+\begin{theorem}[Principle of Inclusion and Exclusion]
+Let $S_i$ be finite sets. Then
+\begin{equation}
+\absolute{\bigcup_{i=1}^nS_i}=\sum_{i=1}|S_i|-\sum_{1\le i<j\le n}|S_i\cap S_j|+\sum_{1\le i<j<k\le n}|S_i\cap S_j\cap S_k|+\cdots+(-1)^{n+1}\absolute{\bigcap_{i=1}^nS_i}.
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+By induction.
+\end{proof}
+
+The following more elegant proof was presented to the author by Dr. Ho Weng Kin during a H3 Mathematics lecture in 2024.
+
+\begin{proof}
+Let $U$ be a finite set (interpreted as the universal set), and $S\subseteq U$. Define the characteristic/indicator function of $S$ by
+\[ \chi_S(x)=\begin{cases}
+1&\text{if }x\in S,\\
+0&\text{if }x\notin S.
+\end{cases} \]
+In other words,
+\[ x\in S\iff\chi_S(x)=1 \]
+and equivalently,
+\[ x\notin S\iff\chi_S(x)=0. \]
+Let $S_1,S_2\subseteq U$ be given. Then for any $x\in U$ it holds that
+\[ \chi_{S_1\cap S_2}(x)=\chi_{S_1}(x)\cdot\chi_{S_2}(x) \]
+where $\cdot$ denotes ordinary multiplication.
+
+Similarly,
+\[ \chi_{S_1\cup S_2}(x)=1-\brac{1-\chi_{S_1}(x)}\cdot\brac{1-\chi_{S_2}(x)}. \]
+In general, for any $x\in U$ it holds that
+\[ \chi_{S_1\cup\cdots\cup S_n}(x)=1-\brac{1-\chi_{S_1}(x)}\cdots\brac{1-\chi_{S_n}(x)} \]
+for any $S_1,\dots,S_n\subset U$.
+
+Since $x\in S$ if and only if $\chi_S(x)=1$, it follows that
+\[ |S|=\sum_{x\in U}\chi_S(x). \]
+To prove the PIE, we calculate
+\begin{align*}
+&|S_1\cup\cdots\cup S_n|\\
+&=\sum_{x\in U}\chi_{S_1\cup\cdots\cup S_n}(x)\\
+&=\sum_{x\in U}1-\brac{1-\chi_{S_1}(x)}\cdots\brac{1-\chi_{S_n}(x)}\\
+&=\brac{\chi_{S_1}(x)+\cdots+\chi_{S_n}(x)}-\brac{\chi_{S_1}(x)\chi_{S_2}(x)+\cdots+\chi_{S_{n-1}}(x)\chi_{S_n}(x)}+\cdots+(-1)^{n+1}\chi_{S_1}(x)\cdots\chi_{S_n}(x)\\
+&=\brac{\chi_{S_1}(x)+\cdots+\chi_{S_n}(x)}-\brac{\chi_{S_1\cap S_2}(x)+\cdots+\chi_{S_{n-1}\cap S_n}(x)}+\cdots+(-1)^{n+1}\chi_{S_1\cap\cdots\cap S_n}(x)\\
+&=\sum_{i=1}^n|S_i|-\sum_{J\subseteq\{1,\dots,n\},|J|=2}\absolute{\bigcap_{j\in J}S_j}+\cdots+(-1)^{k+1}\sum_{J\subseteq\{1,\dots,n\},|J|=k}\absolute{\bigcap_{j\in J}S_j}+\cdots+(-1)^{n+1}\absolute{\bigcap_{i=1}^nS_i}.
+\end{align*}
+\end{proof}
+\pagebreak
+
+\section{Relations}
+\subsection{Definition}
+\begin{definition}
+$R$ is a \vocab{relation} between $A$ and $B$ if and only if $R$ is a subset of the Cartesian product $A \times B$, i.e. $R \subseteq A \times B$.
+
+$a \in A$ and $b \in B$ are \vocab{related} if $(a,b) \in R$, denoted by $a R b$.
+\end{definition}
+
+\begin{remark}
+A relation is a set of ordered pairs.
+\end{remark}
+
+Visually speaking, a relation is uniquely determined by a simple bipartite graph over $A$ and $B$. On the bipartite graph, this is usually represented by an edge between $a$ and $b$.
+
+\begin{definition}
+A \vocab{binary relation} in $A$ is a relation between $A$ and itself, i.e. $R \subseteq A \times A$.
+\end{definition}
+
+$A$ and $B$ are the \vocab{domain} and \vocab{range} of $R$ respectively, denoted by $\dom R$ and $\ran R$ respectively, if and only if $A \times B$ is the smallest Cartesian product of which $R$ is a subset.
+
+\begin{example}
+Given $R=\{(1,a),(1,b),(2,b),(3,b)\}$, then $\dom R=\{1,2,3\}$ and $\ran R=\{a,b\}$.
+\end{example}
+
+In many cases we do not actually use $R$ to write the relation because there is some other conventional notation:
+
+\begin{example} \
+\begin{itemize}
+\item The ``less than or equal to'' relation $\le$ on the set of real numbers is $\{(x,y) \in \RR^2 \mid x \le y\}$. We write $x \le y$ if $(x,y)$ is in this set.
+\item The ``divides'' relation $\mid$ on $\NN$ is $\{(m,n) \in \NN^2: m \text{ divides } n\}$. We write $m \mid n$ if $(m,n)$ is in this set.
+\item For a set S, the ``subset'' relation $\subseteq$ on $\mathcal{P}(S)$ is $\{(A,B) \in \mathcal{P}(S)^2 \mid A \subseteq B\}$. We write $A \subseteq B$ if $(A,B)$ is in this set.
+\end{itemize}
+\end{example}
+\pagebreak
+
+\subsection{Properties of relations}
+Let $A$ be a set, $R$ a relation on $A$, and $x,y,z \in A$. We say that
+\begin{itemize}
+\item $R$ is \vocab{reflexive} if $xRx$ for all $x\in A$;
+\item $R$ is \vocab{symmetric} if $xRy \implies yRx$;
+\item $R$ is \vocab{anti-symmetric} if $xRy \text{ and } yRx \implies x=y$;
+\item $R$ is \vocab{transitive} if $xRy \text{ and } yRz \implies xRz$.
+\end{itemize}
+
+\begin{example}[Less than or equal to]
+The relation $\le$ on $R$ is reflexive, anti-symmetric, and transitive, but not symmetric. 
+\end{example}
+
+\begin{definition}
+Any relation on $A$ that is reflexive, anti-symmetric, and transitive is called a \vocab{partial order}, denoted by $\le$. It is called a \vocab{total order} if for every $x, y \in A$, either $xRy$ or $yRx$ (or both).
+\end{definition}
+
+\begin{example}[Less than]
+The relation $<$ on $R$ is not reflexive, symmetric, or anti-symmetric, but it is transitive.
+\end{example}
+
+\begin{example}[Not equal to]
+The relation $\neq$ on $R$ is not reflexive, anti-symmetric or transitive, but it is symmetric.
+\end{example}
+
+\begin{exercise}{Congruence modulo $n$}{}
+Let $n \ge 2$ be an integer, and define $R$ on $\ZZ$ by saying $aRb$ if and only if $a-b$ is a multiple of $n$. Prove that $R$ is reflexive, symmetric and transitive.
+\end{exercise}
+\begin{proof} \
+\begin{itemize}
+\item Reflexivity: For any $a \in \ZZ$ we have $aRa$ as 0 is a multiple of $n$.
+\item Symmetry: If $aRb$ then $a-b=kn$ for some integer $k$. So $b-a=-kn$, and hence $bRa$.
+\item Transitivity: If $aRb$ and $bRc$ then $a-b=kn$ and $b-c=ln$ for integers $k,l$. So then $a-c=(a-b)+(b-c)=(k+l)n$, and hence $aRc$.
+\end{itemize}
+\end{proof}
+\pagebreak
+
+\subsection{Equivalence relations, equivalence classes, and partitions}
+One important type of relation is an equivalence relation. An equivalence relation is a way of saying two objects are, in some particular sense, ``the same''.
+
+\begin{definition}
+A binary relation $R$ on $A$ is an \vocab{equivalence relation} if it is reflexive, symmetric and transitive.
+\end{definition}
+
+\begin{notation}
+We use the symbol $\sim$ to denote the equivalence relation $R$ in $A \times A$: whenever $(a,b)\in R$ we denote $a \sim b$.
+\end{notation}
+
+An equivalence relation provides a way of grouping together elements that can be viewed as being the same:
+
+\begin{definition}
+Given an equivalence relation $\sim$ on a set $A$, and given $x \in A$, the \vocab{equivalence class} of $x$, denoted $[x]$, is the subset
+\[ [x] = \{y \in A \mid y \sim x\} \]
+\end{definition}
+
+\begin{example}[Congruence modulo $n$]
+For the equivalence relation of congruence modulo $n$, the equivalence class of 1 is the set $1 = \{\dots, -n+1, 1, n+1, 2n+1, \dots\}$; that is, all the integers that are congruent to 1 modulo $n$.
+\end{example}
+
+Properties of equivalence classes:
+\begin{itemize}
+\item Every two equivalence classes are disjoint
+\item The union of equivalence classes form the entire set
+\end{itemize}
+
+You can translate these properties into the point of view from the elements: Every element belongs to one and only one equivalence class.
+\begin{itemize}
+\item No element belongs to two distinct classes
+\item All elements belong to an equivalence class
+\end{itemize}
+
+\begin{definition}
+The \vocab{set of equivalence classes} (quotient sets) are the set of all equivalence classes, denoted by $A/\sim$.
+\end{definition}
+
+Grouping the elements of a set into equivalence classes provides a partition of the set, which we define as follows:
+
+\begin{definition}
+A \vocab{partition} of a set $A$ is a collection of subsets $\{A_i \subseteq A \mid i \in I\}$, where $I$ is an indexing set, with the property that
+\begin{enumerate}[label=(\roman*)]
+\item $A_i \neq \emptyset$ for all $i \in I$ (that is, all the subsets are non-empty),
+\item $\bigcup_{i\in I} Ai = A$ (that is, every member of $A$ lies in one of the subsets),
+\item $A_i \cap A_j = \emptyset$ for every $i \neq j$ (that is, the subsets are disjoint).
+\end{enumerate}
+The subsets are called the parts of the partition.
+\end{definition}
+
+\begin{example}[Odd and even natural numbers]
+$\{\{n \in \NN \mid n \text{ is divisible by } 2\}, \{n \in \NN \mid n+1 \text{ is divisible by } 2\}\}$ forms a partition of the natural numbers, into evens and odds.
+\end{example}
+\pagebreak
+
+\section{Functions}
+\subsection{Definition}
+\begin{definition}
+Given two sets $X$ and $Y$, a \vocab{function} $f$ from $X$ to $Y$ is a mapping of every element of $X$ to some element of $Y$, denoted by $f:X\to Y$. 
+\end{definition}
+
+$X$ and $Y$ are known as the \vocab{domain} and \vocab{codomain} of $f$ respectively.
+
+\begin{remark}
+The definition requires that a unique element of the codomain is assigned for every element of the domain. For example, for a function $f:\RR \to \RR$, the assignment $f(x)=\frac{1}{x}$ is not sufficient as it fails at $x=0$. Similarly, $f(x)=y$ where $y^2=x$ fails because $f(x)$ is undefined for $x<0$, and for $x>0$ it does not return a unique value; in such cases, we say the the function is \vocab{ill-defined}. We are interested in the opposite; functions that are \vocab{well-defined}.
+\end{remark}
+
+\begin{definition}
+Given a function $f:X \to Y$, the \vocab{image} (or range) of $f$ is
+\[ f(X) = \{f(x) \mid x \in X\} \subseteq Y \]
+More generally, given $A \subseteq X$, the image of $A$ under $f$ is
+\[ f(A) = \{f(x) \mid x \in A\} \subseteq Y \]
+Given $B \subseteq Y$, the \vocab{pre-image} of $B$ under $f$ is
+\[ f^{-1}(B) = \{x \mid f(x) \in B\} \subseteq X \]
+\end{definition}
+
+\begin{remark}
+Beware the potentially confusing notation: for $x \in X$, $f(x)$ is a single element of $Y$, but for $A \subseteq X$, $f(A)$ is a set (a subset of $Y$). Note also that $f^{-1}(B)$ should be read as ``the pre-image of $B$'' and not as ``$f$-inverse of $B$''; the pre-image is defined even if no inverse function exists (in which case $f^{-1}$ on its own has no meaning; we discuss invertibility of a function below).
+\end{remark}
+
+\begin{exercise}{}{}
+Prove the following statements:
+\begin{enumerate}[label=(\alph*)]
+\item $f(A\cup B)=f(A)\cup f(B)$
+\item $f(A_1\cup\cdots\cup A_n)=f(A_1)\cup\cdots\cup f(A_n)$
+\item $f(\bigcup_{\lambda\in A}A_\lambda)=\bigcup_{\lambda\in A}f(A_\lambda)$
+\item $f(A\cap B)\subset f(A)\cap f(B)$
+\item $f^{-1}(f(A))\supset A$
+\item $f(f^{-1}(A))\subset A$
+\item $f^{-1}(A\cup B)=f^{-1}(A)\cup f^{-1}(B)$
+\item $f^{-1}(A\cap B)=f^{-1}(A)\cap f^{-1}(B)$
+\item $f^{-1}(A_1\cup\cdots\cup A_n)=f^{-1}(A_1)\cup\cdots\cup f^{-1}(A_n)$
+\item $f^{-1}(\bigcup_{\lambda\in A}A_\lambda)=\bigcup_{\lambda\in A}f^{-1}(A_\lambda)$
+\end{enumerate}
+\end{exercise}
+
+If a function is defined on some larger domain than we care about, it may be helpful to restrict the domain:
+
+\begin{definition}[Restriction]
+Given a function $f:X \to Y$ and a subset $A \subseteq X$, the \vocab{restriction} of $f$ to $A$ is the map $f|_A:A \to Y$ defined by $f|_A(x) = f(x)$ for all $x \in A$.
+\end{definition}
+
+The restriction is almost the same function as the original $f$ -- just the domain has changed.
+
+Another rather trivial but nevertheless important function is the identity map:
+
+\begin{definition}[Identity map]
+Given a set $X$, the \vocab{identity} $\mathrm{id}_X:X \to X$ is defined by $\mathrm{id}_X(x) = x$ for all $x \in X$.
+\end{definition}
+
+\begin{notation}
+If the domain is unambiguous, the subscript may be removed.
+\end{notation}
+\pagebreak
+
+\subsection{Injectivity, Surjectivity, Bijectivity}
+\begin{definition}
+$f:X\to Y$ is \vocab{injective} if each element of $Y$ has at most one element of $X$ that maps to it.
+\[ \forall x_1,x_2\in X,\:f(x_1)=f(x_2) \implies x_1=x_2 \]
+\end{definition}
+
+\begin{proposition}
+If $f:X \to Y$ is injective and $g:Y \to Z$ is injective, then $g \circ f:X \to Z$ is injective.
+\end{proposition}
+\begin{proof}
+Let $f:X \to Y$ and $g:Y \to Z$ be arbitrary injective functions. We want prove that the function $g \circ f:X \to Z$ is also injective.
+
+To do so, we will prove $\forall x,x^\prime \in X$ that 
+\[ (g \circ f)(x) = (g \circ f)(x^\prime) \implies x=x^\prime \]
+
+Suppose that $(g \circ f)(x) = (g \circ f)(x^\prime)$. Expanding out the definition of $g \circ f$, this means that $g(f(x)) = g(f(x^\prime))$.
+
+Since $g$ is injective and $g(f(x)) = g(f(x^\prime))$, we know $f(x)=f(x^\prime)$.
+
+Similarly, since $f$ is injective and $f(x) = f(x^\prime)$, we know that $x=x^\prime$, as required.
+\end{proof}
+
+\begin{proposition}
+$f$ is injective if and only if for any set $Z$ and any functions $g_1,g_2:Z\to X$ we have $f\circ g_1=f\circ g_2 \implies g_1=g_2$.
+\end{proposition}
+\begin{proof}
+\textbf{Forward direction:}
+
+If f is injective, we ultimately wish to show that $g_1=g_2$, so in order to do this we consider all possible inputs $z \in Z$, hoping to show that $g_1(z)=g_2(z)$.
+
+But this is quite simple because we are given that $f\circ g_1=f\circ g_2$ and that $f$ is injective, so
+\[ f \circ g_1(z)=f \circ g_2(z) \implies g_1(z)=g_2(z) \]
+
+\textbf{Backward direction:}
+
+We specifically pick $Z=\{1\}$, basically some random one-element set.
+
+Then $\forall x,y \in X$, we define
+\begin{align*}
+& g_1:Z \to X, g_1(1)=x \\
+& g_2:Z \to Y, g_2(1)=y \\
+\end{align*}
+Then
+\[ f(x)=f(y) \implies f(g_1(1))=f(g_2(1)) \implies g_1(1)=g_2(1) \implies x=y \]
+\end{proof}
+
+\begin{definition}
+$f:X\to Y$ is \vocab{surjective} if every element of $Y$ is mapped to at least one element of $X$.
+\[ \forall y\in Y,\:\exists x\in X \suchthat f(x)=y \]
+\end{definition}
+
+\begin{proposition}
+If $f:X\to Y$ is surjective and $g:Y\to Z$ is surjective, then $g \circ f:X\to Z$ is surjective.
+\end{proposition}
+\begin{proof}
+Let $f:X\to Y$ and $g:Y\to Z$ be arbitrary surjective functions. We want to prove that the function $g \circ f:X\to Z$ is subjective. 
+
+To do so, we want to prove that for any $z \in Z$, there is some $x \in X$ such that $(g \circ f)(x) = z$. Equivalently, we want to prove that for any $z \in Z$, there is some $x \in X$ such that $g(f(x)) = z$.
+
+Consider any $z \in Z$. Since $g:Y\to Z$ is surjective, there is some $y \in Y$ such that $g(y) = z$. Similarly, since $f:X\to Y$ is surjective, there is some $x \in X$ such that $f(x) = y$. This means that there is some $x \in X$ such that $g(f(x)) = g(y) = z$, as required.
+\end{proof}
+
+\begin{proposition}
+$f$ is surjective if and only if for any set $Z$ and any functions $g_1,g_2:Y\to Z$ we have $g_1 \circ f=g_2 \circ f \implies g_1=g_2$.
+\end{proposition}
+\begin{proof}
+\textbf{Forward direction:}
+
+First we suppose that $f$ is surjective. Again, we wish to show that $g_1=g_2$, so we need to consider every possible input $y$ in Y. Then, since $f$ is injective, we can always pick $x \in X$ such that $f(x)=y$.
+
+Then
+\[ g_1 \circ f=g_2 \circ f \implies g_1 \circ f(x)=g_2 \circ f(x) \implies g_1(y)=g_2(y) \]
+
+On the other hand, if $f$ is not surjective, then there exists $y \in Y$ such that for all $x \in X$ we have $f(x)\neq y$. We then aim to construct set $Z$ and $g_1,g_2:Y\to Z$ such that
+\begin{enumerate}[label=(\roman*)]
+\item $g_1(y) \neq g_2(y)$
+\item $\forall y^\prime \neq y, g_1(y^\prime)=g_2(y^\prime)$
+\end{enumerate}
+
+Because if this is satisfied, then $\forall x \in X$, since $f(x)\neq y$ we have from (ii) that $g_1(f(x))=g_2(f(x))$; thus $g_1 \circ f=g_2 \circ f$, and yet from (i) we have $g_1 \neq g_2$.
+
+\textbf{Backward direction:}
+
+We construct $Z=Y\cup\{1,2\}$ for some random $1,2 \notin Y$.
+
+Then we define
+\begin{align*}
+&g_1:Y\to Z,g_1(y)=1,g_1(y^\prime)=y^\prime
+&g_2:Y\to Z,g_2(y)=2,g_2(y^\prime)=y^\prime
+\end{align*}
+
+Then when $y$ is not in the image of $f$, these two functions will satisfy $g_1 \circ f=g_2 \circ f$ but not $g_1=g_2$.
+
+So conversely, if for any set $Z$ and any functions $g_i:Y \to Z$ we have $g_1 \circ f=g_2 \circ f \implies g_1=g_2$, such a value $y$ that is in the codomain but not in the range of $f$ cannot appear, and hence $f$ must be surjective.
+\end{proof}
+
+\begin{definition}
+$f:X\to Y$ is \vocab{bijective} if it is both injective and surjective: each element of $Y$ is mapped to a unique element of $X$.
+\end{definition}
+\pagebreak
+
+\subsection{Cardinality and Countable Sets}
+When do two sets have the same size? Cantor answered this question in the 1800s, stating that two sets have the same size when you can pair each element in one set with a unique element in the other.
+
+\begin{definition}
+$X$ and $Y$ have the same \vocab{cardinality} if there exists a bijection $f:X\to Y$, denoted by $|X|=|Y|$.
+\end{definition}
+
+\begin{notation}
+$\ZZ_n=\{1,2,\dots,n\}$.
+\end{notation}
+
+\begin{definition}
+The empty set $\emptyset$ is finite and has cardinality $|\emptyset|\coloneqq0$. A non-empty set $X$ is said to be \vocab{finite} and have cardinality $|X|=n\in\ZZ^+$ if and only if there exists a bijection from $X$ to $\ZZ_n$.
+\end{definition}
+
+\begin{remark}
+Note that for finite sets $X$ and $Y$, a function $f:X \to Y$ can only be \textbf{injective} if $|Y| \ge |X|$, since for any injective function the number of elements in the image $f(X)$, is equal to the number of elements in the domain, and $f(X) \subseteq Y$. In other words, the codomain of an injective function cannot be smaller than the domain.\footnote{This is also referred to as the pigeonhole principle: if $n$ letters are placed in $m$ pigeonholes and $n>m$, then at least one hole must contain more than one letter; the non-injective function in that case is the assignment of pigeonholes to letters.}
+
+Similarly, a function $f:X \to Y$ can only be \textbf{surjective} if $|Y| \le |X|$. Hence if $f$ is bijective, then $|X|=|Y|$; that is, the domain and codomain of a bijection have equal cardinality. (These results hold true for infinite sets too, though less obviously).
+\end{remark}
+
+%\begin{theorem}[Cantor--Schr\"{o}der--Bernstein]
+%If $|X|\le|Y|$ and $|Y|\le|X|$ then $|X|=|Y|$.
+%\end{theorem}
+
+\begin{definition}
+$X$ is \vocab{countably infinite} if it has the same cardinality as the set $\ZZ^+$.
+\end{definition}
+
+\begin{definition}
+$X$ is \vocab{countable} if it is either finite or infinitely countable.
+\end{definition}
+
+\begin{example}
+The set $2\ZZ^+=\{2n \mid n \in \ZZ^+\}$ is countably infinite, i.e. $|2\ZZ^+|=|\ZZ^+|$. 
+
+To prove this, define the function $f:\ZZ^+\to2\ZZ^+$ as $f(n)=2n$. Then, $f$ is injective -- if $f(n) = f(m)$ then $2n=2m \implies n=m$. Furthermore, $f$ is surjective, as if $m\in2\ZZ^+$ then $\exists n \in \ZZ^+$ such that $m=2n=f(n)$.
+\end{example}
+
+\begin{example}
+$\ZZ$ is countable since we have a bijection $f:\ZZ^+\to\ZZ$ given by
+\[ f(n)=\begin{cases}
+    \dfrac{n}{2} & \text{if }n\text{ is even,} \\[1ex]
+    -\dfrac{n-1}{2} & \text{if }n\text{ is odd.} \\
+\end{cases} \]
+\end{example}
+
+
+
+\begin{theorem}[Cantor]
+For a set $A$, $|A|<|\mathcal{P}(A)|$.
+\end{theorem}
+\begin{proof}
+Define the function $f:A \to \mathcal{P}(A)$ by $f(x) = \{x\}$. Then, $f$ is injective as $\{x\}=\{y\} \implies x=y$. Thus $|A| \le |\mathcal{P}(A)|$. To finish the proof now all we need to show is that $|A| \neq |\mathcal{P}(A)|$. We will do so through contradiction. Suppose that $|A| = |\mathcal{P}(A)|$. Then, there exists a surjection $g:A \to \mathcal{P}(A)$. We define the set $B$ as
+\[ B \coloneq \{x \in A \mid x \notin g(x)\} \in \mathcal{P}(A) \]
+Since $g$ is surjective, there exists a $b \in A$ such that $g(b) = B$. There are two cases:
+\begin{enumerate}
+\item $b \in B$. Then $b \notin g(b) = B \implies b \notin B$.
+\item $b \notin B$. Then $b \notin g(b) = B \implies b \in B$.
+\end{enumerate}
+In either case we obtain a contradiction. Thus, $g$ is not surjective so $|A| \neq |\mathcal{P}(A)|$.
+\end{proof}
+
+\begin{corollary}
+For all $n \in \NN \cup \{0\}$, $n<2^n$.
+\end{corollary}
+\begin{proof}
+This can be easily proven through induction.
+\end{proof}
+\pagebreak
+
+\subsection{Composition of functions and invertibility}
+\begin{definition}
+Given two functions $f:X\to Y$ and $g:Y\to Z$, the \vocab{composition} $g\circ f:X\to Z$ is defined by
+\[ (g \circ f)(x) = g(f(x)) \quad \forall x \in X. \]
+\end{definition}
+
+The composition of functions is not commutative. However, composition is associative, as the following results shows:
+
+\begin{proposition}[Associativity]
+Let $f:X\to Y$, $g:Y\to Z$, $h:Z\to W$ be three functions. Then
+\[ f \circ (g \circ h) = (f \circ g) \circ h. \]
+\end{proposition}
+
+\begin{proof}
+Let $x \in X$. Then, by the definition of composition, we have
+\[ (f \circ (g \circ h))(x) = f((g \circ h)(x)) = f(g(h(x))) = (f \circ g)(h(x)) = ((f \circ g) \circ h)(x). \]
+\end{proof}
+
+The following proposition addresses the extent to which composition of functions preserves injectivity and surjectivity:
+\begin{proposition}
+Let $f:X\to Y$ and $g:Y\to Z$ be functions.
+\begin{enumerate}[label=(\roman*)]
+\item If $f$ and $g$ are injective then so is $g \circ f$. Conversely, if $g \circ f$ is injective, then $f$ is injective, but g need not be.
+\item If $f$ and $g$ are surjective then so is $g \circ f$. Conversely, if $g \circ f$ is surjective, then $g$ is surjective, but $f$ need not be.
+\end{enumerate}
+\end{proposition}
+\begin{proof}
+For the first part of (i), suppose $(g \circ f)(x_1) = (g \circ f)(x_2)$ for some $x_1, x_2 \in X$. From the injectivity of $g$ we know that $g(f(x_1)) = g(f(x_2))$ implies $f(x_1) = f(x_2)$, and then from the injectivity of $f$ we know that this implies $x_1 = x_2$. So $g \circ f$ is injective.
+
+For the second part of (i), suppose $f(x_1) = f(x_2)$ for some $x_1, x_2 \in X$. Then applying g gives $g(f(x_1)) = g(f(x_2))$, and by the injectivity of $g \circ f$ this means $x_1 = x_2$. So $f$ is injective. To see that $g$ need not be injective, a counterexample is $X = Z = \{0\}, Y = \RR$, with $f(0) = 0$ and $g(y) = 0$ for all $y \in \RR$.
+\end{proof}
+
+Recalling that $\mathrm{id}_X$ is the identity map on $X$, we can define invertibility:
+
+\begin{definition}
+A function $f:X\to Y$ is \vocab{invertible} if there exists a function $g:Y\to X$ such that $g \circ f = \mathrm{id}_X$ and $f \circ g = \mathrm{id}_Y$. The function $g$ is the \vocab{inverse} of $f$, denoted by $g=f^{-1}$.
+\end{definition}
+
+Note that directly from the definition, if $f$ is invertible then $f^{-1}$ is also invertible, and $(f^{-1})^{-1} = f$.
+
+An immediate concern we might have is whether there could be multiple such functions $g$, in which case the inverse $f^{-1}$ would not be well-defined. This is resolved by the following result:
+
+\begin{proposition}[Uniqueness of inverse]
+If $f:X \to Y$ is invertible then its inverse is unique.
+\end{proposition}
+\begin{proof}
+Let $g_1$ and $g_2$ be two functions for which $g_i \circ f = \mathrm{id}_X$ and $f \circ g_i = \mathrm{id}_Y$. Using the fact that composition is associative, and the definition of the identity maps, we can write
+\[ g_1 = g_1 \circ \mathrm{id}_Y = g_1 \circ (f \circ g_2) = (g_1 \circ f) \circ g_2 = \mathrm{id}_X \circ g_2 = g_2 \]
+\end{proof}
+
+The following result shows how to invert the composition of invertible functions:
+
+\begin{proposition}
+Let $f:X \to Y$ and $g:Y \to Z$ be functions. If $f$ and $g$ are invertible, then $g \circ f$ is invertible, and $(g \circ f)^{-1} = f^{-1} \circ g^{-1}$.
+\end{proposition}
+\begin{proof}
+Making repeated use of the fact that function composition is associative, and the definition of the inverses $f^{-1}$ and $g^{-1}$, we note that
+\begin{align*}
+(f^{-1}\circ g^{-1}) \circ (g \circ f) 
+&= ((f^{-1} \circ g^{-1}) \circ g) \circ f \\
+&= (f^{-1} \circ (g^{-1} \circ g)) \circ f \\
+&= (f^{-1} \circ \mathrm{id}_Y) \circ f \\
+&= f^{-1} \circ f \\
+&= \mathrm{id}_X
+\end{align*}
+and similarly,
+\begin{align*}
+(g \circ f) \circ (f^{-1} \circ g^{-1}) 
+&= g \circ (f \circ (f^{-1} \circ g^{-1})) \\
+&= g \circ ((f \circ f^{-1}) \circ g^{-1}) \\
+&= g \circ (\mathrm{id}_Y \circ g^{-1}) \\
+&= g \circ g^{-1} \\
+&= \mathrm{id}_Z
+\end{align*}
+which shows that $f^{-1} \circ g^{-1}$ satisfies the properties required to be the inverse of $g \circ f$.
+\end{proof}
+
+The following result provides an important and useful criterion for invertibility:
+
+\begin{theorem}
+A function $f:X \to Y$ is invertible if and only if it is bijective.
+\end{theorem}
+\begin{proof}
+We prove this in both directions.
+
+\textbf{Forward direction:}
+
+Suppose $f$ is invertible, so it has an inverse $f^{-1}: Y \to X$. To show $f$ is injective, suppose that for some $x_1, x_2 \in X$ we have $f(x_1) = f(x_2)$. Then applying $f^{-1}$ to both sides and noting that by definition $f^{-1} \circ f = \mathrm{id}_X$, we see that $x_1 = f^{-1}(f(x_1)) = f^{-1}(f(x_2)) = x_2$. So $f$ is injective. To show that $f$ is surjective, let $y \in Y$, and note that $f^{-1}(y) \in X$ has the property that $f(f^{-1}(y)) = y$. So $f$ is surjective. Therefore $f$ is bijective.
+
+\textbf{Backward direction:}
+
+Suppose that $f$ is bijective, we aim to show that there is a well-defined $g:Y \to X$ such that $g \circ f = \mathrm{id}_X$ and $f \circ g = \mathrm{id}_Y$. Since $f$ is surjective, we know that for any $y \in Y$, there is an $x \in X$ such that $f(x) = y$. Furthermore, since $f$ is injective, we know that this $x$ is unique. So for each $y \in Y$ there is a unique $x \in X$ such that $f(x) = y$. This recipe provides a well-defined function $g(y) = x$, for which we have $g(f(x)) = x$ for any $x \in X$ and $f(g(y)) = y$ for any $y \in Y$. So $g$ satisfies the property required to be an inverse of $f$ and therefore $f$ is invertible.
+\end{proof}
+
+It is also possible to define left-inverse and right-inverse functions as functions that partially satisfy the definition of the inverse:
+
+\begin{definition}
+A function $f:X \to Y$ is \vocab{left invertible} if there exists a function $g:Y \to X$ such that $g \circ f = \mathrm{id}_X$, and is \vocab{right invertible} if there exists a function $h: Y \to X$ such that $f \circ h = \mathrm{id}_Y$.
+\end{definition}
+
+As may be somewht apparent from the previous proof, being left- and right-invertible is equivalent to being injective and surjective, respectively. We leave this as an exercise to show.
+\pagebreak
+
+\subsection{Strictly Monotonic Functions / Increasing and Decreasing Functions}
+\begin{definition}
+A function $f$ is \vocab{strictly monotonic increasing} if for all $x_1,x_2\in D_f$,
+\[ x_2>x_1\iff f(x_2)>f(x_1). \]
+\end{definition}
+
+\begin{definition}
+A function $f$ is \vocab{strictly monotonic decreasing} if for all $x_1,x_2\in D_f$,
+\[ x_2>x_1\iff f(x_2)<f(x_1). \]
+\end{definition}
+
+\begin{definition}
+A function $f$ is \vocab{increasing} on an interval $I$ if for all $x_1,x_2\in I$ with $x_1<x_2$, $f(x_1)\le f(x_2)$.
+\end{definition}
+
+\begin{definition}
+A function $f$ is \vocab{decreasing} on an interval $I$ if for all $x_1,x_2\in I$ with $x_1<x_2$, $f(x_1)\ge f(x_2)$.
+\end{definition}
+
+Locate roots of an equation: suppose $f(x)$ is continuous in the interval $[a,b]$,
+\begin{itemize}
+\item If $f(a)$ and $f(b)$ have \emph{opposite} signs, i.e. $f(a)f(b)<0$, then there is an odd number of real roots (counting repeated) in $[a,b]$.
+
+Furthermore, if $f$ is either strictly increasing or decreasing in $[a,b]$, then $f(x)=0$ has \emph{exactly one real root} in $[a,b]$.
+
+\item If $f(a)$ and $f(b)$ have \emph{same} signs, i.e. $f(a)f(b)>0$, then there is an even number of roots (counting repeated) in $[a,b]$.
+\end{itemize}
+
+\subsection{Convex and Concave Functions}
+\begin{definition}
+A function $f$ is \vocab{convex} if for all $x_1,x_2\in D_f$ and $0\le t\le 1$, we have
+\[ f(tx_1+(1-t)x_2)\le tf(x_1)+(1-t)f(x_2). \]
+Note that equality holds when $x_1=x_2$.
+\end{definition}
+
+\begin{definition}
+A function $f$ is \vocab{strictly convex} if for all $x_1,x_2\in D_f$ with $x_1\neq x_2$ and $0<t<1$, we have
+\[ f(tx_1+(1-t)x_2)<tf(x_1)+(1-t)f(x_2). \]
+\end{definition}
+
+\begin{definition}
+A function $f$ is \vocab{concave} if for all $x_1,x_2\in D_f$ and $0\le t\le 1$, we have
+\[ f(tx_1+(1-t)x_2)\ge tf(x_1)+(1-t)f(x_2). \]
+Note that equality holds when $x_1=x_2$.
+\end{definition}
+
+\begin{definition}
+A function $f$ is \vocab{strictly concave} if for all $x_1,x_2\in D_f$ with $x_1\neq x_2$ and $0<t<1$, we have
+\[ f(tx_1+(1-t)x_2)>tf(x_1)+(1-t)f(x_2). \]
+\end{definition}
+
+\subsection{Other Functions}
+\subsubsection{Piecewise Functions}
+A function that has its domain divided into \emph{separate partitions} and each partition of the domain given a different formula or rule is known as a \vocab{piecewise funtion}, i.e. a function defined ``piece-wise''.
+
+\begin{itemize}
+\item Absolute Value Function
+
+The \vocab{absolute function} of $x$, denoted by $|x|$, is the distance of $x$ from $0$ on the real number line. Distances are always non-negative, so for every $x\in\RR$ we have 
+\[ |x|\ge0. \]
+The most basic absolute value function is $f(x)=|x|$:
+\[ |x|=\begin{cases}
+-x & x<0 \\
+x & x\ge0
+\end{cases} \]
+
+\item Floor Function
+
+We define the \vocab{floor function} $f(x)=\floor{x}$ as the greatest integer smaller than or equal to $x$.
+
+For $x\in\RR$ and $n\in\ZZ$,
+\[ \floor{x}=n\iff n\le x<n+1. \]
+
+\item Ceiling Function
+
+The ceiling function $f(x)=\ceiling{x}$ is the direct opposite of the floor function; it maps all real numbers in the domain to the smallest integer not smaller than it.
+\[ \ceiling{x}=\begin{cases}
+\floor{x}+1 & x\notin\ZZ \\
+\floor{x} & x\in\ZZ
+\end{cases} \]
+\end{itemize}
+
+\begin{exercise}{}{}
+Prove that
+\begin{enumerate}[label=(\alph*)]
+\item $\floor{\sqrt{x}}=\floor{\sqrt{\floor{x}}}$
+\item $\ceiling{\sqrt{x}}=\ceiling{\sqrt{\ceiling{x}}}$
+\end{enumerate}
+\end{exercise}
+
+\begin{solution} \
+\begin{enumerate}[label=(\alph*)]
+\item \begin{align*}
+&\floor{\sqrt{x}}=n \\
+&\iff n\le\sqrt{x}<n+1 \quad \text{[by definition of floor function]} \\
+&\iff n^2\le x<(n+1)^2 \quad \text{[square both sides]} \\
+&\iff n^2\le\floor{x}\le x<(n+1)^2 \\
+&\iff n\le\sqrt{\floor{x}}<n+1 \quad \text{[take square root throughout]} \\
+&\iff \floor{\sqrt{\floor{x}}}=n \quad \text{[by definition of floor function]}
+\end{align*}
+
+\item \begin{align*}
+&\ceiling{\sqrt{x}}=n+1 \\
+&\iff n<\sqrt{x}\le n+1 \quad \text{[by definition of ceiling function]} \\
+&\iff n^2<x\le(n+1)^2 \quad \text{[square both sides]} \\
+&\iff n^2<x\le\ceiling{x}\le(n+1)^2 \\
+&\iff n<\sqrt{\ceiling{x}}\le n+1 \quad \text{[take square root throughout]} \\
+&\iff \ceiling{\sqrt{\ceiling{x}}}=n+1 \quad \text{[by definition of ceiling function]}
+\end{align*}
+\end{enumerate}
+\end{solution}
+
+\subsubsection{Symmetrical Functions}
+There are special functions with some form of geometric symmetry.
+
+\begin{itemize}
+\item Even Functions
+
+$f$ is \vocab{even} if $f(-x)=f(x)$ for every $x\in D_f$.
+
+The graph of an even function is symmetric about the $y$-axis.
+
+\item Odd Functions
+
+$f$ is \vocab{odd} if $f(-x)=-f(x)$ for every $x\in D_f$.
+
+The graph of an odd function is symmetric about the origin.
+
+\item Periodic Functions
+
+$f$ is \vocab{periodic} if $f(x+p)=f(x)$ for every $x\in D_f$, where $p$ is a positive constant. The smallest such $p$ is known as the period.
+\end{itemize}
+
+\begin{exercise}{}{}
+For a triangle $ABC$ with corresponding angles $a$, $b$ and $c$, show that
+\[ \sin a+\sin b+\sin c\le\frac{3\sqrt{3}}{2} \]
+and determine when equality holds. (Hint: $y=\sin x$ is concave)
+\end{exercise}
+
+\begin{solution}
+Since $f(x)=\sin x$ is strictly concave on $[0,\pi]$,
+\begin{align*}
+&\frac{1}{3}f(a)+\frac{1}{3}f(b)+\frac{1}{3}f(c) \\
+&= \frac{1}{3}f(a)+\frac{2}{3}\brac{\frac{1}{2}f(b)+\frac{1}{2}f(c)} \\
+&\le \frac{1}{3}f(a)+\frac{2}{3}\brac{f\brac{\frac{b}{2}+\frac{c}{2}}} \quad \text{[Concavity Inequality]} \\
+&\le f\brac{\frac{a}{3}+\frac{2}{3}\brac{\frac{b+c}{2}}} \quad \text{[Concavity Inequality]} \\
+&= f\brac{\frac{a+b+c}{3}}
+\end{align*}
+Hence 
+\[ \sin a+\sin b+\sin c=f(a)+f(b)+f(c)\le3f\brac{\frac{a+b+c}{3}}=3\sin\frac{\pi}{3}=\frac{3\sqrt{3}}{2}. \]
+Equality holds when $a=b=c$, i.e. when $ABC$ is an equilateral triangle.
+\end{solution}
+\pagebreak
+
+\section*{Exercises}
+\begin{prbm}
+Let $A$ be the set of all complex polynomials in $n$ variables. Given a subset $T \subset A$, define the \textit{zeros} of $T$ as the set
+\[ Z(T) = \{P=(a_1,\dots,a_n) \mid f(P)=0 \text{ for all } f \in T\} \]
+A subset $Y \in \CC^n$ is called an algebraic set if there exists a subset $T \subset A$ such that $Y=Z(T)$.
+
+Prove that the union of two algebraic sets is an algebraic set.
+\end{prbm}
+\begin{proof}
+We would like to consider $T=\{f_1, f_2, \dots\}$ expressed as indexed sets $T=\{f_i\}$. Then $Z(T)$ can also be expressed as $\{P \mid \forall i, f_i(P)=0\}$.
+
+Suppose that we have two algebraic sets $X$ and $Y$. Let $X=Z(S)$, $Y=Z(T)$ where $S,T$ are subsets of $A$ (basically, they are certain sets of polynomials). Then
+\[ X=\{P \mid \forall f \in S, f(P)=0\} \]
+\[ Y=\{P \mid \forall g \in T, g(P)=0\} \]
+
+We imagine that for $P\in X\cap Y$, we have $f(P)=0$ or $g(P)=0$. Hence we consider the set of polynomials
+\[ U=\{f\cdot g \mid f\in S, g\in T\} \]
+
+For any $P\in X\cup Y$ and for any $fg\in U$ where $f\in S$ and $f\in g$, either $f(P)=0$ or $g(P)=0$, hence $fg(P)=0$ and thus $P\in Z(U)$.
+
+On the other hand if $P\in Z(U)$, suppose otherwise that $P$ is not in $X\cup Y$, then $P$ is neither in $X$ nor in $Y$. This means that there exists $f\in S,g\in T$ such that $f(P)\neq0$ and $g(P)\neq0$, hence $fg(P)\neq0$. This is a contradiction as $P\in Z(U)$ implies $fg(P)=0$. Hence we have $X\cup Y=Z(U)$ and thus $X\cup Y$ is an algebraic set.
+
+Now the other direction is simpler and can actually be generalised: The intersection of arbitrarily many algebraic sets is algebraic. 
+
+The basic result is that if $X=Z(S)$ and $Y=Z(T)$ then $X\cap Y=Z(S\cup T)$. 
+\end{proof}
+\pagebreak
+
+\begin{prbm}[Modular Arithmetic]
+Define the ring of integers modulo $n$:
+\[ \ZZ/n\ZZ = \ZZ/\sim \text{ where } x \sim y \iff x-y \in n\ZZ. \]
+The equivalence classes are called congruence classes modulo $n$.
+\begin{enumerate}[label=(\alph*)]
+\item Define the sum of two congruence classes modulo $n$, $[x], [y] \in \ZZ/n\ZZ$, by
+\[ [x] + [y] = [x + y] \]
+Show that the above definition is well-defined.
+\item Define the product of two congruence classes modulo $n$ and show that such a definition is well-defined.
+\end{enumerate} 
+\end{prbm}
+
+\begin{solution} \
+\begin{enumerate}[label=(\alph*)]
+\item We often define such concepts by considering the \textbf{representatives} of the equivalence classes.
+
+For example, here we define $[x]+[y]=[x+y]$ for two elements $[x]$ and $[y]$ in $\ZZ/n\ZZ$. So what we know here are the classes $[x]$ and $[y]$. But what exactly are $x$ and $y$? They are just some element in the equivalence classes that was arbitrarily picked out. We then perform the sum $x+y$, and consequently, we used this to point towards the class $[x+y]$. 
+
+However, $x$ and $y$ are arbitrarily picked. We want to show that, regardless of which representatives are chosen from  the equivalence classes $[x]$ and $[y]$, we will always obtain the same result.
+
+In the definition itself, we have defined that, for the two representatives $x$ and $y$ we define $[x]+[y]=[x+y]$. So now, let's say that we take two other arbitrary representatives, $x^\prime\in [x]$ and $y^\prime\in [y]$. 
+Then by definition, we have
+\[ [x]+[y]=[x^\prime+y^\prime] \]
+
+Thus, our goal is to show that $x^\prime+y^\prime]=[x+y]$. 
+This expression means that the two sides of the equation are referring to the same equivalence class.
+Therefore, the expression above is completely equivalent to the condition.
+\[ x^\prime+y^\prime \sim x+y \]
+
+We then check that this final expression is indeed true:
+Since $x^\prime\in [x]$ and $y^\prime\in [y]$, we have 
+\begin{align*}
+&x^\prime\sim x \text{ and } y^\prime\sim y \\
+&\implies x^\prime-x, y^\prime-y\in n\ZZ \\
+&\implies (x^\prime+y^\prime)-(x+y)=(x^\prime-x)+(y^\prime-y)\in n\ZZ
+\end{align*}
+
+\item The product of two congruence classes is defined by
+\[ [x][y]=[xy] \]
+
+For any other representatives $x^\prime$, $y^\prime$ we have
+\begin{align*}
+&x^\prime y^\prime-xy \\
+&=x^\prime y^\prime-xy^\prime+xy^\prime-xy \\
+&=(x^\prime-x)y^\prime+x(y^\prime-y) \in n\ZZ
+\end{align*}
+
+Thus $[x^\prime y^\prime]=[xy]$ and the product is well-defined.
+\end{enumerate}
+\end{solution}
+\pagebreak
+
+\begin{prbm}
+Let $A = \RR$ and for any $x, y \in A$, $x \sim y$ if and only if $x-y \in \ZZ$. For any two equivalence classes $[x], [y] \in A/\sim$, define
+\[ [x] + [y] = [x + y] \text{ and } -[x] = [-x] \]
+\begin{enumerate}[label=(\alph*)]
+\item Show that the above definitions are well-defined.
+\item Find a one-to-one correspondence $\phi:X \to Y$ between $X = A/\sim$ and $Y:|z| = 1$, i.e. the unit circle in $\CC$, such that for any $[x_1], [x_2] \in X$ we have
+\[ \phi([x_1])\phi([x_2]) = \phi([x_1 + x_2]) \]
+\item Show that for any $[x] \in X$,
+\[ \phi(-[x]) = \phi([x])^{-1} \]
+\end{enumerate}
+\end{prbm}
+
+\begin{solution} \ 
+\begin{enumerate}[label=(\alph*)]
+\item 
+\[ (x^\prime+y^\prime)-(x+y)=(x^\prime-x)+(y^\prime-y)\in \ZZ \]
+Thus $[x^\prime+y^\prime]=[x+y]$
+
+\[ (-x^\prime)-(-x)=-(x^\prime-x)\in \ZZ \]
+Thus $[-x^\prime]=[-x]$.
+
+\item Complex numbers in the polar form: $z=re^{i\theta}$
+
+Then the correspondence is given by $\phi([x])=e^{2\pi ix}$
+\[ [x]=[y] \iff x-y\in \ZZ \iff e^{2\pi i(x-y)}=1 \iff e^{2\pi ix}=e^{2\pi iy} \]
+Hence this is a bijection.
+
+Before that, we also need to show that $\phi$ is well-defined, which is almost the same as the above.
+
+If we choose another representative $x^\prime$ then
+\[ \phi([x])=e^{2\pi ix^\prime} = e^{2\pi ix}\cdot e^{2\pi i(x^\prime-x)} = e^{2\pi ix} \]
+
+\item You can either refer to the specific correspondence $\phi([x])=e^{2\pi ix}$ or use its properties.
+\[ \phi(-[x])\phi([x]) = \phi([-x])\phi([x]) = \phi([-x+x]) = \phi([0]) = 1 \]
+\end{enumerate}
+\end{solution}
+\pagebreak
+
+\begin{prbm}[Complex Numbers]
+Let $\RR[x]$ denote the set of real polynomials. Define
+\[ \CC=\RR[x]/(x^2+1)\RR[x] \]
+where
+\[ f(x)\sim g(x) \iff x^2+1 \text{ divides } f(x)-g(x). \]
+The complex number $a+bi$ is defined to be the equivalence class of $a+bx$.
+\begin{enumerate}[label=(\alph*)]
+\item Define the sum and product of two complex numbers and show that such definitions are well-defined.
+\item Define the reciprocal of a complex number.
+\end{enumerate}
+\end{prbm}

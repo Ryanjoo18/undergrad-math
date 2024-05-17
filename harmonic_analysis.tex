@@ -1,0 +1,86 @@
+\part{Harmonic Analysis}
+\chapter{Fourier Analysis}
+While developing the theory of heat conduction in the early 19th century, Jean--Baptiste Joseph Fourier kick-started a mathematical revolution by claiming that ``every'' real-valued function defined on a finite interval could be expanded as an infinite series of elementary trigonometric functions -- cosines and sines.
+
+\section{Fourier Series}
+Given a function $f:\RR\to\RR$ that is periodic with period $2\pi$, Fourier's claim is equivalent to the assertion that there exists constants $a_0,a_1,\dots$ and $b_1,b_2,\dots$ in terms of which $f$ may be expanded in the form
+\begin{equation}\label{eqn:fourier-series}
+f(x)=\frac{a_0}{2}+\sum_{n=1}^\infty\brac{a_n\cos nx+b_n\sin nx} \text{ for } x\in\RR
+\end{equation}
+the infinite series on the RHS being the \vocab{Fourier series} for $f$.
+
+\begin{remark}
+In later sections it will become apparent that the choice to focus on functions of period $2\pi$ and the factor of $\frac{1}{2}$ in the leading term in \cref{eqn:fourier-series} are both for algebraic convenience.
+\end{remark}
+
+\subsection{Periodic, even and odd functions}
+The building blocks that form the partial sums of a Fourier series are cosines and sines. Not only are cosines and sines infinitely differentiable on $\RR$, their graphs have important periodicity and symmetry properties: $\cos$ is an even periodic function, while $\sin$ is an odd periodic function. We therefore start with a refresher of what it means for a function to have these properties.
+
+\begin{definition}
+The function $f:\RR\to\RR$ is a \vocab{periodic function} if there exists $p>0$ such that
+\[ f(x+p)=f(x) \quad \text{for all }x\in\RR. \]
+In this case $p$ is a \vocab{period} for $f$ and $f$ is called \vocab{$p$-periodic}. A period is not unique, but if there exists a smallest such $p$ it is called the \vocab{prime period}.
+\end{definition}
+
+If a function is defined on a half-open interval of length $p>0$, i.e. on $(\alpha,\alpha+p]$ or $[\alpha,\alpha+p)$ for some $\alpha\in\RR$, then we can extend it to a unique periodic function by demanding it to be periodic with period $p$. Formally, we define as follows the periodic extension of such a function.
+
+\begin{definition}
+The \vocab{periodic extension} of the function $f:(\alpha,\alpha+p]\to\RR$ is the function $F:\RR\to\RR$ defined by
+\[ F(x) = f\brac{x-m(x)p} \quad \text{for }x\in\RR \]
+where, for each $x\in\RR$, $m(x)$ is the unique integer such that $x-m(x)p\in(\alpha,\alpha+p]$.
+\end{definition}
+
+\begin{definition}
+The function $g:\RR\to\RR$ is \vocab{even} if $g(x)=g(-x)$ for all $x\in\RR$.
+\end{definition}
+
+\begin{definition}
+The function $h:\RR\to\RR$ is \vocab{odd} if $h(x)=-h(-x)$ for all $x\in\RR$.
+\end{definition}
+
+\begin{proposition}
+Given a function $f:\RR\to\RR$ there exist unique functions $g:\RR\to\RR$ and $h:\RR\to\RR$ with $g$ even and $h$ odd such that $f(x)=g(x)+h(x)$ for $x\in\RR$.
+\end{proposition}
+
+\begin{proof}
+To prove existence note that the following functions have the required properties:
+\[ g(x)=\frac{1}{2}\brac{f(x)+f(-x)}, \quad h(x)=\frac{1}{2}\brac{f(x)-f(-x)} \quad \text{for }x\in\RR. \]
+To prove uniqueness suppose that $f=g_1+h_1$ and $f=g_2+h_2$, with $g_1,g_2$ even and $h_1,h_2$ odd; then $g_1-g_2=h_2-h_1$ is both even and odd, and hence must vanish on $\RR$.
+\end{proof}
+
+\subsection{Fourier series for functions of period $2\pi$}
+Suppose \cref{eqn:fourier-series} is true and that we can integrate it term-by-term over a period, so that
+\[ \int_{-\pi}^\pi f(x)\dd{x}=\frac{a_0}{2}\int_{-\pi}^\pi\dd{x}+\sum_{n=1}^\infty\brac{a_n\int_{-\pi}^\pi\cos nx\dd{x}+b_n\int_{-\pi}^\pi\sin nx\dd{x}}. \]
+Since, for positive integers $n$,
+\[ \int_{-\pi}^\pi\dd{x}=2\pi, \quad \int_{-\pi}^\pi\cos nx\dd{x}=0, \quad \int_{-\pi}^\pi\sin nx\dd{x}=0, \]
+we must have
+\begin{equation}\label{eqn:fourier-leading}
+a_0=\frac{1}{\pi}\int_{-\pi}^\pi f(x)\dd{x}
+\end{equation}
+which determines $a_0$ in terms of $f$.
+
+\begin{remark}
+Since $f$ is $2\pi$-periodic we could have integrated over any interval of length $2\pi$.
+\end{remark}
+
+\begin{remark}
+The leading term $\frac{a_0}{2}$ in the Fourier series \cref{eqn:fourier-leading} is equal to the mean of $f$ over a period.
+\end{remark}
+
+In order to determine the higher-order Fourier coefficients we will need the following lemma.
+
+\begin{lemma}
+Let $m$ and $n$ be positive integers. Then we have the orthogonality relations:
+
+\end{lemma}
+
+% https://courses.maths.ox.ac.uk/pluginfile.php/93584/mod_resource/content/1/FSPDE-Lectures-Notes.pdf
+
+\subsection{Cosine and sine series}
+\subsection{Tips for evaluating the Fourier coefficients}
+\subsection{Convergence of Fourier series}
+\subsection{Rate of convergence}
+\subsection{Gibb's phenomenon}
+\subsection{Functions of any period}
+\subsection{Half-range series}
+

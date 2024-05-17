@@ -1,0 +1,393 @@
+% https://courses.maths.ox.ac.uk/pluginfile.php/93650/mod_resource/content/1/Richard_Earl_lectures.pdf
+\part{Abstract Algebra}
+\chapter{Group Theory}
+\section{Group Axioms}
+\begin{definition}
+A \vocab{binary operation} $\ast$ on a set $G$ is a function $\ast:G\times G\to G$. For any $a,b\in G$, we write $a \ast b$ for the image of $(a,b)$ under $\ast$.
+
+A binary operation $\ast$ on $G$ is \vocab{associative} if, for any $a,b,c\in G$, $(a \ast b) \ast c = a \ast (b \ast c)$.
+
+A binary operation $\ast$ on $G$ is \vocab{commutative} if, for any $a, b \in G$, $a \ast b = b \ast a$.
+\end{definition}
+
+\begin{example}
+The following are examples of binary operations.
+\begin{itemize}
+\item $+$ (usual addition) is a commutative binary operation on $\ZZ$ (or on $\QQ$, $\RR$, or $\CC$ respectively).
+\item $\times$ (usual multiplication) is a commutative binary operation on $\ZZ$ (or on $\QQ$, $\RR$, or $\CC$ respectively).
+\item $-$ (usual subtraction) is a non-commutative binary operation on $\ZZ$.
+\item $-$ is not a binary operation on $\ZZ^+$ (nor $\QQ^+$, $\RR^+$) because for $a,b\in\ZZ^+$, with $a<b$, $a-b\notin\ZZ^+$; that is, $-$ does not map $\ZZ^+\times\ZZ^+\to\ZZ^+$.
+\item 
+\end{itemize}
+\end{example}
+
+An element $e \in S$ is said to be an \vocab{identity element} (or simply an identity) for an operation $\ast$ on $S$ if, for any $a \in S$,
+\[ e \ast a = a = a \ast e. \]
+
+\begin{proposition}[Uniqueness of identity]
+Let $\ast$ be a binary operation on a set $S$ and let $a \in S$. If an identity $e$ exists then it is unique.
+\end{proposition}
+\begin{proof}
+Suppose that $e_1$ and $e_2$ are two identities for $\ast$. Then
+\[ e_1 \ast e_2 = e_1 \quad \text{as }e_2\text{ is an identity;} \]
+\[ e_1 \ast e_2 = e_2 \quad \text{as }e_1\text{ is an identity.} \]
+Hence $e_1 = e_2$.
+\end{proof}
+
+If an operation $\ast$ on a set $S$ has an identity $e$ and $a \in S$, then we say that $b \in S$ is an \vocab{inverse} of $a$ if
+\[ a \ast b = e = b \ast a. \]
+
+\begin{proposition}[Uniqueness of inverse]
+Let $\ast$ be an associative binary operation on a set $S$ with an identity $e$ and let $a \in S$. Then an inverse of $a$, if it exists, is unique.
+\end{proposition}
+\begin{proof}
+Suppose that $b_1$ and $b_2$ are inverses of $a$. Then
+\[ b_1 \ast (a \ast b_2) = b_1 \ast e = b_1; \]
+\[ (b_1 \ast a) \ast b_2 = e \ast b_2 = b_2. \]
+By associativity $b_1 = b_2$.
+\end{proof}
+
+\begin{notation}
+If $\ast$ is an associative binary operation on a set $S$ with identity $e$, then the inverse of $a$ (if it exists) is written $a^{-1}$.
+\end{notation}
+
+\begin{example}
+The following are examples of binary operations.
+\begin{itemize}
+\item $+$ on $\RR$ is associative, commutative, has identity 0 and $x^{-1} \coloneqq -x$ for any $x$; $-$ on $\RR$ is not associative or commutative and has no identity; $\times$ on $\RR$ is associative, commutative, has identity 1 and $x^{-1} \coloneqq \frac{1}{x}$ for any non-zero $x$.
+\item $\min$ on $\NN$ is both associative and commutative but has no identity; $\max$ on $\NN$ is both associative and commutative and has identity $0$ (being the least element of $\NN$) though no positive integer has an inverse;
+\item $\circ$ is associative, but not commutative, with the identity map $x \to x$ being the identity element and as permutations are bijections they each have inverses.
+\end{itemize}
+\end{example}
+\pagebreak
+
+\subsection{Group Axioms}
+A group is an algebraic structure that captures the idea of symmetry without an object.
+
+\begin{definition}
+A \vocab{group} is a pair $(G,\ast)$, where $G$ is a set and $\ast$ is a binary operation on $G$ satisfying the following group axioms:
+\begin{enumerate}
+\item \textbf{(associativity)} for all $a,b,c \in G$, $a \ast (b \ast c)=(a \ast b) \ast c$.
+\item \textbf{(identity)} there exists an identity element $e \in G$ such that for all $a\in G$, $a \ast e = e \ast a = a$.
+\item \textbf{(invertibility)} for all $a \in G$, there exists a unique inverse $a^{-1} \in G$ such that $a \ast a^{-1} = a^{-1} \ast a = e$.
+\item \textbf{(closure)} for all $a,b,c \in G$, $a\ast b\in G$.
+\end{enumerate}
+\end{definition}
+
+\begin{notation}
+A group $(G,\ast)$ is usually simply denoted by $G$.
+\end{notation}
+
+\begin{notation}
+We abbreviate $a \ast b$ to just $ab$. Also, since the operation $\ast$ is associative, we can omit unnecessary parentheses: $(ab)c = a(bc) = abc$.
+\end{notation}
+
+\begin{notation}
+For any $g \in G$ and $n \in \NN$ we abbreviate $g^n = \underbrace{g \ast \cdots \ast g}_{n\text{ times}}$.
+\end{notation}
+
+\begin{example}[Additive integers]
+The pair $(\ZZ,+)$ is a group. Note that
+\begin{itemize}
+\item The element $0 \in \ZZ$ is an identity: $a+0=0+a=a$ for any $a$.
+\item Every element $a \in \ZZ$ has an additive inverse: $a+(-a)=(-a)+a=0$.
+\end{itemize}
+\end{example}
+
+\begin{example}[Addition mod $n$]
+Let $n > 1$ be an integer, and consider the residues (remainders) modulo $n$. These form a group under addition. We call this the cyclic group of order $n$, and denote it as $\ZZ/n\ZZ$, with elements $0, 1, \dots, n-1$. The identity is 0.
+\end{example}
+
+\begin{proposition}
+Cancellation laws hold in groups.
+\end{proposition}
+\begin{proof}
+By invertibility axiom,
+\[ ab=ac \implies b=c,\quad ba=ca\implies b=c \]
+by multiplying $a^{-1}$ on LHS or RHS. 
+\end{proof}
+
+\begin{proposition}[Inverse of products]
+For $a,b \in G$, $(ab)^{-1} = b^{-1}a^{-1}$.
+\end{proposition}
+\begin{proof}
+Direct computation. We have
+\[ (ab)(b^{-1}a^{-1}) = a(bb^{-1})a^{-1} = aa^{-1} = e. \]
+Similarly, 
+\[ (b^{-1}a^{-1})(ab) = e. \]
+Hence equating both gives us $(ab)^{-1} = b^{-1}a^{-1}$.
+\end{proof}
+
+\begin{proposition}[Left multiplication is a bijection]
+For a group $G$, pick a $g \in G$. Then the map $G \to G$ given by $x \mapsto gx$ is a bijection.
+\end{proposition}
+\begin{proof}
+Check this by showing injectivity and surjectivity directly.
+\end{proof}
+
+$G$ is \vocab{abelian}\footnote{after the Norwegian mathematician Niels Abel (1802--1829)} if the operation is commutative; it is \vocab{non-abelian} if otherwise.
+
+\begin{example}
+The sets $\ZZ$, $\QQ$, $\RR$ and $\CC$ form abelian groups under $+$ with $e=0$ and $x^{-1}\coloneqq-x$ in each case.
+\end{example}
+
+\begin{example}
+The sets $\QQ\setminus\{0\}$, $\RR\setminus\{0\}$ and $\CC\setminus\{0\}$ form abelian groups under $\times$ with $e=1$ and $x^{-1}\coloneqq\dfrac{1}{x}$ in each case. These groups are respectively denoted as $\QQ^\times$, $\RR^\times$ and $\CC^\times$.
+\end{example}
+
+An important (if rather elementary) family of groups is the cyclic groups.
+
+\begin{definition}[Cyclic group]
+A group $G$ is called \vocab{cyclic} if there exists $g\in G$ such that
+\[ G=\{g^k\mid k\in\ZZ\}. \]
+Such a $g$ is called a \vocab{generator}.
+\end{definition}
+
+As $g^ig^j=g^{i+j}=g^jg^i$ then cyclic groups are abelian.
+
+\begin{example}
+$\ZZ$ is cyclic and has generators $1$ and $-1$.
+\end{example}
+
+\begin{example}
+Let $n\ge1$. The $n$-th cyclic group $C_n$ is the group with elements
+\[ e, g, g_2, \dots, g^{n-1} \]
+which satisfy $g^n=e$. So given two elements in $C_n$ we define
+\[ g_ig_j=\begin{cases}
+g^{i+j} & \text{if } 0\le i+j<n, \\
+g^{i+j-n} & \text{if } n\le i+j\le 2n-2.
+\end{cases} \]
+\end{example}
+
+Another important family of groups is the dihedral groups.
+
+\begin{definition}[Dihedral group]
+Let $n\ge3$ be an integer and consider a regular $n$-sided polygon $P$ in the plane. We then write $D_{2n}$ for the set of isometries of the plane which map the polygon back to itself.
+\end{definition}
+
+\begin{remark}
+Here ``D'' stands for ``dihedral'', meaning two-sided.
+\end{remark}
+
+It is clear that $D_{2n}$ forms a group under composition as
+\begin{enumerate}[label=(\roman*)]
+\item the identity map is in $D_{2n}$,
+\item the product of two isometries taking $P$ to $P$ is another such isometry,
+\item the inverse of such an isometry is another such isometry,
+\item composition is associative.
+\end{enumerate}
+
+Given two groups $G$ and $H$, there is a natural way to make their Cartesian product $G \times H$ into a group. Recall that as a set 
+\[ G \times H = {(g,h)\mid g\in G, h\in H}. \]
+We then define the product group $G\times H$ as follows.
+
+\begin{definition}[Product group]
+Let $(G,\ast_G)$ and $(H,\ast_H)$ be groups. Then the operation $\ast$ defined on $G\times H$ by
+\[ (g_1,h_1)\ast(g_2,h_2)=(g_1\ast_G g_2,h_1\ast_H h_2) \]
+is a group operation. $(G \times H, \ast)$ is called the \vocab{product group} or the product of $G$ and $H$.
+\end{definition}
+
+\begin{proof}
+As $\ast_G$ and $\ast_H$ are both associative binary operations then it follows easily from the definition to see that $\ast$ is also an associative binary operation on $G \times H$. We also note
+\[ e_{G\times H}=(e_G,e_H) \quad \text{and} \quad (g,h)^{-1}=(g^{-1},h^{-1}) \]
+as for any $g \in G$, $h \in H$,
+\[ (e_G,e_H)\ast(g,h)=(g,h)=(g,h)\ast(e_G,e_H); \]
+\[ (g^{-1},h^{-1})\ast(g,h)=(e_G,e_H)=(g,h)\ast(g^{-1},h^{-1}). \]
+\end{proof}
+
+\begin{definition}[Order (of a group)]
+The cardinality $|G|$ of a group $G$ is called the \vocab{order} of $G$. We say that a group $G$ is \vocab{finite} if $|G|$ is finite.
+\end{definition}
+
+One way to represent a finite group is by means of the group table or Cayley table\footnote{after the English mathematician Arthur Cayley (1821--1895)}.
+
+\begin{definition}[Cayley table]
+Let $G=\{e,g_2,g_3,\dots,g_n\}$ be a finite group. The \vocab{Cayley table} (or group table) of $G$ is a square grid which contains all the possible products of two elements from $G$. The product $g_ig_j$ appears in the $i$-th row and $j$-th column of the Cayley table.
+\end{definition}
+
+\begin{remark}
+Note that a group is abelian if and only if its Cayley table is symmetric about the main (top-left to bottom-right) diagonal.
+\end{remark}
+
+\begin{definition}[Subgroup]
+Let $G$ be a group. We say that a subset $H \subseteq G$ is a \vocab{subgroup} of $G$ if the group operation $\ast$ restricts to make a group of $H$. That is $H$ is a subgroup of $G$ if:
+\begin{enumerate}[label=(\roman*)]
+\item $e \in H$;
+\item whenever $g_1,g_2\in H$ then $g_1g_2 \in H$.
+\item whenever $g \in H$ then $g^{-1} \in H$.
+\end{enumerate}
+\end{definition}
+
+\begin{remark}
+Note that there is no need to require that associativity holds for products of elements in $H$ as this follows from the associativity of products in $G$.
+\end{remark}
+
+\begin{example}
+The set of even integers is a subgroup of $\ZZ$; the set of odd integers is not a subgroup of $\ZZ$ because it does not even form a group, since it does not satisfy the closure axiom.
+\end{example}
+
+\begin{definition}[Order (of a group element)]
+Let $G$ be a group and $g \in G$. The \vocab{order} of $g$, written $o(g)$, is the least positive integer $k$ such that $g^k=e$. If no such integer exists then we say that $g$ has infinite order.
+\end{definition}
+
+\begin{remark}
+Note, now, that there are unfortunately two different uses of the word order: the order of a group is the number of elements it contains; the order of a group element is the least positive power of that element which is the identity.
+\end{remark}
+\pagebreak
+
+\subsection{Isomorphism}
+\begin{definition}[Isomorphism]
+An \vocab{isomorphism} $\phi: G \to H$ between two groups $(G,\ast_G)$ and $(H,\ast_H)$ is a bijection such that for any $g_1,g_2 \in G$ we have
+\[ \phi(g_1 \ast_G g_2) = \phi(g_1) \ast_H \phi(g_2). \]
+Two groups are said to be \vocab{isomorphic} if there is an isomorphism between them, denoted by $G \cong H$.
+\end{definition}
+
+\begin{example}[$\ZZ\cong10\ZZ$]
+Consider the two groups
+\[ \ZZ = (\{\dots, -2, -1, 0, 1, 2, \dots\}, +) \] and
+\[ 10\ZZ = (\{\dots, -20, -10, 0, 10, 20, \dots\}, +). \]
+These groups are ``different'', but only superficially so --- you might even say they only differ in the names of the elements.
+
+Formally, the map
+\[ \phi: \ZZ \to 10\ZZ \text{ by } x \mapsto 10x \]
+is a bijection of the underlying sets which respects the group operation. In symbols,
+\[ \phi(x+y) = \phi(x) + \phi(y). \]
+In other words, $\phi$ is a way of re-assigning names of the elements without changing the structure of the group.
+\end{example}
+\pagebreak
+
+\section{Permutation Groups}
+
+\section{More on Subgroups \& Cyclic Groups}
+
+
+\section{Lagrange's Theorem}
+\begin{definition}[Coset]
+Let $H$ be a subgroup of $G$.
+
+Then the \vocab{left cosets} of $H$ (or left $H$-cosets) are the sets
+\[ gH=\{gh\mid h\in H\}. \]
+The \vocab{right cosets} of $H$ (or right $H$-cosets) are the sets
+\[ Hg=\{hg\mid h\in H\}. \]
+\end{definition}
+
+Two (left) cosets $aH$ and $bH$ are either disjoint or equal. 
+
+Since multiplication is injective, the cosets of $H$ are the same size as $H$, and thus $H$ partitions $G$ into equal-sized parts.
+
+\begin{notation}
+We write $G/H$ for the set of (left) cosets of $H$ in $G$. The cardinality of $G/H$ is called the \vocab{index} of $H$ in $G$.
+\end{notation}
+
+An important result relating the order of a group with the orders of its subgroups is Lagrange's theorem.
+
+\begin{theorem}[Lagrange's theorem]
+If $G$ is a finite group and $H$ is a subgroup of $G$, then $|H|$ divides $|G|$.
+\end{theorem}
+
+Groups of small order (up to order 8). Quaternions. Fermat--Euler theorem
+from the group-theoretic point of view.
+
+\begin{theorem}[Fermat's Little Theorem]
+For every finite group $G$, for all $a \in G$, $a^{|G|}=e$.
+\end{theorem}
+
+\begin{proof}
+Consider the subgroup $H$ generated by $a$: $H = \{a^i \mid i \in \ZZ\}$. Since $G$ is finite, the infinite sequence $a^0=e, a^1, a^2, a^3, \dots$ must repeat, say $a^i = a^j, i < j$. Let $k=j-i$. Multiplying both sides by $a^{-i} = (a^{-1})^i$, we get $a^{j-i} = a^k = e$. Suppose $k$ is the least positive integer for which this holds. Then $H = \{a_0, a_1, a_2, \dots, a^{k-1}\}$, and thus $|H| = k$. By Lagrange’s Theorem, $k$ divides $|G|$, so $a^{|G|} = (a^k)^\frac{|G|}{k} = e$.
+\end{proof}
+
+\chapter{Ring Theory}
+\textbf{Readings:}
+\begin{itemize}
+\item \href{https://brilliant.org/wiki/ring-theory/}{Ring Theory by Brilliant}
+\item \href{https://math.berkeley.edu/~gmelvin/math113su14/math113su14notes2.pdf}{Ring Theory (Math 113) by UC Berkeley}
+\end{itemize}
+
+\section{Definition}
+A ring is just a set where you can add, subtract, and multiply. In some rings you can divide, and in others you can't. There are many familiar examples of rings, the main ones falling into two camps: ``number systems'' and ``functions''.
+
+\begin{definition}
+A \vocab{ring} is a set $R$ endowed with two binary operations, addition and multiplication, denoted $+$ and $\times$, with elements $0,1\in R$, which maps $+: R \times R \to R$ and $\times: R \times R \to R$, subject to three axioms:
+\begin{enumerate}
+\item $(R,+)$ is an abelian group with identity $0$.
+\item $(R,\times)$ is a commutative semigroup, i.e. $a \times (b \times c) = (a \times b) \times c$, $a \times 1 = 1 \times a = a$, and $a \times b = b \times a$ for all $a, b, c \in R$.
+\item Distributivity: $a \times (b + c) = a \times b + a \times c$ for all $a, b, c \in R$.
+\end{enumerate}
+\end{definition}
+
+\begin{example}
+Examples of rings:
+\begin{itemize}
+\item $\ZZ$: the integers $\dots,-2,-1,0,1,2,\dots$ with usual addition and multiplication, form a ring. Note that we cannot always divide, since 1/2 is no longer an integer.
+
+\item $2\ZZ$: the even integers $\dots,-4,-2,0,2,4,\dots$
+
+\item $\ZZ[x]$: this is the set of polynomials whose coefficients are integers. 
+
+It is an extension of $\ZZ$, in the sense that we allow all the integers, plus an “extra symbol” $x$, which we are allowed to multiply and add, giving rise to $x^2$, $x^3$, etc., as well as $2x$, $3x$, etc. Adding up various combinations of these gives all the possible integer polynomials.
+
+\item $\ZZ[x,y,z]$: polynomials in three variables with integer coefficients. 
+
+This is an extension of the previous ring. In fact you can continue adding variables to get larger and larger rings.
+
+\item $\ZZ/n\ZZ$: integers mod $n$. 
+
+These are equivalence classes of the integers under the equivalence relation “congruence mod n”. If we just think about addition (and subtraction), this is exactly the cyclic group of order $n$. However, when we call it a ring, it means we are also using the operation of multiplication.
+
+\item $\QQ$, $\RR$, $\CC$
+\end{itemize}
+\end{example}
+
+Ideals, homomorphisms, quotient rings, isomorphism theorems. Prime and maximal ideals. Fields. The characteristic of a field. Field of fractions of an
+integral domain.
+Factorization in rings; units, primes and irreducibles. Unique factorization in principal ideal domains, and
+in polynomial rings. Gauss’ Lemma and Eisenstein’s irreducibility criterion.
+Rings $\ZZ[\alpha]$ of algebraic integers as subsets of $\CC$ and quotients of $\ZZ[x]$. Examples of Euclidean domains and
+uniqueness and non-uniqueness of factorization. Factorization in the ring of Gaussian integers; representation of integers as sums of two squares.
+Ideals in polynomial rings. Hilbert basis theorem
+
+\chapter{Field Theory}
+\section{Field Axioms}
+\begin{definition}
+A \vocab{field} is a ring $R$ that satisfies the following extra properties:
+\begin{itemize}
+\item $0 \neq 1$,
+\item every non-zero element of $R$ has a multiplicative inverse (or reciprocal): if $r \in R$ and $r \neq 0$, then there exists $s \in R$ such that $rs=1$; in other words: $R \setminus\{0\}$ is a group under $\times$ with identity $1$.
+\end{itemize}
+\end{definition}
+
+\begin{example}
+Examples and non-examples of fields:
+\begin{itemize}
+\item $\ZZ^+$ is not a field because, for example, 0 is not a positive integer, for no positive integer $n$ is $-n$ a positive integer, for no positive integer $n$ except 1 is $n^{-1}$ a positive integer.
+\item $\ZZ$ is not a field because for an integer $n$, $n^{-1}$ is not an integer unless $n=1$ or $n=-1$.
+\item $\QQ$, $\RR$ and $\CC$ are fields.
+\end{itemize}
+\end{example}
+
+\begin{proposition}
+Suppose $K$ is a field and $X \subseteq K$ is a subset of $K$, with the following properties:
+\begin{itemize}
+\item $0, 1 \in X$,
+\item if $x, y \in X$, then $x+y, x-y, x \times y \in X$; and if $y \neq 0$, then $\frac{x}{y} \in X$.
+\end{itemize}
+Then $X$ is a field.
+\end{proposition}
+\begin{proof}
+By assumption, $X$ is closed under addition and multiplication. Moreover, $X$ is clearly a ring, because $X$ inherits all the axioms from $K$. Finally, $0 \neq 1$, and if $0 \neq x \in X$, then $x^{-1} \in X$ by assumption. Therefore, $X$ is a field.
+\end{proof}
+We call $X$ a \vocab{subfield} of $K$.
+
+\chapter{Galois Theory}
+\textbf{Readings:}
+\begin{itemize}
+\item \href{https://www.maths.ed.ac.uk/~tl/gt/gt.pdf}{Notes by Tom Leinster}
+\end{itemize}
+
+\chapter{Category Theory}
+\textbf{Readings:}
+\begin{itemize}
+\item \href{https://arxiv.org/pdf/1612.09375.pdf}{Basic Category Theory, by Tom Leinster}
+\end{itemize}
+
+

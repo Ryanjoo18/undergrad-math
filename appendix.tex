@@ -1,0 +1,1059 @@
+\part{Appendices}
+\appendix
+\chapter{H3 Mathematics}
+\section{A Level past year papers}
+\subsection*{2023}
+\begin{enumerate}
+\item \begin{enumerate}[label=(\alph*)]
+\item Prove that, for any real numbers $a_1,a_2,\dots,a_n$,
+\[ a_1+a_2+\cdots+a_n\le\sqrt{n}\sqrt{a_1^2+a_2^2+\cdots+a_n^2}. \]
+\item Prove that, for any positive real numbers $x$, $y$ and $z$,
+\[ \sqrt{\frac{x+y}{x+y+z}}+\sqrt{\frac{y+z}{x+y+z}}+\sqrt{\frac{z+x}{x+y+z}}\le\sqrt{6}. \]
+\item Hence solve the equation
+\[ 2\sqrt{\frac{x+3}{x+6}}+\sqrt{\frac{6}{x+6}}=\sqrt{6}. \]
+\end{enumerate}
+
+\begin{solution} \
+\begin{enumerate}[label=(\alph*)]
+\item Square both sides, apply Cauchy--Schwarz.
+\item Let 
+\[ a_1=\sqrt{\frac{x+y}{x+y+z}}, \quad a_2=\sqrt{\frac{y+z}{x+y+z}}, \quad a_3=\sqrt{\frac{z+x}{x+y+z}}, \]
+then apply (a) to the above three real numbers.
+\item Let $y=3$, $z=3$, then apply (b).
+
+Equality in the Cauchy--Schwarz inequality holds if and only if
+\[ \brac{\sqrt{\frac{x+3}{x+6}},\sqrt{\frac{6}{x+6}},\sqrt{\frac{x+3}{x+6}}}=\lambda\brac{1,1,1} \]
+for some $\lambda>0$. This happens exactly when $x=3$.
+\end{enumerate}
+
+\item 
+
+\item 
+
+\item Let $n$ stones be placed in fixed positions on a line. Each stone is painted using one of four colours (red, white, yellow or blue) in such a way that no two adjacent stones are the same colour. Let $r_n$ be the number of ways of painting the stones such that the first and last stones are both red. Let $s_n$ be the number of ways of painting the stones so that the first stone is red but the last stone is not red.
+\begin{enumerate}[label=(\alph*)]
+\item Explain why $r_1=1$, $r_2=0$, $s_1=0$ and $s_2=3$.
+\item Find a formula for $r_n+s_n$ and explain why $r_{n+1}=s_n$.
+\item Using mathematical induction, or otherwise, prove that for all $n\ge4$,
+\[ r_n=\frac{3^{n-1}+3(-1)^{n-1}}{4}. \]
+\item Now let $n$ stones, where $n>1$, be placed on a circle with numbered positions. Find the number of ways of painting these stones, using at most four distinct colours, in such a way that no two adjacent stones are the same colour.
+\end{enumerate}
+\end{solution}
+
+\begin{solution} \
+\begin{enumerate}[label=(\alph*)]
+\item If $n=1$, then the first stone is also the las stone, and there is thus only $1$ way to paint the stone red. So
+\[ r_1=1. \]
+Since the first stone is red and the last stone, which is the first stone, is red, there is no way to paint the stone such that the last (first) stone is not red. So
+\[ s_1=0. \]
+If $n=2$, then the first and last (second) stones must be painted red but in doing so they will become adjacent stones painted red, which violates the condition that no two adjacent stones are the same colour. Hence
+\[ r_2=0. \]
+
+\item We use the following notation:
+\begin{align*}
+R&\coloneqq\{\text{painting arrangements such that first and last stones are red}\};\\
+S&\coloneqq\{\text{painting arrangements such that first stone is red and last stone is not red}\};\\
+T&\coloneqq\{\text{painting arrangements such that first stone is red}\}.
+\end{align*}
+By definition of $r_n$ and $s_n$,
+\[ |R|=r_n, \quad |S|=s_n. \]
+Since $R$ and $S$ are mutually exclusive such that $R\cup S=T$, we have
+\[ |T|=|R\cup S|=|R|+|S|=r_n+s_n. \]
+On the other hand,
+\[ T=1\times\underbrace{3\times3\times\cdots\times3}_{n-1}=3^{n-1}. \]
+Thus \[ r_n+s_n=3^{n-1}. \]
+Observe that if $n+1$ stones are painted in such a way that the first and last stones are both red, then the $n$-th stone must necessarily be non-red since no two adjacent stones can share the sae colour. Therefore, the number of ways to paint $n+1$ stones such that the first and last stones are both red is equal to the number of ways to paint $n$ stones such that the first stone is red and the last stone is not red. Thus, $r_{n+1}=s_n$.
+
+\item 
+\item 
+\end{enumerate}
+\end{solution}
+
+\end{enumerate}
+
+\pagebreak
+
+\subsection*{2022}
+\begin{enumerate}
+\item 
+
+\item 
+
+\item 
+
+\item \begin{enumerate}[label=(\alph*)]
+\item Let $a$ and $b$ be positive numbers such that $a+b=1$. Using a sketch graph of $y=\ln x$, for $x>0$, show that
+\[ u^av^b\le au+bv \]
+for positive $u$ and $v$.
+
+\item Let $a_1,a_2,a_3,\dots$ be a sequence of positive numbers. Define
+\[ G_n=\sqrt[n]{a_1a_2\cdots a_n}\text{ and }A_n=\frac{a_1+a_2+\cdots+a_n}{n}. \]
+\begin{enumerate}[label=(\roman*)]
+    \item Use the result of part (a) to prove that the sequence $\brac{n(G_n-A_n)}$ is non-increasing.
+    \item Let the first 3 terms of the sequence $(a_n)$ be 1, 2 and 4. Define a suitable $a_n$, for $n\ge4$, so that $\brac{n(G_n-A_n)}$ is constant for $n\ge3$.
+\end{enumerate}
+\end{enumerate}
+
+\begin{solution} \
+\begin{enumerate}[label=(\alph*)]
+\item Sketch the graph $y=\ln x$ for $x>0$, defined on the closed bounded interval $[u,v]$ for two positive real numbers $u<v$.
+
+Since $a+b=1$, the real number $au+bv$ lies in the interval $[u,v]$; that is,
+\[ u\le au+bv\le v. \]
+
+Note that the equation of the straight line joining $(u,\ln u)$ and $(v,\ln v)$ is given by
+\[ y-\ln u=\frac{\ln v-\ln u}{v-u}\cdot(x-u). \]
+
+When $x=au+bv$, the $y$-value on this straight line reads off
+\[ y=a\ln u+b\ln v. \]
+
+Since $y=\ln x$ is concave, the $y$-value read off the straight line is at most the $y$-value read off the curve $y=\ln x$, and thus it follows that
+\[ a\ln u+b\ln v\le\ln(au+bv) \]
+or equivalently,
+\[ u^ab^v\le a+bv. \]
+
+\item 
+\end{enumerate}
+\end{solution}
+
+\item 
+\item 
+\item \begin{enumerate}[label=(\alph*)]
+\item The diagram below shows a $3\times3$ array of circles, five of which are shaded. Of the 20 edges linking pairs of adjacent (including diagonally adjacent) circles, 11 link a shaded and an unshaded circle.
+\begin{enumerate}[label=(\roman*)]
+    \item Describe or draw a $3\times3$ array of circles for which more than 11 edges link a shaded and an unshaded circle and state the number of such edges.
+\end{enumerate}
+The second diagram shows how the edges for a $4\times4$ array of circles can be grouped into square blocks (consisting of 6 edges) along a diagonal and arrowhead shapes (consisting of 4 edges) elsewhere. For clarity the circles are not shown.
+\begin{enumerate}[resume*]
+    \item For the edges of an $n\times n$ array of circles grouped as in the second diagram, state the number of square blocks and arrowhead shapes that would be required.
+    \item Explain why at most 3 of the edges in an arrowhead shape can link a shaded and an unshaded circle.
+\end{enumerate}
+\item In the $3\times3$ grid below, some of the squares are shaded. The number in each unshaded square shows the number of shaded squares with which the unshaded square shares a vertex. The sum of all the numbers, 12, is the score of this arrangement of shaded and unshaded squares.
+\begin{enumerate}[label=(\roman*)]
+    \item Explain, why, for any such arrangement, the score is unaltered by shading each unshaded square and vice versa.
+    \item Find the maximum possible score for an $n\times n$ grid and prove that it can be attained.
+\end{enumerate}
+\end{enumerate}
+\end{enumerate}
+\pagebreak
+
+\subsection*{2021}
+\begin{enumerate}
+\item 
+
+\item Let $a$, $b$, $c$ and $r$ be positive real numbers.
+\begin{enumerate}[label=(\alph*)]
+\item Prove that
+\[ a^r(a-b)(a-c)+b^r(b-c)(b-a)+c^r(c-a)(c-b)\ge0. \]
+\item Hence, or otherwise, prove that
+\begin{enumerate}[label=(\roman*)]
+    \item $a^3+b^3+c^3+3abc\ge a^2(b+c)+b^2(c+a)+c^2(a+b)$,
+    \item $\displaystyle\frac{1}{a^5}+\frac{1}{b^5}+\frac{1}{c^5}+\frac{a+b+c}{a^2b^2c^2}\ge\frac{b^2+c^2}{a^3b^2c^2}+\frac{c^2+a^2}{a^2b^3c^2}+\frac{a^2+b^2}{a^2b^2c^3}$.
+\end{enumerate}
+\end{enumerate}
+
+\begin{solution} \
+\begin{enumerate}[label=(\alph*)]
+\item WLOG assume $a\ge b\ge c$. Then the given expression can be rewritten as
+\[ \underbrace{a^r(a-b)(a-c)}_{(1)}+\underbrace{(b-c)[b^r(b-a)-c^r(c-a)]}_{(2)}. \]
+For (1), since $a\ge b$ and $a\ge c$, we have $a-b\ge0$ and $a-c\ge0$. Since $a>0$, we then have
+\[ a^r(a-b)(a-c)\ge0. \]
+Now for (2), since $b\ge c$ we have
+\[ b^r(b-a)-c^r(c-a)\ge c^r(b-a-c+a)=c^r(b-c)\ge0. \]
+Thus we have proven the given statement.
+
+\item Choose $r=1$, by (a), we have
+\[ a(a-b)(a-c)+b(b-c)(b-a)+c(c-a)(c-b)\ge0. \]
+Expanding LHS gives us the desired statement.
+
+\item The term $\dfrac{a+b+c}{a^2b^2c^2}$ can be seen as $\dfrac{1}{ab^2c^2}+\dfrac{1}{bc^2a^2}+\dfrac{1}{ca^2b^2}$. This term can be compared to the term $3abc$ in the first part. From this observation, we consider Schur's inequality exhibited by
+\[ \frac{1}{a}\brac{\frac{1}{a^2}-\frac{1}{b^2}}\brac{\frac{1}{a^2}-\frac{1}{c^2}}+\frac{1}{b}\brac{\frac{1}{b^2}-\frac{1}{c^2}}\brac{\frac{1}{b^2}-\frac{1}{a^2}}+\frac{1}{c}\brac{\frac{1}{c^2}-\frac{1}{a^2}}\brac{\frac{1}{c^2}-\frac{1}{b^2}}\ge0. \]
+Expanding gives us
+\begin{align*}
+&\frac{1}{a^5}-\frac{1}{a^3c^2}-\frac{1}{a^3b^2}+\frac{1}{ab^2c^2}\\
+&+\frac{1}{b^5}-\frac{1}{b^3a^2}-\frac{1}{b^3c^2}+\frac{1}{bc^2a^2}\\
+&+\frac{1}{c^5}-\frac{1}{c^3b^2}-\frac{1}{c^3a^2}+\frac{1}{ca^2b^2}\ge0.
+\end{align*}
+Thus
+\begin{align*}
+\brac{\frac{1}{a^5}+\frac{1}{b^5}+\frac{1}{c^5}}+\brac{\frac{1}{ab^2c^2}+\frac{1}{bc^2a^2}+\frac{1}{ca^2b^2}}\\
+&\ge\brac{\frac{1}{a^3c^2}+\frac{1}{a^3b^2}}+\brac{\frac{1}{b^3a^2}+\frac{1}{b^3c^2}}+\brac{\frac{1}{c^3b^2}+\frac{1}{c^3a^2}}.
+\end{align*}
+which gives us the desired inequality.
+\end{enumerate}
+\end{solution}
+
+\item Let $u$ and $v$ be quadratic functions of $x$ and let
+\[ y=\frac{u}{v}. \]
+\begin{enumerate}[label=(\alph*)]
+\item Use mathematical induction to prove that
+\[ v\dv[n+2]{y}{x}+(n+2)\dv{v}{x}\dv[n+1]{y}{x}+\binom{n+2}{2}\dv[2]{v}{x}\dv[n]{y}{x}=0, \]
+for $n\ge1$.
+\item Now assume that $v=(\alpha-x)^2$ for some real number $\alpha$ and, for all positive integers $n$, define
+\[ z_n=\frac{(\alpha-x)^{n+2}}{n!}\dv[n]{y}{x}. \]
+Use the result of part (a) to prove that $z_1,z_2,z_3,\dots$ is an arithmetic progression. By writing $y$ as partial fractions, or otherwise, show that the common difference is $u(\alpha)$.
+\end{enumerate}
+\end{enumerate}
+\pagebreak
+
+\subsection*{2020}
+\begin{enumerate}
+\item \begin{enumerate}[label=(\roman*)]
+\item For any positive integer $n$ and positive numbers $x$ and $y$, prove that
+\[ \brac{(n-1)x+y}^n\ge n^nx^{n-1}y. \]
+\item Hence, for any positive numbers $a$, $b$ and $c$ such that $abc=1$, prove that
+\[ (1+a)^2(1+b)^3(1+c)^4>256. \]
+\end{enumerate}
+
+\begin{solution} \
+\begin{enumerate}[label=(\roman*)]
+\item Apply AM--GM on $\underbrace{x+\cdots+x}_{n-1}+y$.
+
+\item Watching out for the various powers of 2, 3 and 4, we rewrite
+\begin{align*}
+&(1+a)^2(1+b)^3(1+c)^4\\
+&=\brac{(2-1)1+a}^2\cdot\brac{(3-1)\frac{1}{2}+b}^3\cdot\brac{(4-1)\frac{1}{3}+c}^4\\
+&\ge\brac{2^2\cdot1^{2-1}\cdot a}\cdot\brac{3^3\cdot\brac{\frac{1}{2}}^{3-1}\cdot b}\cdot\brac{4^4\cdot\brac{\frac{1}{3}}^{4-1}\cdot c}\\
+&=256abc=256
+\end{align*}
+where equality (for AM--GM) holds if and only if $a=\frac{1}{2}$, $b=\frac{1}{3}$ and $c=\frac{1}{4}$, which is impossible as it contradicts the given condition of $abc=1$. Thus equality never holds, and so the inequality is a strict one.
+\end{enumerate}
+\end{solution}
+
+\item 
+
+\item For any non-negative integer $n$, the function $P_n$ is defined by
+\[ P_n(t)=\sum_{i=0}^n\frac{t^i}{i!}. \]
+\begin{enumerate}[label=(\roman*)]
+\item Use mathematical induction to prove that
+\[ \int_0^tx^ne^{-x}\dd{x}=n!\brac{1-e^{-t}P_n(t)}. \]
+\item State the value of 
+\[ \int_0^\infty x^ne^{-x}\dd{x}, \]
+and briefly justify your answer.
+\item For $n>t>0$, prove that
+\[ \brac{1+\frac{t}{n}}^n\le P_n(t)<\brac{1-\frac{t}{n}}^{-n}. \]
+\end{enumerate}
+
+\begin{solution} \
+\begin{enumerate}[label=(\roman*)]
+\item Formalise by stating the statement we want to prove:
+\[ P(n):\int_0^tx^ne^{-x}\dd{x}=n!\brac{1-e^{-t}P_n(t)}, \quad n=0,1,\dots \]
+When $n=0$, we must prove that
+\[ \int_0^tx^0e^{-x}\dd{x}=0!\brac{1-e^{-t}P_0(t)}. \]
+The working is direct:
+\begin{align*}
+\int_0^tx^0e^{-x}\dd{x}&=\int_0^te^{-x}\dd{x}\\
+&=\sqbrac{-e^{-x}}_0^t\\
+&=-e^{-t}+1\\
+&=\underbrace{0!}_{=1}(1-e^{-1}\underbrace{P_0(t)}_{=1})
+\end{align*}
+
+Assume that $P(n)$ holds, we want to prove that
+\[ P(n+1):\int_0^tx^{n+1}e^{-x}\dd{x}=(n+1)!\brac{1-e^{-t}P_{n+1}(t)} \]
+holds.
+
+Integrating by parts, let
+\[ u=x^{n+1}, \quad \dv{v}{x}=e^{-x}, \]
+we have
+\begin{align*}
+&\int_0^tx^{n+1}e^{-x}\dd{x}\\
+&=\sqbrac{-x^{n+1}e^{-x}}_0^t-\int_0^t(n+1)x^n\brac{-e^{-x}}\dd{x}\\
+&=\brac{-t^{n+1}e^{-t}}+(n+1)\int_0^tx^ne^{-x}\dd{x}\\
+&=(n+1)!\brac{1-e^{-t}\brac{P_n(t)+\frac{t^{n+1}}{(n+1)!}}}\\
+&=(n+1)!\brac{1-e^{-t}P_{n+1}(t)}
+\end{align*}
+
+\item \[ \int_0^\infty x^ne^{-x}\dd{x}=\lim_{t\to\infty}n!\brac{1-e^{-t}P_n(t)}=n! \]
+since $\displaystyle\lim_{t\to\infty}\frac{P_n(t)}{e^t}=0$.
+
+\item We start by proving the LHS:
+\[ \brac{1+\frac{t}{n}}^n\le P_n(t). \]
+Using binomial expansion,
+\[ \brac{1+\frac{t}{n}}^n=\sum_{k=0}^n\binom{n}{k}\frac{t^k}{n^k}. \]
+We want to show that 
+\[ \sum_{k=0}^n\binom{n}{k}\frac{t^k}{n^k}\le\sum_{k=0}^n\frac{t^k}{k!}. \]
+This can be achieved if we are able to prove that
+\[ \frac{\binom{n}{k}}{n^k}\le\frac{1}{k!} \]
+for $k=0,1,2,\dots,n$. And this is best approached by working backwards: since for all $j=0,1,2,\dots,n$, it holds that
+\[ \frac{n-(j-1)}{n}\le1, \]
+we must have that
+\[ \frac{n\times(n-1)\times\cdots\times(n-(k-1))}{n\times n\times\cdots\times n}\le1. \]
+Thus,
+\[ \frac{n!}{(n-k)!k!}\frac{1}{n^k}\le\frac{1}{k!} \]
+and we have proved that
+\[ \frac{\binom{n}{k}}{n^k}\le\frac{1}{k!} \]
+for $k=0,1,2,\dots,n$, as planned. This then implies that
+\[ \brac{1+\frac{t}{n}}^n=\sum_{k=0}^n\binom{n}{k}\frac{t^k}{n^k}\le\sum_{k=0}^n\frac{t^k}{k!}. \]
+
+\
+
+We now prove the RHS:
+\[ P_n(t)<\brac{1-\frac{t}{n}}^{-n}. \]
+Note that $n>t>0$, which implies that $-n$ is a negative integer and $\absolute{-\frac{t}{n}}<1$, flagging out the warrant for us to apply Newton's binomial expansion:
+\begin{align*}
+\brac{1-\frac{t}{n}}^{-n}&=1+(-n)\brac{-\frac{t}{n}}+\frac{(-n)(-n-1)}{2!}\brac{-\frac{t}{n}}^2+\frac{(-n)(-n-1)(-n-2)}{3!}\brac{-\frac{t}{n}}^3+\cdots\\
+& +\frac{(-n)(-n-1)(-n-2)\cdots(-n-(k-1))}{k!}\brac{-\frac{t}{n}}^k+\cdots\\
+&=1+t+\frac{n(n+1)}{2!}\brac{\frac{t}{n}}^2+\frac{n(n+1)(n+2)}{3!}\brac{\frac{t}{n}}^3+\cdots\\
+&+\frac{n(n+1)(n+2)\cdots(n+(k-1))}{k!}\brac{\frac{t}{n}}^k+\cdots\\
+&=1+t+\frac{1\brac{1+\frac{1}{n}}}{2!}t^2+\frac{1\brac{1+\frac{1}{n}}\brac{1+\frac{2}{n}}}{3!}t^3+\cdots+\frac{1\brac{1+\frac{1}{n}}\brac{1+\frac{2}{n}}\cdots\brac{1+\frac{k-1}{n}}}{k!}t^k+\cdots\\
+&>1+t+\frac{t^2}{2!}+\frac{t^3}{3!}+\cdots+\frac{t^n}{n!}\\
+&=P_n(t)
+\end{align*}
+\end{enumerate}
+\end{solution}
+
+\end{enumerate}
+\pagebreak
+
+\subsection*{2019}
+\begin{enumerate}
+\item 
+
+\item 
+
+\item A sequence is defined by
+\[ x_1=1\text{ and }x_{i+1}=\brac{\frac{i+a}{i+1}}x_i,\:i\ge1. \]
+\begin{enumerate}[label=(\roman*)]
+\item Assume that $a\ge0$.
+\begin{enumerate}[label=(\alph*)]
+    \item Prove that $x_i\ge\frac{1}{i}$, for all positive integers $i$.
+    \item Prove that
+    \[ \sum_{i=n+1}^{2n}x_i\ge\frac{1}{2}, \]
+    for all positive integers $n$.
+    \item Hence prove that $\displaystyle\sum_{i=1}^\infty x_i$ is unbounded.
+\end{enumerate}
+\item Assume that $a<0$.
+\begin{enumerate}[label=(\alph*)]
+    \item Prove that
+    \[ a\sum_{i=m}^nx_i=(n+1)x_{n+1}-mx_m \]
+    for all positive integers $m$ and $n$ such that $n>m$.
+    \item For any sufficiently large integers $m$ and $n$, prove that $x_mx_n\ge0$.
+\end{enumerate}
+\end{enumerate}
+
+\begin{solution} \
+\begin{enumerate}[label=(\roman*)]
+\item \begin{enumerate}[label=(\alph*)]
+\item We proceed to prove the statement
+\[ P(n):x_n\ge\frac{1}{n}, \quad n=1,2,3,\dots \]
+$P(1)$ is true since $x_1=1\ge\frac{1}{1}$.
+
+Assume that $P(k)$ holds for some $k\in\ZZ^+$; that is, 
+\[ x_k\ge\frac{1}{k}. \]
+We want to prove $P(k+1)$ holds; that is,
+\[ x_{k+1}\ge\frac{1}{k+1}. \]
+Since $x_{k+1}=\brac{\dfrac{k+a}{k+1}}x_k$, by the inductive hypothesis $P(k)$ we deduce that
+\[ x_{k+1}=\brac{\frac{k+a}{k+1}}x_k\ge\brac{\frac{k+a}{k+1}}\cdot\frac{1}{k}=\underbrace{\brac{1+\frac{a}{k}}}_{\ge1}\cdot\frac{1}{k+1}\ge\frac{1}{k+1}. \]
+Since $P(1)$ holds and $P(k)\implies P(k+1)$ for all $k\in\ZZ^+$, by mathematical induction, $P(n)$ holds for all $n\in\ZZ^+$.
+
+\item 
+\begin{align*}
+\sum_{i=n+1}^{2n}x_i&=x_{n+1}+x_{n+2}+\cdots+x_{2n}\\
+&\ge\frac{1}{n+1}+\frac{1}{n+2}+\cdots+\frac{1}{2n}\\
+&\ge\frac{1}{2n}+\frac{1}{2n}+\cdots+\frac{1}{2n}\\
+&=\frac{1}{2n}\times n=\frac{1}{2}
+\end{align*}
+
+\item Informally, we see that
+\begin{align*}
+\sum_{i=1}^\infty&=x_1+x_2+\brac{x_3+x_4}+\brac{x_5+x_6+x_7+x_8}+\cdots\\
+&\ge1+\frac{1}{2}+\frac{1}{2}+\frac{1}{2}+\cdots
+\end{align*}
+which provides compelling evidence that $\sum_{i=1}^\infty x_i$ is unbounded.
+
+We not write this argument in a rigorous manner. To show that $\sum_{i=1}^\infty x_i$ is unbounded, one must show that for any $M>0$, there exists $N\in\ZZ^+$ such that
+\[ \sum_{i=1}^Nx_i>M. \]
+Indeed, given any $M>0$, there exists $k\in\ZZ^+$ so large that
+\[ k>2(M-1) \iff 1+k\cdot\frac{1}{2}>M. \]
+Thus it follows that
+\begin{align*}
+\sum_{i=1}^{2^k}x_i&=x_1+x_2+\brac{x_3+x_4}+\brac{x_5+x_6+x_7+x_8}+\cdots+\brac{x_{2^{k-1}+1}+\cdots+x_{2^k}}\\
+&>1+\underbrace{\frac{1}{2}+\frac{1}{2}+\cdots+\frac{1}{2}}_{k\text{ terms}}\\
+&=1+k\cdot\frac{1}{2}>M.
+\end{align*}
+\end{enumerate}
+
+\item \begin{enumerate}[label=(\alph*)]
+\item By definition, 
+\[ x_{i+1}=\brac{\frac{i+a}{i+1}}x_i, \quad i\ge1. \]
+So
+\[ (i+1)x_{i+1}=(i_1)x_i \iff (i_1)x_{i+1}-ix_i=ax_i. \]
+Thus, if $n>m$ we have
+\begin{align*}
+\sum_{i=m}^n ax_i
+&=\sum_{i=m}^n[(i+1)x_{i+1}-ix_i]\\
+&=(m+1)x_{m+1}-mx_m\\
+&+(m+2)x_{m+2}-(m+1)x_{m+1}\\
+&+\vdots\\
+&+(n+1)x_{n+1}-nx_n\\
+&=(n+1)x_{n+1}-mx_m
+\end{align*}
+by the method of difference.
+
+\item For We want to prove that there exists a large enough $N\in\NN$ such that if $m,n\ge N$ then $x_mx_n\ge0$. Notice that in the situation when neither of $x_m$ or $x_n$ is zero these two numbers will have the same sign, i.e. either they are both negative or both positive.
+
+By the recursive definition of $x_i$'s, if $n>m$ then
+\[ x_n=\frac{n-1+a}{n}\cdot\frac{n-2+a}{n-1}\cdots\frac{m+a}{m+1}x_m. \]
+Since $a<0$ is fixed, there exists a sufficiently large positive integer $N$ such that $N-a>0$. Consequently, if $n>m\ge N$, we have 
+\[ x_n=\underbrace{\frac{n-1+a}{n}}_{>0}\cdot\underbrace{\frac{n-2+a}{n-1}}_{>0}\cdots\underbrace{\frac{m+a}{m+1}}_{>0}x_m. \]
+Hence $x_n$ and $x_m$ are of the same sign.
+\end{enumerate}
+\end{enumerate}
+\end{solution}
+
+\begin{remark}
+The question whether one can make use of (a) to solve (b) remains open.
+\end{remark}
+
+\item An $n$-digit number uses no digits other than 1, 2 and 3. It does not have any 2s adjacent to each other, and it does not have any 3s adjacent to each other. Let there be $T_n$ such numbers, with $X_n$ of these having first digit 1 and $Y_n$ having first digit 2.
+\begin{enumerate}[label=(\alph*)]
+\item Prove that, for any $n\ge2$,
+\begin{enumerate}[label=(\roman*)]
+    \item $Y_n=X_{n-1}+Y_{n-1}$,
+    \item $X_n=X_{n-1}+2Y_{n-1}$,
+    \item $X_{n+1}=2X_n+X_{n-1}$.
+\end{enumerate}
+\item Use mathematical induction to prove that, for $n\ge1$,
+\[ X_n\equiv n^2-n+1\pmod 4. \]
+\item Find and simplify an expression for $T_n\pmod4$.
+\end{enumerate}
+
+\item \begin{enumerate}[label=(\roman*)]
+\item Use the substitution $t=\dv{u}{x}$ to find the general solution of the equation
+\[ \dv[2]{u}{x}=\dv{u}{x}. \]
+\item Show that the differential equation can be transformed into the equation
+\[ f(x)\dv[2]{u}{x}-\brac{f^\prime(x)+f(x)g(x)}\dv{u}{x}=0 \]
+by the substitution
+\[ u=e^{-\int f(x)y\dd{x}}. \]
+\item A solution curve of the differential equation
+\[ \dv{y}{x}=e^{-2x}y^2+3y \]
+passes through the point $\brac{0,-\frac{1}{4}}$. Find the equation of the curve.
+\end{enumerate}
+\end{enumerate}
+\pagebreak
+
+\subsection*{2018}
+\begin{enumerate}
+\item A triangle has sides of lengths $a$, $b$ and $c$ units. In each of the following cases, prove that there is a triangle having sides of the given lengths.
+\begin{enumerate}[label=(\roman*)]
+\item $\dfrac{a}{1+a}$, $\dfrac{b}{1+b}$ and $\dfrac{c}{1+c}$ units.
+\item $\sqrt{a}$, $\sqrt{b}$ and $\sqrt{c}$ units.
+\item $\sqrt{a(b+c-a)}$, $\sqrt{b(c+a-b)}$ and $\sqrt{c(a+b-c)}$ units.
+\end{enumerate}
+
+\item 
+\item 
+\item A clothes shop sells a particular make of T-shirt in four different colours. The shopkeeper has a large number of T-shirts of each colour.
+\begin{enumerate}[label=(\roman*)]
+\item A customer wishes to buy seven T-shirts.
+\begin{enumerate}[label=(\alph*)]
+    \item In how many ways can he do this?
+    \item In how many ways can he do this if he buys at least one of each colour.
+\end{enumerate}
+\item The shopkeeper places seven T-shirts in a line.
+\begin{enumerate}[label=(\alph*)]
+    \item In how many ways can she do this?
+    \item In how many ways can she do this if no two T-shirts of the same colour are to be next to each other?
+    \item Use the principle of inclusion and exclusion to find the number of ways in which she can do this if she has to use at least one T-shirt of each colour but with no other restrictions.
+\end{enumerate}
+\end{enumerate}
+
+\item A $p \times q$ chessboard can be tessellated with $a \times b$ tiles.
+
+A unit square $(x,y)$ is shaded if and only if $x \equiv y \pmod a$.
+\begin{enumerate}[label=(\roman*)]
+\item Explain why the following are necessary conditions for such a tessellation
+    \begin{enumerate}[label=(\alph*)]
+    \item $ab$ is a factor of $pq$.
+    \item $p$ and $q$ can be written in the form $ma+nb$ where $m$ and $n$ are non-negative integers.
+    \item The $p \times q$ chessboard has $\dfrac{pq}{a}$ shaded squares.
+    \end{enumerate}
+\item Let $t$ be the smaller of $r$ and $s$ such that
+\begin{align*}
+&p \equiv r \pmod a \quad 0 \le r < a \\
+&q \equiv s \pmod a \quad 0 \le s < a
+\end{align*}
+    \begin{enumerate}[label=(\alph*)]
+    \item Explain why the number of shaded squares in the $p \times q$ chessboard is $\dfrac{pq-rs}{a}+t$.
+    \item Hence prove that for a tessellation, either $a \mid p$ or $a \mid q$.
+    \end{enumerate}
+\end{enumerate}
+
+\begin{solution} \
+\begin{enumerate}[label=(\roman*)]
+\item \begin{enumerate}[label=(\alph*)]
+    \item A $p \times q$ chessboard has $pq$ squares, a $a \times b$ tile has $ab$ squares.
+    
+    Suppose $k$ tiles are used to tessellate the board. Then $pq=kab$. Hence $ab\mid pq$.
+
+    \item $p$ and $q$ are the height and base of the $p \times q$ chessboard respectively, $a$ and $b$ are the height and base of each $a \times b$ tile respectively. Each tile can be places horizontally or vertically in the tessellation.
+    
+    If we tessellate the board at the bottom from left to right with $m$ vertical and $n$ horizontal tiles, there will be $ma+nb$ squares at the bottom row of the board. Each row of the board is made up of $q$ squares. So we get $q=ma+nb$.
+    
+    Similarly, if we tessellate the board on the left from bottom to top, we will get $p=sa+tb$ (with $s$ horizontal and $t$ vertical tiles).
+\end{enumerate}
+
+\item \begin{enumerate}[label=(\alph*)]
+    \item 
+\end{enumerate}
+\end{enumerate}
+\end{solution}
+
+\item (Dirichlet's approximation theorem) Let $x$ be any positive real numbers and $n$ be any positive integer. Prove that there are integers $a$ and $b$ with $1 \le b \le n$, such that
+\[ \absolute{x-\frac{a}{b}}<\frac{1}{bn}. \]
+
+\begin{solution}
+For any real number $y$, we write $y=\floor{y}+\{y\}$, where $\floor{y}$ denotes the integer part of $y$ and $\{y\}$ denotes the fractional part of $y$, $0\le \{y\}<1$.
+
+We divide the interval $[0,1)$ into $n$ smaller intervals of measure $\frac{1}{n}$. Consider $\{x\},\{2x\},\dots,\{nx\}$. Let $I_i$ denote the interval $\sqbrac{\frac{i-1}{n},\frac{i}{n}}$, where $1\le i\le n$.
+
+We now consider two cases:
+
+\textbf{Case 1:} Some $\{kx\}$ falls in $I_1$
+
+Then $kx-\floor{kx}=\{kx\}<\frac{1}{n}$.
+
+Dividing both sides by $k$,
+\[ \absolute{x-\frac{\floor{kx}}{k}}<\frac{1}{kn}. \]
+By taking $a=\floor{kx}$ and $b=k$, we have the inequality.
+
+\textbf{Case 2:} None of $\{kx\}$ falls in $I_1$
+
+This means all $\{kx\}$ fall into $I_2,I_3,\dots,I_n$. By Pigeonhole Principle, at least two $\{kx\}$ fall in the same $I_i$.
+
+Let $\frac{i-1}{n}\le\{px\}<\frac{i}{n}$ and $\frac{i-1}{n}\le\{qx\}<\frac{i}{n}$. Then
+\begin{align*}
+\absolute{\{px\}-\{qx\}} &< \frac{1}{n} \\
+\absolute{(px-\floor{px})-(qx-\floor{qx})} &< \frac{1}{n} \\
+\absolute{(px-qx)-(\floor{px}-\floor{qx})} &< \frac{1}{n} \\
+\absolute{(p-q)x-(\floor{px}-\floor{qx})} &< \frac{1}{n}
+\end{align*}
+Dividing both sides by $p-q$,
+\[ \absolute{x-\frac{(\floor{px}-\floor{qx})}{p-q}}<\frac{1}{(p-q)n}. \]
+WLOG assume $p>q$. Then $1\le p-q<n$. By taking $a=\floor{px}-\floor{qx}$ and $b=p-q$, we have the inequality.
+\end{solution}
+
+\item The differential equation
+\begin{equation*}\tag{1}
+y\dv{y}{x}=x\brac{\dv{y}{x}}^2+1, \quad \text{for }x>0
+\end{equation*}
+has a solution curve $S$ such that $\dv[2]{y}{x}$ is non-zero for all points of $S$.
+\begin{enumerate}[label=(\roman*)]
+\item By substituting $t=\dv{y}{x}$ into equation (1) and differentiating with respect to $x$, show that $S$ has equation $y^2=4x$.
+\item Show that a straight line is tangent to the curve $S$ if and only if it is itself a solution of the equation.
+\end{enumerate}
+
+\item For any positive real number $x$, $\mathrm{n}(x)$ is defined as the nearest integer to $x$, with halves rounded up.
+
+For example, $\mathrm{n}(3.5)=4$, and $\mathrm{n}(\pi)=3$.
+
+\begin{enumerate}[label=(\alph*)]
+\item Show that $\sum_{r=1}^3\mathrm{n}\brac{\frac{11}{7}r}=10$.
+
+The diagram shows the line $y=\frac{7}{11}x+\frac{1}{2}$ and the integer $(x,y)$ such that $1\le x\le 5$, $1\le y\le 3$.
+
+\item Find $\sum_{r=1}^5\mathrm{n}\brac{\frac{7}{11}r}$ and explain the connection between your answer and the points underneath the line $y=\frac{7}{11}x+\frac{1}{2}$.
+
+\item The line $y=\frac{7}{11}x+\frac{1}{2}$ is rotated through $180\degree$ about $(3,2)$. Find the equation of the new line in the form $x=my+c$ and hence comment on the connection between
+\[ \sum_{r=1}^3\mathrm{n}\brac{\frac{11}{7}r}=\sum_{r=1}^5\mathrm{n}\brac{\frac{7}{11}r}. \]
+
+\item Let $p$ and $q$ be odd integers greater than $1$ and consider the integer points $(x,y)$ such that $1\le x\le\frac{p-1}{2}$, $1\le y\le\frac{q-1}{2}$. Let $N$ be the number of points which lie in between the lines $y=\frac{q}{p}x+\frac{1}{2}$ and $x=\frac{p}{q}y+\frac{1}{2}$.
+
+Explain why $\displaystyle N+\brac{\frac{p-1}{2}}\brac{\frac{q-1}{2}}\equiv0\pmod2$.
+\end{enumerate}
+\end{enumerate}
+\pagebreak
+
+\subsection*{2017}
+\begin{enumerate}
+\item 
+\item \begin{enumerate}[label=(\roman*)]
+\item Let $y$ be a differentiable function of $x$. For any positive integer $n$, prove that
+\[ \dv[n]{}{x}\brac{xy}=x\dv[n]{y}{x}+n\dv[n-1]{y}{x}. \]
+\item For any non-negative integer $n$, define
+\[ y_n=e^{x^2}\dv[n]{}{x}\brac{e^{-x^2}}. \]
+\begin{enumerate}[label=(\alph*)]
+    \item Find $y_0$, $y_1$ and $y_2$.
+    \item Prove that $y_{n+2}+2xy_{n+1}+2(n+1)y_n=0$, for $n\ge0$.
+    \item Hence prove that $\dv{}{x}\brac{y_{n+1}}=-2(n+1)y_n$, for $n\ge0$.
+\end{enumerate}
+\end{enumerate}
+
+\item \begin{enumerate}[label=(\alph*)]
+\item Consider integer solutions of the equation
+\[ 1591x+3913y=9331. \]
+Show that there is no solution with $x$ prime.
+
+\item Let $a$, $b$, $r$ and $s$ be integers such that 
+\[ ra+sb=1. \]
+    \begin{enumerate}[label=(\roman*)]
+    \item Prove that, if $a$ and $b$ are both factors of an integer $n$, then $ab$ is a factor of $n$.
+    \item Given that any integers $u$ and $v$, prove by construction that there is an integer $x$ such that both
+    \[ x\equiv u\pmod a \quad \text{and} \quad x\equiv v\pmod b. \]
+    \end{enumerate}
+\end{enumerate}
+
+\begin{solution} \
+\begin{enumerate}[label=(\alph*)]
+\item First we find $\gcd(1591,3913)$ using the Euclidean Algorithm.
+\begin{align*}
+3913 &= 2\times1591+731 \\
+1591 &= 2\times731+129 \\
+731 &= 5\times129+86 \\
+129 &= 1\times86+43 \\
+86 &= 2\times43+0
+\end{align*}
+Thus $\gcd(1591,3913)=43$. By Bezout's Lemma, there are integer solutions for $1591x+3913y=43$. Since $43\mid9331$, multiplying both sides by some constant, there are also integer solutions for $1591x+3913y=9331$.
+
+To prove by contradiction, we assume that $x$ is prime, and there exists some integer $y$ such that $1591x+3913y=9331$. Dividing both sides by $43$,
+\begin{equation*}\tag{$\star$}
+37x+91y=217.
+\end{equation*}
+Observe that $7\mid91y$ and $7\mid217$, so $7\mid37x$.
+
+Since $\gcd(7,37)=1$ so $7\mid x$. By our assumption, $x$ is a prime so $x=7$.
+
+Substituting $x=7$ into ($\star$), we get $y=-\dfrac{6}{13}$, which contradicts $y$ being an integer.
+
+Hence we conclude that $x$ cannot be a prime.
+
+\item \begin{enumerate}[label=(\roman*)]
+    \item If $a$ and $b$ are both factors of $n$, then we have $n=pa$ and $n=qb$ for some integers $p$ and $q$.
+
+    Given $ra+sb=1$, we have
+    \begin{align*}
+    rna+snb &= n\\
+    r(qb)a+s(pa)b &= n \\
+    (rq+sp)ab &= n
+    \end{align*}
+    and hence $ab$ is a factor of $n$.
+
+    \item Prove by construction.
+
+    Given that $ra+sb=1$. Multiplying both sides by $v-u$ gives
+    \begin{align*}
+    ra(v-u)+sb(v-u)&=v-u\\
+    ra(v-u)+u&=sb(u-v)+v
+    \end{align*}
+    We define $x=ra(v-u)+u=sb(u-v)+v$. Then $x\equiv u\pmod a$ and $x\equiv v\pmod b$.
+    \begin{remark}
+    The above proof shows the \textit{existence} of solution by a construction.
+    \end{remark}
+\end{enumerate}
+\end{enumerate}
+\end{solution}
+
+\item Let $\displaystyle I_n=\int_0^\frac{\pi}{4}\tan^nx\dd{x}$.
+\begin{enumerate}[label=(\roman*)]
+\item For $n>1$, prove that $\displaystyle I_n+I_{n+2}=\frac{1}{n-1}$.
+\item Justify the statement that $\tan x\le\dfrac{4}{\pi}x$ on $\sqbrac{0,\dfrac{\pi}{4}}$.
+\item Hence, prove that $I_n$ tends to zero as $n$ tends to infinity.
+\item Find the sum of the infinite series
+\[ 1-\frac{1}{3}+\frac{1}{5}-\frac{1}{7}+\cdots \]
+\end{enumerate}
+
+\begin{solution} \
+\begin{enumerate}[label=(\roman*)]
+\item \begin{align*}
+I_n+I_{n-2}
+&=\int_0^\frac{\pi}{4}\brac{\tan^nx+\tan^{n-2}x}\dd{x}\\
+&=\int_0^\frac{\pi}{4}\tan^{n-2}x\brac{\tan^2x+1}\dd{x}\\
+&=\int_0^\frac{\pi}{4}\tan^{n-2}x\cdot\sec^2x\dd{x}\\
+&=\sqbrac{\frac{\tan^{n-1}x}{n-1}}_0^\frac{\pi}{4}=\frac{1}{n-1}.
+\end{align*}
+
+\item Sketch the graphs of $y=\tan x$ and $y=\frac{4}{\pi}x$ over the interval $\sqbrac{0,\frac{\pi}{4}}$.
+
+Since $y=\tan x$ is convex over $\sqbrac{0,\frac{\pi}{4}}$, it follows that
+\[ \tan x\le\frac{4}{\pi}x \]
+for all $x\in\sqbrac{0,\frac{\pi}{4}}$.
+
+\item 
+
+\item 
+\end{enumerate}
+\end{solution}
+
+\item \begin{enumerate}[label=(\roman*)]
+\item Explain why the number of ways to distribute $r$ distinct objects, where $r\ge2$, into 2 distinct boxes such that neither is empty is $2^r-2$.
+\item Let $S(r,n)$ denote the number of ways to distribute $r$ objects into $n$ identical boxes such that no box is empty.
+\begin{enumerate}[label=(\alph*)]
+    \item Explain why, for $r\ge3$,
+    \[ S(r,3)=2^{r-2}-1+3S(r-1,3). \]
+    \item Prove that, for $r\ge3$,
+    \[ S(r,3)=\begin{cases}
+    0\pmod6 & \text{if }r\text{ is even,}\\
+    1\pmod6 & \text{if }r\text{ is odd.}
+    \end{cases} \]
+\end{enumerate}
+\end{enumerate}
+\end{enumerate}
+\pagebreak
+
+\subsection*{Specimen}
+\begin{enumerate}
+\item 
+\item 
+\item (Fermat's Little Theorem)
+\begin{enumerate}[label=(\roman*)]
+\item Let $p$ be an odd prime and let $a$ be an integer not divisible by $p$.
+    \begin{enumerate}[label=(\alph*)]
+    \item Let $T$ be the set of remainders for $a,2a,\dots,(p-1)a$, when divided by $p$. Show that $T=\{1,2,\dots,p-1\}$.
+    \item Hence prove that $a^{p-1}\equiv1\pmod p$.
+    \end{enumerate}
+\item Let $x$ and $y$ be two integers such that $x^5+y^5$ is divisible by $5$. Prove that $x^5+y^5$ is divisible by $25$.
+\end{enumerate}
+
+\begin{solution} \
+\begin{enumerate}[label=(\roman*)]
+\item \begin{enumerate}[label=(\alph*)]
+    \item Let $S=\{1,2,3,\dots,p-1\}$, the set of all non-zero positive remainders obtained when integers are divided by $p$.
+    
+    \textbf{Known fact:} $p\nmid k$ for all $k\in S=\{1,2,3,\dots,p-1\}$.
+
+    Given that $T$ is the set of remainders when $a,2a,3a,\dots,(p-1)a$ are divided by $p$.
+    
+    Clearly, $T\subseteq S\cup\{0\}$.
+    
+    \textbf{Claim 1:} $0\notin T$.
+    \begin{proof}
+    Prove by contradiction.
+
+    Suppose $0\in T$. Then $p\mid ka$ for some $k\in S=\{1,2,3,\dots,p-1\}$. Since $p$ is prime and $p\nmid a$, we apply Euclid’s Lemma to conclude that $p\mid k$, which contracts Fact 1.]
+    
+    Thus $T\subseteq S$.
+    \end{proof}
+    
+    \textbf{Claim 2:} $T=S$ itself.
+    \begin{proof}
+    Prove by contradiction. 
+    
+    Suppose, on the contrary, that $T\neq S$.
+    
+    Then, $T\subset S$ (i.e. $T$ is a proper subset of $S$).
+    
+    Since the sets are finite sets, $n(T)<n(S)=p-1$. By the Pigeonhole Principle, there are (at least) two distinct $ia$ and $ja$ (from the list of $p-1$ terms: $a,2a,3a,\dots,(p-1)a$ -- the ``pigeons''), where $1\le i\neq j\le p-1$ that share the same remainder when divided $p$. The ``holes'' are the elements in $T$; here we get less holes: $n(T)<p-1$ based on our (wrong) assumption.
+    \begin{align*}
+    ia &\equiv ja \pmod p \\
+    ia-ja &\equiv 0\pmod p \\
+    (i-j)a &\equiv 0\pmod p
+    \end{align*}
+    We can cancel $a$ on both sides due to Euclid's lemma. Hence $i\equiv j\pmod p$.
+    
+    Since both $i$ and $j$ belong to $S$, having them share the same remainder when divided by $p$ means that they are actually the same. Thus $i=j$. This contradicts our initial choice of distinct $ia$ and $ja$.
+    
+    Hence $T=S=\{1,2,3,\dots,p-1\}$.
+    \end{proof}
+
+    \item Let
+    \begin{align*}
+    a\cdot1 &\equiv r_1 \pmod p \\
+    a\cdot2 &\equiv r_2 \pmod p \\
+    a\cdot3 &\equiv r_3 \pmod p \\
+    &\vdots \\
+    a\cdot(p-1) &\equiv r_{p-1} \pmod p
+    \end{align*}
+    where $r_1,r_2,r_3,\dots,r_{p-1}$ are distinct elements of $T=S=\{1,2,3,\dots,p-1\}$.
+
+    So multiplying the LHS and RHS respectively of these congruence equations,
+    \[ a^{p-1}(p-1)!\equiv r_1r_2r_3\cdots r_{p-1} \pmod p \]
+    Since $r_1,r_2,r_3,\dots,r_{p-1}$ is just a rearrangement of $1,2,3,\dots,p-1$,
+    \[ a^{p-1}(p-1)!\equiv1\cdot2\cdot3\cdots(p-1)\pmod p \]
+    or
+    \[ a^{p-1}(p-1)!\equiv(p-1)!\pmod p \]
+    But $p\nmid(p-1)!$ so by Euclid's lemma,
+    \[ a^{p-1}\equiv1\pmod p \]
+    as desired.
+    \end{enumerate}
+
+\item Prove by cases
+
+Given $5$ divides $x^5+y^5$.
+
+\textbf{Case 1:} either $x$ or $y$ is divisible by 5
+
+WLOG, assume $5\mid x$. Then $x=5k$ for some integer $k$.
+
+Then $x^5=(5k)^5=5^2(5^3k^5)=25t$ so $25\mid x^5$.
+
+Since we can write $y^5=(x^5+y^5)-x^5$, $5\mid y^5$ so $5\mid y$. We can then similarly show that $25\mid y^5$.
+
+Hence $25\mid x^5+y^5$.
+
+\textbf{Case 2:} both $x$ and $y$ are not divisible by $5$
+
+Since $5$ is a prime, by Fermat's Little Theorem, $x^5\equiv x\pmod 5$ and $y^5\equiv y\pmod 5$, so $x^5+y^5\equiv x+y\pmod 5$.
+
+Since $5\mid x^5+y^5$, we have also $5\mid x+y$, i.e. $x+y=5k$ for some integer $k$. We rewrite $y=5k-x$.
+
+Then by binomial expansion,
+\[ y^5=(5k-x)^5=\sum_{i=0}^5\binom{5}{i}(5k)^{5-i}(-x)^i \]
+which gives $y^5\equiv(-x)^5\pmod {25}$ as all the other terms are divisible by $25$.
+
+Hence $x^5+y^5\equiv0\pmod {25}$.
+\end{enumerate}
+\end{solution}
+
+\item 
+\item 
+\item 
+\item The figures below show, respectively, a square board of 4 unit squares with one unit square covered, and a triomino consisting of 3 unit squares.
+
+Irrespective of which unit square is covered, a triomino can cover the remaining 3 unit squares of the square board as shown.
+
+Consider a square board made up of $4^n$ squares, where $n\ge1$, with one of the unit squares covered. An example of such a square, with $n=3$, is shown below.
+
+\begin{enumerate}[label=(\roman*)]
+\item Explain how, irrespective of unit square is covered, a triomino can be placed on the board in such a way that each quarter of the board now has one unit square covered.
+\item Use mathematical induction to prove that, irrespective of which unit square is initially covered, the remaining squares can be covered by triominoes. State the number of triominoes required.
+\end{enumerate}
+\end{enumerate}
+
+\begin{prbm}[\acrshort{h3math} 2021]
+Let $Q=\{1,2,\dots,p-1\}$ for some prime $p$, and let there be $N$ integers in $Q$ whose cubes are congruent to $1$ modulo $p$.
+\begin{enumerate}[label=(\alph*)]
+\item Use the pigeonhole principle to prove that for each integer $x\in Q$ there is precisely one integer $y\in Q$ such that $xy\equiv1\pmod p$.
+\item Explain why the number of choices of integers $x,y,z\in Q$ such that $xyz\equiv1\pmod p$ is $(p-1)^2$.
+\item Use the principle of inclusion and exclusion to prove that the number of choices of three different integers $x,y,z\in Q$ such that $xyz\equiv1\pmod p$ is $(p-1)(p-4)+2N$.
+\item Hence prove that $N\equiv(p-1)^2\pmod 3$.
+\item Given that $p\equiv1\pmod3$, prove that there is an integer $x\in Q$ such that $x^2+x+1\equiv0\pmod p$.
+\end{enumerate}
+\end{prbm}
+
+\begin{solution} \
+\begin{enumerate}[label=(\alph*)]
+\item Note that, by Quotient Remainder Theorem, every integer not divisible by $p$ is congruent to an integer in $Q$ modulo $p$, and no two integers in $Q$ are congruent to each other modulo $p$.
+
+We have two parts to prove: existence and uniqueness of inverse modulo $p$
+
+\textbf{Existence:} prove by contradiction
+
+Suppose there is an $x\in Q$ such that for all $y\in Q$, $xy\not\equiv1\pmod p$.
+
+There are $p-1$ possible $y\in Q$, but there are less than $p-1$ possible $xy\in Q$ (since $xy\equiv1\pmod p$ is excluded).
+
+By Pigeonhole Principle, there are two different $y_1,y_2\in Q$ such that $xy_1\equiv xy_2(\not\equiv1)\pmod p$. Then
+\[ p\mid xy_1-xy_2 \implies p\mid x(y_1-y_2) \implies p\mid y_1-y_2 \implies y_1\equiv y_2\pmod p \implies y_1=y_2 \]
+which is a contradiction. Hence every $x\in Q$ has a $y\in Q$ such that $xy\equiv1\pmod p$.
+
+\textbf{Uniqueness:} prove by contradiction
+
+Suppose there are two different $y_1,y_2\in Q$ such that $xy_1\equiv xy_2(\equiv1)\pmod p$.
+
+The rest is similar to the above, and thus left as an exercise to the reader.
+
+\item Use combinatorics.
+
+There are $p-1$ ways each to choose $x$ and $y$.
+
+By (a), there is only $1$ way to choose $z\in Q$, the modular inverse of $xy$ mod $p$, such that $(xy)z\equiv1\pmod p$.
+
+Hence there is a total number of $(p-1)^2$ choices of $x,y,z$ such that $xyz\equiv1\pmod p$.
+
+\item Let $U$ contain all $(x,y,z)$ such that $xyz\equiv1\pmod p$, $A$ is a subset of $U$ such that $x\equiv y\pmod p$, $B$ is a subset of $U$ such that $x\equiv z\pmod p$, $C$ is a subset of $U$ such that $y\equiv z\pmod p$.
+
+Note that $A\cap B=A\cap C=B\cap C=A\cap B\cap C$ are all subsets of $U$ such that $x\equiv y\equiv z\pmod p$, i.e. this subset of $U$ contains all $(x,x,x)$ such that $x^3\equiv1\pmod p$.
+
+We have $|U|=(p-1)^2$ from (b), $|A|=|B|=|C|=p-1$, and $|A\cap B\cap C|=N$.
+
+By principle of inclusion and exclusion,
+\[ |A\cup B\cup C|=3(p-1)-2N. \]
+To find the complement of $A\cup B\cup C$, 
+\[ |U-(A\cup B\cup C)|=(p-1)^2-\brac{3(p-1)-2N}=(p-1)(p-4)+2N. \]
+
+\item From (c), the number of choices of three different $x,y,z\in Q$ such that $xyz\equiv1\pmod p$ is $(p-1)(p-4)+2N$.
+
+Since the number of combinations of such $x,y,z$ are symmetrical, this number is divisible by $3$. That is,
+\begin{align*}
+(p-1)(p-4)+2N &\equiv 0 \pmod 3 \\
+(p-1)(p-1)-N &\equiv 0 \pmod 3 \\
+(p-1)^2 &\equiv N \pmod 3
+\end{align*}
+
+\item From (d), $N\equiv(p-1)^2\equiv0\pmod 3 \implies 3\mid N \implies N\ge3$.
+
+There are at least $3$ different $x$ such that $x^3\equiv1\pmod p$. Choose such an $x\in Q$ such that $x\neq1$.
+\[ x^3-1 \equiv 0\pmod p \]
+Factorising this gives
+\[ (x-1)(x^2+x+1) \equiv 0\pmod p \]
+Hence
+\[ p\mid(x-1)(x^2+x+1) \]
+Since $\nmid x-1$ as $x\in\{1,2,\dots,p-1\}$,
+\[ p\mid x^2+x+1 \]
+thus $x^2+x+1\equiv0\pmod p$
+\end{enumerate}
+\end{solution}
+\pagebreak
+
+\begin{prbm}[\acrshort{h3math} Specimen]
+For any positive integer $n$, if one square is removed from a $2^n\times2^n$ checkerboard, the remaining squares can be completely covered by triominoes (an L-shaped domino consisting of three squares).
+\end{prbm}
+
+\begin{solution}
+Prove by induction.
+
+\textbf{Base case}: $P(1)$ is clearly true.
+
+\textbf{Inductive step}: $P(k)\implies P(k+1)$ is true for all $k$, i.e. if a $2^k\times2^k$ checkerboard with a square removed can be completely covered by triominoes, then a $2^{k+1}\times2^{k+1}$ checkerboard with a square removed can be completely covered by triominoes.
+
+\begin{enumerate}[label=(\roman*)]
+\item Divide the $2^{k+1}\times2^{k+1}$ checkerboard into four $2^k\times2^k$ sub-boards.
+\item One of the sub-boards include the removed square.
+\item WLOG, assume the top left sub-board has the removed square.
+\item By induction hypothesis, this sub-board can be covered by triominoes.
+\item For the top right sub-board, we cover it with trominoes with a remaining square at the bottom left corner.
+\item For the bottom right sub-board, we cover it with trominoes with a remaining square at the top left corner.
+\item For the bottom left sub-board, we cover it with trominoes with a remaining square at the top right corner.
+\item The remaining three squares from (v) to (vii) are connected and can be covered by one triomino.
+\end{enumerate}
+\end{solution}
+
+\begin{remark}
+Although it is easy to visualise this by drawing it out, always produce a written proof.
+\end{remark}
+
+\begin{prbm}[\acrshort{h3math} 2017 Q8]
+The Fibonacci sequence is defined recursively by $F_{n+1}=F_n+F_{n-1}$ and $F_1=1,F_2=1$.
+\begin{enumerate}[label=(\roman*)]
+\item Find the periods of Fibonacci sequences modulo $3$ and $4$.
+\item For any positive integer $m$, show that we can find two pairs $(F_j,F_{j+1})$ and $(F_k,F_{k+1})$ which are the same modulo $m$ with $1\le j<k\le m^2+1$.
+\item For $m$, $j$ and $k$ as in (ii), explain why the Fibonacci sequence modulo $m$ is periodic
+with period dividing $k-j$.
+\item For any positive integer $m$, prove that there is a Fibonacci number which is a multiple of $m$.
+\end{enumerate}
+\end{prbm}
+
+\begin{solution} \
+\begin{enumerate}[label=(\roman*)]
+\item Modulo 3: $1, 1, 2, 0, 2, 2, 1, 0, 1, 1, \dots$ has period $8$.
+
+Modulo 4: $1, 1, 2, 3, 1, 0, 1, 1, \dots$ has period $6$.
+
+\item Modulo $m$, there are $m$ possible values $0,1,2,\dots,m-1$. So there are exactly $m^2$ possible distinct pairs $(a,b)$.
+
+If we consider $m^2+1$ pairs of $(F_i,F_{i+1})$ modulo $m$ where $1\le i\le m^2+1$, we can find two pairs $(F_j,F_{j+1})$ and $(F_k,F_{k+1})$ which are the same modulo $m$, by Pigeonhole Principle.
+
+\item This is the same as showing $F_{j+n} \equiv F_{k+n} \pmod m$ for all non negative integer $n$.
+
+We prove using mathematical induction.
+
+Basis step: $P(0)$ and $P(1)$
+\[ F_j \equiv F_k \pmod m \quad F_{j+1} \equiv F_{k+1} \pmod m \]
+
+Inductive step: $P(q-1)\land P(q)\implies P(q+1)$ for all $q\ge 1$
+
+Given $F_{j+q-1} \equiv F_{k+q-1} \pmod m$ and $F_{j+q} \equiv F_{k+q} \pmod m$. Then $F_{j+q-1}+F_{j+q} \equiv F_{k+q-1}+F_{k+q}\pmod m$ so $F_{j+q+1}\equiv F_{k+q+1}\pmod m$.
+
+By mathematical induction, the sequence repeats itself after $k-j$ terms. This implies the period of the sequence divides $k-j$.
+
+\item For any positive $m$, by part (iii), the Fibonacci sequence modulo $m$ is periodic. That is, $(F_1,F_2)$ is congruent to $(F_i,F_{i+1})$ modulo $m$ for some $i>2$:
+\[ F_i \equiv F_1 \equiv 1 \pmod m \quad F_{i+1} \equiv F_2 \equiv 1 \pmod m \]
+Then $F_{i-1}=F_{i+1}-F_i\equiv1-1\equiv0\pmod m$, which means $m\mid F_{i-1}$.
+
+We have proven that there is a Fibonacci number which is a multiple of $m$.
+\end{enumerate}
+\end{solution}
+\pagebreak
+
+\begin{prbm}[\acrshort{h3math} Specimen N03]
+Functions $f$ and $g$ are defined for $x\in\RR$ by
+\[ f(x)=ax+b, \quad g(x)=cx+d \]
+where $a,b,c,d$ are constants with $a=\neq0$. Given that $gf=f^{-1}g$, show that
+\begin{itemize}
+\item either $g$ is a constant function, i.e. $g(x)$ is constant for all $x\in\RR$,
+\item or $f^2$ is the identity function, i.e. $ff(x)=x$ for all $x\in\RR$,
+\item or $g^2$ is the identity function.
+\end{itemize}
+\hfill \textbf{[9]}
+\end{prbm}
+
+\begin{solution}
+Given that $gf=f^{-1}g$,
+\begin{align*}
+cf(x)+d&=f^{-1}(cx+d)\\
+c(ax+b)+d&=\frac{(cx+d)-b}{a}\\
+a^2cx+abc+ad&=cx+d-b
+\end{align*}
+Comparing coefficients,
+\[ \begin{cases}
+a^2c=c\\
+c(a-1)(a+1)=0\\
+abc+ad=d-b
+\end{cases} \]
+and we have three cases to work with.
+\end{solution}
+\pagebreak
+
+\section{Selected problems from school papers}
+\subsection{Number Theory}
+\subsection{Analysis}
+\subsection{Counting}
+\begin{enumerate}
+\item (2019 DHS--EJC Prelim Q6) 
+You have an unlimited supply of $1\times1$, $1\times2$ and $2\times2$ tiles. Tiles of the same size are indistinguishable.
+\begin{enumerate}[label=(\roman*)]
+\item Let $T_n$ is the number of ways of tiling a $1\times n$ path.
+
+State the value of $T_1$ and $T_2$. Write down an appropriate recurrence relation between $T_{n+2}$, $T_{n+1}$ and $T_n$. \hfill [1]
+\end{enumerate}
+
+Consider the tilings of a $2\times n$ path. (The $1\times2$ tiles can be rotated in the tilings.)
+
+Let $P_n$ be the number of tilings of
+
+Let $Q_n$ be the number of tilings of
+
+\begin{enumerate}[resume*]
+\item Show that $P_{n+1}=P_n+Q_n$ for $n\ge1$. Explain your reasoning clearly. \hfill [2]
+\item Show that $Q_{n+1}=2P_{n+1}+2Q_{n+1}$ for $n\ge2$. Explain your reasoning clearly. \hfill [4]
+\item Use (ii) and (iii) to show that $P_{n+2}+2P_{n-1}=3P_{n+1}+2P_n$ for $n\ge2$. \hfill [2]
+\end{enumerate}
+
+It is given that the solution to the above recurrence relation is
+\[ P_n=-\frac{(-1)^n}{7}+\frac{1+2\sqrt{2}}{14}(2+\sqrt{2})^n+\frac{1-2\sqrt{2}}{14}(2-\sqrt{2})^n. \]
+\begin{enumerate}[resume*]
+\item Find the number of distinct ways of tiling a $2\times n$ path. \hfill [2]
+\end{enumerate}
+
+\begin{solution} \
+\begin{enumerate}[label=(\roman*)]
+\item $T_1=1$, $T_2=2$.
+
+$T_{n+2}=T_{n+1}+T_n$ for $n\ge1$.
+
+\item Consider the ``odd'' tile / last tile in a tiling of $P_{n+1}$. It can only be covered by a $1\times1$ or a $1\times2$ tile.
+
+Consider cases:
+\begin{itemize}
+\item If it is covered by a $1\times1$ tile, the rest for a tiling of $Q_n$.
+\item If it is covered by a $1\times2$ tile, the rest form a tiling of $P_n$.
+\end{itemize}
+Thus $P_{n+1}=P_n+Q_n$.
+
+\item Consider the last column of 2 tiles in a tiling of $Q_{n+1}$. The following cases are possible:
+\begin{itemize}
+\item $2\times2$ tile: The rest form a tiling of $Q_{n-1}$.
+\item $1\times2$ tile (vertical): The rest form a tiling of $Q_n$.
+\item Two $1\times1$ tiles: The rest form a tiling of $Q_n$.
+\item Two $1\times2$ tiles (horizontal): The rest form a tiling of $Q_{n-1}$.
+\item One $1\times1$ tile and one $1\times2$ tile (horizontal): The rest form a tiling of $P_n$. Note that this case counts twice (depending on which tile covers the top line and which tile covers the bottom line).
+\end{itemize}
+Thus $Q_{n+1}=2Q_n+2Q_{n-1}+2P_n=2P_{n+1}+2Q_{n-1}$ using the result from (ii).
+
+\item Add $P_{n+1}+2P_{n-1}$ to both sides of (iii):
+\[ P_{n+1}+2P_{n-1}+Q_{n+1}=P_{n+1}+2P_{n-1}+2P_{n+1}+2Q_{n-1} \]
+and thus
+\[ P_{n+2}+2P_{n-1}=3P_{n+1}+2P_n \]
+using result from (ii).
+
+\item Number of tilings of $2\times n$ path is $Q_n$. Thus
+\begin{align*}
+Q_n&=P_{n+1}-P_n\\
+&=\frac{2}{7}(-1)^n+\frac{1+2\sqrt{2}}{14}(2+\sqrt{2})^n(2+\sqrt{2}-1)+\frac{1-2\sqrt{2}}{14}(2-\sqrt{2})^n(2-\sqrt{2}-1)\\
+&=\frac{2}{7}(-1)^n+\frac{5+3\sqrt{2}}{14}(2+\sqrt{2})^n+\frac{5-3\sqrt{2}}{14}(2-\sqrt{2})^n
+\end{align*}
+\end{enumerate}
+\end{solution}
+
+\item 
+\end{enumerate}
