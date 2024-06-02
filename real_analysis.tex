@@ -43,7 +43,6 @@ i.e. $\QQ$ is the set of $\sim$ equivalence classes.
 
 %https://homepages.warwick.ac.uk/~masgar/Teach/2006_361/2006_10_25lec_QQ.pdf
 
-\begin{prbm}[Set of Rational Numbers] 
 Let $\ZZ$ be the set of integers, and let $\ZZ^\ast$ be the set of nonzero integers. We define
 \[ \QQ = \{(a, b) \mid a \in \ZZ, b \in \ZZ^\ast\}/\sim \]
 where
@@ -61,7 +60,6 @@ Show that the above definition is well-defined.
 
 \item Using the partial order of $\ZZ$, define the partial order of $\QQ$.
 \end{enumerate}
-\end{prbm}
 
 \begin{solution} \ 
 \begin{enumerate}[label=(\alph*)]
@@ -140,45 +138,6 @@ Rational numbers $\QQ$ can be introduced following a general procedure called th
 \[ \frac{m}{n}, \quad m,n\in\ZZ,n\neq0. \]
 Moreover, every nonzero rational number can be uniquely written as
 \[ \frac{p}{q}, \quad \in\ZZ^+,q\in\ZZ,\gcd(p,q)=1. \]
-
-\subsection{$\QQ$ is a field}
-We explain the meaning of a \vocab{field} using $\QQ$ as an example.
-
-\begin{proposition}
-$(\QQ,+,\cdot)$ is a field, which means
-\begin{itemize}
-\item $(\QQ,+)$ is an abelian group with identity $0$:
-\begin{itemize}
-    \item $\QQ$ is closed under addition $+$ ($+$ is a binary operation over $\QQ$).
-    \item Addition $+$ is associative: $(a+b)+c=a+(b+c)$.
-    \item Addition $+$ has identity element $0$: $a+0=0=0+a=a$.
-    \item Any element has inverse element: $a+(-a)=(-a)+a=0$.
-    \item Addition $+$ is commutative: $a+b=b+a$.
-\end{itemize}
-
-\item $(\QQ,+,\cdot)$ is a commutative, unital ring:
-\begin{itemize}
-    \item $\QQ$ is closed under multiplication $\cdot$ ($\cdot$ is a binary operation over $\QQ$).
-    \item Multiplication $\cdot$ is associative: $(a\cdot b)\cdot c=a\cdot(b\cdot c)$.
-    \item Multiplication $\cdot$ has unity element 1: $a\cdot1=1\cdot a=a$.
-    \item Multiplication $\cdot$ is commutative: $a\cdot b=b\cdot a$.
-    \item Addition and multiplication satisfy distribution law: $(a+b)\cdot c=a\cdot c+b\cdot c$.
-\end{itemize}
-
-\item Any nonzero element has a multiplicative inverse: $a\cdot\frac{1}{a}=\frac{1}{a}\cdot a=1$ for any $a\in\QQ,a\neq0$.
-\end{itemize}
-\end{proposition}
-
-\begin{exercise}{}{}
-Prove that $(\ZZ,+,\cdot)$ is a commutative, unital ring, but it is not a field.
-\end{exercise}
-
-\begin{proof} \
-\begin{itemize}
-\item Check $(\ZZ,+,\cdot)$ is a commutative, unital ring.
-\item The number $2\in\ZZ$ (in fact, every nonzero number except $\pm1$) has no multiplication inverse in $\ZZ$.
-\end{itemize}
-\end{proof}
 
 \subsection{$\QQ$ is an ordered set}
 \begin{definition}
@@ -434,9 +393,9 @@ Now we're not exactly done here because we still need to talk about how well $\s
 We need one trigonometric fact: $\sin x<x$ for $x>0$. (This simply states that the area of a sector in the unit circle is larger than the triangle determined by its endpoints.)
 
 \begin{align*}
-\sin n &= sin\brac{n-\brac{2k\pi+\frac{\pi}{2}}+\brac{2k\pi+\frac{\pi}{2}}} \\
-&= \cos\brac{n-\brac{2k\pi+\frac{\pi}{2}}} \\
-&= \cos\theta
+\sin n&=\sin\brac{n-\brac{2k\pi+\frac{\pi}{2}}+\brac{2k\pi+\frac{\pi}{2}}} \\
+&=\cos\brac{n-\brac{2k\pi+\frac{\pi}{2}}} \\
+&=\cos\theta
 \end{align*}
 
 \[ 1 - \sin n = 2 \sin^2 \frac{\theta}{2} = 2 \sin^2 \absolute{\frac{\theta}{2}} \le \frac{\theta^2}{2}<\delta \]
@@ -444,7 +403,7 @@ We need one trigonometric fact: $\sin x<x$ for $x>0$. (This simply states that t
 Hence we simply pick $\delta=\epsilon$ to ensure that $1 - \sin n<\epsilon$, and we're done.
 \end{proof}
 
-\begin{theorem}{Archimedean Principle}{}
+\begin{theorem}[Archimedean Principle]
 If $a,b \in \RR$ with $a>0$, then there exists $n \in \NN$ such that $na>b$.
 \end{theorem}
 \begin{proof}
@@ -631,7 +590,7 @@ Hence $\alpha\subseteq\alpha+0*$.
 
 %%%%%%%%%%%%%%%%
 
-\begin{exercise}{}{}
+\begin{exercise}
 Express $-\alpha$ in terms of $\alpha$; show
 \[ \alpha+(-\alpha)=0=(-\alpha)+\alpha \]
 \end{exercise}
@@ -846,7 +805,7 @@ Generally, if there is a norm $\norm{\cdot}$ on some vector space, then this nor
 A set $E$ in $\RR^n$ is called a \vocab{bounded set} if there exists $M>0$ such that $\norm{x}\le M$ for all $x$ in $E$.
 \end{definition}
 
-\begin{exercise}{}{}
+\begin{exercise}
 Given $E$ and $F$ in $\RR^n$ and real number $k$, define
 \[ kE=\{kx \mid x\in E\} \]
 \[ E+F=\{x+y \mid x\in E,y\in F\} \]
@@ -862,7 +821,7 @@ Given a set $E\subset\RR^n$, the \vocab{diameter} of $E$ is defined as
 \[ \diam E\coloneqq\sup_{x,y\in E}d(x,y). \]
 \end{definition}
 
-\begin{exercise}{}{}
+\begin{exercise}
 Find the diameter of the open unit ball in $\RR^n$ given by
 \[ B=\{x\in\RR^n \mid \norm{x}<1\}. \]
 \end{exercise}
@@ -876,7 +835,7 @@ Then $d(x,y)=2-\dfrac{\epsilon}{2}>2-\epsilon$.
 Therefore $\diam B = 2$.
 \end{solution}
 
-\begin{exercise}{}{}
+\begin{exercise}
 Given a set $E$ in $\RR^n$, show that $E$ is bounded iff $\diam E<+\infty$.
 \end{exercise}
 \begin{proof} \
@@ -906,7 +865,7 @@ Given two sets $E,F\subset\RR^n$, the \vocab{distance between sets} $E$ and $F$ 
 
 Obviously $d(E,F)>0$ implies that $E$ and $F$ are disjoint, but $E$ and $F$ may still be disjoint even if $d(E,F)=0$. For example, the closed intervals $E=(-1,0)$ and $F=(0,1)$.
 
-\begin{exercise}{}{}
+\begin{exercise}
 Suppose that $E$ and $F$ are sets in $\RR^n$ where $E$ and $F$ is finite. Prove that $E$ and $F$ are disjoint iff $d(E,F)>0$.
 \end{exercise}
 \pagebreak
@@ -1012,6 +971,9 @@ An open ball centred at $x$ is also called a \vocab{neighbourhood} of $x$.
 \begin{example}
 An open (closed) ball in $\RR$ is equivalent to a finite open (closed) interval, i.e. $(a,b)$ ($[a,b]$), $a,b\in\RR$.
 \end{example}
+
+The \vocab{complement} of $E$, denoted by $E^c$, is the set of all points $x \in X$ such that $x\notin E$:
+\[E^c=\{x\in X\mid X\notin E\}\]
 
 \begin{definition}
 Let $X$ be a metric space. All points and sets mentioned below are understood to be elements and subsets of $X$.
@@ -1151,16 +1113,34 @@ By (1) and (3), $\bar{E}$ is the \emph{smallest} closed subset of $X$ that conta
 \end{enumerate}
 \end{proof}
 
-\section{Compact Sets}
+\section{Compactness}
 \begin{definition}
-Assume $(X,d)$ is a metric space. A collection of open sets $\{U_\alpha\mid\alpha\in\Lambda\}$ is called an \vocab{open cover} of a subset $S$ of $X$, if
-\[ S\subset\bigcup_{\alpha\in\Lambda}U_\alpha. \]
-For $\Lambda^\prime\subset\Lambda$, if the subcollection $\{U_\alpha\mid\alpha\in\Lambda^\prime\}$ is also an open cover of $S$; that is,
-\[ S\subset\bigcup_{\alpha\in\Lambda^\prime}U_\alpha, \]
-then $\{U_\alpha\mid\alpha\in\Lambda^\prime\}$ is called a \vocab{subcover}. If moreover, $\Lambda^\prime$ is finite, then it is called a finite subcover.
+By an \vocab{open cover} of a set $E$ in a metric space $X$ we mean a collection $\{G_\alpha\mid\alpha\in\Lambda\}$ of open subsets of $X$ such that
+\[ E\subset\bigcup_{\alpha\in\Lambda}G_\alpha. \]
+For $\Lambda^\prime\subset\Lambda$, if the subcollection $\{G_\alpha\mid\alpha\in\Lambda^\prime\}$ is also an open cover of $S$; that is,
+\[ E\subset\bigcup_{\alpha\in\Lambda^\prime}U_\alpha, \]
+then $\{G_\alpha\mid\alpha\in\Lambda^\prime\}$ is called a \vocab{subcover}. If moreover, $\Lambda^\prime$ is finite, then it is called a \vocab{finite subcover}.
 \end{definition}
 
+\begin{definition}
+A subset $K$ of metric space $X$ is said to be \vocab{compact} if every open cover of $K$ contains a finite subcover.
+\end{definition}
 
+\begin{proposition}
+Suppose $K\subset Y\subset X$. Then $K$ is compact relative to $X$ if and only if $K$ is compact relative to $Y$.
+\end{proposition}
+
+\begin{proof} \
+
+($\implies$) Suppose $K$ is compact relative to $X$. Let $\{V_\alpha\mid\alpha\in\Lambda\}$ be a collection of sets open relative to $Y$, such that $K\subset\bigcup_{\alpha\in\Lambda}V_\alpha$. By 
+\end{proof}
+
+sequential compactness
+A set $K$ is compact if and only if every sequence of points in $K$ has a subsequence that converges to a point in $K$.
+
+Any continuous function defined on a compact set is bounded.
+
+extreme value theorem
 
 \section{Perfect Sets}
 
@@ -1191,91 +1171,61 @@ Since
 \end{proof}
 
 \chapter{Numerical Sequences and Series}
-\section{Sequences in $\RR$}
-\subsection{Convergent Sequences}
+\section{Convergent Sequences}
 \begin{definition}
-A sequence, which we denote by $\{x_n\}$, in $\RR$ is a map from $\ZZ^+\to\RR$, which maps $n\in\ZZ^+$ to $x_n\in\RR$. The range of the map is called the range of the sequence.
+A sequence $\{x_n\}$ in a metric spaec $X$ is said to \vocab{converge} if there exists some $x\in X$ such that $\forall\epsilon>0$, $\exists N\in\NN$, $\forall n>N$, 
+\[ d(x_n,x)<\epsilon. \]
 
-A \vocab{subsequence} of $\{x_n\}$ is defined via an injective map $s$ from $\ZZ^+$ to a subset of $\ZZ^+$ satisfying
-\[ s(k_1)<s(k_2) \quad \forall k_1,k_2\in\ZZ^+,k_1<k_2, \]
-and denoted as $\{x_{n_k}\}$ with $x_{n_k}=x_{s(k)}$.
+We denote it as 
+\[ \lim_{n\to\infty}x_n=x, \]
+and call $x$ the \vocab{limit} of the sequence $\{x_n\}$.
 
-A sequence $\{x_n\}$ in $\RR$ is called \vocab{convergent}, if there exists some $L\in\RR$ such that for any $\epsilon>0$, there exists some $N\in\ZZ^+$ so that for all $n>N$, $|x_n-L|<\epsilon$. We denote it as $\lim_{n\to\infty}x_n=L$, and call $L$ the \vocab{limit} of the sequence $\{x_n\}$.
-
-A sequence $\{x_n\}$ in $\RR$ is called \vocab{divergent}, if it has no limit in $\RR$.
+If $\{x_n\}$ does not converge, it is said to \vocab{diverge}.
 \end{definition}
 
 \begin{remark}
 Take note of the use of logical statements:
 \begin{itemize}
 \item $\epsilon$ is independent, so it is literally for all $\epsilon>0$.
-\item $N$ is dependent on $\epsilon$; if $\epsilon$ is very small we would expect the sequence $\{a_n\}$ to get close enough to $L$ further down the line.
+\item $N$ is dependent on $\epsilon$; if $\epsilon$ is very small we would expect the sequence $\{x_n\}$ to get close enough to $x$ further down the line.
 \item The order of the quantifiers matters.
 \end{itemize}
 \end{remark}
 
-\begin{proposition} \
-\begin{itemize}
-\item The limit of a convergent sequence in $\RR$ is unique.
-\item The sequence $\{x_n\}$ converges to $L\in\RR$ if and only if every open disk centred at $L$ contains all but finitely many of terms in the sequence.
-\item The sequence $\{x_n\}$ converges to $L\in\RR$ if and only if every subsequence of it converges to $L\in\RR$.
-\item If a sequence $\{x_n\}$ in $\RR$ is convergent, then it must be bounded.
-\item The set of all subsequential limits of a sequence $\{x_n\}$ in $\RR$ is closed.
-\end{itemize}
-\end{proposition}
+\begin{example}
+$\dfrac{1}{n}\to 0$ as $n\to\infty$. The proof is fairly straighforward: $\forall\epsilon>0$, pick $N=\frac{1}{\epsilon}+1$. Then $\forall n>N$,
+\[ \frac{1}{n}<\frac{1}{N}=\frac{1}{\frac{1}{\epsilon}+1}<\frac{1}{\frac{1}{\epsilon}}=\epsilon. \]
+\end{example}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-
-\begin{exercise}{}{}
-What do we really mean by saying that $\frac{1}{n}\to 0$ as $n\to\infty$?
-
-We mean that the sequence of numbers $\frac{1}{n}$ converges to 0, proven as follows:
-
-\begin{proof}
-$\forall\epsilon>0$, pick $N=\frac{1}{\epsilon}+1$. Then $\forall n>N$,
-\[ \frac{1}{n} < \frac{1}{N} < \frac{1}{\frac{1}{\epsilon}} = \epsilon. \]
-\end{proof}
-\end{exercise}
-
-We shall cover some characteristics of limits.
+We now outline some important properties of convergent sequences in metric spaces.
 
 \begin{proposition}
-Given a sequence of points $\{x_k\}$ and a point $x\in\RR^n$, $x_k$ converges to $x$ if and only if all neighbourhoods of x ``eventually'' contain all $x_k$.
-
-By ``eventually'' we mean something similar to the definition above: there exists some large $N$ such that the property is satisfied for all $n>N$.
+Let $\{x_n\}$ be a sequence in a metric space $X$.
+\begin{enumerate}[label=(\arabic*)]
+\item $\{x_n\}$ converges to $x\in X$ if and only every neighbourhood of $x$ contains $x_n$ for all but finitely many $n$.
+\item (uniqueness of the limit) If $x\in X$, $x^\prime\in X$, and if $\{x_n\}$ converges to $x$ and to $x^\prime$, then $x^\prime=x$.
+\item (boundedness of convergent sequences) If $\{x_n\}$ converges, then $\{x_n\}$ is bounded.
+\item If $E\subset X$ and if $x$ is a limit point of $E$, then there is a sequence $\{x_n\}$ in $E$ such that $\displaystyle x=\lim_{n\to\infty}x_n$.
+\end{enumerate}
 \end{proposition}
 
-\begin{proof}
+\begin{proof} \
+\begin{enumerate}[label=(\arabic*)]
+\item ($\implies$) Suppose $\{x_n\}$ converges to $x$, we wish to prove: given any neighbourhood $U$ of $x$, $U$ eventually contains all $x_n$.
 
-\textbf{Forward direction:} 
+Since $U$ is a neighbourhood of $x$, we pick a ball of radius $\epsilon$ centered at $x$, $B_\epsilon(x)$, so that $B_\epsilon(x)$ is contained in $U$.
 
-If $\{x_k\}$ converges to $x$, we wish to prove: given any neighbourhood $U$ of $x$, $U$ eventually contains all $x_k$.
+Then since $B_\epsilon(x)$ is precisely the set of points whose distance to $x$ is no larger than $\epsilon$, we then apply the fact that $\{x_n\}$ converges to $x$.
 
-Since $U$ is a neighbourhood of $x$, we pick a ball of radius $\epsilon$ centered at x, $B(x,\epsilon)$, so that $B(x,\epsilon)$ is contained in $U$.
+So for this particular $\epsilon$, we take $N\in\NN$ so that $d(x_n,x)<\epsilon$, or $x_n\in B_\epsilon(x)$, for all $k>N$.
 
-Then since $B(x,\epsilon)$ is precisely the set of points whose distance to $x$ is no larger than $\epsilon$, we then apply the fact that $\{x_k\}$ converges to $x$.
+Then simultaneously $x_n$ are in $U$ since $B_\epsilon(x)\subset U$, thus we have shown that $U$ will contain all $x_n$ after a certain point $N\in\NN$.
 
-So for this particular $\epsilon$, we take a natural number $N$ so that $|x_k-x|<\epsilon$, or $x_k \in B(x,\epsilon)$, for all $k>N$.
+\
 
-Then simultaneously $x_k$ are in $U$ since $B(x,\epsilon)$ is a subset of $U$, thus we've shown that $U$ will contain all $x_k$ after a certain point $N$.
+($\impliedby$) Suppose that all neighbourhoods of $x$ will eventually contain all $x_n$, then in particular for any $\epsilon>0$, since $B_\epsilon(x)$ is a neighbourhood of $x$, it will also eventually contain all $x_n$. This then easily translates to the fact that $\{x_n\}$ converges to $x$.
 
-\vspace{.5cm}
-
-\textbf{Backward direction:}
-
-Suppose that all neighbourhoods of $x$ will eventually contain all $x_k$, then in particular for any $\epsilon>0$, since $B(x,\epsilon)$ is a neighbourhood of $x$, it will also eventually contain all $x_k$.
-
-This then easily translates to the fact that $\{x_k\}$ converges to $x$.
-\end{proof}
-
-\begin{proposition}[Uniqueness of the limit]
-Suppose that $\{x_k\}$ converges to both $x$ and $x^\prime$, then $x=x^\prime$.
-\end{proposition}
-
-\begin{proof}
-$\forall \epsilon>0$, we know that the terms in $\{x_k\}$ must be less than $\epsilon$ away from its limit after a certain point. 
+\item $\forall\epsilon>0$, we know that the terms in $\{x_k\}$ must be less than $\epsilon$ away from its limit after a certain point. 
 
 However, this certain point may not be the same for both limits; for the two limits $x$ and $x^\prime$, we must first assume two separate numbers $N$ and $N^\prime$ so that $|x_k-x|<\epsilon$ when $k>N$, and $|x_k-x^\prime|<\epsilon$ when $k>N^\prime$.
 
@@ -1299,13 +1249,8 @@ Finally, since we've in fact proven that $|x-x^\prime|<\epsilon$ holds for any g
 Strictly speaking, for the first part we need to explain why $a<\epsilon$ for any positive $\epsilon$ implies that $a \le 0$. 
 This is very easy to prove (by contradiction) so let's not be too redundant
 The second part simply relies on the fact that |x-y| is the Euclidean metric and so by positive definiteness |x-y|=0 if and only if x=y.
-\end{proof}
 
-\begin{proposition}[Boundedness of converging sequences]
-If $\{x_k\}$ converges, then $\{x_k\}$ is bounded.
-\end{proposition}
-
-We simply take the limit $x$ and note that the sequence is eventually contained in some ball centered at $x$, say $B(x,1)$.
+\item We simply take the limit $x$ and note that the sequence is eventually contained in some ball centered at $x$, say $B(x,1)$.
 
 There are several outlying points prior to this, but since there are only a finite number of these, it doesn't change the fact that the sequence (viewed as a set) is bounded nevertheless.
 
@@ -1313,8 +1258,7 @@ This argument is precisely expressed by the construction of r given in the book:
 
 
 
-\begin{enumerate}
-\item We talk about the relationship between the limit of a sequence and the limit points of a set.
+We talk about the relationship between the limit of a sequence and the limit points of a set.
 
 Generally, limit points are a weaker construction.
 
@@ -1359,21 +1303,30 @@ We wish to show that $B_0(x,\epsilon)$ contains points in $E$ for all $\epsilon>
 
 Since $\{x_n\}$ converges to $x$, for all $\epsilon>0$ the sequence is eventually contained in $B(x,\epsilon)$
 However because we have the precondition that $\{x_n\}$ has to be in $E\setminus x$, the sequence is in fact eventually contained in $B_0(x,\epsilon)$.
-\end{enumerate}
 
-%\section{Subsequences}
+\item 
+\end{enumerate}
+\end{proof}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Subsequences}
+\begin{definition}
+Given a sequence $\{x_n\}$, consider a sequence $\{n_k\}$ of positive integers such that $n_1<n_2<\dots$. Then $\{x_{n_i}\}$ is called a \vocab{subsequence} of $\{x_n\}$. If $\{x_{n_i}\}$ converges, its limit is called a \vocab{subsequential limit} of $\{x_n\}$.
+\end{definition}
 
 \begin{proposition}
-$\{x_k\}$ converges to $x$ if and only if every subsequence of $\{x_k\}$ converges to $x$.
+$\{x_n\}$ converges to $x$ if and only if every subsequence of $\{x_n\}$ converges to $x$.
 \end{proposition}
 
 \begin{proof}
-We only need to prove this in the forwards direction
-Every subsequence of $\{x_k\}$ can be written in the form $\{x_{k_i}\}$ where $k_1<k_2<\dots$ is a strictly increasing sequence of natural numbers
+($\implies$) Every subsequence of $\{x_n\}$ can be written in the form $\{x_{n_i}\}$ where $n_1<n_2<\dots$ is a strictly increasing sequence of positive integers.
 
-Intuitively, if every neighbourhood of x eventually contains all $x_k$, then since $\{x_{k_i}\}$ is just a subset of $\{x_k\}$ they should all be contained in the neighbourhood eventually as well.
-For every $\epsilon>0$, pick $N$ such that for $k>N$, $|x_k-x|<\epsilon$.
-Pick $M$ such that $k_M>N$, then for all $i>M$ we have $|x_(k_i)-x|<\epsilon$.
+Intuitively, if every neighbourhood of $x$ eventually contains all $x_n$, then since $\{x_{n_i}\}$ is a subset of $\{x_n\}$ they should all be contained in the neighbourhood eventually as well.
+
+Given that $\{x_n\}$ converges to $x$, we have $\forall\epsilon>0$, $\exists N\in\NN$, $\forall k>N$, $d(x_n,x)<\epsilon$.
+
+Pick $M$ such that $k_M>N$, then $\forall i>M$, $d(x_{n_i},x)<\epsilon$.
 \end{proof}
 
 \begin{proposition}
@@ -1419,35 +1372,33 @@ Actually we've done this two weeks before, it is simply saying that A'' is a sub
 {(1/n,1/m)|n,m in N}
 Then (1,0),(0,1) are in A' but not in A''
 \end{proof}
+\pagebreak
 
-\subsection{Cauchy Sequences}
-This is a very very helpful way to determine whether a sequence is convergent or divergent, as it does not require the limit to be known. In the future you will see many instances where the convergence of all sorts of limits are compared with similar counterparts; generally we describe such properties as \vocab{Cauchy criteria}.
-
-Cauchy sequences have to deal with the differences between terms within the sequence itself.
+\section{Cauchy Sequences}
+This is a very helpful way to determine whether a sequence is convergent or divergent, as it does not require the limit to be known. In the future you will see many instances where the convergence of all sorts of limits are compared with similar counterparts; generally we describe such properties as \emph{Cauchy criteria}.
 
 \begin{definition}
-A sequence $\{x_k\}$ in $\RR^n$ is \vocab{Cauchy}, if the distances between any two terms is sufficiently small after a certain point.
-
-Strictly speaking, $\forall \epsilon>0$, there exists integer $N$ such that 
-\[ \forall k,l>N, |x_k-x_l|<\epsilon. \]
+A sequence $\{x_n\}$ in a metric space $X$ is said to be a \vocab{Cauchy sequence} if $\forall\epsilon>0$, $\exists N\in\NN$, $\forall n,m\ge N$,
+\[ d(x_n,x_m)<\epsilon. \] 
 \end{definition}
 
-It is easy to prove that a converging sequence is Cauchy using the triangle inequality. The idea is that, if all the points are becoming arbitrarily close to a given point p, then they are also becoming close to each other. The converse is not always true, however.
+\begin{remark}
+This simply means that the distances between any two terms is sufficiently small after a certain point.
+\end{remark}
+
+It is easy to prove that a converging sequence is Cauchy using the triangle inequality. The idea is that, if all the points are becoming arbitrarily close to a given point $x$, then they are also becoming close to each other. The converse is not always true, however.
 
 \begin{proposition}
 A sequence $\{x_k\}$ in $\RR^n$ is convergent if and only if it is Cauchy.
 \end{proposition}
 
-\begin{proof}
-\textbf{Forward direction:}
+\begin{proof} \
 
-Suppose that $\{x_k\}$ converges to $x$, then there exists $N$ such that for $k>N$, $|x_k-x|<\dfrac{\epsilon}{2}$
+($\implies$) Suppose that $\{x_k\}$ converges to $x$, then there exists $N$ such that for $k>N$, $|x_k-x|<\dfrac{\epsilon}{2}$
 Then for $k,l>N$, 
 \[ |x-k-x_l| \le |x_k-x|+|x_l-x| < \epsilon \]
 
-\textbf{Backward direction:}
-
-First, we show that $\{x_k\}$ must be bounded. 
+($\impliedby$) First, we show that $\{x_k\}$ must be bounded. 
 Pick $N$ such that for all $k,l>N$ we have $|x_k-x_l|<1$. 
 Centered at $x_k$, we show that $\{x_k\}$ is bounded; to do this we pick
 \[ r = \max\{1,|x_k-x_1|,\dots,|x_k-x_N|\} \]
@@ -1464,7 +1415,14 @@ and hence
 \[ |x_k-x| \le |x_k-x_{k_i}|+|x_{k_i}-x| < \epsilon \]
 \end{proof}
 
-\subsection{Upper and Lower Limits}
+\begin{definition}
+Let nonempty $E\subseteq X$. Let $S$ be the set of all real numbers of the form $d(x,y)$, with $x,y\in E$. Then the \vocab{diameter} of $E$ is 
+\[ \diam E\coloneqq\sup S. \]
+
+\end{definition}
+\pagebreak
+
+\section{Upper and Lower Limits}
 
 
 % Rudin 3.20
@@ -1554,50 +1512,49 @@ In particular, $\limsup c_n=\liminf c_n$, thus $c_n$ is convergent and it follow
 
 \subsubsection{Arithmetic properties}
 \begin{proposition}\label{prop:limit-scalarmultiplication}
-For converging $\{a_n\}$ and real constant $k$,
-\[ \lim ka_n=k\lim a_n. \]
+For convergent $\{a_n\}$ and $k\in\RR$,
+\begin{equation}
+\lim_{n\to\infty} ka_n=k\lim_{n\to\infty}a_n.
+\end{equation}
 \end{proposition}
 
 \begin{proof}
 The proof is left as an exercise. You will need to $k$ into cases where it is positive, negative or $0$.
 \end{proof}
 
-\begin{remark}
-In multivariable calculus there's a similar property that is more interesting:
-
-If $T$ is a linear map on $\RR^n$, and $\{x_n\}$ is a converging sequence of points, then $\{Tx_n\}$ is also converging; moreover if $x_n\to x_0$ then $Tx_n\to Tx_0$.
-\end{remark}
-
 \begin{proposition}\label{prop:limit-addition}
-If $\{a_n\}$ and $\{b_n\}$ are converging sequences of real numbers, then
-\[ \lim(a_n+b_n)=\lim a_n+\lim b_n. \]
+If $\{a_n\}$ and $\{b_n\}$ convergent sequences of real numbers, then
+\begin{equation}
+\lim_{n\to\infty}(a_n+b_n)=\lim_{n\to\infty}a_n+\lim_{n\to\infty}b_n.
+\end{equation}
 \end{proposition}
 
 \begin{proof}
-Let $A=\lim a_n$ and $B=\lim b_n$, then for all $\epsilon>0$, there exists $N_1$ such that for all $n>N_1$, $|a_n-A|<\frac{\epsilon}{2}$; there exists $N_2$ such that for all $n>N_2$, $|b_n-B|<\frac{\epsilon}{2}$.
+Let $A=\lim_{n\to\infty}a_n$ and $B=\lim_{n\to\infty}b_n$.
+
+$\forall\epsilon>0$, $\exists N_1\in\NN$, $\forall n>N_1$
+\[ |a_n-A|<\frac{\epsilon}{2}. \]
+$\forall\epsilon>0$, $\exists N_2\in\NN$, $\forall n>N_2$, 
+\[ |b_n-B|<\frac{\epsilon}{2}. \]
 
 Let $N=\max\{N_1,N_2\}$, then for all $n>N$, by the triangle inequality we have
-\[ |(a_n+b_n)-(A+B)|\le|a_n-A|+|b_n-B|<\epsilon. \]
+\[ \absolute{(a_n+b_n)-(A+B)}\le|a_n-A|+|b_n-B|<\epsilon. \]
 \end{proof}
 
-\begin{remark}
-This proof is simple enough to generalise to any normed vector spaces.
-\end{remark}
-
-The following corollary can be easily derived from the above.
-
 \begin{corollary}
-If $\{a_n\}$ and $\{b_n\}$ are converging sequences of real numbers, then
-\[ \lim(a_n-b_n)=\lim a_n-\lim b_n. \]
+If $\{a_n\}$ and $\{b_n\}$ are convergent sequences of real numbers, then
+\[ \lim_{n\to\infty}(a_n-b_n)=\lim_{n\to\infty}a_n-\lim_{n\to\infty}b_n. \]
 \end{corollary}
 
 \begin{proposition}
-If $\{a_n\}$ and $\{b_n\}$ are converging, then
-\[ \lim(a_nb_n)=\lim a_n \cdot \lim b_n. \]
+If $\{a_n\}$ and $\{b_n\}$ are convergent, then
+\begin{equation}
+\lim_{n\to\infty}(a_n b_n)=\lim_{n\to\infty}a_n\cdot\lim_{n\to\infty}b_n.
+\end{equation}
 \end{proposition}
 
 \begin{proof}
-Let $A=\lim a_n$ and $B=\lim b_n$.
+Let $A=\lim_{n\to\infty}a_n$ and $B=\lim_{n\to\infty}b_n$.
 
 Consider the limit $\lim(a_nb_n-AB)$, as it would be sufficient to prove that this is equal to $0$.
 
@@ -1677,29 +1634,55 @@ Let $\{x_n\}$ be a sequence of real numbers and let $\alpha\ge2$ be a constant. 
 \[ y_n=x_n+\alpha x_{n+1}, n=1,2,\dots \]
 Show that if $\{y_n\}$ is convergent, then $\{x_n\}$ is also convergent.
 \end{prbm}
+\pagebreak
 
-\section{Series in $\RR$ ($\CC$)}
-\subsection{Definition and basic properties}
-\subsection{Comparison test}
-\subsection{Root and ratio tests}
-\subsection{Addition and multiplication of series}
-\subsection{Rearrangement}
+\section{Series}
+\begin{definition}
+Given a sequence $\{a_n\}$ we associate a sequence $\{s_n\}$, where
+\[ s_n=\sum_{k=1}^na_k \]
+which we call a \vocab{series}. The numbers $s_n$ are called the \vocab{partial sums} of the series.
 
+If $\{s_n\}$ converges to $s$, we say that the series \vocab{converges}, and write
+\[ \sum_{n=1}^\infty a_n=s; \]
+$s$ is called the sum of the series -- the limit of a sequence of sums.
+
+If $\{s_n\}$ diverges, the series is said to diverge.
+\end{definition}
+
+The Cauchy criterion can 
+
+\begin{proposition}
+
+\end{proposition}
 
 \chapter{Continuity}
 \section{Limit of Functions}
-Assume $(X,d_x)$ is metric space and $E\subset X$ is a subset of $X$. Then the metric $d_X$ induces a metric on $E$. We now consider another metric space $(Y,d_Y)$. A map $f:E\to Y$ is also called a function over $E$ with values in $Y$. In particular, if $Y=\RR$, then $f$ is called a real-valued function; and if $Y=\CC$, $f$ is called a complex-valued function.
+Assume $(X,d_X)$ is metric space and $E\subset X$ is a subset of $X$. Then the metric $d_X$ induces a metric on $E$. We now consider another metric space $(Y,d_Y)$. A map $f:E\to Y$ is also called a function over $E$ with values in $Y$. In particular, if $Y=\RR$, then $f$ is called a real-valued function; and if $Y=\CC$, $f$ is called a complex-valued function.
 
 \begin{definition}\label{defn:limit-function}
 Consider a limit point $p\in E$ and a point $q\in Y$. We say the \vocab{limit} of the funcion $f(x)$ at $p$ is $q$, denoted as
 \[ \lim_{x\to p}f(x)=q \]
-if for any $\epsilon>0$, there exists some $\delta>0$ such that for any $x\in E$ with $0<d_X(x,p)<\delta$, there is
+if $\forall\epsilon>0$, $\exists\delta>0\suchthat\forall x\in E$ with $0<d_X(x,p)<\delta$, there is
 \[ d_Y\brac{f(x), q}<\epsilon. \]
 \end{definition}
-%%%%%%%%%%%%%%%%%%%%%%%%
+
 We can recast this definition in terms of limits of sequences:
-\[ \lim_{n\to\infty}f(p_n)=q \]
-for every sequence $(p_n) \in E$ so that $p_n \neq p$ and $\lim_{n\to\infty} p_n = p$.
+\begin{proposition}
+Let $X,Y,E,f,p$ be as in Definition \ref{defn:limit-function}. Then $\displaystyle\lim_{x\to p}f(x)=q$ if and only if
+\[\lim_{n\to\infty}f(p_n)=q\]
+for every sequence $\{p_n\}$ in $E$ such that $p_n \neq p$ and $\displaystyle\lim_{n\to\infty}p_n=p$.
+\end{proposition}
+
+\begin{proof} \
+
+($\implies$) Suppose $\displaystyle\lim_{x\to p}f(x)=q$. Choose $\{p_n\}$ in $E$ satisfying $p_n \neq p$ and $\displaystyle\lim_{n\to\infty}p_n=p$.
+
+Let $\epsilon>0$ be given. Then there exists $\delta>0$ such that $d_Y\brac{f(x),q}<\epsilon$ if $x\in E$ and $0<d_X(x,p)<\delta$.
+
+Also, there exists $N\in\NN$ such that $n>N$ implies $0<d_X(p_n,p)<\delta$. Thus for $n>N$, we have $d_Y\brac{f(p_n),q}<\epsilon$, which shows that $\displaystyle\lim_{n\to\infty}f(p_n)=q$.
+
+($\impliedby$) 
+\end{proof}
 
 By the same proofs as for sequences, limits are unique, and in $\RR$ they add/multiply/divide as expected.
 
@@ -1768,7 +1751,7 @@ $f$ is a continuous function on $[a,b]$ which is differentiable in $(a,b)$.
 
 \begin{theorem}[Differentiation rules]
 Suppose $f,g:[a,b]\to\RR$ are differentiable at $x_0\in[a,b]$. Then $f\pm g$, $fg$ and $\dfrac{f}{g}$ (when $g(x_0)\neq0$) are differentiable at $x_0$. Moreover,
-\begin{enumerate}
+\begin{enumerate}[label=(\arabic*)]
 \item $(f\pm g)^\prime(x_0)=f^\prime(x_0)\pm g^\prime(x_0)$;
 \item $(fg)^\prime(x_0)=f^\prime(x_0)g(x_0)+f(x_0)g^\prime(x_0)$;
 \item $\displaystyle\brac{\frac{f}{g}}^\prime(x_0)=\frac{f^\prime(x_0)g(x_0)-f(x_0)g^\prime(x_0)}{g(x_0)^2}$
@@ -1933,15 +1916,15 @@ This form of the generalized MVT will be used to prove the most beloved rule of 
 
 exercises for the Mean Value Theorem
 
-\begin{exercise}{}{}
+\begin{exercise}
 Let $f$ and $g$ be continuous on $[a,b]$ and differentiable on $(a,b)$. If $f^\prime(x)=g^\prime(x)$, then $f(x)=g(x)+C$.
 \end{exercise}
 
-\begin{exercise}{}{}
+\begin{exercise}
 Given that $f(x)=x^\alpha$ where $0<\alpha<1$. Prove that $f$ is uniformly continuous on $[0,+\infty)$.
 \end{exercise}
 
-\begin{exercise}{Olympiad level}{}
+\begin{exercise}[Olympiad level]
 Let $f$ be a function continuous on $[0,1]$ and differentiable on $(0,1)$ where $f(0)=f(1)=0$. Prove that there exists $c\in(0,1)$ such that
 \[ f(x)+f^\prime(x)=0. \]
 \end{exercise}
@@ -2003,50 +1986,19 @@ However, we should recall certain pathological examples like f(x)=x² sin 1/x (f
 Here f'(0)=lim(h→0)[x² sin 1/x-0]/x=0, but f'(x)=2x sin 1/x - cos 1/x, so f' is discontinuous at x=0
 
 \section{L'Hopital's Rule}
-First, a counterexamples
-:
-Let's say that we apply this rule to $\lim_{x\to\infty}\frac{\sin x}{x}$
-:
-Then we have
-\[ \lim_{x\to\infty}\frac{\sin x}{x}=\lim_{x\to\infty}\frac{\cos x}{1} \]
+\begin{theorem}[L'Hopital's Rule]
+Assume $f,g$ are differentiable over $(a,b)$ with $g(x)\neq0$. If either
+\begin{enumerate}[label=(\arabic*)]
+\item $\lim_{x\to a}f(x)=0$ and $\lim_{x\to a}g(x)=0$; or
+\item $\lim_{x\to a}|g(x)|=+\infty$,
+\end{enumerate}
+and
+\[\lim_{x\to a}\frac{f^\prime(x)}{g^\prime(x)}=A\in[-\infty,+\infty]\]
+assuming $g^\prime(x)\neq0$ over $(a,b)$, then
+\[\lim_{x\to a}\frac{f(x)}{g(x)}=A.\]
+\end{theorem}
 
-The limit on the RHS doesn't exist because cos x oscillates between -1 and 1
-:
-However, the limit on the LHS does in fact exist and is equal to 0
-:
-So this tells us that there are certain cases where we can apply L'Hopital, and other cases where we can't
-That being said, the case that we can apply the rule is actually the more useful case, so this situation does not jeopardize the effectiveness of L'Hopital
-
-The entire statement is consequently rather long, so we'll split it into a few sections
-
-1. f and g are differentiable in (a,b) and $g^\prime(x)\neq0$ in (a,b) (or at least in a small neighbourhood of a)
-
-2. f(x)/g(x) is an indeterminate of the form 0/0 or $\frac{\infty}{\infty}$ (Now for the second one here we only really need $g(x)\to\infty$, but if f(x) does not approach infinity then the limit would simply be zero, so L'Hopital's Rule would not be required here)
-
-3. lim(x→a)f'(x)/g'(x) = A
-This is the most important one
-:
-From this we obtain lim(x→a)f(x)/g(x) = A
-:
-So for example, let's say that we want to calculate the following limit:
-lim(x→0) (sin x - x)/x³
-:
-Repeated application of L'Hopital gives
-lim(x→0) (sin x - x)/x³
-=lim(x→0) (cos x - 1)/3x²
-=lim(x→0) -sin x/6x =-1/6
-:
-Now what we're really doing here is that, first we know that lim(x→0) sin x/x =1, so lim(x→0) -sin x/6x =-1/6
-:
-Then by L'Hopital, lim(x→0) (cos x - 1)/3x²=-1/6
-:
-Finally, again by L'Hopital, lim(x→0) (sin x - x)/x³=-1/6
-:
-So, one very important thing to take note is that if you're calculating some complicated limit and you end up with the conclusion that it doesn't exist, you must make sure that you have not used L'Hopital during the process, because the rule never applies in such situations
-:
-As a side note, from the above calculation we see that as x→0, $\sin x \approx x-\frac{x^3}{6}$
-This will later lead to the discussion of the Taylor series of sin x
-
+\begin{proof}
 Now the entire proof is quite tedious because there's actually eight main cases to think of
 1. $\frac{0}{0}$ or $\frac{\infty}{\infty}$
 2. a is normal or $a=-\infty$
@@ -2071,6 +2023,14 @@ Since $\frac{f^\prime}{g^\prime}$ is continuous near $a$, the theorem regarding 
 \[ \lim_{x\to a^+}\frac{f(x)}{g(x)} = \lim_{x\to a^+}\frac{f'(\xi)}{g'(\xi)} = \lim_{x\to a^+}\brac{\frac{f^\prime}{g^\prime}}(\xi(x)) = A \]
 
 Now the same reasoning can be used for $b$ where we will use lim(x→b-) to replace all the $\lim_{x\to a^+}$, and $\xi$ will be a function which maps to $(x,b)$.
+\end{proof}
+
+\begin{example} \
+\begin{itemize}
+\item $\lim_{x\to0}\frac{1-\cos x}{x^2}=\frac{1}{2}$.
+\item $\lim_{x\to+\infty}\frac{x^2}{e^{3x}}=0.$
+\end{itemize}
+\end{example}
 
 \section{Taylor Expansion}
 Consider a function $f:[a,b]\to\RR$. We first look at the mean value theorem from the viewpoint of approximations for $f(x)$ near a point $x=a$. We can regard the constant function
@@ -2292,7 +2252,7 @@ For every $\epsilon>0$,
 %%%%%%%%%%%%%%%%%%%%%%%%%
 % Darboux sums, Darboux integrals
 
-\begin{exmp}{Dirichlet function}{}
+\begin{example}[Dirichlet function]
 The Dirichlet function is given by
 \[ f(x)=\begin{cases}
 1 & x\in\QQ \\
@@ -2305,11 +2265,11 @@ The Dirichlet function is pathological because for each subinterval $[x_{i-1},x_
 So no matter what partition we use, $U(f,P)$ is always $1$ whereas $L(f,P)$ is always $0$. This means that $U(f)=1$ and $L(f)=0$, so there are two different values for ``the integral of $f$''.
 
 This is like the case where we try to find the limit of the Dirichlet function where $x$ is approaching any given real number $r$, there exists two sequences approaching $r$ whose image approaches two different values.
-\end{exmp}
+\end{example}
 
 Now, a very important and fun case about the more general RS-integral, which we'll discuss next week (do try the exercise yourself first)
 
-\begin{exercise}{}{}
+\begin{exercise}
 The Heaviside step function $H$ is a real-valued function defined by the following:
 \[ H(x)=\begin{cases}
 0 & x<0 \\
@@ -2323,13 +2283,6 @@ For the purpose of this question we assume the convention $\infty\cdot0=0$.
 \end{enumerate}
 (You may read up on more information regarding the Heaviside function, and the (in)famous Dirac delta function)
 \end{exercise}
-
-
-
-
-
-
-
 
 
 
@@ -2351,7 +2304,7 @@ Based on this observation, we then gave a reasonable condition as follows:
 Well here, it's actually the same kind of scenario
 Given any partition $P$, we consider the Riemann sum $\sum f(\xi_i)\Delta x_i$ where $\xi_i$ is any point where $x_{i-1}\le\xi_i\le x_i$
 
-For the Dirichlet function over [0,1], given any partition P (here we may assume that the partition points are distinct), we will always be able to specifically pick $\xi_i,\eta_i\in[x_{i-1},x_i]$ such that $\xi_i$ is rational but $\eta_i$ is irrational
+For the Dirichlet function over $[0,1]$, given any partition P (here we may assume that the partition points are distinct), we will always be able to specifically pick $\xi_i,\eta_i\in[x_{i-1},x_i]$ such that $\xi_i$ is rational but $\eta_i$ is irrational
 
 Then $\sum f(\xi_i)\Delta x_i=1$ but $\sum f(\eta_i)\Delta x_i=0$
 

@@ -17,61 +17,26 @@ The following are examples of binary operations.
 \item $\times$ (usual multiplication) is a commutative binary operation on $\ZZ$ (or on $\QQ$, $\RR$, or $\CC$ respectively).
 \item $-$ (usual subtraction) is a non-commutative binary operation on $\ZZ$.
 \item $-$ is not a binary operation on $\ZZ^+$ (nor $\QQ^+$, $\RR^+$) because for $a,b\in\ZZ^+$, with $a<b$, $a-b\notin\ZZ^+$; that is, $-$ does not map $\ZZ^+\times\ZZ^+\to\ZZ^+$.
-\item 
+\item Taking the vector cross-product of two vectors in $\RR^3$ is a binary operation which is not associative and not commutative.
 \end{itemize}
 \end{example}
 
-An element $e \in S$ is said to be an \vocab{identity element} (or simply an identity) for an operation $\ast$ on $S$ if, for any $a \in S$,
-\[ e \ast a = a = a \ast e. \]
+Suppose that $\ast$ is a binary operation on $G$ and $H\subseteq G$. If the restriction of $\ast$ to $H$ is a binary operation on $H$, i.e. for all $a,b\in H$, $a\ast b\in H$, then $H$ is said to be \vocab{closed} under $\ast$.
 
-\begin{proposition}[Uniqueness of identity]
-Let $\ast$ be a binary operation on a set $S$ and let $a \in S$. If an identity $e$ exists then it is unique.
-\end{proposition}
-\begin{proof}
-Suppose that $e_1$ and $e_2$ are two identities for $\ast$. Then
-\[ e_1 \ast e_2 = e_1 \quad \text{as }e_2\text{ is an identity;} \]
-\[ e_1 \ast e_2 = e_2 \quad \text{as }e_1\text{ is an identity.} \]
-Hence $e_1 = e_2$.
-\end{proof}
-
-If an operation $\ast$ on a set $S$ has an identity $e$ and $a \in S$, then we say that $b \in S$ is an \vocab{inverse} of $a$ if
-\[ a \ast b = e = b \ast a. \]
-
-\begin{proposition}[Uniqueness of inverse]
-Let $\ast$ be an associative binary operation on a set $S$ with an identity $e$ and let $a \in S$. Then an inverse of $a$, if it exists, is unique.
-\end{proposition}
-\begin{proof}
-Suppose that $b_1$ and $b_2$ are inverses of $a$. Then
-\[ b_1 \ast (a \ast b_2) = b_1 \ast e = b_1; \]
-\[ (b_1 \ast a) \ast b_2 = e \ast b_2 = b_2. \]
-By associativity $b_1 = b_2$.
-\end{proof}
-
-\begin{notation}
-If $\ast$ is an associative binary operation on a set $S$ with identity $e$, then the inverse of $a$ (if it exists) is written $a^{-1}$.
-\end{notation}
-
-\begin{example}
-The following are examples of binary operations.
-\begin{itemize}
-\item $+$ on $\RR$ is associative, commutative, has identity 0 and $x^{-1} \coloneqq -x$ for any $x$; $-$ on $\RR$ is not associative or commutative and has no identity; $\times$ on $\RR$ is associative, commutative, has identity 1 and $x^{-1} \coloneqq \frac{1}{x}$ for any non-zero $x$.
-\item $\min$ on $\NN$ is both associative and commutative but has no identity; $\max$ on $\NN$ is both associative and commutative and has identity $0$ (being the least element of $\NN$) though no positive integer has an inverse;
-\item $\circ$ is associative, but not commutative, with the identity map $x \to x$ being the identity element and as permutations are bijections they each have inverses.
-\end{itemize}
-\end{example}
-\pagebreak
-
-\subsection{Group Axioms}
-A group is an algebraic structure that captures the idea of symmetry without an object.
+\begin{remark}
+Observe that if $\ast$ is an associative (respectively, commutative) binary operation on $G$ and $\ast$ is restricted to some $H\subseteq G$ is a binary operation on $H$, then $\ast$ is automatically associative (respectively, commutative) on $H$ as well.
+\end{remark}
 
 \begin{definition}
 A \vocab{group} is a pair $(G,\ast)$, where $G$ is a set and $\ast$ is a binary operation on $G$ satisfying the following group axioms:
-\begin{enumerate}
+\begin{enumerate}[label=(\roman*)]
 \item \textbf{(associativity)} for all $a,b,c \in G$, $a \ast (b \ast c)=(a \ast b) \ast c$.
 \item \textbf{(identity)} there exists an identity element $e \in G$ such that for all $a\in G$, $a \ast e = e \ast a = a$.
 \item \textbf{(invertibility)} for all $a \in G$, there exists a unique inverse $a^{-1} \in G$ such that $a \ast a^{-1} = a^{-1} \ast a = e$.
 \item \textbf{(closure)} for all $a,b,c \in G$, $a\ast b\in G$.
 \end{enumerate}
+
+$G$ is \vocab{abelian} if the operation is commutative; it is \vocab{non-abelian} if otherwise.
 \end{definition}
 
 \begin{notation}
@@ -83,20 +48,31 @@ We abbreviate $a \ast b$ to just $ab$. Also, since the operation $\ast$ is assoc
 \end{notation}
 
 \begin{notation}
-For any $g \in G$ and $n \in \NN$ we abbreviate $g^n = \underbrace{g \ast \cdots \ast g}_{n\text{ times}}$.
+For any $g\in G$ and $n\in\ZZ^+$ we abbreviate $g^n=\underbrace{g \ast \cdots \ast g}_{n\text{ times}}$.
 \end{notation}
 
-\begin{example}[Additive integers]
-The pair $(\ZZ,+)$ is a group. Note that
+\begin{example} \
 \begin{itemize}
-\item The element $0 \in \ZZ$ is an identity: $a+0=0+a=a$ for any $a$.
-\item Every element $a \in \ZZ$ has an additive inverse: $a+(-a)=(-a)+a=0$.
+\item $\ZZ$, $\QQ$, $\RR$, $\CC$ are groups under $+$ with $e=0$ and $a^{-1}=-a$ for all $a$.
+\item $\QQ\setminus\{0\}$, $\RR\setminus\{0\}$, $\CC\setminus\{0\}$, $\QQ^+$, $\RR^+$ are groups under $\times$ with $e=1$ and $a^{-1}=\frac{1}{a}$ for all $a$. Note however that $\ZZ\setminus\{0\}$ is not a group under $\times$ because the element 2 (for instance) does not have an inverse in $\ZZ\setminus\{0\}$.
+\item For $n\in\ZZ^+$, $\ZZ/n\ZZ$ is an abelian group under $+$.
+\item For $n\in\ZZ^+$
 \end{itemize}
 \end{example}
 
-\begin{example}[Addition mod $n$]
-Let $n > 1$ be an integer, and consider the residues (remainders) modulo $n$. These form a group under addition. We call this the cyclic group of order $n$, and denote it as $\ZZ/n\ZZ$, with elements $0, 1, \dots, n-1$. The identity is 0.
-\end{example}
+\begin{definition}
+Let $(G,\ast_G)$ and $(H,\ast_H)$ be groups. Then the operation $\ast$ defined on $G\times H$ by
+\[ (g_1,h_1)\ast(g_2,h_2)=(g_1\ast_G g_2,h_1\ast_H h_2) \]
+is a group operation. $(G \times H, \ast)$ is called the \vocab{product group} or the product of $G$ and $H$.
+\end{definition}
+    
+\begin{proof}
+As $\ast_G$ and $\ast_H$ are both associative binary operations then it follows easily from the definition to see that $\ast$ is also an associative binary operation on $G \times H$. We also note
+\[ e_{G\times H}=(e_G,e_H) \quad \text{and} \quad (g,h)^{-1}=(g^{-1},h^{-1}) \]
+as for any $g \in G$, $h \in H$,
+\[ (e_G,e_H)\ast(g,h)=(g,h)=(g,h)\ast(e_G,e_H); \]
+\[ (g^{-1},h^{-1})\ast(g,h)=(e_G,e_H)=(g,h)\ast(g^{-1},h^{-1}). \]
+\end{proof}
 
 \begin{proposition}
 Cancellation laws hold in groups.
@@ -125,15 +101,7 @@ For a group $G$, pick a $g \in G$. Then the map $G \to G$ given by $x \mapsto gx
 Check this by showing injectivity and surjectivity directly.
 \end{proof}
 
-$G$ is \vocab{abelian}\footnote{after the Norwegian mathematician Niels Abel (1802--1829)} if the operation is commutative; it is \vocab{non-abelian} if otherwise.
 
-\begin{example}
-The sets $\ZZ$, $\QQ$, $\RR$ and $\CC$ form abelian groups under $+$ with $e=0$ and $x^{-1}\coloneqq-x$ in each case.
-\end{example}
-
-\begin{example}
-The sets $\QQ\setminus\{0\}$, $\RR\setminus\{0\}$ and $\CC\setminus\{0\}$ form abelian groups under $\times$ with $e=1$ and $x^{-1}\coloneqq\dfrac{1}{x}$ in each case. These groups are respectively denoted as $\QQ^\times$, $\RR^\times$ and $\CC^\times$.
-\end{example}
 
 An important (if rather elementary) family of groups is the cyclic groups.
 
@@ -181,23 +149,56 @@ Given two groups $G$ and $H$, there is a natural way to make their Cartesian pro
 \[ G \times H = {(g,h)\mid g\in G, h\in H}. \]
 We then define the product group $G\times H$ as follows.
 
-\begin{definition}[Product group]
-Let $(G,\ast_G)$ and $(H,\ast_H)$ be groups. Then the operation $\ast$ defined on $G\times H$ by
-\[ (g_1,h_1)\ast(g_2,h_2)=(g_1\ast_G g_2,h_1\ast_H h_2) \]
-is a group operation. $(G \times H, \ast)$ is called the \vocab{product group} or the product of $G$ and $H$.
-\end{definition}
 
-\begin{proof}
-As $\ast_G$ and $\ast_H$ are both associative binary operations then it follows easily from the definition to see that $\ast$ is also an associative binary operation on $G \times H$. We also note
-\[ e_{G\times H}=(e_G,e_H) \quad \text{and} \quad (g,h)^{-1}=(g^{-1},h^{-1}) \]
-as for any $g \in G$, $h \in H$,
-\[ (e_G,e_H)\ast(g,h)=(g,h)=(g,h)\ast(e_G,e_H); \]
-\[ (g^{-1},h^{-1})\ast(g,h)=(e_G,e_H)=(g,h)\ast(g^{-1},h^{-1}). \]
-\end{proof}
 
 \begin{definition}[Order (of a group)]
 The cardinality $|G|$ of a group $G$ is called the \vocab{order} of $G$. We say that a group $G$ is \vocab{finite} if $|G|$ is finite.
 \end{definition}
+
+
+
+An element $e \in S$ is said to be an \vocab{identity element} (or simply an identity) for an operation $\ast$ on $S$ if, for any $a \in S$,
+\[ e \ast a = a = a \ast e. \]
+
+\begin{proposition}[Uniqueness of identity]
+Let $\ast$ be a binary operation on a set $S$ and let $a \in S$. If an identity $e$ exists then it is unique.
+\end{proposition}
+\begin{proof}
+Suppose that $e_1$ and $e_2$ are two identities for $\ast$. Then
+\[ e_1 \ast e_2 = e_1 \quad \text{as }e_2\text{ is an identity;} \]
+\[ e_1 \ast e_2 = e_2 \quad \text{as }e_1\text{ is an identity.} \]
+Hence $e_1 = e_2$.
+\end{proof}
+
+If an operation $\ast$ on a set $S$ has an identity $e$ and $a \in S$, then we say that $b \in S$ is an \vocab{inverse} of $a$ if
+\[ a \ast b = e = b \ast a. \]
+
+\begin{proposition}[Uniqueness of inverse]
+Let $\ast$ be an associative binary operation on a set $S$ with an identity $e$ and let $a \in S$. Then an inverse of $a$, if it exists, is unique.
+\end{proposition}
+\begin{proof}
+Suppose that $b_1$ and $b_2$ are inverses of $a$. Then
+\[ b_1 \ast (a \ast b_2) = b_1 \ast e = b_1; \]
+\[ (b_1 \ast a) \ast b_2 = e \ast b_2 = b_2. \]
+By associativity $b_1 = b_2$.
+\end{proof}
+
+\begin{notation}
+If $\ast$ is an associative binary operation on a set $S$ with identity $e$, then the inverse of $a$ (if it exists) is written $a^{-1}$.
+\end{notation}
+
+\begin{example}
+The following are examples of binary operations.
+\begin{itemize}
+\item $+$ on $\RR$ is associative, commutative, has identity 0 and $x^{-1} \coloneqq -x$ for any $x$; $-$ on $\RR$ is not associative or commutative and has no identity; $\times$ on $\RR$ is associative, commutative, has identity 1 and $x^{-1} \coloneqq \frac{1}{x}$ for any non-zero $x$.
+\item $\min$ on $\NN$ is both associative and commutative but has no identity; $\max$ on $\NN$ is both associative and commutative and has identity $0$ (being the least element of $\NN$) though no positive integer has an inverse;
+\item $\circ$ is associative, but not commutative, with the identity map $x \to x$ being the identity element and as permutations are bijections they each have inverses.
+\end{itemize}
+\end{example}
+\pagebreak
+
+
+
 
 One way to represent a finite group is by means of the group table or Cayley table\footnote{after the English mathematician Arthur Cayley (1821--1895)}.
 
@@ -359,7 +360,7 @@ A \vocab{field} is a ring $R$ that satisfies the following extra properties:
 \begin{example}
 Examples and non-examples of fields:
 \begin{itemize}
-\item $\ZZ^+$ is not a field because, for example, 0 is not a positive integer, for no positive integer $n$ is $-n$ a positive integer, for no positive integer $n$ except 1 is $n^{-1}$ a positive integer.
+\item $\ZZ^+$ is not a field because, for example, $0$ is not a positive integer, for no positive integer $n$ is $-n$ a positive integer, for no positive integer $n$ except 1 is $n^{-1}$ a positive integer.
 \item $\ZZ$ is not a field because for an integer $n$, $n^{-1}$ is not an integer unless $n=1$ or $n=-1$.
 \item $\QQ$, $\RR$ and $\CC$ are fields.
 \end{itemize}
@@ -379,15 +380,7 @@ By assumption, $X$ is closed under addition and multiplication. Moreover, $X$ is
 We call $X$ a \vocab{subfield} of $K$.
 
 \chapter{Galois Theory}
-\textbf{Readings:}
-\begin{itemize}
-\item \href{https://www.maths.ed.ac.uk/~tl/gt/gt.pdf}{Notes by Tom Leinster}
-\end{itemize}
+%https://www.maths.ed.ac.uk/~tl/gt/gt.pdf}{Notes by Tom Leinster}
 
 \chapter{Category Theory}
-\textbf{Readings:}
-\begin{itemize}
-\item \href{https://arxiv.org/pdf/1612.09375.pdf}{Basic Category Theory, by Tom Leinster}
-\end{itemize}
-
-
+%https://arxiv.org/pdf/1612.09375.pdf}{Basic Category Theory, by Tom Leinster}

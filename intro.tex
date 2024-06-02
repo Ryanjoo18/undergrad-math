@@ -516,9 +516,9 @@ It follows by induction that $Q(n)$ holds for all $n$, and hence $P(n)$ holds fo
 
 The following example illustrates how the strong form of induction can be useful:
 
-\begin{exmp}{Fundamental Theorem of Arithmetic}{}
+\begin{example}[Fundamental Theorem of Arithmetic]
 Every natural number greater than 1 may be expressed as a product of one or more prime numbers.
-\end{exmp}
+\end{example}
 
 \begin{proof}
 Let $P(n)$ be the statement that $n$ may be expressed as a product of prime numbers. 
@@ -949,9 +949,9 @@ Let $F_i$ be the Fibonacci sequence. Prove that $3\nmid n$ if and only if $F_n$ 
 \end{prbm}
 
 \begin{proof}
-\textbf{Forward direction:} $3\nmid n \implies F_n \text{ is odd}$
+($\implies$) $3\nmid n \implies F_n \text{ is odd}$
 
-\textbf{Backward direction:} $F_n \text{ is odd} \implies 3\nmid n$ (We prove the contrapositive: $3\mid n \implies F_n \text{ is even}$)
+($\impliedby$) $F_n \text{ is odd} \implies 3\nmid n$ (We prove the contrapositive: $3\mid n \implies F_n \text{ is even}$)
 
 Hence we only need to prove the following via PMI:
 \begin{itemize}
@@ -1127,6 +1127,7 @@ You should, by now, be familiar with the following definitions and notation:
 \[ A \subseteq B \iff \forall x, x\in A \implies x\in B \]
 
 $\subseteq$ is transitive, i.e. if $A \subseteq B$ and $B \subseteq C$, then $A \subseteq C$.
+
 \begin{proof}
 Let $x\in A$. 
 Since $A \subseteq B$ and $x\in A$, $x\in B$. 
@@ -1217,16 +1218,13 @@ Let $A\subset S$ and $B\subset S$. Then
 A = B \iff A \subseteq B \text{ and } B \subseteq A
 \end{equation}
 \end{proposition}
-\begin{proof} We prove both directions.
 
-\textbf{Forward direction:}
+\begin{proof} \
 
-If $A = B$, then every element in $A$ is an element in $B$, so certainly $A \subseteq B$, and
+($\implies$) If $A = B$, then every element in $A$ is an element in $B$, so certainly $A \subseteq B$, and
 similarly $B \subseteq A$. 
 
-\textbf{Backward direction:}
-
-Suppose $A \subseteq B$, and $B \subseteq A$. Then for every element $x \in S$, if $x \in A$ then $A \subseteq B$ implies that $x \in B$, and if $x \notin A$ then $B \subseteq A$ means $x \notin B$. So $x \in A$ if and only if $x \in B$, and therefore $A = B$.
+($\impliedby$) Suppose $A \subseteq B$, and $B \subseteq A$. Then for every element $x \in S$, if $x \in A$ then $A \subseteq B$ implies that $x \in B$, and if $x \notin A$ then $B \subseteq A$ means $x \notin B$. So $x \in A$ if and only if $x \in B$, and therefore $A = B$.
 \end{proof}
 
 \begin{proposition}[Distributive Laws]
@@ -1283,90 +1281,6 @@ Let $S\subset A\times B$. Express the set $A_S$ of all elements of $A$ which app
 
 ($A_S$ here may be called the projection of $S$ onto $A$.)
 \end{exercise}
-\pagebreak
-
-\subsection{Cardinality}
-Informally, the \vocab{cardinality} of $S$, denoted $|S|$, is a measure of its ``size''. We will be able to give a nicer definition of cardinality later, once we have discussed bijections, but the following provides a recursive definition of the cardinality for a finite set:
-
-\begin{definition}[Finiteness and the cardinality of a finite set]
-The empty set $\emptyset$ is finite, with $|\emptyset|=0$.
-
-$S$ is \vocab{finite} with $|S|=n+1$, if there exists $s \in S$ such that $|S\setminus \{s\}| = n$ for some $n \in \ZZ^+$. We call $|S|$ the \vocab{cardinality} of $S$. 
-
-Any set that is not finite is said to be \vocab{infinite}.
-\end{definition}
-
-It is not hard to see that this means that if $S = \{x_1,x_2,\dots,x_n\}$, and $x_i \neq x_j$ whenever $i \neq j$, then $|S| = n$. Conversely, if $|S| = n$ then $S$ is a set with $n$ elements.
-
-\begin{proposition}
-Let $A$ and $B$ be finite sets. Then $|A \cup B| = |A| + |B| - |A \cap B|$.
-\end{proposition}
-
-\begin{proof}
-The proof is left as an exercise.
-\end{proof}
-
-\begin{proposition}[Subsets of a finite set]
-If a set $A$ is finite with $|A| = n$, then its power set has $|\mathcal{P}(A)| = 2^n$.
-\end{proposition}
-
-\begin{proof}
-We use induction. For the initial step, note that if $|A| = 0$ then $A = \emptyset$ has no elements, so there is a single subset $\emptyset$, and therefore $|\mathcal{P}(A)| = 1 = 2^0$.
-
-Now suppose that $n \ge 0$ and that $|P(S)| = 2^n$ for any set S with $|S| = n$. Let $A$ be any set with $|A| = n+1$. By definition, this means that there is an element $a$ and a set $A_0 = A\setminus\{a\}$ with $|A_0| = n$. Any subset of A must either contain the element a or not, so we can partition $\mathcal{P}(A) = P(A_0) \cup \{S \cup \{a\} \mid S \in P(A_0)\}$. These two sets are disjoint, and each of them has cardinality $|P(A_0)| = 2^n$ by the inductive hypothesis. Hence $|\mathcal{P}(A)| = 2^n + 2^n = 2^{n+1}$.
-
-Thus, by induction, the result holds for all $n$.
-\end{proof}
-
-Another way to see this is through combinatorics: Consider the process of creating a subset. We can do this systematically by going through each of the $|A|$ elements in $A$ and making the yes/no decision whether to put it in the subset. Since there are $|A|$ such choices, that yields $2^{|A|}$ different combinations of elements and therefore $2^{|A|}$ different subsets.
-
-% to include more stuff before introducing PIE
-
-\begin{theorem}[Principle of Inclusion and Exclusion]
-Let $S_i$ be finite sets. Then
-\begin{equation}
-\absolute{\bigcup_{i=1}^nS_i}=\sum_{i=1}|S_i|-\sum_{1\le i<j\le n}|S_i\cap S_j|+\sum_{1\le i<j<k\le n}|S_i\cap S_j\cap S_k|+\cdots+(-1)^{n+1}\absolute{\bigcap_{i=1}^nS_i}.
-\end{equation}
-\end{theorem}
-
-\begin{proof}
-By induction.
-\end{proof}
-
-The following more elegant proof was presented to the author by Dr. Ho Weng Kin during a H3 Mathematics lecture in 2024.
-
-\begin{proof}
-Let $U$ be a finite set (interpreted as the universal set), and $S\subseteq U$. Define the characteristic/indicator function of $S$ by
-\[ \chi_S(x)=\begin{cases}
-1&\text{if }x\in S,\\
-0&\text{if }x\notin S.
-\end{cases} \]
-In other words,
-\[ x\in S\iff\chi_S(x)=1 \]
-and equivalently,
-\[ x\notin S\iff\chi_S(x)=0. \]
-Let $S_1,S_2\subseteq U$ be given. Then for any $x\in U$ it holds that
-\[ \chi_{S_1\cap S_2}(x)=\chi_{S_1}(x)\cdot\chi_{S_2}(x) \]
-where $\cdot$ denotes ordinary multiplication.
-
-Similarly,
-\[ \chi_{S_1\cup S_2}(x)=1-\brac{1-\chi_{S_1}(x)}\cdot\brac{1-\chi_{S_2}(x)}. \]
-In general, for any $x\in U$ it holds that
-\[ \chi_{S_1\cup\cdots\cup S_n}(x)=1-\brac{1-\chi_{S_1}(x)}\cdots\brac{1-\chi_{S_n}(x)} \]
-for any $S_1,\dots,S_n\subset U$.
-
-Since $x\in S$ if and only if $\chi_S(x)=1$, it follows that
-\[ |S|=\sum_{x\in U}\chi_S(x). \]
-To prove the PIE, we calculate
-\begin{align*}
-&|S_1\cup\cdots\cup S_n|\\
-&=\sum_{x\in U}\chi_{S_1\cup\cdots\cup S_n}(x)\\
-&=\sum_{x\in U}1-\brac{1-\chi_{S_1}(x)}\cdots\brac{1-\chi_{S_n}(x)}\\
-&=\brac{\chi_{S_1}(x)+\cdots+\chi_{S_n}(x)}-\brac{\chi_{S_1}(x)\chi_{S_2}(x)+\cdots+\chi_{S_{n-1}}(x)\chi_{S_n}(x)}+\cdots+(-1)^{n+1}\chi_{S_1}(x)\cdots\chi_{S_n}(x)\\
-&=\brac{\chi_{S_1}(x)+\cdots+\chi_{S_n}(x)}-\brac{\chi_{S_1\cap S_2}(x)+\cdots+\chi_{S_{n-1}\cap S_n}(x)}+\cdots+(-1)^{n+1}\chi_{S_1\cap\cdots\cap S_n}(x)\\
-&=\sum_{i=1}^n|S_i|-\sum_{J\subseteq\{1,\dots,n\},|J|=2}\absolute{\bigcap_{j\in J}S_j}+\cdots+(-1)^{k+1}\sum_{J\subseteq\{1,\dots,n\},|J|=k}\absolute{\bigcap_{j\in J}S_j}+\cdots+(-1)^{n+1}\absolute{\bigcap_{i=1}^nS_i}.
-\end{align*}
-\end{proof}
 \pagebreak
 
 \section{Relations}
@@ -1581,17 +1495,14 @@ Similarly, since $f$ is injective and $f(x) = f(x^\prime)$, we know that $x=x^\p
 \begin{proposition}
 $f$ is injective if and only if for any set $Z$ and any functions $g_1,g_2:Z\to X$ we have $f\circ g_1=f\circ g_2 \implies g_1=g_2$.
 \end{proposition}
-\begin{proof}
-\textbf{Forward direction:}
 
-If f is injective, we ultimately wish to show that $g_1=g_2$, so in order to do this we consider all possible inputs $z \in Z$, hoping to show that $g_1(z)=g_2(z)$.
+\begin{proof}
+($\implies$) If $f$ is injective, we ultimately wish to show that $g_1=g_2$, so in order to do this we consider all possible inputs $z \in Z$, hoping to show that $g_1(z)=g_2(z)$.
 
 But this is quite simple because we are given that $f\circ g_1=f\circ g_2$ and that $f$ is injective, so
 \[ f \circ g_1(z)=f \circ g_2(z) \implies g_1(z)=g_2(z) \]
 
-\textbf{Backward direction:}
-
-We specifically pick $Z=\{1\}$, basically some random one-element set.
+($\impliedby$) We specifically pick $Z=\{1\}$, basically some random one-element set.
 
 Then $\forall x,y \in X$, we define
 \begin{align*}
@@ -1621,10 +1532,10 @@ Consider any $z \in Z$. Since $g:Y\to Z$ is surjective, there is some $y \in Y$ 
 \begin{proposition}
 $f$ is surjective if and only if for any set $Z$ and any functions $g_1,g_2:Y\to Z$ we have $g_1 \circ f=g_2 \circ f \implies g_1=g_2$.
 \end{proposition}
-\begin{proof}
-\textbf{Forward direction:}
 
-First we suppose that $f$ is surjective. Again, we wish to show that $g_1=g_2$, so we need to consider every possible input $y$ in Y. Then, since $f$ is injective, we can always pick $x \in X$ such that $f(x)=y$.
+\begin{proof} \
+
+($\implies$) Suppose that $f$ is surjective. Again, we wish to show that $g_1=g_2$, so we need to consider every possible input $y$ in Y. Then, since $f$ is injective, we can always pick $x \in X$ such that $f(x)=y$.
 
 Then
 \[ g_1 \circ f=g_2 \circ f \implies g_1 \circ f(x)=g_2 \circ f(x) \implies g_1(y)=g_2(y) \]
@@ -1637,9 +1548,7 @@ On the other hand, if $f$ is not surjective, then there exists $y \in Y$ such th
 
 Because if this is satisfied, then $\forall x \in X$, since $f(x)\neq y$ we have from (ii) that $g_1(f(x))=g_2(f(x))$; thus $g_1 \circ f=g_2 \circ f$, and yet from (i) we have $g_1 \neq g_2$.
 
-\textbf{Backward direction:}
-
-We construct $Z=Y\cup\{1,2\}$ for some random $1,2 \notin Y$.
+($\impliedby$) We construct $Z=Y\cup\{1,2\}$ for some random $1,2 \notin Y$.
 
 Then we define
 \begin{align*}
@@ -1655,76 +1564,17 @@ So conversely, if for any set $Z$ and any functions $g_i:Y \to Z$ we have $g_1 \
 \begin{definition}
 $f:X\to Y$ is \vocab{bijective} if it is both injective and surjective: each element of $Y$ is mapped to a unique element of $X$.
 \end{definition}
-\pagebreak
-
-\subsection{Cardinality and Countable Sets}
-When do two sets have the same size? Cantor answered this question in the 1800s, stating that two sets have the same size when you can pair each element in one set with a unique element in the other.
-
-\begin{definition}
-$X$ and $Y$ have the same \vocab{cardinality} if there exists a bijection $f:X\to Y$, denoted by $|X|=|Y|$.
-\end{definition}
 
 \begin{notation}
-$\ZZ_n=\{1,2,\dots,n\}$.
+Given two sets $X$ and $Y$ , we will write $X\sim Y$ to denote the existence of a bijection from $X$ to $Y$ . One easily checks that $\sim$ is transitive, i.e. if $X\sim Y$ and $Y\sim Z$, then $X\sim Z$.
 \end{notation}
 
-\begin{definition}
-The empty set $\emptyset$ is finite and has cardinality $|\emptyset|\coloneqq0$. A non-empty set $X$ is said to be \vocab{finite} and have cardinality $|X|=n\in\ZZ^+$ if and only if there exists a bijection from $X$ to $\ZZ_n$.
-\end{definition}
-
-\begin{remark}
-Note that for finite sets $X$ and $Y$, a function $f:X \to Y$ can only be \textbf{injective} if $|Y| \ge |X|$, since for any injective function the number of elements in the image $f(X)$, is equal to the number of elements in the domain, and $f(X) \subseteq Y$. In other words, the codomain of an injective function cannot be smaller than the domain.\footnote{This is also referred to as the pigeonhole principle: if $n$ letters are placed in $m$ pigeonholes and $n>m$, then at least one hole must contain more than one letter; the non-injective function in that case is the assignment of pigeonholes to letters.}
-
-Similarly, a function $f:X \to Y$ can only be \textbf{surjective} if $|Y| \le |X|$. Hence if $f$ is bijective, then $|X|=|Y|$; that is, the domain and codomain of a bijection have equal cardinality. (These results hold true for infinite sets too, though less obviously).
-\end{remark}
-
-%\begin{theorem}[Cantor--Schr\"{o}der--Bernstein]
-%If $|X|\le|Y|$ and $|Y|\le|X|$ then $|X|=|Y|$.
-%\end{theorem}
-
-\begin{definition}
-$X$ is \vocab{countably infinite} if it has the same cardinality as the set $\ZZ^+$.
-\end{definition}
-
-\begin{definition}
-$X$ is \vocab{countable} if it is either finite or infinitely countable.
-\end{definition}
-
-\begin{example}
-The set $2\ZZ^+=\{2n \mid n \in \ZZ^+\}$ is countably infinite, i.e. $|2\ZZ^+|=|\ZZ^+|$. 
-
-To prove this, define the function $f:\ZZ^+\to2\ZZ^+$ as $f(n)=2n$. Then, $f$ is injective -- if $f(n) = f(m)$ then $2n=2m \implies n=m$. Furthermore, $f$ is surjective, as if $m\in2\ZZ^+$ then $\exists n \in \ZZ^+$ such that $m=2n=f(n)$.
-\end{example}
-
-\begin{example}
-$\ZZ$ is countable since we have a bijection $f:\ZZ^+\to\ZZ$ given by
-\[ f(n)=\begin{cases}
-    \dfrac{n}{2} & \text{if }n\text{ is even,} \\[1ex]
-    -\dfrac{n-1}{2} & \text{if }n\text{ is odd.} \\
-\end{cases} \]
-\end{example}
-
-
-
-\begin{theorem}[Cantor]
-For a set $A$, $|A|<|\mathcal{P}(A)|$.
+\begin{theorem}[Cantor--Schroder--Bernstein]
+If $f:A\to B$ and $g:B\to A$ are both injections, then $A\sim B$.
 \end{theorem}
-\begin{proof}
-Define the function $f:A \to \mathcal{P}(A)$ by $f(x) = \{x\}$. Then, $f$ is injective as $\{x\}=\{y\} \implies x=y$. Thus $|A| \le |\mathcal{P}(A)|$. To finish the proof now all we need to show is that $|A| \neq |\mathcal{P}(A)|$. We will do so through contradiction. Suppose that $|A| = |\mathcal{P}(A)|$. Then, there exists a surjection $g:A \to \mathcal{P}(A)$. We define the set $B$ as
-\[ B \coloneq \{x \in A \mid x \notin g(x)\} \in \mathcal{P}(A) \]
-Since $g$ is surjective, there exists a $b \in A$ such that $g(b) = B$. There are two cases:
-\begin{enumerate}
-\item $b \in B$. Then $b \notin g(b) = B \implies b \notin B$.
-\item $b \notin B$. Then $b \notin g(b) = B \implies b \in B$.
-\end{enumerate}
-In either case we obtain a contradiction. Thus, $g$ is not surjective so $|A| \neq |\mathcal{P}(A)|$.
-\end{proof}
 
-\begin{corollary}
-For all $n \in \NN \cup \{0\}$, $n<2^n$.
-\end{corollary}
 \begin{proof}
-This can be easily proven through induction.
+%https://web.williams.edu/Mathematics/lg5/CanBer.pdf
 \end{proof}
 \pagebreak
 
@@ -1810,16 +1660,12 @@ The following result provides an important and useful criterion for invertibilit
 \begin{theorem}
 A function $f:X \to Y$ is invertible if and only if it is bijective.
 \end{theorem}
-\begin{proof}
-We prove this in both directions.
 
-\textbf{Forward direction:}
+\begin{proof} \
 
-Suppose $f$ is invertible, so it has an inverse $f^{-1}: Y \to X$. To show $f$ is injective, suppose that for some $x_1, x_2 \in X$ we have $f(x_1) = f(x_2)$. Then applying $f^{-1}$ to both sides and noting that by definition $f^{-1} \circ f = \mathrm{id}_X$, we see that $x_1 = f^{-1}(f(x_1)) = f^{-1}(f(x_2)) = x_2$. So $f$ is injective. To show that $f$ is surjective, let $y \in Y$, and note that $f^{-1}(y) \in X$ has the property that $f(f^{-1}(y)) = y$. So $f$ is surjective. Therefore $f$ is bijective.
+($\implies$) Suppose $f$ is invertible, so it has an inverse $f^{-1}: Y \to X$. To show $f$ is injective, suppose that for some $x_1, x_2 \in X$ we have $f(x_1) = f(x_2)$. Then applying $f^{-1}$ to both sides and noting that by definition $f^{-1} \circ f = \mathrm{id}_X$, we see that $x_1 = f^{-1}(f(x_1)) = f^{-1}(f(x_2)) = x_2$. So $f$ is injective. To show that $f$ is surjective, let $y \in Y$, and note that $f^{-1}(y) \in X$ has the property that $f(f^{-1}(y)) = y$. So $f$ is surjective. Therefore $f$ is bijective.
 
-\textbf{Backward direction:}
-
-Suppose that $f$ is bijective, we aim to show that there is a well-defined $g:Y \to X$ such that $g \circ f = \mathrm{id}_X$ and $f \circ g = \mathrm{id}_Y$. Since $f$ is surjective, we know that for any $y \in Y$, there is an $x \in X$ such that $f(x) = y$. Furthermore, since $f$ is injective, we know that this $x$ is unique. So for each $y \in Y$ there is a unique $x \in X$ such that $f(x) = y$. This recipe provides a well-defined function $g(y) = x$, for which we have $g(f(x)) = x$ for any $x \in X$ and $f(g(y)) = y$ for any $y \in Y$. So $g$ satisfies the property required to be an inverse of $f$ and therefore $f$ is invertible.
+($\impliedby$) Suppose $f$ is bijective, we aim to show that there is a well-defined $g:Y \to X$ such that $g \circ f = \mathrm{id}_X$ and $f \circ g = \mathrm{id}_Y$. Since $f$ is surjective, we know that for any $y \in Y$, there is an $x \in X$ such that $f(x) = y$. Furthermore, since $f$ is injective, we know that this $x$ is unique. So for each $y \in Y$ there is a unique $x \in X$ such that $f(x) = y$. This recipe provides a well-defined function $g(y) = x$, for which we have $g(f(x)) = x$ for any $x \in X$ and $f(g(y)) = y$ for any $y \in Y$. So $g$ satisfies the property required to be an inverse of $f$ and therefore $f$ is invertible.
 \end{proof}
 
 It is also possible to define left-inverse and right-inverse functions as functions that partially satisfy the definition of the inverse:
@@ -1833,21 +1679,17 @@ As may be somewht apparent from the previous proof, being left- and right-invert
 
 \subsection{Strictly Monotonic Functions / Increasing and Decreasing Functions}
 \begin{definition}
-A function $f$ is \vocab{strictly monotonic increasing} if for all $x_1,x_2\in D_f$,
-\[ x_2>x_1\iff f(x_2)>f(x_1). \]
+A function $f$ is \vocab{strictly monotonic increasing} if
+\[\forall x_1,x_2\in D_f, x_2>x_1, f(x_2)>f(x_1); \]
+$f$ is \vocab{strictly monotonic decreasing} if
+\[\forall x_1,x_2\in D_f, x_2>x_1, f(x_2)<f(x_1). \]
 \end{definition}
 
 \begin{definition}
-A function $f$ is \vocab{strictly monotonic decreasing} if for all $x_1,x_2\in D_f$,
-\[ x_2>x_1\iff f(x_2)<f(x_1). \]
-\end{definition}
-
-\begin{definition}
-A function $f$ is \vocab{increasing} on an interval $I$ if for all $x_1,x_2\in I$ with $x_1<x_2$, $f(x_1)\le f(x_2)$.
-\end{definition}
-
-\begin{definition}
-A function $f$ is \vocab{decreasing} on an interval $I$ if for all $x_1,x_2\in I$ with $x_1<x_2$, $f(x_1)\ge f(x_2)$.
+A function $f$ is \vocab{increasing} on an interval $I$ if 
+\[\forall x_1,x_2\in I, x_1<x_2, f(x_1)\le f(x_2);\]
+$f$ is \vocab{decreasing} on $I$ if
+\[\forall x_1,x_2\in I, x_1<x_2, f(x_1)\ge f(x_2).\]
 \end{definition}
 
 Locate roots of an equation: suppose $f(x)$ is continuous in the interval $[a,b]$,
@@ -1985,6 +1827,185 @@ Equality holds when $a=b=c$, i.e. when $ABC$ is an equilateral triangle.
 \end{solution}
 \pagebreak
 
+\section{Cardinality of Sets}
+\begin{definition}
+If there exists a bijective mapping of $A$ onto $B$, we say that $A$ and $B$ can be put in \emph{1-1 correspondence}, or that $A$ and $B$ have the same \vocab{cardinal number}, or, briefly, that $A$ and $B$ are \emph{equivalent}, denoted by $A\sim B$ (an equivalence relation). 
+\end{definition}
+
+\begin{notation}
+For any positive integer $n$, let $J_n$ be the set whose elements are the integers $1,2,\dots,n$. Let $J$ be the set consisting of all positive integers. 
+\end{notation}
+
+\begin{definition}
+For any set $A$, we say
+\begin{itemize}
+\item $A$ is \vocab{finite} if $A\sim J_n$ for some $n$ (the empty set is also considered to be finite)
+\item $A$ is \vocab{infinite} if $A$ is not finite.
+\item $A$ is \vocab{countable} if $A\sim J$.
+\item $A$ is \vocab{uncountable} if $A$ is neither finite nor countable.
+\item $A$ is \vocab{at most countable} if $A$ is finite or countable.
+\end{itemize}
+\end{definition}
+
+For two finite sets $A$ and $B$, we evidently have $A\sim B$ if and only if $A$ and $B$ contain the same number of elements.
+
+For infinite sets, however, the idea of ``having the same number of elements'' becomes quite vague, whereas the notion of bijectivity retains its clarity.
+
+\begin{proposition}
+$2J=\{2n\mid n\in J\}$ is countable.
+\end{proposition}
+
+\begin{proof}
+We can find the function $f:J\to2J$ given by 
+\[f(n)=2n\]
+which is bijective. Thus there is a 1-1 correspondence between $J$ and $2J$.
+\end{proof}
+
+\begin{proposition}
+$\ZZ$ is countable.
+\end{proposition}
+
+\begin{proof}
+Consider the following arrangement of the sets $\ZZ$ and $J$:
+\begin{align*}
+\ZZ&:\quad0,1,-1,2,-2,3,-3,\dots\\
+J&:\quad1,2,3,4,5,6,7,\dots
+\end{align*}
+We can even give an explicit formula for a bijective function $f:J\to\ZZ$:
+\[f(n)=\begin{cases}
+\dfrac{n}{2}&\text{if }n\text{ is even,}\\[1ex]
+-\dfrac{n-1}{2}&\text{if }n\text{ is odd.}
+\end{cases}\]
+\end{proof}
+
+\begin{proposition}
+Every infinite subset of a countable set $A$ is countable.
+\end{proposition}
+
+\begin{proof}
+Suppose $E\subset A$, and $E$ is infinite. Arrange the elements $x\in A$ in a sequence $\{x_n\}$ of distinct elements.
+
+Construct a sequence $\{n_k\}$ as follows: Let $n_1$ be the smallest positive integer such that $x_{n_1}\in E$. Having chosen $n_1,\dots,n_{k-1}$ ($k=2,3,4,\dots$), let $n_k$ be the smallest integer greater than $n_{k-1}$ such that $x_{n_k}\in E$.
+
+Putting $f(k)=x_{n_k}$ ($k=1,2,3,\dots$), we obtain a 1-1 correspondence between $E$ and $J$.
+\end{proof}
+
+This shows that countable sets represent the ``smallest'' infinity: No uncountable set can be a subset of a countable set.
+
+\begin{proposition}
+Let $\{E_n\mid n\in J\}$ be a sequence of countable sets, and put
+\[S=\bigcup_{n=1}^\infty E_n.\]
+Then $S$ is countable.
+\end{proposition}
+
+\begin{proof}
+Let every set $E_n$ be arranged in a sequence $\{x_{n_k}\}$ ($k=1,2,3,\dots$), and consider the infinite array
+\begin{align*}
+&x_{11}\quad x_{12}\quad x_{13}\quad x_{14}\quad\cdots\\
+&x_{21}\quad x_{22}\quad x_{23}\quad x_{24}\quad\cdots\\
+&x_{31}\quad x_{32}\quad x_{33}\quad x_{34}\quad\cdots\\
+&x_{41}\quad x_{42}\quad x_{43}\quad x_{44}\quad\cdots\\
+&\vdots
+\end{align*}
+in which the elements of $E_n$ form the $n$-th row. The array contains all elements of $S$. These elements can be arranged in a sequence
+\[x_{11},x_{21},x_{12},x_{31},x_{22},x_{13},x_{41},x_{32},x_{23},x_{14},\dots\]
+
+\end{proof}
+
+\begin{proposition}
+Let $A$ and $B$ be finite sets. Then $|A \cup B| = |A| + |B| - |A \cap B|$.
+\end{proposition}
+
+\begin{proof}
+The proof is left as an exercise.
+\end{proof}
+
+\begin{proposition}[Subsets of a finite set]
+If a set $A$ is finite with $|A| = n$, then its power set has $|\mathcal{P}(A)| = 2^n$.
+\end{proposition}
+
+\begin{proof}
+We use induction. For the initial step, note that if $|A| = 0$ then $A = \emptyset$ has no elements, so there is a single subset $\emptyset$, and therefore $|\mathcal{P}(A)| = 1 = 2^0$.
+
+Now suppose that $n \ge 0$ and that $|P(S)| = 2^n$ for any set S with $|S| = n$. Let $A$ be any set with $|A| = n+1$. By definition, this means that there is an element $a$ and a set $A_0 = A\setminus\{a\}$ with $|A_0| = n$. Any subset of A must either contain the element a or not, so we can partition $\mathcal{P}(A) = P(A_0) \cup \{S \cup \{a\} \mid S \in P(A_0)\}$. These two sets are disjoint, and each of them has cardinality $|P(A_0)| = 2^n$ by the inductive hypothesis. Hence $|\mathcal{P}(A)| = 2^n + 2^n = 2^{n+1}$.
+
+Thus, by induction, the result holds for all $n$.
+\end{proof}
+
+Another way to see this is through combinatorics: Consider the process of creating a subset. We can do this systematically by going through each of the $|A|$ elements in $A$ and making the yes/no decision whether to put it in the subset. Since there are $|A|$ such choices, that yields $2^{|A|}$ different combinations of elements and therefore $2^{|A|}$ different subsets.
+
+% to include more stuff before introducing PIE
+
+\begin{theorem}[Principle of Inclusion and Exclusion]
+Let $S_i$ be finite sets. Then
+\begin{equation}
+\absolute{\bigcup_{i=1}^nS_i}=\sum_{i=1}|S_i|-\sum_{1\le i<j\le n}|S_i\cap S_j|+\sum_{1\le i<j<k\le n}|S_i\cap S_j\cap S_k|+\cdots+(-1)^{n+1}\absolute{\bigcap_{i=1}^nS_i}.
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+By induction.
+\end{proof}
+
+The following more elegant proof was presented to the author by Dr. Ho Weng Kin during a H3 Mathematics lecture in 2024.
+
+\begin{proof}
+Let $U$ be a finite set (interpreted as the universal set), and $S\subseteq U$. Define the characteristic/indicator function of $S$ by
+\[ \chi_S(x)=\begin{cases}
+1&\text{if }x\in S,\\
+0&\text{if }x\notin S.
+\end{cases} \]
+In other words,
+\[ x\in S\iff\chi_S(x)=1 \]
+and equivalently,
+\[ x\notin S\iff\chi_S(x)=0. \]
+Let $S_1,S_2\subseteq U$ be given. Then for any $x\in U$ it holds that
+\[ \chi_{S_1\cap S_2}(x)=\chi_{S_1}(x)\cdot\chi_{S_2}(x) \]
+where $\cdot$ denotes ordinary multiplication.
+
+Similarly,
+\[ \chi_{S_1\cup S_2}(x)=1-\brac{1-\chi_{S_1}(x)}\cdot\brac{1-\chi_{S_2}(x)}. \]
+In general, for any $x\in U$ it holds that
+\[ \chi_{S_1\cup\cdots\cup S_n}(x)=1-\brac{1-\chi_{S_1}(x)}\cdots\brac{1-\chi_{S_n}(x)} \]
+for any $S_1,\dots,S_n\subset U$.
+
+Since $x\in S$ if and only if $\chi_S(x)=1$, it follows that
+\[ |S|=\sum_{x\in U}\chi_S(x). \]
+To prove the PIE, we calculate
+\begin{align*}
+&|S_1\cup\cdots\cup S_n|\\
+&=\sum_{x\in U}\chi_{S_1\cup\cdots\cup S_n}(x)\\
+&=\sum_{x\in U}1-\brac{1-\chi_{S_1}(x)}\cdots\brac{1-\chi_{S_n}(x)}\\
+&=\brac{\chi_{S_1}(x)+\cdots+\chi_{S_n}(x)}-\brac{\chi_{S_1}(x)\chi_{S_2}(x)+\cdots+\chi_{S_{n-1}}(x)\chi_{S_n}(x)}+\cdots+(-1)^{n+1}\chi_{S_1}(x)\cdots\chi_{S_n}(x)\\
+&=\brac{\chi_{S_1}(x)+\cdots+\chi_{S_n}(x)}-\brac{\chi_{S_1\cap S_2}(x)+\cdots+\chi_{S_{n-1}\cap S_n}(x)}+\cdots+(-1)^{n+1}\chi_{S_1\cap\cdots\cap S_n}(x)\\
+&=\sum_{i=1}^n|S_i|-\sum_{J\subseteq\{1,\dots,n\},|J|=2}\absolute{\bigcap_{j\in J}S_j}+\cdots+(-1)^{k+1}\sum_{J\subseteq\{1,\dots,n\},|J|=k}\absolute{\bigcap_{j\in J}S_j}+\cdots+(-1)^{n+1}\absolute{\bigcap_{i=1}^nS_i}.
+\end{align*}
+\end{proof}
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{theorem}[Cantor]
+For a set $A$, $|A|<|\mathcal{P}(A)|$.
+\end{theorem}
+\begin{proof}
+Define the function $f:A \to \mathcal{P}(A)$ by $f(x) = \{x\}$. Then, $f$ is injective as $\{x\}=\{y\} \implies x=y$. Thus $|A| \le |\mathcal{P}(A)|$. To finish the proof now all we need to show is that $|A| \neq |\mathcal{P}(A)|$. We will do so through contradiction. Suppose that $|A| = |\mathcal{P}(A)|$. Then, there exists a surjection $g:A \to \mathcal{P}(A)$. We define the set $B$ as
+\[ B \coloneq \{x \in A \mid x \notin g(x)\} \in \mathcal{P}(A) \]
+Since $g$ is surjective, there exists a $b \in A$ such that $g(b) = B$. There are two cases:
+\begin{enumerate}
+\item $b \in B$. Then $b \notin g(b) = B \implies b \notin B$.
+\item $b \notin B$. Then $b \notin g(b) = B \implies b \in B$.
+\end{enumerate}
+In either case we obtain a contradiction. Thus, $g$ is not surjective so $|A| \neq |\mathcal{P}(A)|$.
+\end{proof}
+
+\begin{corollary}
+For all $n \in \NN \cup \{0\}$, $n<2^n$.
+\end{corollary}
+\begin{proof}
+This can be easily proven through induction.
+\end{proof}
+\pagebreak
+
 \section*{Exercises}
 \begin{prbm}
 Let $A$ be the set of all complex polynomials in $n$ variables. Given a subset $T \subset A$, define the \textit{zeros} of $T$ as the set
@@ -2114,3 +2135,4 @@ The complex number $a+bi$ is defined to be the equivalence class of $a+bx$.
 \item Define the reciprocal of a complex number.
 \end{enumerate}
 \end{prbm}
+\pagebreak

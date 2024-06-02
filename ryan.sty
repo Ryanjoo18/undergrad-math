@@ -1,39 +1,94 @@
-% Customise the margins of the page, text height, etc
-\usepackage[a4paper, top=1.0in, bottom=1.0in, left=1.0in, right=1.0in, heightrounded]{geometry} 
+\usepackage{amsmath,amssymb}
+%Define some macros
+\newcommand{\cbrt}[1]{\sqrt[3]{#1}}
+\newcommand{\floor}[1]{\left\lfloor #1 \right\rfloor}
+\newcommand{\ceiling}[1]{\left\lceil #1 \right\rceil}
+\newcommand{\mailto}[1]{\href{mailto:#1}{\texttt{#1}}}
+\newcommand{\brac}[1]{\left(#1\right)}
+\newcommand{\sqbrac}[1]{\left[#1\right]}
+\newcommand{\absolute}[1]{\left|#1\right|}
+\newcommand{\crbrac}[1]{\left\{#1\right\}}
+\providecommand{\arc}[1]{\wideparen{#1}}
+\newcommand{\vocab}[1]{\textbf{\color{blue}\sffamily#1}}
+\renewcommand{\epsilon}{\varepsilon}
+\newcommand{\unit}[1]{\,\mathrm{#1}}
+\newcommand{\degC}{^\circ{\mathrm C}}
+\newcommand{\tab}{\hspace{0.5cm}}
+\newcommand{\per}[2]{^{#1}\mathrm{P}_{#2}}
+\newcommand{\com}[2]{^{#1}\mathrm{C}_{#2}}
+\newcommand{\leg}[2]{\brac{\dfrac{#1}{#2}}}
 
-% Fonts and math symbols
-\usepackage{lmodern,amsmath,amssymb,amsthm,amsfonts,mathrsfs,mathtools,changepage,centernot}
+%More commands and math operators
+\DeclareMathOperator{\cis}{cis}
+\DeclareMathOperator*{\lcm}{lcm}
+\DeclareMathOperator*{\argmin}{arg min}
+\DeclareMathOperator*{\argmax}{arg max}
+\DeclareMathOperator{\diam}{diam}
+\DeclareMathOperator{\cosec}{cosec}
+\DeclareMathOperator{\Exp}{E}
+\DeclareMathOperator{\Var}{Var}
+\DeclareMathOperator{\Po}{Po}
+\DeclareMathOperator{\dom}{dom}
+\DeclareMathOperator{\ran}{ran}
+\DeclareMathOperator{\cs}{cis}
+\newcommand{\suchthat}{\text{ s.t. }}
+\DeclareMathOperator{\arsinh}{arsinh}
+\DeclareMathOperator{\arcosh}{arcosh}
+\DeclareMathOperator{\artanh}{artanh}
+\DeclareMathOperator{\cosech}{cosech}
 
-% Define theorem styles
-\theoremstyle{definition}
-\usepackage[english]{babel}
-\usepackage{mdframed}
+%Inequalities
+\newcommand{\cycsum}{\sum_{\mathrm{cyc}}}
+\newcommand{\symsum}{\sum_{\mathrm{sym}}}
+\newcommand{\cycprod}{\prod_{\mathrm{cyc}}}
+\newcommand{\symprod}{\prod_{\mathrm{sym}}}
 
-% Generate dummy text
-\usepackage{lipsum}
+%Convenient Environments
+\usepackage{amsthm}
+\renewenvironment{proof}{{\bfseries Proof. }}{\qed}
+\newenvironment{solution}{{\bfseries Solution.} }{\qed}
+\newenvironment{remark}{{\bfseries Remark. }}{}
+\newenvironment{notation}{{\bfseries Notation. }}{}
+\newenvironment{derivation}{{\bfseries Derivation. }}{\qed}
 
-% Generate common symbols and characters
+%Letters
+\newcommand{\CC}{\mathbb C}
+\newcommand{\EE}{\mathbb E}
+\newcommand{\FF}{\mathbb F}
+\newcommand{\KK}{\mathbb K}
+\newcommand{\NN}{\mathbb N}
+\newcommand{\PP}{\mathbb P}
+\newcommand{\QQ}{\mathbb Q}
+\newcommand{\RR}{\mathbb R}
+\newcommand{\ZZ}{\mathbb Z}
+
+%Asymptote setup
+\usepackage{asymptote}
+
+%Generic symbols for both text and math mode
+%Provides generic commands \degree, \celsius, \perthousand, \micro and \ohm which work both in text and maths mode.
 \usepackage{gensymb}
 
-% Color support
-\usepackage[dvipsnames]{xcolor}
+% Fonts and math symbols
+\usepackage{lmodern,amsfonts,mathrsfs,mathtools,changepage,centernot}
 
-% Highlighting text
+%Colour
+\usepackage[dvipsnames]{xcolor}
 \usepackage{soul,xcolor}
 
 % Advanced positioning
 \usepackage{xcoffins,calc}
 
-% Ragged boxes
+%Ragged boxes
 \usepackage[raggedrightboxes]{ragged2e}
 
-% Strikeout text
+%Strikeout text
 \usepackage{cancel}
 
 % Pictures and images
 \usepackage{graphicx,float}
 \graphicspath{ {./images/} }
-\usepackage{tikz,pstricks,asymptote} 
+\usepackage{tikz,pstricks} 
 \usetikzlibrary{calc,intersections,through,backgrounds,positioning}
 
 \usetikzlibrary{shapes.geometric, arrows}
@@ -151,126 +206,133 @@ breaklines=true
 \usepackage[version=4]{mhchem}
 \usepackage{plimsoll}
 
-% Defined macros
-\newcommand{\cbrt}[1]{\sqrt[3]{#1}}
-\newcommand{\floor}[1]{\left\lfloor #1 \right\rfloor}
-\newcommand{\ceiling}[1]{\left\lceil #1 \right\rceil}
-\newcommand{\brac}[1]{\left(#1\right)}
-\newcommand{\sqbrac}[1]{\left[#1\right]}
-\newcommand{\absolute}[1]{\left|#1\right|}
-\newcommand{\crbrac}[1]{\left\{#1\right\}}
-
-\newcommand{\vocab}[1]{\textbf{\color{blue}\sffamily#1}}
-
-\DeclareMathOperator{\diam}{diam}
-\DeclareMathOperator{\cosec}{cosec}
-\newcommand{\tab}{\hspace{0.5cm}}
-\newcommand{\per}[2]{^{#1}\mathrm{P}_{#2}}
-\newcommand{\com}[2]{^{#1}\mathrm{C}_{#2}}
-\DeclareMathOperator{\lcm}{lcm}
-\newcommand{\leg}[2]{\brac{\dfrac{#1}{#2}}}
-\DeclareMathOperator{\Exp}{E}
-\DeclareMathOperator{\Var}{Var}
-\DeclareMathOperator{\Po}{Po}
-\DeclareMathOperator{\cis}{cis}
-\DeclareMathOperator{\dom}{dom}
-\DeclareMathOperator{\ran}{ran}
-\DeclareMathOperator{\cs}{cis}
-\newcommand{\suchthat}{\text{ s.t. }}
-
-\DeclareMathOperator{\arsinh}{arsinh}
-\DeclareMathOperator{\arcosh}{arcosh}
-\DeclareMathOperator{\artanh}{artanh}
-\DeclareMathOperator{\cosech}{cosech}
-
-%Inequalities
-\newcommand{\cycsum}{\sum_{\mathrm{cyc}}}
-\newcommand{\symsum}{\sum_{\mathrm{sym}}}
-\newcommand{\cycprod}{\prod_{\mathrm{cyc}}}
-\newcommand{\symprod}{\prod_{\mathrm{sym}}}
-
-\newcommand{\CC}{\mathbb C}
-\newcommand{\FF}{\mathbb F}
-\newcommand{\NN}{\mathbb N}
-\newcommand{\QQ}{\mathbb Q}
-\newcommand{\RR}{\mathbb R}
-\newcommand{\ZZ}{\mathbb Z}
-\newcommand{\KK}{\mathbb K}
-\newcommand{\PP}{\mathbb P}
-
-\renewcommand{\epsilon}{\varepsilon}
-
-\newcommand{\unit}[1]{\,\mathrm{#1}}
-\newcommand{\degC}{^\circ{\mathrm C}}
-
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{0.5em}
 
-% Define theorem environments
-\newtheorem{definition}{Definition}[section]
-\newtheorem{theorem}[definition]{Theorem}
-\newtheorem{example}[definition]{Example}
-\newtheorem{lemma}[definition]{Lemma}
-\newtheorem{formula}[definition]{Formula}
-\newtheorem{property}[definition]{Property}
-\newtheorem{corollary}[definition]{Corollary}
-\newtheorem{proposition}[definition]{Proposition}
+\usepackage{thmtools}
+\usepackage[framemethod=TikZ]{mdframed}
+\usetikzlibrary{shadows}
+
+\mdfdefinestyle{mdbluebox}{%
+    skipabove=12pt,
+    linewidth=3pt,
+    rightline=false,
+    leftline=true,
+    topline=false,
+    bottomline=false,
+    linecolor=blue,
+    backgroundcolor=TealBlue!5,
+    innerbottommargin=9pt,
+    skipbelow=2pt,
+    nobreak=true,
+}
+\declaretheoremstyle[
+    headfont=\sffamily\bfseries\color{MidnightBlue},
+    mdframed={style=mdbluebox},
+    headpunct={\\[3pt]},
+    postheadspace={0pt}
+]{thmbluebox}
+
+\mdfdefinestyle{mdredbox}{%
+    skipabove=12pt,
+    linewidth=3pt,
+    rightline=false,
+    leftline=true,
+    topline=false,
+    bottomline=false,
+    linecolor=RawSienna,
+    backgroundcolor=Salmon!5,
+    innerbottommargin=9pt,
+    skipbelow=2pt,
+    nobreak=true,
+}
+\declaretheoremstyle[
+    headfont=\sffamily\bfseries\color{RawSienna},
+    mdframed={style=mdredbox},
+    headpunct={\\[3pt]},
+    postheadspace={0pt},
+]{thmredbox}
+
+\mdfdefinestyle{mdgreenbox}{%
+    skipabove=12pt,
+    linewidth=3pt,
+    rightline=false,
+    leftline=true,
+    topline=false,
+    bottomline=false,
+    linecolor=ForestGreen,
+    backgroundcolor=ForestGreen!5,
+    innerbottommargin=9pt,
+    skipbelow=2pt,
+    nobreak=true,
+}
+\declaretheoremstyle[
+    headfont=\sffamily\bfseries\color{ForestGreen!70!black},
+    mdframed={style=mdgreenbox},
+    headpunct={\\[3pt]},
+    postheadspace={0pt},
+]{thmgreenbox}
+
+\mdfdefinestyle{mdblackbox}{%
+    skipabove=8pt,
+    linewidth=3pt,
+    rightline=false,
+    leftline=true,
+    topline=false,
+    bottomline=false,
+    linecolor=black,
+    backgroundcolor=RedViolet!5!gray!5,
+}
+\declaretheoremstyle[
+    headfont=\bfseries,
+    spaceabove=0pt,
+    spacebelow=0pt,
+    mdframed={style=mdblackbox}
+]{thmblackbox}
+
+\mdfdefinestyle{mdpurplebox}{%
+    skipabove=8pt,
+    linewidth=3pt,
+    rightline=false,
+    leftline=true,
+    topline=false,
+    bottomline=false,
+    linecolor=black,
+    backgroundcolor=Orchid!10,
+}
+\declaretheoremstyle[
+    headfont=\sffamily\bfseries\color{Orchid},
+    mdframed={style=mdpurplebox},
+    headpunct={\\[3pt]},
+    postheadspace={0pt},
+]{thmpurplebox}
+
+%Theorem setup
+\theoremstyle{definition}
+
 \newtheorem{prbm}{Problem}[]
 \newtheorem*{claim}{Claim}
 
-% Custom theorem environments using tcolorbox
-\tcbuselibrary{theorems}
-\newtcbtheorem[number within=section]{thrm}{Theorem}%
-{colback=green!5,colframe=green!35!black,fonttitle=\bfseries}{th}
+\declaretheorem[style=thmbluebox,name=Theorem,numberwithin=section]{theorem}
+\declaretheorem[style=thmredbox,name=Definition,sibling=theorem]{definition}
+\declaretheorem[style=thmpurplebox,name=Lemma,sibling=theorem]{lemma}
+\declaretheorem[style=thmpurplebox,name=Proposition,sibling=theorem]{proposition}
+\declaretheorem[style=thmpurplebox,name=Corollary,sibling=theorem]{corollary}
+\declaretheorem[style=thmpurplebox,name=Assumption,sibling=theorem]{assume}
+\declaretheorem[style=thmbluebox,name=Theorem,numbered=no]{theorem*}
+\declaretheorem[style=thmredbox,name=Definition,numbered=no]{definition*}
+\declaretheorem[style=thmpurplebox,name=Lemma,numbered=no]{lemma*}
+\declaretheorem[style=thmpurplebox,name=Proposition,numbered=no]{proposition*}
+\declaretheorem[style=thmpurplebox,name=Corollary,numbered=no]{corollary*}
+\declaretheorem[style=thmpurplebox,name=Assumption,numbered=no]{assume*}
+\declaretheorem[style=thmblackbox,name=Example,sibling=theorem]{example}
+\declaretheorem[style=thmblackbox,name=Example,numbered=no]{example*}
+\declaretheorem[style=thmgreenbox,name=Exercise]{exercise}
 
-\newtcbtheorem[number within=section]{defn}{Definition}%
-{colback=red!3,colframe=red!40!black,fonttitle=\bfseries}{de}
-
-\newtcbtheorem[number within=section]{exmp}{Example}%
-{colback=blue!5,colframe=blue!40!black,fonttitle=\bfseries}{}
-
-\newtcbtheorem[number within=section]{mechanism}{Mechanism}%
-{colback=green!5,colframe=green!40!black,fonttitle=\bfseries}{}
-
-\newtcbtheorem[number within=section]{exercise}{Exercise}%
-{colback=blue!5,colframe=blue!40!black,fonttitle=\bfseries}{}
-
-\newtcolorbox{prbm_stat}[1]{
-colback=red!5!white,colframe=red!75!black,fonttitle=\bfseries, title={#1}}
-
-\newenvironment{prty}{%
-    \begin{tcolorbox}[
-        colback=red!5!white, % Light green interior
-        colframe=red!50!black, % Dark green border
-        boxrule=1.5pt, % Border thickness
-        arc=2pt, % No rounded corners
-        boxsep=0pt % No padding
-    ]%
-    \begin{property}%
-}{%
-    \end{property}%
-    \end{tcolorbox}%
-}
-
-\newenvironment{ebox}{%
-    \begin{tcolorbox}[
-        boxrule=1pt, % Border thickness
-        arc=0pt, % Rounded corners
-        boxsep=1pt % Padding
-    ]%
-    %
-}{%
-    %
-    \end{tcolorbox}%
-}
-
-\renewenvironment{proof}{{\bfseries Proof}}{\qed}
-\newenvironment{solution}{{\bfseries Solution}}{\qed}
-\newenvironment{remark}{{\bfseries Remark}}{}
-\newenvironment{notation}{{\bfseries Notation}}{}
-\newenvironment{derivation}{{\bfseries Derivation}}{\qed}
+%Custom theorem environments using tcolorbox
+%\tcbuselibrary{theorems}
   
-% Customise section headings
+%Fancy section and chapter heads
 \definecolor{darkred}{rgb}{0.9, 0.0, 0.0}
 \usepackage[T1]{fontenc}
 \titleformat{\chapter}[hang]{\sffamily\fontsize{60}{70}\bfseries}{{\color{darkred}\thechapter}\hspace{20pt}}{0pt}{\Huge\bfseries}

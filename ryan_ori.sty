@@ -1,0 +1,314 @@
+% Customise the margins of the page, text height, etc
+\usepackage[a4paper, top=1.0in, bottom=1.0in, left=1.0in, right=1.0in, heightrounded]{geometry} 
+
+% Fonts and math symbols
+\usepackage{lmodern,amsmath,amssymb,amsthm,amsfonts,mathrsfs,mathtools,changepage,centernot}
+
+% Define theorem styles
+\theoremstyle{definition}
+\usepackage[english]{babel}
+\usepackage{mdframed}
+
+% Generate dummy text
+\usepackage{lipsum}
+
+% Generate common symbols and characters
+\usepackage{gensymb}
+
+% Color support
+\usepackage[dvipsnames]{xcolor}
+
+% Highlighting text
+\usepackage{soul,xcolor}
+
+% Advanced positioning
+\usepackage{xcoffins,calc}
+
+% Ragged boxes
+\usepackage[raggedrightboxes]{ragged2e}
+
+% Strikeout text
+\usepackage{cancel}
+
+% Pictures and images
+\usepackage{graphicx,float}
+\graphicspath{ {./images/} }
+\usepackage{tikz,pstricks,asymptote} 
+\usetikzlibrary{calc,intersections,through,backgrounds,positioning}
+
+\usetikzlibrary{shapes.geometric, arrows}
+%\usepackage[siunitx]{circuitikz}
+
+% Code environment
+\usepackage{listings}
+\lstset{
+basicstyle=\small\ttfamily,
+columns=flexible,
+breaklines=true
+}
+
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+
+% Side captions
+\usepackage[rightcaption]{sidecap}
+
+% Wrap figures
+\usepackage{wrapfig}
+
+% Additional symbols
+\usepackage{MnSymbol}
+
+% Customise lists (such as itemize, enumerate, description)
+\usepackage{enumerate}
+\usepackage{enumitem}
+
+% Customise section headings
+\usepackage{titlesec}
+
+% Create colored boxes for theorems, examples, etc.
+\usepackage[most,listings]{tcolorbox}
+
+% Hyperlinks
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=blue,
+}
+
+% Cross referencing
+\usepackage{varioref,cleveref}
+
+% Tables
+\usepackage{array}
+\usepackage{tabularray}
+\usepackage{multirow}
+\usepackage{longtable}
+
+% Physics symbols and notation
+\usepackage{physics}
+
+% Derivative notation
+\usepackage{derivative}
+
+% Conditional statements
+\usepackage{ifthen}
+
+% Plotting graphs
+\usepackage{pgfplots}
+
+% Formatting derivatives
+\usepackage{commath}
+
+% Formatting code
+\usepackage{fancyvrb} %\Verbatim[numbers=left,frame=single,formatcom=\color{red}] - this is used to print code
+
+% Headers and footers
+\usepackage{fancyhdr} 
+
+% Page numbering
+\usepackage{lastpage}
+
+% Tools for writing packages
+\usepackage{etoolbox}
+
+%\usepackage[Lenny]{fncychap} %options: Sonny,Lenny,Glenn,Conny,Rejne,Rjarne,Bjornstrup
+
+% Bottom footnotes
+\usepackage[bottom]{footmisc}
+
+% Acronyms
+\usepackage[acronym]{glossaries}
+
+% Include PDF pages
+\usepackage{pdfpages}
+
+% Create todo notes
+\usepackage[colorinlistoftodos]{todonotes}
+
+% Tables
+\usepackage{booktabs}
+
+% Chemistry packages
+\usepackage{chemfig}
+\usepackage[version=4]{mhchem}
+\usepackage{plimsoll}
+
+% Defined macros
+\newcommand{\cbrt}[1]{\sqrt[3]{#1}}
+\newcommand{\floor}[1]{\left\lfloor #1 \right\rfloor}
+\newcommand{\ceiling}[1]{\left\lceil #1 \right\rceil}
+\newcommand{\brac}[1]{\left(#1\right)}
+\newcommand{\sqbrac}[1]{\left[#1\right]}
+\newcommand{\absolute}[1]{\left|#1\right|}
+\newcommand{\crbrac}[1]{\left\{#1\right\}}
+
+\newcommand{\vocab}[1]{\textbf{\color{blue}\sffamily#1}}
+
+\DeclareMathOperator{\diam}{diam}
+\DeclareMathOperator{\cosec}{cosec}
+\newcommand{\tab}{\hspace{0.5cm}}
+\newcommand{\per}[2]{^{#1}\mathrm{P}_{#2}}
+\newcommand{\com}[2]{^{#1}\mathrm{C}_{#2}}
+\DeclareMathOperator{\lcm}{lcm}
+\newcommand{\leg}[2]{\brac{\dfrac{#1}{#2}}}
+\DeclareMathOperator{\Exp}{E}
+\DeclareMathOperator{\Var}{Var}
+\DeclareMathOperator{\Po}{Po}
+\DeclareMathOperator{\cis}{cis}
+\DeclareMathOperator{\dom}{dom}
+\DeclareMathOperator{\ran}{ran}
+\DeclareMathOperator{\cs}{cis}
+\newcommand{\suchthat}{\text{ s.t. }}
+
+\DeclareMathOperator{\arsinh}{arsinh}
+\DeclareMathOperator{\arcosh}{arcosh}
+\DeclareMathOperator{\artanh}{artanh}
+\DeclareMathOperator{\cosech}{cosech}
+
+%Inequalities
+\newcommand{\cycsum}{\sum_{\mathrm{cyc}}}
+\newcommand{\symsum}{\sum_{\mathrm{sym}}}
+\newcommand{\cycprod}{\prod_{\mathrm{cyc}}}
+\newcommand{\symprod}{\prod_{\mathrm{sym}}}
+
+\newcommand{\CC}{\mathbb C}
+\newcommand{\FF}{\mathbb F}
+\newcommand{\NN}{\mathbb N}
+\newcommand{\QQ}{\mathbb Q}
+\newcommand{\RR}{\mathbb R}
+\newcommand{\ZZ}{\mathbb Z}
+\newcommand{\KK}{\mathbb K}
+\newcommand{\PP}{\mathbb P}
+
+\renewcommand{\epsilon}{\varepsilon}
+
+\newcommand{\unit}[1]{\,\mathrm{#1}}
+\newcommand{\degC}{^\circ{\mathrm C}}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.5em}
+
+% Define theorem environments
+\newtheorem{definition}{Definition}[section]
+\newtheorem{theorem}[definition]{Theorem}
+\newtheorem{example}[definition]{Example}
+\newtheorem{lemma}[definition]{Lemma}
+\newtheorem{formula}[definition]{Formula}
+\newtheorem{property}[definition]{Property}
+\newtheorem{corollary}[definition]{Corollary}
+\newtheorem{proposition}[definition]{Proposition}
+\newtheorem{axiom}[definition]{Axiom}
+\newtheorem{prbm}{Problem}[]
+\newtheorem*{claim}{Claim}
+
+% Custom theorem environments using tcolorbox
+\tcbuselibrary{theorems}
+\newtcbtheorem[number within=section]{thrm}{Theorem}%
+{colback=green!5,colframe=green!35!black,fonttitle=\bfseries}{th}
+
+\newtcbtheorem[number within=section]{defn}{Definition}%
+{colback=red!3,colframe=red!40!black,fonttitle=\bfseries}{de}
+
+\newtcbtheorem[number within=section]{exmp}{Example}%
+{colback=blue!5,colframe=blue!40!black,fonttitle=\bfseries}{}
+
+\newtcbtheorem[number within=section]{mechanism}{Mechanism}%
+{colback=green!5,colframe=green!40!black,fonttitle=\bfseries}{}
+
+\newtcbtheorem[number within=section]{exercise}{Exercise}%
+{colback=blue!5,colframe=blue!40!black,fonttitle=\bfseries}{}
+
+\newtcolorbox{prbm_stat}[1]{
+colback=red!5!white,colframe=red!75!black,fonttitle=\bfseries, title={#1}}
+
+\newenvironment{prty}{%
+    \begin{tcolorbox}[
+        colback=red!5!white, % Light green interior
+        colframe=red!50!black, % Dark green border
+        boxrule=1.5pt, % Border thickness
+        arc=2pt, % No rounded corners
+        boxsep=0pt % No padding
+    ]%
+    \begin{property}%
+}{%
+    \end{property}%
+    \end{tcolorbox}%
+}
+
+\newenvironment{ebox}{%
+    \begin{tcolorbox}[
+        boxrule=1pt, % Border thickness
+        arc=0pt, % Rounded corners
+        boxsep=1pt % Padding
+    ]%
+    %
+}{%
+    %
+    \end{tcolorbox}%
+}
+
+\renewenvironment{proof}{{\bfseries Proof.}}{\qed}
+\newenvironment{solution}{{\bfseries Solution.}}{\qed}
+\newenvironment{remark}{{\bfseries Remark.}}{}
+\newenvironment{notation}{{\bfseries Notation.}}{}
+\newenvironment{derivation}{{\bfseries Derivation.}}{\qed}
+  
+% Customise section headings
+\definecolor{darkred}{rgb}{0.9, 0.0, 0.0}
+\usepackage[T1]{fontenc}
+\titleformat{\chapter}[hang]{\sffamily\fontsize{60}{70}\bfseries}{{\color{darkred}\thechapter}\hspace{20pt}}{0pt}{\Huge\bfseries}
+\titleformat{\section}{\sffamily\Large\bfseries}{{\color{darkred}\S\thesection}}{1em}{}
+\titleformat{\subsection}{\sffamily\large\bfseries}{{\color{darkred}\S\thesubsection}}{1em}{}
+\titleformat{\subsubsection}{\sffamily\normalsize\bfseries}{{\color{darkred}\S\thesubsubsection}}{1em}{}
+%\setcounter{secnumdepth}{3}
+
+\makeatletter
+\NewDocumentCommand{\lowerint}{}{\mathop{}\mathpalette\lowerint@\relax\!\int}
+\NewDocumentCommand{\upperint}{}{\mathop{}\mathpalette\upperint@\relax\!\int}
+\newcommand{\lowerint@}[2]{%
+  \begingroup
+  \sbox\z@{$\m@th#1\int$}%
+  \lowup@{l}{\underline}{#1}%
+  \endgroup
+}
+\newcommand{\upperint@}[2]{%
+  \begingroup
+  \sbox\z@{$\m@th#1\int$}%
+  \lowup@{r}{\overline}{#1}%
+  \endgroup
+}
+\newcommand{\lowup@}[3]{%
+  % #1 = l (lower) or r (upper)
+  % #2 = \underline (lower) or \overline (upper)
+  % #3 = math style
+  \rlap{%
+    \hspace{0.05\wd\z@}%
+    \makebox[0.9\wd\z@][#1]{%
+      $\m@th#2{%
+        \hspace{0.4\wd\z@}%
+        \ifx#3\displaystyle\else\hspace{0.1\wd\z@}\fi
+        \vphantom{\copy\z@}%
+      }$%
+    }%
+    \hspace{0.05\wd\z@}%
+  }%
+}
+\makeatother

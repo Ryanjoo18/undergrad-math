@@ -250,10 +250,15 @@ Conjugate matrix
 
 \subsection{Identity Matrix, Determinant and Inverse of a Matrix}
 \subsubsection{Identity Matrix}
-The identity matrix has the property that when multiplied with another matrix it leaves the other matrix unchanged:
-\begin{equation}
-\mathbf{AI} = \mathbf{A} = \mathbf{IA}
-\end{equation}
+The identity matrix of $A$, denoted by $A^{-1}$, has the property that when multiplied with $A$, it leaves $A$ unchanged:
+\[ AI=A=IA, \]
+where $I$ is the identity matrix.
+
+Only square matrices have an inverse.
+
+If $A=\begin{pmatrix}a&b\\c&d\end{pmatrix}$, then
+\[ A^{-1}=\frac{1}{ad-bc}\begin{pmatrix}d&-b\\-c&a\end{pmatrix}. \]
+where $ad-bc$ is the determinant of the matrix, denoted by $|A|$. If $|A|=0$ the matrix has no inverse.
 
 \subsubsection{Transpose of Matrix}
 The \vocab{transpose} of an $m \times n$ matrix $\mathbf{A}$ is the $n \times m$ matrix $\mathbf{A}^T$ formed by turning rows into columns and vice versa:

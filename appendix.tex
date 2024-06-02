@@ -687,6 +687,48 @@ for all $x\in\sqbrac{0,\frac{\pi}{4}}$.
     \end{cases} \]
 \end{enumerate}
 \end{enumerate}
+
+\item 
+\item 
+\item The Fibonacci sequence is defined recursively by $F_{n+1}=F_n+F_{n-1}$ and $F_1=1,F_2=1$.
+\begin{enumerate}[label=(\roman*)]
+\item Find the periods of Fibonacci sequences modulo $3$ and $4$.
+\item For any positive integer $m$, show that we can find two pairs $(F_j,F_{j+1})$ and $(F_k,F_{k+1})$ which are the same modulo $m$ with $1\le j<k\le m^2+1$.
+\item For $m$, $j$ and $k$ as in (ii), explain why the Fibonacci sequence modulo $m$ is periodic
+with period dividing $k-j$.
+\item For any positive integer $m$, prove that there is a Fibonacci number which is a multiple of $m$.
+\end{enumerate}0
+
+\begin{solution} \
+\begin{enumerate}[label=(\roman*)]
+\item Modulo 3: $1, 1, 2, 0, 2, 2, 1, 0, 1, 1, \dots$ has period $8$.
+
+Modulo 4: $1, 1, 2, 3, 1, 0, 1, 1, \dots$ has period $6$.
+
+\item Modulo $m$, there are $m$ possible values $0,1,2,\dots,m-1$. So there are exactly $m^2$ possible distinct pairs $(a,b)$.
+
+If we consider $m^2+1$ pairs of $(F_i,F_{i+1})$ modulo $m$ where $1\le i\le m^2+1$, we can find two pairs $(F_j,F_{j+1})$ and $(F_k,F_{k+1})$ which are the same modulo $m$, by Pigeonhole Principle.
+
+\item This is the same as showing $F_{j+n} \equiv F_{k+n} \pmod m$ for all non negative integer $n$.
+
+We prove using mathematical induction.
+
+Basis step: $P(0)$ and $P(1)$
+\[ F_j \equiv F_k \pmod m \quad F_{j+1} \equiv F_{k+1} \pmod m \]
+
+Inductive step: $P(q-1)\land P(q)\implies P(q+1)$ for all $q\ge 1$
+
+Given $F_{j+q-1} \equiv F_{k+q-1} \pmod m$ and $F_{j+q} \equiv F_{k+q} \pmod m$. Then $F_{j+q-1}+F_{j+q} \equiv F_{k+q-1}+F_{k+q}\pmod m$ so $F_{j+q+1}\equiv F_{k+q+1}\pmod m$.
+
+By mathematical induction, the sequence repeats itself after $k-j$ terms. This implies the period of the sequence divides $k-j$.
+
+\item For any positive $m$, by part (iii), the Fibonacci sequence modulo $m$ is periodic. That is, $(F_1,F_2)$ is congruent to $(F_i,F_{i+1})$ modulo $m$ for some $i>2$:
+\[ F_i \equiv F_1 \equiv 1 \pmod m \quad F_{i+1} \equiv F_2 \equiv 1 \pmod m \]
+Then $F_{i-1}=F_{i+1}-F_i\equiv1-1\equiv0\pmod m$, which means $m\mid F_{i-1}$.
+
+We have proven that there is a Fibonacci number which is a multiple of $m$.
+\end{enumerate}
+\end{solution}
 \end{enumerate}
 \pagebreak
 
@@ -911,48 +953,6 @@ Prove by induction.
 \begin{remark}
 Although it is easy to visualise this by drawing it out, always produce a written proof.
 \end{remark}
-
-\begin{prbm}[\acrshort{h3math} 2017 Q8]
-The Fibonacci sequence is defined recursively by $F_{n+1}=F_n+F_{n-1}$ and $F_1=1,F_2=1$.
-\begin{enumerate}[label=(\roman*)]
-\item Find the periods of Fibonacci sequences modulo $3$ and $4$.
-\item For any positive integer $m$, show that we can find two pairs $(F_j,F_{j+1})$ and $(F_k,F_{k+1})$ which are the same modulo $m$ with $1\le j<k\le m^2+1$.
-\item For $m$, $j$ and $k$ as in (ii), explain why the Fibonacci sequence modulo $m$ is periodic
-with period dividing $k-j$.
-\item For any positive integer $m$, prove that there is a Fibonacci number which is a multiple of $m$.
-\end{enumerate}
-\end{prbm}
-
-\begin{solution} \
-\begin{enumerate}[label=(\roman*)]
-\item Modulo 3: $1, 1, 2, 0, 2, 2, 1, 0, 1, 1, \dots$ has period $8$.
-
-Modulo 4: $1, 1, 2, 3, 1, 0, 1, 1, \dots$ has period $6$.
-
-\item Modulo $m$, there are $m$ possible values $0,1,2,\dots,m-1$. So there are exactly $m^2$ possible distinct pairs $(a,b)$.
-
-If we consider $m^2+1$ pairs of $(F_i,F_{i+1})$ modulo $m$ where $1\le i\le m^2+1$, we can find two pairs $(F_j,F_{j+1})$ and $(F_k,F_{k+1})$ which are the same modulo $m$, by Pigeonhole Principle.
-
-\item This is the same as showing $F_{j+n} \equiv F_{k+n} \pmod m$ for all non negative integer $n$.
-
-We prove using mathematical induction.
-
-Basis step: $P(0)$ and $P(1)$
-\[ F_j \equiv F_k \pmod m \quad F_{j+1} \equiv F_{k+1} \pmod m \]
-
-Inductive step: $P(q-1)\land P(q)\implies P(q+1)$ for all $q\ge 1$
-
-Given $F_{j+q-1} \equiv F_{k+q-1} \pmod m$ and $F_{j+q} \equiv F_{k+q} \pmod m$. Then $F_{j+q-1}+F_{j+q} \equiv F_{k+q-1}+F_{k+q}\pmod m$ so $F_{j+q+1}\equiv F_{k+q+1}\pmod m$.
-
-By mathematical induction, the sequence repeats itself after $k-j$ terms. This implies the period of the sequence divides $k-j$.
-
-\item For any positive $m$, by part (iii), the Fibonacci sequence modulo $m$ is periodic. That is, $(F_1,F_2)$ is congruent to $(F_i,F_{i+1})$ modulo $m$ for some $i>2$:
-\[ F_i \equiv F_1 \equiv 1 \pmod m \quad F_{i+1} \equiv F_2 \equiv 1 \pmod m \]
-Then $F_{i-1}=F_{i+1}-F_i\equiv1-1\equiv0\pmod m$, which means $m\mid F_{i-1}$.
-
-We have proven that there is a Fibonacci number which is a multiple of $m$.
-\end{enumerate}
-\end{solution}
 \pagebreak
 
 \begin{prbm}[\acrshort{h3math} Specimen N03]
@@ -987,6 +987,46 @@ and we have three cases to work with.
 \section{Selected problems from school papers}
 \subsection{Number Theory}
 \subsection{Analysis}
+\begin{enumerate}
+\item (2024 DHS Timed Practice Q1) Prove that for any positive real numbers $x,y,z$ satisfying $xy+yz+zx=x+y+z$,
+\begin{enumerate}[label=(\alph*)]
+\item $x^2+y^2+z^2\le xy+yz+zx\ge3$, and \hfill [3]
+\item $\displaystyle\frac{1}{x^2+y+1}+\frac{1}{y^2+z+1}+\frac{1}{z^2+x+1}\le1$ using the Cauchy--Schwarz inequality. \hfill [4]
+\end{enumerate}
+
+\begin{solution} \
+\begin{enumerate}[label=(\alph*)]
+\item By AM--GM, we have $x^2+y^2\ge2xy$. Similarly, $y^2+z^2\ge2yz$ and $z^2+x^2\ge2zx$. Summing up these three equation gives
+\[x^2+y^2+z^2\ge xy+yz+zx.\]
+For the second part, from the given condition,
+\begin{align*}
+(xy+yz+zx)^2&=(x+y+z)^2\\
+&=x^2+y^2+z^2+2(xy+yz+zx)\\
+&\ge3(xy+yz+zx)\quad\text{from the above part}
+\end{align*}
+and cancelling on both sides gives us the desired inequality.
+
+\item Considering the denominator,
+\[(x+y+z)^2\le(1+y+z^2)(x^2+y+1)\]
+by Cauchy--Schwarz inequality. Thus
+\[\frac{1}{x^2+y+1}\le\frac{1+y+z^2}{(x+y+z)^2}.\]
+Similarly,
+\[\frac{1}{y^2+z+1}\le\frac{1+z+x^2}{(x+y+z)^2}\]
+and
+\[\frac{1}{z^2+x+1}\le\frac{1+x+y^2}{(x+y+z)^2}.\]
+Summing up the three equations gives
+\[\frac{1}{x^2+y+1}+\frac{1}{y^2+z+1}+\frac{1}{z^2+x+1}\le\frac{3+x+y+z+x^2+y^2+z^2}{(x+y+z)^2}.\]
+From part (a), we have $xy+yz+zx=x+y+z\ge3$.
+Thus
+\begin{align*}
+\frac{3+x+y+z+x^2+y^2+z^2}{(x+y+z)^2}
+&\le\frac{2(x+y+z)+x^2+y^2+z^2}{(x+y+z)^2}\\
+&=\frac{2(xy+yz+zx)+x^2+y^2+z^2}{(x+y+z)^2}=1.
+\end{align*}
+\end{enumerate}
+\end{solution}
+\end{enumerate}
+
 \subsection{Counting}
 \begin{enumerate}
 \item (2019 DHS--EJC Prelim Q6) 

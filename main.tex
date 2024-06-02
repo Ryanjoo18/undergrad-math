@@ -1,5 +1,8 @@
 \documentclass[10pt,a4 paper]{extreport}
+\usepackage[a4paper, top=1.0in, bottom=1.0in, left=1.0in, right=1.0in, heightrounded]{geometry}
 \usepackage{ryan}
+\usepackage[bottom]{footmisc}
+\usepackage{pdfpages}
 
 \pagestyle{fancy}
 \fancyhf{}
@@ -60,6 +63,7 @@ This book mainly serves as my notes when studying mathematics at the university 
 \section*{References}
 \begin{itemize}
 \item Lecture notes by the University of Oxford.
+\item Lecture notes by the University of Cambridge. %https://dec41.user.srcf.net/notes/
 \item Lecture notes on MIT OpenCourseWare.
 \item Rudin, W. (1953). \textit{Principles of Mathematical Analysis}. McGraw-Hill.
 \item Dummit, D. S., \& Foote, R. M. (2004). \textit{Abstract Algebra} (3rd ed.). John Wiley \& Sons.
@@ -150,13 +154,12 @@ Building on P\'{o}lya's problem solving strategy, Schoenfeld came up with the fo
 \end{itemize}
 \end{enumerate}
 
-\item \textbf{Belief system}: one’s perspectives regarding the nature of a
+\item \textbf{Belief system}: one's perspectives regarding the nature of a
 discipline and how one goes about working on it.
 \end{enumerate}
 \pagebreak
 
 \tableofcontents
-\pagebreak
 
 \printglossary[type=\acronymtype]
 
@@ -165,10 +168,10 @@ discipline and how one goes about working on it.
 % https://www.cambridgeinternational.org/Images/597381-2023-2025-syllabus.pdf
 
 \input{intro}
+\input{abstract_algebra}
 \input{real_analysis}
 %\input{topology}
-\input{linear_algebra}
-\input{abstract_algebra}
+%\input{linear_algebra}
 %\input{calculus}
 %\input{complex_analysis}
 %\input{harmonic_analysis}
