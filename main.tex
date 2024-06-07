@@ -1,4 +1,4 @@
-\documentclass[10pt,a4 paper]{extreport}
+\documentclass[12pt,a4 paper]{extreport}
 \usepackage[a4paper, top=1.0in, bottom=1.0in, left=1.0in, right=1.0in, heightrounded]{geometry}
 \usepackage{ryan}
 \usepackage[bottom]{footmisc}
@@ -10,6 +10,13 @@
 \fancyhead[R]{\thepage}
 \renewcommand{\headrulewidth}{0.4pt}
 \renewcommand{\arraystretch}{1.5}
+
+\usepackage[
+backend=biber,
+style=alphabetic,
+sorting=anyt
+]{biblatex}
+\addbibresource{biblio.bib}
 
 \makeglossaries
 
@@ -23,9 +30,15 @@
 % https://docs.google.com/document/d/1BnYV-5DkLfizphAaOHeH5S_hUeFZTAGS0Cg6YEeL7oA/edit?usp=sharing
 
 \begin{titlepage}
-\title{\scshape Fons}
-\author{\scshape Ryan Joo Rui An}
-\date{}
+\title{\sffamily\bfseries Fons}
+\author{Ryan Joo Rui An}
+\date{\today}
+
+\vfill
+\titlepic{\includegraphics[width=0.5\textwidth]{images/logo.png}}
+%\url{ryanjoo18.github.io/publications/fons.html}
+\vfill
+\vfill
 \end{titlepage}
 
 \maketitle
@@ -45,36 +58,50 @@ French mathematician and theoretical physicist\end{flushright}
 \vfill
 
 \copyright 2024 Ryan Joo Rui An.\\
-Text licensed under \href{https://creativecommons.org/licenses/by-sa/4.0/}{CC-by-SA-4.0}. Source files licensed under \href{https://choosealicense.com/licenses/gpl-3.0/}{GNU GPL v3}.
+Text licensed under \href{https://creativecommons.org/licenses/by-sa/4.0/}{CC-by-SA-4.0}. Source files licensed under \href{https://www.mit.edu/~amini/LICENSE.md}{MIT License}.
 
-This is (still!) an incomplete draft. Please send corrections and comments to \url{ryanjooruian18@gmail.com}, or pull-request at \url{https://github.com/Ryanjoo18/latex}.
+This is (still!) an incomplete draft. Please send corrections and comments to \url{ryanjooruian18@gmail.com}, or pull-request at \url{https://github.com/Ryanjoo18/fons}.
 
 Last updated \today.
+\thispagestyle{empty}
 
 \chapter*{Preface}
 \emph{Fons}, derived from the Latin word for source or fountain, introduces the core concepts of university-level mathematics. Just as a fountain provides a continuous wellspring of water, \emph{Fons} aims to be a continuous source of knowledge for you.
 
-\section*{About the author}
 At this moment of writing, I am a high school student working on my A Level studies in Singapore. I have about 11 years of participating in mathematics competitions, including three years of experience in mental arithmetic and the rest few years in mathematics olympiad.
 
-\section*{About this book}
 This book mainly serves as my notes when studying mathematics at the university level. Feel free to refer to it too.
 
-\section*{References}
-\begin{itemize}
-\item Lecture notes by the University of Oxford.
-\item Lecture notes by the University of Cambridge. %https://dec41.user.srcf.net/notes/
-\item Lecture notes on MIT OpenCourseWare.
-\item Rudin, W. (1953). \textit{Principles of Mathematical Analysis}. McGraw-Hill.
-\item Dummit, D. S., \& Foote, R. M. (2004). \textit{Abstract Algebra} (3rd ed.). John Wiley \& Sons.
-\item Hoffman, K., \& Kunze, R. (1971). \textit{Linear Algebra} (2nd ed.). Prentice-Hall.
-\item Munkres, J. R. (2018). \textit{Topology} (2nd ed.). Pearson Education Limited.
-\item Spivak, M. (2008). \textit{Calculus} (4th ed.). Publish or Perish, Inc.
-\end{itemize}
+\
+
+\begin{flushright}
+Ryan Joo Rui An\\
+\today\\
+Singapore, SG
+\end{flushright}
 \pagebreak
 
+\chapter*{Introduction}
+The book is divided into the following sections:
+\begin{enumerate}
+\item \textbf{preliminary topics} such as basic set theory, 
+\item \textbf{abstract algebra} which follows \cite{dummit-foote}, 
+\item \textbf{linear algebra} which follows \cite{hoffman-kunze}, 
+\item \textbf{real analysis} which follows \cite{rudin,apostol}, and
+\item \textbf{complex analysis} which follows \cite{ahlfors}.
+\end{enumerate}
+
+The chapters in this book are structured as follows:
+\begin{itemize}
+\item A \textbf{theoretical portion}, which starts off with a couple of definitions coupled with examples, followed by theorems and propositions built upon the definitions.
+\item A series of \textbf{exercises}.
+\item Full \textbf{solutions} to the exercises.
+\end{itemize}
+
+The reader is not assumed to have any mathematical prerequisites, althrough some experience with proofs may be helpful.
+
 \section*{Problem Solving}
-In his book ``How to Solve It'', George P\'{o}lya outlined the following problem solving cycle:
+In \cite{polya}, George P\'{o}lya outlined the following problem solving cycle:
 \begin{enumerate}
 \item \textbf{Understand the problem}
 
@@ -90,6 +117,7 @@ Ask yourself the following questions:
 \item \textbf{Devise a plan}
 
 A partial list of heuristics -- good rules of thumb to solve problems -- is included:
+\begin{multicols}{2}
 \begin{itemize}
 \item Guess and check
 \item Look for a pattern
@@ -106,6 +134,7 @@ A partial list of heuristics -- good rules of thumb to solve problems -- is incl
 \item Solve an equation
 \item Be ingenious
 \end{itemize}
+\end{multicols}
 
 \item \textbf{Execute the plan}
 
@@ -126,15 +155,14 @@ Look back reviewing and checking your results. Ask yourself the following questi
 \item Can you use the result, or the method, for some other problem?
 \end{itemize}
 \end{enumerate}
-\pagebreak
 
-Building on P\'{o}lya's problem solving strategy, Schoenfeld came up with the following framework for problem solving, consisting of four components:
+Building on P\'{o}lya's problem solving strategy, Schoenfeld \cite{schoenfeld} came up with the following framework for problem solving, consisting of four components:
 \begin{enumerate}
-\item \textbf{Cognitive resources}: the body of facts and procedures at one’s disposal.
+\item \textbf{Cognitive resources}: the body of facts and procedures at one's disposal.
 \item \textbf{Heuristics}: `rules of thumb' for making progress in difficult situations.
-\item \textbf{Control}: having to do with the efficiency with which individuals utilise the knowledge at their disposal. Sometimes, this is referred to as metacognition, which can be roughly translated as `thinking about one’s own thinking'.
+\item \textbf{Control}: having to do with the efficiency with which individuals utilise the knowledge at their disposal. Sometimes, this is referred to as metacognition, which can be roughly translated as `thinking about one's own thinking'.
 \begin{enumerate}
-\item These are questions to ask oneself to monitor one’s thinking.
+\item These are questions to ask oneself to monitor one's thinking.
 \begin{itemize}
     \item What (exactly) am I doing? [Describe it precisely.] Be clear what I am doing NOW. Why am I doing it? [Tell how it fits into the solution.]
     \item Be clear what I am doing in the context of the BIG picture -- the solution. Be clear what I am going to do NEXT.
@@ -154,8 +182,7 @@ Building on P\'{o}lya's problem solving strategy, Schoenfeld came up with the fo
 \end{itemize}
 \end{enumerate}
 
-\item \textbf{Belief system}: one's perspectives regarding the nature of a
-discipline and how one goes about working on it.
+\item \textbf{Belief system}: one's perspectives regarding the nature of a discipline and how one goes about working on it.
 \end{enumerate}
 \pagebreak
 
@@ -169,13 +196,25 @@ discipline and how one goes about working on it.
 
 \input{intro}
 \input{abstract_algebra}
+\input{linear_algebra}
 \input{real_analysis}
 %\input{topology}
-%\input{linear_algebra}
 %\input{calculus}
-%\input{complex_analysis}
+\input{complex_analysis}
 %\input{harmonic_analysis}
 %\input{discrete}
 %\input{stats}
 \input{appendix}
+\pagebreak
+
+%\printbibliography[type=book,title={Books}]
+\printbibliography[title={Bibliography}]
+
+%\textbf{Lecture notes:}
+%\begin{itemize}
+%\item Lecture notes by the University of Oxford.
+%\item Lecture notes by the University of Cambridge. %https://dec41.user.srcf.net/notes/
+%\item Lecture notes on MIT OpenCourseWare.
+%\end{itemize}
+
 \end{document}

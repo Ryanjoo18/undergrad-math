@@ -33,11 +33,14 @@ A \vocab{group} is a pair $(G,\ast)$, where $G$ is a set and $\ast$ is a binary 
 \item \textbf{(associativity)} for all $a,b,c \in G$, $a \ast (b \ast c)=(a \ast b) \ast c$.
 \item \textbf{(identity)} there exists an identity element $e \in G$ such that for all $a\in G$, $a \ast e = e \ast a = a$.
 \item \textbf{(invertibility)} for all $a \in G$, there exists a unique inverse $a^{-1} \in G$ such that $a \ast a^{-1} = a^{-1} \ast a = e$.
-\item \textbf{(closure)} for all $a,b,c \in G$, $a\ast b\in G$.
 \end{enumerate}
 
 $G$ is \vocab{abelian} if the operation is commutative; it is \vocab{non-abelian} if otherwise.
 \end{definition}
+
+\begin{remark}
+The \textbf{closure} axiom (for all $a,b,c \in G$, $a\ast b\in G$) is implicitly implied, as a binary operation has to be closed under the set.
+\end{remark}
 
 \begin{notation}
 A group $(G,\ast)$ is usually simply denoted by $G$.
@@ -101,7 +104,7 @@ For a group $G$, pick a $g \in G$. Then the map $G \to G$ given by $x \mapsto gx
 Check this by showing injectivity and surjectivity directly.
 \end{proof}
 
-
+permutation group, subgroup, order of group, homomorphism and isomorphism
 
 An important (if rather elementary) family of groups is the cyclic groups.
 
@@ -234,9 +237,7 @@ Let $G$ be a group and $g \in G$. The \vocab{order} of $g$, written $o(g)$, is t
 \begin{remark}
 Note, now, that there are unfortunately two different uses of the word order: the order of a group is the number of elements it contains; the order of a group element is the least positive power of that element which is the identity.
 \end{remark}
-\pagebreak
 
-\subsection{Isomorphism}
 \begin{definition}[Isomorphism]
 An \vocab{isomorphism} $\phi: G \to H$ between two groups $(G,\ast_G)$ and $(H,\ast_H)$ is a bijection such that for any $g_1,g_2 \in G$ we have
 \[ \phi(g_1 \ast_G g_2) = \phi(g_1) \ast_H \phi(g_2). \]
