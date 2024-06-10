@@ -1,0 +1,328 @@
+% https://courses.maths.ox.ac.uk/pluginfile.php/93650/mod_resource/content/1/Richard_Earl_lectures.pdf
+\chapter{Group Theory}
+\section{Modular Arithmetic}
+Let $n$ be a fixed positive integer. Define a relation on $\ZZ$ by
+\[a\sim b\iff n\mid(b-a).\]
+\begin{proposition}
+$a\sim b$ is a equivalence relation.
+\end{proposition}
+\begin{proof} \
+\begin{enumerate}[label=(\arabic*)]
+\item $a\sim a$, thus the relation is reflexive.
+\item $a\sim b\implies b\sim a$ for any integers $a$ and $b$, thus the relation is symmetric.
+\item If $a\sim b$ and $b\sim c$ then $n\mid(a-b)$ and $n\mid(b-c)$, so $n\mid(a-b)+(b-c)=(a-c)$, so $a\sim c$ and the relation is transitive.
+\end{enumerate}
+\end{proof}
+
+We write $a\equiv b\pmod n$ (read: $a$ is \vocab{congruent} to $b$ mod $n$) if $a\sim b$.
+
+For any $k\in\ZZ$ we denote the equivalence class of $a$ by $\overline{a}$, called the \vocab{congruence class} (residue class) of $a$ mod $n$, consisting of the integers which differ from $a$ by an integral multiple of $n$; that is,
+\[\overline{a}=\{a+kn\mid k\in\ZZ\}.\]
+There are precisely $n$ distinct equivalence classes mod $n$, namely
+\[\overline{0},\overline{1},\dots,\overline{n-1}\]
+determined by the possible remainders after division by $n$ and these residue classes partition the integers $\ZZ$. The set of equivalence classes under this equivalence relation is denoted by $\ZZ/n\ZZ$, and called the \vocab{integers modulo $n$}.
+
+We can define addition and multiplication for the elements of $\ZZ/n\ZZ$, defining \emph{modular arithmetic} as follows: for $\overline{a},\overline{b}\in\ZZ/n\ZZ$,
+\begin{enumerate}
+\item (addition) $\overline{a}+\overline{b}=\overline{a+b}$
+\item (multiplication) $\overline{a}\cdot\overline{b}=\overline{a\cdot b}$
+\end{enumerate}
+This means that to compute the sum (product) of two elements $\overline{a},\overline{b}\in\ZZ/n\ZZ$, take any \emph{representative} integer $a\in\overline{a}$ and any representative integer $b\in\overline{b}$, and add (multiply) integers $a$ and $b$ as usual in $\ZZ$, then take the equivalence class containing the result.
+
+\begin{theorem}
+Addition and mulltiplication on $\ZZ/n\ZZ$ are well-defined; that is, they do not depend on the choices of representatives for the classes involved. More precisely, if $a_1,a_2\in\ZZ$ and $b_1,b_2\in\ZZ$ with $\overline{a_1}=\overline{b_1}$ and $\overline{a_2}=\overline{b_2}$, then $\overline{a_1+a_2}=\overline{b_1+b_2}$ and $\overline{a_1a_2}=\overline{b_1b_2}$, i.e., If
+\[a_1\equiv b_1\pmod n,\quad a_2\equiv b_2\pmod n\]
+then
+\[a_1+a_2\equiv b_1+b_2\pmod n,\quad a_1a_2\equiv b_1b_2\pmod n.\]
+\end{theorem}
+
+\begin{proof}
+Suppose $a_1\equiv b_1\pmod n$, i.e., $n\mid(a_1-b_1)$. Then $a_1=b_1+sn$ for some integer $s$. Similarly, $a_2\equiv b_2\pmod n$ means $a_2=b_2+tn$ for some integer $t$.
+
+Then $a_1+a_2=(b_1+b_2)+(s+t)n$ so that $a_1+a_2\equiv b_1+b_2\pmod n$, which shows that the sum of the residue classes is independent of the representatives chosen.
+
+Similarly, $a_1a_2=(b_1+sn)(b_2+tn)=b_1b_2+(b_1t+b_2s+stn)n$ shows that $a_1a_2\equiv b_1b_2\pmod n$ and so the product of the residue classes is also independent of the representatives chosen, completing the proof.
+\end{proof}
+
+An important subset of $\ZZ/n\ZZ$ consists of the collection of residue classes which have a multiplicative inverse in $\ZZ/n\ZZ$:
+\[(\ZZ/n\ZZ)^\times\coloneqq\{\overline{a}\in\ZZ/n\ZZ\mid\exists\overline{c}\in\ZZ/n\ZZ,\overline{a}\cdot\overline{c}=\overline{1}\}.\]
+
+\begin{proposition}
+$(\ZZ/n\ZZ)^\times$ is also the collection of residue classes whose representatives are relatively prime to $n$:
+\[(\ZZ/n\ZZ)^\times=\{\overline{a}\in\ZZ/n\ZZ\mid(a,n)=1\}.\]
+\end{proposition}
+
+\section{Group Axioms}
+\begin{definition}
+A \vocab{binary operation} $\ast$ on a set $G$ is a function $\ast:G\times G\to G$. For any $a,b\in G$, we write $a \ast b$ for the image of $(a,b)$ under $\ast$.
+
+A binary operation $\ast$ on $G$ is \vocab{associative} if, for any $a,b,c\in G$, $(a \ast b) \ast c = a \ast (b \ast c)$.
+
+A binary operation $\ast$ on $G$ is \vocab{commutative} if, for any $a, b \in G$, $a \ast b = b \ast a$.
+\end{definition}
+
+\begin{example}
+The following are examples of binary operations.
+\begin{itemize}
+\item $+$ (usual addition) is a commutative binary operation on $\ZZ$ (or on $\QQ$, $\RR$, or $\CC$ respectively).
+\item $\times$ (usual multiplication) is a commutative binary operation on $\ZZ$ (or on $\QQ$, $\RR$, or $\CC$ respectively).
+\item $-$ (usual subtraction) is a non-commutative binary operation on $\ZZ$.
+\item $-$ is not a binary operation on $\ZZ^+$ (nor $\QQ^+$, $\RR^+$) because for $a,b\in\ZZ^+$, with $a<b$, $a-b\notin\ZZ^+$; that is, $-$ does not map $\ZZ^+\times\ZZ^+\to\ZZ^+$.
+\item Taking the vector cross-product of two vectors in $\RR^3$ is a binary operation which is not associative and not commutative.
+\end{itemize}
+\end{example}
+
+Suppose that $\ast$ is a binary operation on $G$ and $H\subseteq G$. If the restriction of $\ast$ to $H$ is a binary operation on $H$, i.e. for all $a,b\in H$, $a\ast b\in H$, then $H$ is said to be \vocab{closed} under $\ast$.
+
+\begin{remark}
+Observe that if $\ast$ is an associative (respectively, commutative) binary operation on $G$ and $\ast$ is restricted to some $H\subseteq G$ is a binary operation on $H$, then $\ast$ is automatically associative (respectively, commutative) on $H$ as well.
+\end{remark}
+
+\begin{definition}[Group]
+A \vocab{group} is a pair $(G,\ast)$, where $G$ is a set and $\ast$ is a binary operation on $G$ satisfying the following group axioms:
+\begin{enumerate}[label=(\roman*)]
+\item \textbf{(associativity)} for all $a,b,c \in G$, $a \ast (b \ast c)=(a \ast b) \ast c$.
+\item \textbf{(identity)} there exists an identity element $e \in G$ such that for all $a\in G$, $a \ast e = e \ast a = a$.
+\item \textbf{(invertibility)} for all $a \in G$, there exists a unique inverse $a^{-1} \in G$ such that $a \ast a^{-1} = a^{-1} \ast a = e$.
+\end{enumerate}
+
+$G$ is \vocab{abelian} if the operation is commutative; it is \vocab{non-abelian} if otherwise.
+\end{definition}
+
+\begin{remark}
+The \textbf{closure} axiom (for all $a,b,c \in G$, $a\ast b\in G$) is implicitly implied, as a binary operation has to be closed under the set.
+\end{remark}
+
+\begin{notation}
+A group $(G,\ast)$ is usually simply denoted by $G$.
+\end{notation}
+
+\begin{notation}
+We abbreviate $a \ast b$ to just $ab$. Also, since the operation $\ast$ is associative, we can omit unnecessary parentheses: $(ab)c = a(bc) = abc$.
+\end{notation}
+
+\begin{notation}
+For any $a\in G$ and $n\in\ZZ^+$ we abbreviate $a^n=\underbrace{a\cdots a}_{n\text{ times}}$.
+\end{notation}
+
+\begin{example} \
+\begin{itemize}
+\item $\ZZ$, $\QQ$, $\RR$, $\CC$ are groups under $+$ with $e=0$ and $a^{-1}=-a$ for all $a$.
+\item $\QQ\setminus\{0\}$, $\RR\setminus\{0\}$, $\CC\setminus\{0\}$, $\QQ^+$, $\RR^+$ are groups under $\times$ with $e=1$ and $a^{-1}=\frac{1}{a}$ for all $a$. Note however that $\ZZ\setminus\{0\}$ is not a group under $\times$ because the element 2 (for instance) does not have an inverse in $\ZZ\setminus\{0\}$.
+\item For $n\in\ZZ^+$, $\ZZ/n\ZZ$ is an abelian group under $+$.
+\item For $n\in\ZZ^+$, $(\ZZ/n\ZZ)^\times$ is an abelian group under multiplication.
+\end{itemize}
+\end{example}
+
+\begin{definition}[Product group]
+Let $(G,\ast_G)$ and $(H,\ast_H)$ be groups. Then the operation $\ast$ defined on $G\times H$ by
+\[ (g_1,h_1)\ast(g_2,h_2)=(g_1\ast_G g_2,h_1\ast_H h_2) \]
+is a group operation. $(G \times H, \ast)$ is called the \vocab{product group} or the product of $G$ and $H$.
+\end{definition}
+    
+\begin{proof}
+As $\ast_G$ and $\ast_H$ are both associative binary operations then it follows easily from the definition to see that $\ast$ is also an associative binary operation on $G \times H$. We also note
+\[ e_{G\times H}=(e_G,e_H) \quad \text{and} \quad (g,h)^{-1}=(g^{-1},h^{-1}) \]
+as for any $g \in G$, $h \in H$,
+\[ (e_G,e_H)\ast(g,h)=(g,h)=(g,h)\ast(e_G,e_H); \]
+\[ (g^{-1},h^{-1})\ast(g,h)=(e_G,e_H)=(g,h)\ast(g^{-1},h^{-1}). \]
+\end{proof}
+
+\begin{proposition}
+Let $G$ be a group. Then
+\begin{enumerate}[label=(\arabic*)]
+\item the identity of $G$ is unique,
+\item for each $a\in G$, $a^{-1}$ is unique,
+\item $(a^{-1})^{-1}=a$ for all $a\in G$,
+\item $(ab)^{-1}=b^{-1}a^{-1}$,
+\item for any $a_1,\dots,a_n\in G$, $a_1\cdots a_n$ is independent of how we arrange the parantheses (generalised associative law).
+\end{enumerate}
+\end{proposition}
+
+\begin{proof} \
+\begin{enumerate}[label=(\arabic*)]
+\item Let $e_0$ and $e_1$ both be identites, so $e_0e_1=e_0=e_1$.
+\item Let $c$ and $c$ both be inverses to $a$ and $e\in G$ the identity. Then $ab = e = ca$. Thus $c = ce = c(ab) =
+(ca)b = eb = b$.
+\item Clear.
+\item Let $c=(ab)^{-1}$ so that $(ab)c=e$, which gives $bc=a^{-1}$ and thus $c=b^{-1}a^{-1}$ by multiplying on the left.
+\item The result is trivial for $n=1,2,3$. For all $k<n$ assume that any $a_1\cdots a_k$ is independent of parantheses. Then
+\[(a_1\cdots a_n)=(a_1\cdots a_k)(a_{k+1}\cdots a_n).\]
+Then by assumption both are independent of parentheses since $k,n-k<n$ so by induction we are done.
+\end{enumerate}
+\end{proof}
+
+\begin{proposition}[Cancellation law]
+Let $a,b\in G$. Then the equations $ax=b$ and $ya=b$ have unique solutions for $x,y\in G$. In particular, we can cancel on the left and right.
+\end{proposition}
+\begin{proof}
+That $x=a^{-1}b$ is unique follows from the uniqueness of $a^{-1}$ and the same for $y=ba^{-1}$.
+\end{proof}
+
+\begin{definition}[Order]
+For a group $G$ and $x\in G$, the order of $x$ is the smallest positive integer $n$ such that $x^n=1$, and denote this integer by $|x|$; in this case $x$ is said to be of order $n$.
+
+If no positive power of $x$ is the identity, the order of $x$ is defined to be infinity, and $x$ is said to be of infinite order.
+\end{definition}
+
+\begin{example} \
+\begin{itemize}
+\item An element of a group has order 1 if and only if it is the identity.
+\item In the additive groups $\ZZ$, $\QQ$, $\RR$, $\CC$, every non-zero (i.e. non-identity) element has infinite order.
+\item In the multiplicative groups $\RR\setminus\{0\}$ or $\QQ\setminus\{0\}$, the element $-1$ has order 2 and all other non-identity elements have infinite order.
+\item In $\ZZ/9\ZZ$, the element $\overline{6}$ has order 3. (Recall that in an additive group, the powers of an element are integer multiples of the element.)
+\item In $(\ZZ/7\ZZ)^\times$, the powers of the element $\overline{2}$ are $\overline{2},\overline{4},\overline{8}=\overline{1}$, the identity in this group, so 2 has order 3. Similarly, the element $\overline{3}$ has order 6, since $3^6$ is the smallest positive power of 3 that is congruent to 1 mod 7.
+\end{itemize}
+\end{example}
+
+\begin{definition}[Group table]
+Let $G=\{g_1,\dots,g_n\}$ be a finite group with $g_1=1$. The \vocab{group table} (multiplication table) of $G$ is the $n\times n$ matrix whose $(i,j)$-entry is the group element $g_ig_j$.
+\end{definition}
+
+For a finite group the multiplication table contains, in some sense, all the information about the group.
+
+\section{Examples of Groups}
+An important family of groups is the dihedral groups.
+
+\begin{definition}[Dihedral group]
+For $n\in\ZZ^+$, $n\ge3$, let $D_{2n}$ be the set of symmetries of a regular $n$-gon.
+\end{definition}
+
+\begin{remark}
+Here ``D'' stands for ``dihedral'', meaning two-sided.
+\end{remark}
+
+Let $r$ be a rotation clockwise about the origin by $2\pi/n$ radians, let $s$ be a reflection about the line of symmetry through the first labelled vertex and the origin.
+
+\begin{proposition} \
+\begin{enumerate}[label=(\arabic*)]
+\item $|r|=n$
+\item $|s|=2$
+\item $s\neq r^i$ for all $i$
+\item $sr^i\neq sr^j$ for all $i\neq j$. Thus
+\[D_{2n}=\{1,r,\dots,r^{n-1},s,sr,\dots,sr^{n-1}\}\]
+and we see that $|D_{2n}|=2n$.
+\item $rs=sr^{-1}$
+\item $r^is=sr^{-i}$
+\end{enumerate}
+\end{proposition}
+
+\begin{proof} \
+\begin{enumerate}[label=(\arabic*)]
+\item This is clear.
+\item So is this.
+\item And this.
+\item Just cancel on the left and use the fact that $|r|=n$. We assume that $i\not\equiv j\pmod n$.
+\item Omitted.
+\item By (5), this is true for $i=1$. Assume it holds for $k<n$. Then $r^{k+1}s=r(r^ks)=rsr^{-k}$. Then $rs=sr^{-1}$ so $rsr^{-k}=sr^{-1}r^{-k}=sr^{-k-1}$ so we are done.
+\end{enumerate}
+\end{proof}
+
+A presentation for the dihedral group with $2n$ elements is
+\[D_{2n}=\{r,s\mid r^n=s^2=1,rs=sr^{-1}\}.\]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+permutation group, subgroup, order of group, homomorphism and isomorphism
+
+An important (if rather elementary) family of groups is the cyclic groups.
+
+\begin{definition}[Cyclic group]
+A group $G$ is called \vocab{cyclic} if there exists $g\in G$ such that
+\[ G=\{g^k\mid k\in\ZZ\}. \]
+Such a $g$ is called a \vocab{generator}.
+\end{definition}
+
+As $g^ig^j=g^{i+j}=g^jg^i$ then cyclic groups are abelian.
+
+\begin{example}
+$\ZZ$ is cyclic and has generators $1$ and $-1$.
+\end{example}
+
+\begin{example}
+Let $n\ge1$. The $n$-th cyclic group $C_n$ is the group with elements
+\[ e, g, g_2, \dots, g^{n-1} \]
+which satisfy $g^n=e$. So given two elements in $C_n$ we define
+\[ g_ig_j=\begin{cases}
+g^{i+j} & \text{if } 0\le i+j<n, \\
+g^{i+j-n} & \text{if } n\le i+j\le 2n-2.
+\end{cases} \]
+\end{example}
+\pagebreak
+
+\begin{definition}[Subgroup]
+Let $G$ be a group. We say that a subset $H \subseteq G$ is a \vocab{subgroup} of $G$ if the group operation $\ast$ restricts to make a group of $H$. That is $H$ is a subgroup of $G$ if:
+\begin{enumerate}[label=(\roman*)]
+\item $e \in H$;
+\item whenever $g_1,g_2\in H$ then $g_1g_2 \in H$.
+\item whenever $g \in H$ then $g^{-1} \in H$.
+\end{enumerate}
+\end{definition}
+
+\begin{remark}
+Note that there is no need to require that associativity holds for products of elements in $H$ as this follows from the associativity of products in $G$.
+\end{remark}
+
+\begin{example}
+The set of even integers is a subgroup of $\ZZ$; the set of odd integers is not a subgroup of $\ZZ$ because it does not even form a group, since it does not satisfy the closure axiom.
+\end{example}
+
+\begin{definition}[Isomorphism]
+An \vocab{isomorphism} $\phi: G \to H$ between two groups $(G,\ast_G)$ and $(H,\ast_H)$ is a bijection such that for any $g_1,g_2 \in G$ we have
+\[ \phi(g_1 \ast_G g_2) = \phi(g_1) \ast_H \phi(g_2). \]
+Two groups are said to be \vocab{isomorphic} if there is an isomorphism between them, denoted by $G \cong H$.
+\end{definition}
+
+\begin{example}[$\ZZ\cong10\ZZ$]
+Consider the two groups
+\[ \ZZ = (\{\dots, -2, -1, 0, 1, 2, \dots\}, +) \] and
+\[ 10\ZZ = (\{\dots, -20, -10, 0, 10, 20, \dots\}, +). \]
+These groups are ``different'', but only superficially so --- you might even say they only differ in the names of the elements.
+
+Formally, the map
+\[ \phi: \ZZ \to 10\ZZ \text{ by } x \mapsto 10x \]
+is a bijection of the underlying sets which respects the group operation. In symbols,
+\[ \phi(x+y) = \phi(x) + \phi(y). \]
+In other words, $\phi$ is a way of re-assigning names of the elements without changing the structure of the group.
+\end{example}
+\pagebreak
+
+\section{Permutation Groups}
+
+\section{More on Subgroups \& Cyclic Groups}
+
+
+\section{Lagrange's Theorem}
+\begin{definition}[Coset]
+Let $H$ be a subgroup of $G$.
+
+Then the \vocab{left cosets} of $H$ (or left $H$-cosets) are the sets
+\[ gH=\{gh\mid h\in H\}. \]
+The \vocab{right cosets} of $H$ (or right $H$-cosets) are the sets
+\[ Hg=\{hg\mid h\in H\}. \]
+\end{definition}
+
+Two (left) cosets $aH$ and $bH$ are either disjoint or equal. 
+
+Since multiplication is injective, the cosets of $H$ are the same size as $H$, and thus $H$ partitions $G$ into equal-sized parts.
+
+\begin{notation}
+We write $G/H$ for the set of (left) cosets of $H$ in $G$. The cardinality of $G/H$ is called the \vocab{index} of $H$ in $G$.
+\end{notation}
+
+An important result relating the order of a group with the orders of its subgroups is Lagrange's theorem.
+
+\begin{theorem}[Lagrange's theorem]
+If $G$ is a finite group and $H$ is a subgroup of $G$, then $|H|$ divides $|G|$.
+\end{theorem}
+
+Groups of small order (up to order 8). Quaternions. Fermat--Euler theorem
+from the group-theoretic point of view.
+
+\begin{theorem}[Fermat's Little Theorem]
+For every finite group $G$, for all $a \in G$, $a^{|G|}=e$.
+\end{theorem}
+
+\begin{proof}
+Consider the subgroup $H$ generated by $a$: $H = \{a^i \mid i \in \ZZ\}$. Since $G$ is finite, the infinite sequence $a^0=e, a^1, a^2, a^3, \dots$ must repeat, say $a^i = a^j, i < j$. Let $k=j-i$. Multiplying both sides by $a^{-i} = (a^{-1})^i$, we get $a^{j-i} = a^k = e$. Suppose $k$ is the least positive integer for which this holds. Then $H = \{a_0, a_1, a_2, \dots, a^{k-1}\}$, and thus $|H| = k$. By Lagrange’s Theorem, $k$ divides $|G|$, so $a^{|G|} = (a^k)^\frac{|G|}{k} = e$.
+\end{proof}

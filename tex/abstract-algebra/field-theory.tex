@@ -1,0 +1,37 @@
+\chapter{Field Theory}
+\section{Field Axioms}
+\begin{definition}
+A \vocab{field} is a ring $R$ that satisfies the following extra properties:
+\begin{itemize}
+\item $0 \neq 1$,
+\item every non-zero element of $R$ has a multiplicative inverse (or reciprocal): if $r \in R$ and $r \neq 0$, then there exists $s \in R$ such that $rs=1$; in other words: $R \setminus\{0\}$ is a group under $\times$ with identity $1$.
+\end{itemize}
+\end{definition}
+
+\begin{example}
+Examples and non-examples of fields:
+\begin{itemize}
+\item $\ZZ^+$ is not a field because, for example, $0$ is not a positive integer, for no positive integer $n$ is $-n$ a positive integer, for no positive integer $n$ except 1 is $n^{-1}$ a positive integer.
+\item $\ZZ$ is not a field because for an integer $n$, $n^{-1}$ is not an integer unless $n=1$ or $n=-1$.
+\item $\QQ$, $\RR$ and $\CC$ are fields.
+\end{itemize}
+\end{example}
+
+\begin{proposition}
+Suppose $K$ is a field and $X \subseteq K$ is a subset of $K$, with the following properties:
+\begin{itemize}
+\item $0, 1 \in X$,
+\item if $x, y \in X$, then $x+y, x-y, x \times y \in X$; and if $y \neq 0$, then $\frac{x}{y} \in X$.
+\end{itemize}
+Then $X$ is a field.
+\end{proposition}
+\begin{proof}
+By assumption, $X$ is closed under addition and multiplication. Moreover, $X$ is clearly a ring, because $X$ inherits all the axioms from $K$. Finally, $0 \neq 1$, and if $0 \neq x \in X$, then $x^{-1} \in X$ by assumption. Therefore, $X$ is a field.
+\end{proof}
+We call $X$ a \vocab{subfield} of $K$.
+
+\chapter{Galois Theory}
+%https://www.maths.ed.ac.uk/~tl/gt/gt.pdf}{Notes by Tom Leinster}
+
+\chapter{Category Theory}
+%https://arxiv.org/pdf/1612.09375.pdf}{Basic Category Theory, by Tom Leinster}

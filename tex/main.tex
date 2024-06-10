@@ -26,6 +26,9 @@ sorting=anyt
 \newacronym{putnam}{PUTNAM}{William Lowell Putnam Mathematics Competition}
 
 \begin{document}
+%\includepdf{cover_page_uni}
+% https://docs.google.com/document/d/1BnYV-5DkLfizphAaOHeH5S_hUeFZTAGS0Cg6YEeL7oA/edit?usp=sharing
+
 \begin{titlepage}
 \title{\sffamily\bfseries Fons}
 \author{Ryan Joo Rui An}
@@ -81,12 +84,11 @@ Singapore, SG
 \chapter*{Introduction}
 The book is divided into the following sections:
 \begin{enumerate}
-\item \textbf{preliminary topics} such as basic logic and set theory, 
+\item \textbf{preliminary topics} such as basic set theory, 
 \item \textbf{abstract algebra} which follows \cite{dummit-foote}, 
 \item \textbf{linear algebra} which follows \cite{hoffman-kunze}, 
 \item \textbf{real analysis} which follows \cite{rudin,apostol}, and
-\item \textbf{complex analysis} which follows \cite{ahlfors},
-\item \textbf{topology} which follows \cite{munkres}.
+\item \textbf{complex analysis} which follows \cite{ahlfors}.
 \end{enumerate}
 
 The chapters in this book are structured as follows:
@@ -185,29 +187,24 @@ Building on P\'{o}lya's problem solving strategy, Schoenfeld \cite{schoenfeld} c
 \pagebreak
 
 \tableofcontents
-\pagebreak
-%\printglossary[type=\acronymtype]
+
+\printglossary[type=\acronymtype]
 
 % Materials to be cleared:
 % https://www.seab.gov.sg/docs/default-source/national-examinations/syllabus/alevel/2022syllabus/9649_y22_sy.pdf
 % https://www.cambridgeinternational.org/Images/597381-2023-2025-syllabus.pdf
 
-\input{tex/intro.tex}
-
-\part{Abstract Algebra}
-\input{tex/abstract-algebra/group-theory.tex}
-\input{tex/abstract-algebra/ring-theory.tex}
-\input{tex/abstract-algebra/field-theory.tex}
-
-\input{tex/linear_algebra.tex}
-\input{tex/real_analysis.tex}
-\input{tex/complex_analysis.tex}
-%\input{tex/harmonic_analysis.tex}
-\input{tex/topology.tex}
-%\input{tex/discrete.tex}
-%\input{tex/calculus.tex}
-%\input{tex/stats.tex}
-\input{tex/appendix.tex}
+\input{intro}
+\input{abstract_algebra}
+\input{linear_algebra}
+\input{real_analysis}
+\input{complex_analysis}
+%\input{harmonic_analysis}
+\input{topology}
+%\input{discrete}
+%\input{calculus}
+%\input{stats}
+\input{appendix}
 \pagebreak
 
 %\printbibliography[type=book,title={Books}]

@@ -1,0 +1,59 @@
+\part{Linear Algebra}
+\chapter{Linear Equations}
+\section{Systems of Linear Equations}
+Suppose $F$ is a field. We consider tbe problem of finding $n$ scalars (elements of $F$) $x_1,\dots,x_n$ which satisfy the conditions
+\begin{equation}\label{eqn:system-linear-eqn}
+\begin{split}
+A_{11}x_1+A_{12}x_2+\cdots+A_{1n}x_n&=y_1\\
+A_{21}x_1+A_{22}x_2+\cdots+A_{2n}x_n&=y_2\\
+\vdots&=\vdots\\
+A_{m1}x_1+A_{m2}x_2+\cdots+A_{mn}x_n&=y_m
+\end{split}
+\end{equation}
+where $y_1,\dots,y_m$ and $A_{ij},1\le i\le m,1\le j\le n$ are given elements of $F$. We call \ref{eqn:system-linear-eqn} a \vocab{system of $m$ linear equations in $n$ unknowns}.
+
+Any $n$-tuple $(x_1,\dots,x_n)$ of elements of $F$ which satisfies each of the equations in \ref{eqn:system-linear-eqn} is called a \vocab{solution} of the system.
+
+If $y_1=\cdots=y_m=0$, we say that the system is \vocab{homogeneous}, or that each of the equations is homogeneous.
+
+For the general system \ref{eqn:system-linear-eqn}, suppose we select $m$ scalars $c_1,\dots,c_m$, multiply the $j$-th equation by $c_j$ and then add up all the $m$ equations. We obtain
+\[(c_1A_{11}+\cdots+c_mA_{m1})x_1+\cdots+(c_1A_{1n}+\cdots+c_mA_{mn})x_n=c_1y_1+\cdots+c_my_m\]
+which we call a \vocab{linear combination} of the equations in \ref{eqn:system-linear-eqn}. Evidently, any soltion of the entire system of equations \ref{eqn:system-linear-eqn} will also be a solution of this new equation. This is the fundamental idea of the elimination process to find the solution(s) of a system of linear equations.
+
+If we have another system of linear equations
+\begin{equation}\label{eqn:system-linear-eqn2}
+\begin{split}
+B_{11}x_1+B_{12}x_2+\cdots+B_{1n}x_n&=z_1\\
+\vdots&=\vdots\\
+B_{k1}x_1+B_{k2}x_2+\cdots+B_{kn}x_n&=z_k
+\end{split}
+\end{equation}
+in which each of the $k$ equations is a linear combination of the equations in \ref{eqn:system-linear-eqn}, then every solution of \ref{eqn:system-linear-eqn} is a solution of this new system. Two systems of linear equations are \vocab{equivalent} if each equation in each system is a linear combination of the equations in the other system.
+
+\begin{theorem}
+Equivalent systems of linear equations have exactly the same equations.
+\end{theorem}
+
+\section{Matrices and Elementary Row Operations}
+Notive that there is no need to write the unknowns $x_1,\dots,x_n$ since one actually computes only with the coefficients $A_{ij}$ and scalars $y_i$. We abbreviate the system \ref{eqn:system-linear-eqn} as
+\[AX=Y\]
+where
+\[A=\begin{bmatrix}
+A_{11}&\cdots&A_{1n}\\
+\vdots&&\vdots\\
+A_{m1}&\cdots&A_{mn}
+\end{bmatrix},\quad X=\begin{bmatrix}
+x_1\\\vdots\\x_n
+\end{bmatrix},\quad Y=\begin{bmatrix}
+y_1\\\vdots\\y_m
+\end{bmatrix}.\]
+We call $A$ the \vocab{matrix of coefficients} of the system. The \vocab{entries} of the matrix $A$ are the scalars $A_{ij}$.
+
+We wish now to consider operations on the rows of the matrix $A$ which correspond to forming linear combinations of the equations in the system $AX=Y$. We restrict our attention to three \vocab{elementary row operations} on an $m\times n$ matrix $A$ over the field $F$:
+\begin{enumerate}
+\item 
+\end{enumerate}
+
+\section{Row-Reduced Echelon Matrices}
+\section{Matrix Multiplication}
+\section{Invertible Matrices}

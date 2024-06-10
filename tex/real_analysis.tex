@@ -170,6 +170,22 @@ q\cdot_\QQ(r+_\QQ s)&=(q\cdot_\QQ r)+_\QQ(q\cdot_\QQ s)
 $1_\QQ=[(1,1)]$.
 \end{definition}
 
+\begin{theorem}
+\begin{enumerate}[label=(\arabic*)]
+\item For all $q\in\QQ$, $q\cdot_\QQ1_\QQ=q$.
+\item For every $0_\QQ\neq q\in\QQ$, there exists a unique $r\in\QQ$ such that $q\cdot_\QQ r=1_\QQ$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof} \
+\begin{enumerate}[label=(\arabic*)]
+\item Let $q=[(a,b)]$. Then
+\begin{align*}
+q\cdot_\QQ1_\QQ
+\end{align*}
+\end{enumerate}
+\end{proof}
+
 
 
 \begin{theorem}
@@ -1010,6 +1026,10 @@ Prove the following properties regarding dense sets:
 2. If $A$ is dense in $X$ and $B$ is dense in $A$, then $B$ is dense in $X$
 3. If $A$ and $B$ are dense in $X$ where $A$ is open, then $A\cap B$ is dense in $X$
 
+Ex 5: Regarding closures (The following properties are relatively nontrivial compared to its 'open-set' counterparts):
+1. $A^{\prime\prime}=A^\prime$
+2. $\bar{A}$ is closed, i.e. $\bar{\bar{A}}=\bar{A}$
+
 %%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{theorem}[Cantor's Intersection Theorem]
@@ -1209,6 +1229,28 @@ This is because we've specifically chosen the sequence $A_n$ to be sets that do 
 This completes our proof.
 \end{enumerate}
 \end{proof}
+
+\begin{comment}
+\begin{enumerate}
+\item An arbitrary union of open sets is open; a finite intersection of open sets is open.
+
+\begin{proof}
+Let $A$ be an arbitrary union of open sets $\{U_i\}_{i \in I}$.
+
+Then for any $x \in A$, suppose that $x \in U_i$, then since $U_i$ is open we can pick $B(x,\epsilon)$ subset of $U_i$ subset of $A$
+
+On the other hand, let $U$ and $V$ be open sets and let $x \in U \cap V$. 
+Since $U$ and $V$ are open, we can pick $\epsilon_1$ and $\epsilon_2$ such that $B(x,\epsilon_1)$ is in $U$ whereas $B(x,\epsilon_2)$ is in $V$. 
+Then we simply pick $\epsilon=\min\{\epsilon_1,\epsilon_2\}$ so that $B(x,\epsilon)$ is in $U \cap V$.
+\end{proof}
+
+\item An arbitrary intersection of closed sets is closed; a finite union of closed sets is closed.
+
+\begin{proof}
+This follows from de Morgan's Law on P1 and P2.
+\end{proof}
+\end{enumerate}
+\end{comment}
 
 \section{Compactness}
 \begin{definition}
@@ -1847,7 +1889,7 @@ $f$ is a continuous function on $[a,b]$ which is differentiable in $(a,b)$.
 \end{quote}
 
 \begin{theorem}[Differentiation rules]
-Suppose $f,g:[a,b]\to\RR$ are differentiable at $x_0\in[a,b]$. Then $f\pm g$, $fg$ and $\dfrac{f}{g}$ (when $g(x_0)\neq0$) are differentiable at $x_0$. Moreover,
+Suppose $f,g:[a,b]\to\RR$ are differentiable at $x_0\in[a,b]$. Then $f\pm g$, $fg$ and $f/g$ (when $g(x_0)\neq0$) are differentiable at $x_0$. Moreover,
 \begin{enumerate}[label=(\arabic*)]
 \item $(f\pm g)^\prime(x_0)=f^\prime(x_0)\pm g^\prime(x_0)$;
 \item $(fg)^\prime(x_0)=f^\prime(x_0)g(x_0)+f(x_0)g^\prime(x_0)$;
