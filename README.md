@@ -1,6 +1,6 @@
 # Fons: A University Mathematics Source
 
-## Welcome to Fons! (Latin for "source" or "fountain")
+Welcome to Fons! (Latin for "source" or "fountain")
 
 This book is a collection of notes on core university-level mathematics concepts, designed to be a continuous wellspring of knowledge for your studies.  Just as a fountain provides a constant flow of water, Fons aims to be a reliable source to quench your thirst for mathematical understanding.
 
