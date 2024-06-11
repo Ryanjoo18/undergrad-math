@@ -1,11 +1,6 @@
 \part{Calculus (Single Variable)}
-
-%applications of calculus involving parametric, polar and vector functions
-
 \chapter{Limits}
 \section{Precise Definition of a Limit}
-The reader is assumed to know how a limit is defined intuitively. However, this definition is imprecise: phrases such as ``$x$ is close to $a$'' and ``$f(x)$ gets closer and closer to $L$'' are vague. In order to be able to prove limits conclusively, we must make the definition of a limit precise.
-
 \begin{definition}
 Let $f(x)$ be a function defined on an open interval around $x_0$. We say that the \vocab{limit} of $f(x)$ as $x$ approaches $x_0$ is $L$, that is $\displaystyle\lim_{x \to x_0}f(x)=L$, if for every $\epsilon>0$ there exists $\delta > 0$ such that $\forall x \in \RR$, 
 \[ 0<\absolute{x-x_0}<\delta \implies \absolute{f(x)-L}<\epsilon \] 
@@ -19,7 +14,7 @@ Visualising this graphically, as $\epsilon$ becomes smaller and smaller, there a
     \caption{Epsilon--delta definition}
 \end{figure}
 
-\begin{exercise}{}{} 
+\begin{exercise} 
 Prove that \[ \lim_{x\to3}2x+4=10. \]
 \end{exercise}
 
@@ -44,7 +39,7 @@ Then $\forall x \in \RR$,
 \end{align*}
 \end{proof}
 
-\begin{exercise}{}{}
+\begin{exercise}
 Use the formal definition of the limit to verify that 
 \[ \lim_{x \to 3} \sqrt{2x+3} = 3. \]
 \end{exercise}
@@ -140,7 +135,7 @@ If $f$ is a polynomial or a rational function and $a$ is in the domain of $f$, t
 \item Multiply by the conjugate of the numerator or denominator
 \end{itemize}
 
-\begin{exercise}{}{}
+\begin{exercise}
 Evaluate the following limit:
 \[ \lim_{x\to 0} x^2\sin\brac{\frac{1}{x}} \]
 \end{exercise}
@@ -157,7 +152,7 @@ Since $\lim_{x\to 0}x^2=0$ and $\lim_{x\to 0}-x^2=0$, applying Squeeze Theorem g
 \[ \lim_{x\to 0} x^2\sin\brac{\frac{1}{x}} = 0 \]
 \end{solution}
 
-\begin{exercise}{}{}
+\begin{exercise}
 Evaluate the following limit:
 \[ \lim_{x\to 3}\frac{-4x}{x-3} \]
 \end{exercise}
@@ -217,7 +212,7 @@ Then as long as the limits exist, we have
 
 \end{proof}
 
-\begin{exercise}{}{}
+\begin{exercise}
 Let $f$ be a differentiable function on $(0,\infty)$ and suppose that $\lim_{x\to\infty}\brac{f(x)+f^\prime(x)}=L$.
 
 By considering $f(x)=\dfrac{e^xf(x)}{e^x}$, show that $\lim_{x\to\infty}f(x)=L$ and $\lim_{x\to\infty}f^\prime(x)=0$.
@@ -280,7 +275,7 @@ If $f(x)$ is continuous at $x=b$ and $\lim_{x\to a}g(x)=b$ then
 \[ \lim_{x \to a} f(g(x)) = f\brac{\lim_{x \to a} g(x)} \]
 \end{corollary}
 
-\begin{exercise}{}{}
+\begin{exercise}
 Evaluate the following limit:
 \[ \lim_{x \to 0} e^{\sin x} \]
 \end{exercise}
@@ -470,7 +465,7 @@ In layman's term, the theorem states that given two differentiable functions, th
 When $g(x)=x$, it reduces to the Mean Value Theorem.
 \end{remark}
 
-\begin{exercise}{}{}
+\begin{exercise}
 Let $f(x)=\dfrac{x^e}{e^x}$, where $x>0$. Find the maximum value of $f(x)$ and hence prove that $e^\pi>\pi^e$.
 \end{exercise}
 
@@ -487,7 +482,7 @@ Hence the maximum value of $f$ occurs at $x=e$ since $f$ is a continuous functio
 Therefore $\dfrac{x^e}{e^x}<1$ for all $x\in\RR^+\setminus\{e\}$, i.e. $\dfrac{\pi^e}{e^\pi}<1$ and thus $e^\pi>\pi^e$.
 \end{proof}
 
-\begin{exercise}{}{}
+\begin{exercise}
 By applying Rolle's Theorem on the function $f(x)=e^{-x}-\sin x$, show that there is at least one real root of $e^x\cos x=-1$ between any two real roots of $e^x\sin x=1$.
 \end{exercise}
 
@@ -497,7 +492,7 @@ Let the two real roots involved of $e^x\sin x=1$ be $a$ and $b$ with $a<b$.
 Then $f(a)=f(b)=0$. By Rolle's Theorem, there exist a value $c$ with $a<c<b$ such that $f^\prime(c)=0$, i.e. $-e^{-c}-\cos c=0$ which reduces to $e^c\cos c=-1$.
 \end{proof}
 
-\begin{exercise}{}{}
+\begin{exercise}
 By using the Theorem of the Mean, show that
 \[ \frac{\pi}{6}+\frac{\sqrt{3}}{15}<\sin^{-1}0.6<\frac{\pi}{6}+\frac{1}{8}. \]
 \end{exercise}
@@ -614,10 +609,10 @@ Repeat the process; form up the tangent line at $x_1$ and use its root $x_2$ as 
 \[ x_2 = x_1 - \frac{f(x_1)}{f^\prime(x_1)} \]
 
 Here is the general Newton's Method:
-\begin{thrm}{Newton's Method}{}
+\begin{theorem}[Newton's Method]
 If $x_n$ is an approximation of a solution of $f(x)=0$ and if $f^\prime(x_n) \neq 0$, then the next approximation is given by
 \[ x_{n+1} = x_n - \frac{f(x_n)}{f^\prime(x_n)} \]
-\end{thrm}
+\end{theorem}
 \pagebreak
 
 \chapter{Integral}
@@ -649,7 +644,7 @@ As the subinterval becomes infinitesimally small,
 	\includegraphics[width=8cm]{Riemanns_sums}
 \end{figure}
 
-\begin{thrm}{Fundamental Theorem of Calculus}{}
+\begin{theorem}[Fundamental Theorem of Calculus]
 The fundamental theorem of (single variable) calculus states that if $f^\prime$ is continuous on $[a,b]$, then the integral of the derivative across the bounds is equal to the original function at the bounds:
 \begin{equation}
 \int_a^b f^\prime(x) \dd{x} = f(b)-f(a)
@@ -658,7 +653,7 @@ or equivalently,
 \begin{equation}
 \dv{x} \int_{a}^{x} f(s) \dd{s} = f(x)
 \end{equation}
-\end{thrm}
+\end{theorem}
 
 % https://www2.clarku.edu/faculty/djoyce/ma121/FTCproof.pdf
 
@@ -727,7 +722,7 @@ Inverse trigonometric functions:
 \[ \int\frac{x}{1+x^2}\dd{x} = \tan^{-1}x + C \]
 
 \subsubsection{Splitting the Numerator}
-\begin{exercise}{}{}
+\begin{exercise}
 Evaluate exactly
 \[ \int_0^1\frac{x+2}{\sqrt{x+1}}\dd{x}. \]
 \end{exercise}
@@ -754,7 +749,7 @@ The most common way of doing a integral by substitution, and the only way for in
 \item When you are done, substitute back for $x$
 \end{enumerate}
 
-\begin{exercise}{}{}
+\begin{exercise}
 Compute $\int\sin^nx\cos x\dd{x}$.
 \end{exercise}
 \begin{solution}
@@ -762,7 +757,7 @@ Substitute $u = \sin x$ and $\dd{u} = \cos x\dd{x}$. This turns the integral int
 \[ \frac{\sin^{n+1}x}{n+1}. \]
 \end{solution}
 
-\begin{exercise}{}{}
+\begin{exercise}
 Compute $\displaystyle\int_1^2\frac{x}{x^2+1}\dd{x}$.
 \end{exercise}
 \begin{solution}
@@ -771,7 +766,7 @@ from 1 to 2 then $u$ goes from 2 to 5, thus the integral becomes
 \[ \int_2^5\frac{1}{2}\frac{\dd{u}}{u} = \frac{1}{2}(\ln5-\ln2). \]
 \end{solution}
 
-\begin{exercise}{}{}
+\begin{exercise}
 Compute $\int xe^{x^2}\dd{x}$.
 \end{exercise}
 \begin{solution}
@@ -780,7 +775,7 @@ To do this integral we'll use the following substitution.
 \[ \int x e^{x^2}\dd{x} = \frac{1}{2}\int e^u \dd{u} = \frac{1}{2}e^u + c = \frac{1}{2}e^{x^2} + c \]
 \end{solution}
 
-\begin{exercise}{}{}
+\begin{exercise}
 Prove the following result for $a>0$:
 \begin{equation*}\tag{*}
 \int_0^af(x)\dd{x}=\int_0^af(a-x)\dd{x}
@@ -841,7 +836,7 @@ DI method
 
 Note that after applying integration by parts multiple times, we may obtain a multiple of the original integral. A simple rearrangement of the integral gives the required solution.
 
-\begin{exercise}{}{}
+\begin{exercise}
 Evaluate $\int e^x\cos x\dd{x}$.
 \end{exercise}
 \begin{solution}
@@ -859,7 +854,7 @@ where $c$ and $C$ are arbitrary constants.
 
 Finally in this section we look at an example of a \textbf{reduction formula}.
 
-\begin{exercise}{}{}
+\begin{exercise}
 Consider $I_n=\int\cos^nx\dd{x}$ where $n$ is a non-negative integer. Find a reduction formula for $I_n$ and then use this formula to evaluate $\int\cos^7x\dd{x}$.
 \end{exercise}
 \begin{solution}
@@ -929,7 +924,7 @@ An odd function $f(x)$ satisfies $f(x)=-f(-x)$ for all $x$. Hence for any finite
 An even function $f(x)$ satisfies $f(x)=f(-x)$ for all $x$. Hence for any finite $a$,
 \[ \int_{-a}^a f(x)\dd{x} = 2\int_0^a f(x)\dd{x} \]
 
-\begin{exercise}{}{}
+\begin{exercise}
 Evaluate $\displaystyle\int_{-\frac{\pi}{4}}^\frac{\pi}{4}\frac{x\cos x-2\sin x+1}{\cos^2x}\dd{x}$.
 \end{exercise}
 \begin{solution}
@@ -941,7 +936,7 @@ Hence we are left with
 \[ \int_{-\frac{\pi}{4}}^\frac{\pi}{4}\frac{1}{\cos^2x}\dd{x}=\sqbrac{\tan x}_{-\frac{\pi}{4}}^\frac{\pi}{4}=\boxed{2} \]
 \end{solution}
 
-\begin{exercise}{}{}
+\begin{exercise}
 Integrate a suitable Maclaurin series to obtain the value of
 \[ \frac{1}{\sqrt{2\pi}}\int_{-1}^1e^{-\frac{1}{2}x^2}\dd{x}. \]
 \end{exercise}
@@ -1062,12 +1057,12 @@ Using the ideas that we developed for limits of functions we can write down the 
 \end{itemize}
 
 Formally, we have the following precise definition.
-\begin{defn}{Limit of sequence}{}
+\begin{definition}[Limit of sequence]
 We say that $\lim_{n\to\infty}a_n=L$ if for every number $\epsilon>0$ there exists an integer $N$ such that
 \[ |a_n-L|<\epsilon \quad \forall n>N. \]
 
 Similarly, we say that $\lim_{n\to\infty}a_n=\infty$ if for every $M>0$ there exists integer $N$ such that $a_n>M$ whenever $n>N$; $\lim_{n\to\infty}a_n=-\infty$ if for every $M<0$ there exists integer $N$ such that $a_n<M$ whenever $n>N$.
-\end{defn}
+\end{definition}
 
 Note that both definitions tell us that in order for a limit to exist and have a finite value all the sequence terms must be getting closer and closer to that finite value as $n$ increases.
 
@@ -1075,9 +1070,9 @@ If $\lim_{n\to\infty}a_n$ exists and is finite we say that the sequence is \text
 
 So just how do we find the limits of sequences? Most limits of most sequences can be found using one of the following theorems.
 
-\begin{thrm}{}{}
+\begin{theorem}
 Given the sequence $\{a_n\}$ if we have a function $f(x)$ such that $f(n)=a_n$ and $\lim_{x\to\infty}f(x)=L$ then $\lim_{n\to\infty}a_n=L$.
-\end{thrm}
+\end{theorem}
 
 So, now that we know that taking the limit of a sequence is nearly identical to taking the limit of a function we also know that all the properties from the limits of functions will also hold. If $\{a_n\}$ and $\{b_n\}$ are both convergent sequences then
 \begin{itemize}
@@ -1090,9 +1085,9 @@ So, now that we know that taking the limit of a sequence is nearly identical to 
 
 Next, just as we had a Squeeze Theorem for function limits we also have one for sequences and it is pretty much identical to the function limit version.
 
-\begin{thrm}{Squeeze Theorem for sequences}{}
+\begin{theorem}{Squeeze Theorem for sequences}{}
 If $a_n\le c_n\le b_n$ for all $n>N$ for some $N$ and $\lim_{n\to\infty}a_n=\lim_{n\to\infty}b_n=L$ then $\lim_{n\to\infty}c_n=L$.
-\end{thrm}
+\end{theorem}
 
 As we’ll see not all sequences can be written as functions that we can actually take the limit of. This will be especially true for sequences that alternate in signs. While we can always write these sequence terms as a function we simply don’t know how to take the limit of a function like that. The following theorem will help with some of these sequences.
 
@@ -1198,7 +1193,7 @@ Then
 \end{itemize}
 \end{itemize}
 
-\begin{exercise}{}{}
+\begin{exercise}
 Determine if the following series is convergent or divergent:
 \[ \sum_{n=0}^\infty  \frac{4n^2-n^3}{10+2n^3} \]
 \end{exercise}
@@ -1209,7 +1204,7 @@ The first thing that we should do is take a look at the series terms and see if 
 The limit of the series terms is not zero and so by the Divergence Test the series diverges.
 \end{solution}
 
-\begin{exercise}{}{}
+\begin{exercise}
 Determine if the following sequence converges or diverges:
 \[ u_n=\frac{n^3}{3^n} \]
 \end{exercise}
@@ -1226,7 +1221,7 @@ Thus $f(x)$ converges to a certain value as $x\to\infty$, i.e. $u_n$ converges a
 (Bounded Convergence, provides the conclusion that the sequence converges but not providing the actual limit, which can be obtained from L'Hopital)
 \end{solution}
 
-\begin{exercise}{}{}
+\begin{exercise}
 Show that the following series is divergent:
 \[ 5+\sqrt{5}+\sqrt[3]{5}+\sqrt[4]{5}+\cdots \]
 \end{exercise}
@@ -1361,7 +1356,7 @@ If the ODE takes the form
 \[ \dv{y}{x} = f(x) \]
 in other words the derivative is a function of $x$ only, then we can integrate directly.
 
-\begin{exercise}{}{}
+\begin{exercise}
 Find the general solution of
 \[ \dv{y}{x} = x^2\sin x \]
 \end{exercise}
@@ -1383,7 +1378,7 @@ and then integrating with respect to $x$ we find
 \[ \int \frac{1}{b(y)} \dd{y} = \int a(x) \dd{x} \]
 Here we have assumed that $b(y) \neq 0$; if $b(y) = 0$ then the solution is $y = c$ where $c$ is a constant.
 
-\begin{exercise}{}{}
+\begin{exercise}
 Find the general solution to the separable differential equation
 \[ x(y^2-1) + y(x^2-1)\dv{y}{x} = 0 \]
 where $0<x<1$.
@@ -1399,7 +1394,7 @@ where $c$ is a constant. This can be arranged to give
 Note that the constant functions $y=1$ and $y=-1$ are also solutions of the differential equation, but are already included in the given general solution, for $c=0$.
 \end{solution}
 
-\begin{exercise}{}{}
+\begin{exercise}
 Find the general solution of the differential equation 
 \[ \dv{y}{x}=-\frac{2x}{y} \]
 and sketch the family of solution curves.
@@ -1427,7 +1422,7 @@ thus the family of solution curves a set of ellipses.
 \subsection{Reduction to separable form by substitution}
 Some first order differential equations can be transformed by a suitable substitution into separable form.
 
-\begin{exercise}{}{}
+\begin{exercise}
 Find the general solution of
 \[ \dv{y}{x} = \sin(x+y+1) \]
 \end{exercise}
@@ -1467,7 +1462,7 @@ which becomes
 
 \subsection{Exact solutions}
 LHS is an exact derivative.
-\begin{exercise}{}{}
+\begin{exercise}
 Solve 
 \[ \sin x\dv{y}{x}+y\cos x=3x^2. \]
 \end{exercise}
@@ -1495,7 +1490,7 @@ and we can now integrate directly and rearrange, to obtain
 \[ y = e^{-\int P(x) \dd{x}} \sqbrac{\int e^{\int P(x)dx} Q(x) \dd{x} + c}. \]
 \end{proof}
 
-\begin{exercise}{}{}
+\begin{exercise}
 Solve the linear differential equation 
 \[ \dv{y}{x} + 2xy = 2xe^{-x^2}. \]
 \end{exercise}
@@ -1580,7 +1575,7 @@ If we now rearrange the above equation and use the fact that $z$ is a solution t
 \[ P(x)zu^{\prime\prime}+\brac{2P(x)z^\prime+Q(x)z}u^\prime=0, \]
 which is a homogeneous differential equation of first order for $u^\prime$. In theory this can be solved, to obtain the general solution to the given equation. The following example illustrates this technique.
 
-\begin{exercise}{}{}
+\begin{exercise}
 Verify that $z(x)=\frac{1}{x}$ is a solution to
 \[ x\dv[2]{y}{x}+2(1-x)\dv{y}{x}-2y=0, \]
 and hence find its general solution.
@@ -1731,7 +1726,7 @@ We shall occasionally write $f_x$ for $\delta f/\delta x$, etc.
 
 Derivatives such as \cref{eqn:partial-diff}, where $f$ has been differentiated once, are called \vocab{first order} partial derivatives. We will look at higher orders in a moment.
 
-\begin{exercise}{}{}
+\begin{exercise}
 Find all the first order derivatives of
 \[ f(x,y,z)=x^2+ye^{2x}+\frac{z}{y}. \]
 \end{exercise}
@@ -1772,7 +1767,7 @@ Let $F(x,y)=f(u(x,y),v(x,y))$ with $u$ and $v$ differentiable in each variable a
 \[ \pdv{F}{x}=\pdv{f}{u}\pdv{u}{x}+\pdv{f}{v}\pdv{v}{x}, \quad \pdv{F}{y}=\pdv{f}{u}\pdv{u}{y}+\pdv{f}{v}\pdv{v}{y}. \]
 \end{corollary}
 
-\begin{exercise}{}{}
+\begin{exercise}
 A particle $P$ moves in three dimensional space on a helix so that at time $t$,
 \[ x(t)=\cos t, \quad y(t)=\sin t, \quad z(t)=t. \]
 The temperature $T$ at $(x,y,z)$ equals $xy+yz+zx$. Use the chain rule to calculate $\dv{T}{t}$.
@@ -1788,7 +1783,7 @@ The chain rule in this case says that
 \end{align*}
 \end{solution}
 
-\begin{exercise}{}{}
+\begin{exercise}
 Let $z=f(xy)$, where $f$ is an arbitrary differentiable function in one variable. Show that
 \[ x\pdv{z}{x}-y\pdv{z}{y}=0. \]
 \end{exercise}
@@ -1817,14 +1812,14 @@ There is still a small problem with this however. There are many vectors that po
 We need a way to consistently find the rate of change of a function in a given direction. We will do this by insisting that the vector that defines the direction of change be a unit vector. This means that for the example that we started off thinking about we would want to use
 \[ \vec{v} = \left\langle {\frac{2}{\sqrt{5}},\frac{1}{\sqrt{5}}}\right\rangle \]
 
-\begin{defn}{Directional derivative}{}
+\begin{definition}[Directional derivative]
 Rate of change of $f(x,y)$ in the direction of the unit vector $\vec{u}=\langle{a,b}\rangle$ is called the directional derivative and is denoted by $D_{\vec{u}} f(x,y)$.
 
 The definition of the directional derivative is
 \begin{equation}
 {D_{\vec u}}f(x,y) = \lim_{h\to0} \frac{f(x + ah,y + bh) - f(x,y)}{h}
 \end{equation}
-\end{defn}
+\end{definition}
 
 To derive an equivalent formula for taking directional derivatives, we define a new function of a single variable
 \[ g(z) = f(x_0+az,y_0+bz) \]
@@ -1864,19 +1859,19 @@ We can write the directional derivative as a \textbf{dot product} and notice tha
 \end{equation}
 
 Now let's give a name and notation to the first vector in the dot product since this vector will show up fairly regularly.
-\begin{defn}{Gradient vector}
+\begin{definition}[Gradient vector]
 The gradient vector of $f$ is defined to be
 \begin{equation}
 \nabla f = \langle f_x,f_y,f_z \rangle
 \end{equation}
-\end{defn}
+\end{definition}
 
 With the definition of the gradient we can now say that the directional derivative is given by
 \[ {D_{\vec u}}f = \nabla f\cdot \vec u \]
 
-\begin{thrm}{}{}
+\begin{theorem}
 Maximum value of $D_{\vec u} f(\vec{x})$ (and hence then the maximum rate of change of the function $f(\vec{x})$) is given by $\left\|\nabla f(\vec{x})\right\|$ and will occur in the direction given by $\nabla f(\vec{x})$.
-\end{thrm}
+\end{theorem}
 
 \begin{proof}
 
@@ -1948,7 +1943,7 @@ Note that if the coefficients are constants, the PDE can be hyperbolic, paraboli
 \end{itemize}
 
 \section{Solutions and Auxiliary Conditions}
-\begin{exercise}{}{}
+\begin{exercise}
 Show that $f(x,y)=\tan^{-1}\frac{y}{x}$ satisfies Laplace's equation in the plane:
 \[ \pdv{[order={2}]}{f}{x}+\pdv{[order={2}]}{f}{y}=0. \]
 \end{exercise}
@@ -1967,7 +1962,7 @@ as required.
 
 In the above example we verified that a given solution satisfied a given PDE. We now look at how to find solutions to simple PDEs.
 
-\begin{exercise}{}{}
+\begin{exercise}
 Find all the solutions of the form $f(x,y)$ of the PDEs
 \begin{enumerate}[label=(\alph*)]
 \item $\pdv{f}{y,x}=0$,
@@ -1989,7 +1984,7 @@ where $Q(y)$ is an arbitrary function of $y$ and $P(x)$ is an anti-derivative of
 
 If a PDE involves derivatives with respect to one variable only, we can treat it like an ODE in that variable, holding all other variables constant. The difference, as noted above, is that our arbitrary ``constants'' will now be arbitrary functions of the variables that we have held constant.
 
-\begin{exercise}{}{}
+\begin{exercise}
 Find solutions $u(x,y)$ of the PDE
 \[ u_{xx}-u=0. \]
 \end{exercise}
@@ -2004,7 +1999,7 @@ where $A$ and $B$ are arbitrary functions of $y$ only.
 
 we look at one specific method for solving PDEs, that of \textbf{separating the variables}.
 
-\begin{exercise}{}{}
+\begin{exercise}
 Find all solutions of the form $T(x,t)=A(x)B(t)$ to the one-dimensional heat/diffusion equation
 \[ \pdv{T}{t}=\kappa\pdv{[order={2}]}{T}{x}, \]
 where $\kappa$ is a positive constant, called the thermal diffusivity.
@@ -2024,7 +2019,7 @@ To motivate the idea of double integrals, we give an example of calculating area
 
 We want to integrate a function of two variables, $f(x,y)$. With functions of one variable we integrated over an \emph{interval} (i.e. a one-dimensional space) and so it makes some sense then that when integrating a function of two variables we will integrate over a \emph{region} of $\RR^2$ (two-dimensional space). 
 
-\begin{exercise}{}{}
+\begin{exercise}
 Calculate the area of the disc $x^2+y^2\le a^2$.
 \end{exercise}
 
@@ -2056,7 +2051,7 @@ V=\iint_Rf(x,y)\dd{A}.
 You can think of $\iint$ as a sum of heights $f(x,y)$ and areas $\dd{A}$, which evaluates to give a volume.
 \end{remark}
 
-\begin{exercise}{}{}
+\begin{exercise}
 Let $R$ be the triangle whose vertices are $(0,0,0)$, $(0,1,0)$ and $(1,0,0)$. Evaluate $\iint_R1\dd{A}$.
 \end{exercise}
 
@@ -2067,7 +2062,7 @@ $\iint_R1\dd{A}$ is the volume of a prism with height $1$ and base of area $R$. 
 
 To evaluate double integrals we need a notion called iterated integrals, which are basically two integrals with one nested inside the other.
 
-\begin{exercise}{}{}
+\begin{exercise}
 Evaluate 
 \begin{enumerate}[label=(\alph*)]
 \item $\displaystyle\int_0^1\int_1^2x+2y\dd{x}\dd{y}$
@@ -2128,7 +2123,7 @@ The standard notation for the function $\vec{F}$ is:
 \end{align*}
 depending on whether or not we're in two or three dimensions. The functions $P$, $Q$, $R$ are called \textbf{scalar functions}.
 
-\begin{exercise}{}{}
+\begin{exercise}
 Sketch the following vector field:
 \[ \vec{F}(x,y) = -y\hat{i} + x\hat{j} \]
 \end{exercise}
@@ -2159,12 +2154,13 @@ This is a vector field and is often called a \vocab{gradient vector field}.
 \section{Types of line integrals}
 
 \section{Fundamental Theorem for Line Integrals}
-\begin{thrm}{Fundamental Theorem of Line Integrals}{}
+\begin{theorem}[Fundamental Theorem of Line Integrals]
 Suppose that $C$ is a smooth curve from points $A$ to $B$ parameterised by $\vb{r}(t)$ for $t\in[a,b]$. Let $f$ be a differentiable function whose domain includes $C$ and whose gradient vector $\nabla f$ is continuous on $C$. Then
 \begin{equation}
 \int_C \nabla f \dd{\vb{r}} = f(\vb{r}(b)) - f(\vb{r}(a)) = f(B) - f(A)
 \end{equation}
-\end{thrm}
+\end{theorem}
+
 \begin{remark}
 Similar to the fundamental theorem of calculus, the primary change is that gradient $\nabla f$ takes the place of the derivative $f^\prime$.
 \end{remark}

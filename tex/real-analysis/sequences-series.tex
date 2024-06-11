@@ -1,0 +1,409 @@
+\chapter{Numerical Sequences and Series}
+\section{Convergent Sequences}
+\begin{definition}
+A sequence $\{x_n\}$ in metric space $X$ \vocab{converges} if there exists some $x\in X$ such that $\forall\epsilon>0$, $\exists N\in\NN$, $\forall n\ge N$, $d(x_n,x)<\epsilon$.
+
+We call $x$ the \vocab{limit} of $\{x_n\}$, and write $x_n\to x$, or
+\[\lim_{n\to\infty}x_n=x.\]
+If $\{x_n\}$ does not converge, it is said to \vocab{diverge}.
+\end{definition}
+
+\begin{remark}
+Take note of the use of logical statements:
+\begin{itemize}
+\item $\epsilon$ is independent, so it is literally for all $\epsilon>0$.
+\item $N$ is dependent on $\epsilon$; if $\epsilon$ is very small we would expect the sequence $\{x_n\}$ to get close enough to $x$ further down the line.
+\item The order of the quantifiers matters.
+\end{itemize}
+\end{remark}
+
+\begin{example}
+$\dfrac{1}{n}\to 0$ as $n\to\infty$. The proof is fairly straighforward: $\forall\epsilon>0$, pick $N=\frac{1}{\epsilon}+1$. Then $\forall n>N$,
+\[ \frac{1}{n}<\frac{1}{N}=\frac{1}{\frac{1}{\epsilon}+1}<\frac{1}{\frac{1}{\epsilon}}=\epsilon. \]
+\end{example}
+
+We now outline some important properties of convergent sequences in metric spaces.
+
+\begin{proposition}
+Let $\{x_n\}$ be a sequence in metric space $X$.
+\begin{enumerate}[label=(\arabic*)]
+\item $\{x_n\}$ converges to $x\in X$ if and only every neighbourhood of $x$ contains $x_n$ for all but finitely many $n$.
+\item (uniqueness of the limit) If $x\in X$, $x^\prime\in X$, and if $\{x_n\}$ converges to $x$ and to $x^\prime$, then $x^\prime=x$.
+\item (boundedness of convergent sequences) If $\{x_n\}$ converges, then $\{x_n\}$ is bounded.
+\item For $E\subset X$, $x$ is a limit point of $E$, if and only if there exists a sequence $\{x_n\}$ in $E\setminus\{x\}$ such that $x_n\to x$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof} \
+\begin{enumerate}[label=(\arabic*)]
+\item ($\implies$) Suppose $x_n\to x$. We want to prove that any neighbourhood $U$ of $x$ eventually contains all $x_n$.
+
+Since $U$ is a neighbourhood of $x$, pick a ball $B_\epsilon(x)\subset U$. Corresponding to this $\epsilon$, there exists $N\in\NN$ such that $n\ge N$ implies $d(x_n,x)<\epsilon$. Thus $n\ge N$ implies $x_n\in U$.
+
+($\impliedby$) Suppose every neighbourhood of $x$ contains all but finitely many of the $x_n$. Fix $\epsilon>0$, pick a ball $B_\epsilon(x)$. Since $B_\epsilon(x)$ is a neighbourhood of $x$, it will also eventually contain all $x_n$. By assumption, there eists $N\in\NN$ such that $x_n\in B_\epsilon(x)$ if $n\ge N$. Thus $d(x_n,x)<\epsilon$ if $n\ge N$, hence $x_n\to x$.
+
+\item Let $\epsilon>0$ be given. There exists $N,N^\prime\in\NN$ such that
+\[n\ge N\implies d(x_n,x)<\frac{\epsilon}{2}\]
+and
+\[n\ge N^\prime\implies d(x_n,x^\prime)<\frac{\epsilon}{2}.\]
+Take $N_1\coloneqq\max\{N,N^\prime\}$. Hence if $n\ge N_1$ we have $d(x_n,x)<\frac{\epsilon}{2}$ and $d(x_n,x^\prime)<\frac{\epsilon}{2}$ at the same time. By triangle inequality,
+\[ d(x,x^\prime)\le d(x,x_n)+d(x_n,x^\prime)<\frac{\epsilon}{2}+\frac{\epsilon}{2}=\epsilon.\]
+Since $\epsilon$ was arbitrary (i.e. holds for all $\epsilon>0$), we must have $d(x,x^\prime)=0$ and thus $x=x^\prime$.
+
+\item Suppose $x_n\to x$. Then there exists $N\in\NN$ such that $n>N$ implies $d(x_n,x)<1$. Take
+\[r\coloneqq\max\{1,d(x_1,x),\dots,d(x_N,x)\}.\]
+Then $d(x_n,x)\le r$ for $n=1,2,\dots,N$, so $\{x_n\}$ is in $B_r(x)$.
+
+\item ($\implies$) If $x$ is a limit point, then for all $\epsilon>0$, $B_\epsilon\setminus\{x\}(x)$ contains points in $E$. We then construct such a sequence $\{x_n\}$ in $E\setminus\{x\}$: pick any $x_n\in E$ so that $x_n$ is contained in $B_\frac{1}{n}\setminus\{x\}(x)$. Then it is easy to show that $\{x_n\}$ is a sequence in $E\setminus\{x\}$ which converges to $x$.
+
+($\impliedby$) Suppose that there exists a sequence $\{x_n\}$ in $E\setminus\{x\}$ such that $x_n\to x$. We wish to show that $B_\epsilon\setminus\{x\}(x)$ contains points in $E$ for all $\epsilon>0$.
+
+Since $\{x_n\}$ converges to $x$, for all $\epsilon>0$ the sequence is eventually contained in $B_\epsilon(x)$. However because we have the precondition that $\{x_n\}$ has to be in $E\setminus\{x\}$, the sequence is in fact eventually contained in $B_\epsilon\setminus\{x\}(x)$.
+\end{enumerate}
+\end{proof}
+
+\section{Subsequences}
+\begin{definition}
+Given a sequence $\{x_n\}$, consider a sequence $\{n_k\}$ of positive integers such that $n_1<n_2<\dots$. Then $\{x_{n_i}\}$ is called a \vocab{subsequence} of $\{x_n\}$. If $\{x_{n_i}\}$ converges, its limit is called a \vocab{subsequential limit} of $\{x_n\}$.
+\end{definition}
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{proposition}
+$\{x_n\}$ converges to $x$ if and only if every subsequence of $\{x_n\}$ converges to $x$.
+\end{proposition}
+
+\begin{proof}
+($\implies$) Every subsequence of $\{x_n\}$ can be written in the form $\{x_{n_i}\}$ where $n_1<n_2<\dots$ is a strictly increasing sequence of positive integers.
+
+Intuitively, if every neighbourhood of $x$ eventually contains all $x_n$, then since $\{x_{n_i}\}$ is a subset of $\{x_n\}$ they should all be contained in the neighbourhood eventually as well.
+
+Given that $\{x_n\}$ converges to $x$, we have $\forall\epsilon>0$, $\exists N\in\NN$, $\forall n>N$, $d(x_n,x)<\epsilon$.
+
+Pick $M$ such that $n_M>N$, then $\forall i>M$, $d(x_{n_i},x)<\epsilon$.
+\end{proof}
+
+\begin{proposition}
+Subsequential limits of a sequence are precisely the limit points of the sequence (viewed as a set)
+\end{proposition}
+
+\begin{proof}
+This is just part (d) of the previous section.
+
+Again, to make this work, we need to assume that nothing funny is going on at subsequential limits
+If the limits appear due to eventually constant subsequences, then they need not be limit points of the original sequence when viewed as a set
+
+3.6, 3.7 are precisely the statements we've prepared for last week
+\end{proof}
+
+\begin{proposition}
+If $\{x_n\}$ is a sequence in a compact set (bounded closed set), then there exists a convergent subsequence of $\{x_n\}$
+\end{proposition}
+
+\begin{proof}
+This is Weierstrass-Bolzano together with part (b)
+
+Ah yes, regarding compact sets
+I need to emphasize this again, but the definition that we are currently using for compact sets is not the actual definition
+
+I've sent a video before the lesson which talks about the real definition for compact sets % www.youtube.com/watch?v=td7Nz9ATyWY
+Essentially, compact sets satisfies the property akin to the statement in Heine-Borel:
+Given a topological space $(X,\tau)$, a compact set $K$ in $X$ is a set satisfying that, given any open covering $\{U_i\}$ of $X$, there exists a finite open cover $\{U_1,\dots,U_n\}$ of $X$
+
+This is difficult to process at this stage
+Since we're currently only working with Euclidean spaces it would be more beneficial if you consider the Heine-Borel Theorem as a property first
+It would be a lot easier to accept the definition after you're more accustomed to applying the theorem
+\end{proof}
+
+\begin{proposition}
+(Rudin 3.7) Subsequential limits form a closed subset
+\end{proposition}
+
+\begin{proof}
+Actually we've done this two weeks before, it is simply saying that A'' is a subset of A'.
+
+(A'' is not always A'; consider the set in R² given by
+{(1/n,1/m)|n,m in N}
+Then (1,0),(0,1) are in A' but not in A''
+\end{proof}
+\pagebreak
+
+\section{Cauchy Sequences}
+This is a very helpful way to determine whether a sequence is convergent or divergent, as it does not require the limit to be known. In the future you will see many instances where the convergence of all sorts of limits are compared with similar counterparts; generally we describe such properties as \emph{Cauchy criteria}.
+
+\begin{definition}
+A sequence $\{x_n\}$ in a metric space $X$ is said to be a \vocab{Cauchy sequence} if $\forall\epsilon>0$, $\exists N\in\NN$, $\forall n,m\ge N$,
+\[ d(x_n,x_m)<\epsilon. \] 
+\end{definition}
+
+\begin{remark}
+This simply means that the distances between any two terms is sufficiently small after a certain point.
+\end{remark}
+
+It is easy to prove that a converging sequence is Cauchy using the triangle inequality. The idea is that, if all the points are becoming arbitrarily close to a given point $x$, then they are also becoming close to each other. The converse is not always true, however.
+
+\begin{proposition}
+A sequence $\{x_k\}$ in $\RR^n$ is convergent if and only if it is Cauchy.
+\end{proposition}
+
+\begin{proof} \
+
+($\implies$) Suppose that $\{x_k\}$ converges to $x$, then there exists $N$ such that for $k>N$, $|x_k-x|<\dfrac{\epsilon}{2}$
+Then for $k,l>N$, 
+\[ |x-k-x_l| \le |x_k-x|+|x_l-x| < \epsilon \]
+
+($\impliedby$) First, we show that $\{x_k\}$ must be bounded. 
+Pick $N$ such that for all $k,l>N$ we have $|x_k-x_l|<1$. 
+Centered at $x_k$, we show that $\{x_k\}$ is bounded; to do this we pick
+\[ r = \max\{1,|x_k-x_1|,\dots,|x_k-x_N|\} \]
+Then the sequence ${x_k}$ is in $B(x_k,r)$ and thus is bounded.
+
+Since $\{x_k\}$ is bounded, by the collolary of Bolzano-Weierstrass we know that $\{x_k\}$ contains a subsequence $\{x_{k_i}\}$ that converges to a limit $x$.
+
+Then for all $\epsilon>0$, pick $N_1$ such that for all $k,l>N$, $|x_k-x_l|<\dfrac{\epsilon}{2}$. 
+Simultaneously, since $\{x_{k_i}\}$ converges to $x$, pick $M$ such that for $i>M$, $|x_{k_i}-x|<\dfrac{\epsilon}{2}$.
+
+Now, since $k_1<k_2<\dots$ is a sequence of strictly increasing natural numbers, we can pick $i>M$ such that $k_i>N$. Then for all $k>N$, by setting $l=k_i$ we obtain
+\[ |x_k-x_{k_i}| < \frac{\epsilon}{2}, \quad |x_{k_i}-x| < \frac{\epsilon}{2} \]
+and hence
+\[ |x_k-x| \le |x_k-x_{k_i}|+|x_{k_i}-x| < \epsilon \]
+\end{proof}
+
+\begin{definition}
+Let nonempty $E\subseteq X$. Let $S$ be the set of all real numbers of the form $d(x,y)$, with $x,y\in E$. Then the \vocab{diameter} of $E$ is 
+\[ \diam E\coloneqq\sup S. \]
+
+\end{definition}
+\pagebreak
+
+\section{Upper and Lower Limits}
+
+
+% Rudin 3.20
+\subsection{Limits of Multiple Sequences}
+We shall cover some of the more basic aspects of limits in this section.
+
+\subsubsection{Inequalities}
+
+First let's consider two converging sequences $\{a_n\}$ and $\{b_n\}$
+
+If $a_n \le b_n$, then $\lim a_n \le \lim b_n$.
+
+\begin{remark}
+One important thing to take note for limits is that, even if you have $a_n<b_n$, you cannot say that $\lim a_n<\lim b_n$; for example, $\frac{1}{n}>-\frac{1}{n}$ but their limits are both $0$.
+\end{remark}
+
+\begin{proof}
+Let's say that $A=\lim a_n$ and $B=\lim b_n$. Suppose otherwise that $A>B$, then we try to cause some chaos with $\epsilon=A-B>0$.
+
+Since $\frac{\epsilon}{2}>0$, then there exists $N_1$ such that for $n>N_1$ we have $|a_n-A|<\frac{\epsilon}{2}$; and there exists $N_2$ such that for $n>N_2$ we have $|b_n-B|<\frac{\epsilon}{2}$.
+
+Let $N=\max\{N_1,N_2\}$, then for any $n>N$, the two inequalities above will hold simultaneously
+But then we would have
+\[ a_n>A-\frac{\epsilon}{2}, b_n<B+\frac{\epsilon}{2} \]
+and thus
+\[ a_n-b_n>A-B-\epsilon=0, \]
+so $a_n>b_n$, a contradiction
+\end{proof}
+
+A corollary is that limits essentially preserve signs, if you include 0 in your consideration
+
+A converging sequence of nonnegative numbers will always be nonnegative, and same goes to nonpositive numbers
+:
+Now as we can see in the proof above, there is actually a place where the restrictions of limits overpower the statement itself
+:
+What I mean by that is, suppose that you want to form a proof by contradiction
+:
+What you need here is just one term $a_n>b_n$
+But you actually have $a_n>b_n$ eventually for all terms in the sequence
+:
+In fact, a better exercise would have been to show that limsups and liminfs also preserves inequalities
+
+I'll just use limsups for example
+If $a_n\le b_n$, let $A=\limsup a_n$, $B=\limsup b_n$. Suppose otherwise that $A>B$. Let $\epsilon=A-B>0$; since $\frac{\epsilon}{2}>0$, then for all $N_1$, there exists $n>N_1$ such that $a_n>A-\frac{\epsilon}{2}$; and there exists $N_2$ such that for all $n>N_2$, $b_n<B+\frac{\epsilon}{2}$.
+
+Now we arrange our thoughts logically
+First, we pick $N_2=N$ such that for all $n>N$, $b_n<B+\frac{\epsilon}{2}$. Then we may fix $N_1=N$.
+
+Due to the first condition, we see that it is possible to pick $n_0>N$ such that $a_{n_0}>A-\frac{\epsilon}{2}$.
+Now due to the second condition, since $n_0>N$, this exact same $n_0$ would satisfy $b_{n_0}<B+\frac{\epsilon}{2}$.
+
+Therefore, $n_0$ satisfies $a_{n_0}-b_{n_0}>A-B-\epsilon=0$ and we are done.
+
+\subsubsection{Sandwich Theorem}
+\begin{theorem}[Sandwich Theorem]
+Let $a_n\le c_n\le b_n$ where $\{a_n\},\{b_n\}$ are converging sequences such that $\lim a_n=\lim b_n=L$, then $\{c_n\}$ is also a converging sequence and $\lim c_n=L$.
+\end{theorem}
+
+
+Now, one very very very important thing about this theorem
+
+The purpose of this theorem is to investigate some difficult sequence $\{c_n\}$ with two simpler sequences $\{a_n\}$ and $\{b_n\}$ which bounds it from below and from above respectively
+If you look closely at the statement, you may realize that we're only working under the condition that $\{a_n\}$ and $\{b_n\}$ are converging sequences
+
+In other words, at this point we don't know whether $\{c_n\}$ is convergent.
+
+In fact, this is supposed to be the main implication
+
+Of course, $\lim c_n=L$ is proven at the exact same time, so both implications constitute the two parts of the conclusion
+
+What I want to say is that you cannot simply take $\lim$ over $a_n\le c_n\le b_n$ and say that $\lim$ preserves inequalities, because in order to apply this inequality-preserving property, you need to ensure that all sequences are converging before you can apply it; clearly, this does not work here since we have not shown that $c_n$ is convergent, therefore this idea does not work.
+
+There are two ways to circumvent this
+One is to use $\epsilon-N$; basically, just do it
+
+But if you're really lazy, then the second method is to use the idea above except you first take limsup and liminf
+
+The advantage of these two is that you don't need the original sequences to be convergent in order to apply them, and that they preserve inequalities even if the original sequences show no signs of convergence
+
+So basically,
+\[ \limsup a_n\le\limsup c_n\le\limsup b_n, \]
+and
+\[ \liminf a_n\le\liminf c_n\le\liminf b_n. \]
+Then since $\{a_n\}$ and $\{b_n\}$ actually converge to $L$, all the liminfs and limsups of $a_n$ and $b_n$ are $L$, so we obtain $\limsup c_n=L$ and $\liminf c_n=L$.
+
+In particular, $\limsup c_n=\liminf c_n$, thus $c_n$ is convergent and it follows that $\lim c_n=L$.
+
+\subsubsection{Arithmetic properties}
+\begin{proposition}\label{prop:limit-scalarmultiplication}
+For convergent $\{a_n\}$ and $k\in\RR$,
+\begin{equation}
+\lim_{n\to\infty} ka_n=k\lim_{n\to\infty}a_n.
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+The proof is left as an exercise. You will need to $k$ into cases where it is positive, negative or $0$.
+\end{proof}
+
+\begin{proposition}\label{prop:limit-addition}
+If $\{a_n\}$ and $\{b_n\}$ convergent sequences of real numbers, then
+\begin{equation}
+\lim_{n\to\infty}(a_n+b_n)=\lim_{n\to\infty}a_n+\lim_{n\to\infty}b_n.
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+Let $A=\lim_{n\to\infty}a_n$ and $B=\lim_{n\to\infty}b_n$.
+
+$\forall\epsilon>0$, $\exists N_1\in\NN$, $\forall n>N_1$
+\[ |a_n-A|<\frac{\epsilon}{2}. \]
+$\forall\epsilon>0$, $\exists N_2\in\NN$, $\forall n>N_2$, 
+\[ |b_n-B|<\frac{\epsilon}{2}. \]
+
+Let $N=\max\{N_1,N_2\}$, then for all $n>N$, by the triangle inequality we have
+\[ \absolute{(a_n+b_n)-(A+B)}\le|a_n-A|+|b_n-B|<\epsilon. \]
+\end{proof}
+
+\begin{corollary}
+If $\{a_n\}$ and $\{b_n\}$ are convergent sequences of real numbers, then
+\[ \lim_{n\to\infty}(a_n-b_n)=\lim_{n\to\infty}a_n-\lim_{n\to\infty}b_n. \]
+\end{corollary}
+
+\begin{proposition}
+If $\{a_n\}$ and $\{b_n\}$ are convergent, then
+\begin{equation}
+\lim_{n\to\infty}(a_n b_n)=\lim_{n\to\infty}a_n\cdot\lim_{n\to\infty}b_n.
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+Let $A=\lim_{n\to\infty}a_n$ and $B=\lim_{n\to\infty}b_n$.
+
+Consider the limit $\lim(a_nb_n-AB)$, as it would be sufficient to prove that this is equal to $0$.
+
+Now we will use a common technique to deal with such products:
+\[ \lim(a_nb_n-AB)=\lim(a_nb_n-Ab_n+Ab_n-AB) \]
+The idea is to show that this is equal to
+\[ \lim(a_nb_n-Ab_n)+\lim(Ab_n-AB) \]
+(Note that we cannot write this yet because we have not shown that these two sequences are convergent)
+
+So let's examine these two sequences. The second one is easier since we have proved \cref{prop:limit-addition}:
+\[ \lim b_n=B \implies \lim(b_n-B)=0 \]
+Thus $\lim(Ab_n-AB)=A\lim(b_n-B)=0$.
+
+As for the first one, we want to show that $\lim(a_n-A)b_n=0$. Since we know that $b_n$ is itself a converging sequence, thus in particular $b_n$ is bounded, so suppose that $M>0$ is a bound of $b_n$, i.e. for all natural number $n$, $|b_n|\le M$.
+
+Since $\lim a_n=a$, for all $\epsilon>0$, there exists $N$ such that for all $n>N$, $|a_n-a|<\frac{\epsilon}{M}$.
+
+Combining the two above, we then conclude that for all $\epsilon>0$, there exists $N$ such that for all $n>N$,
+\[ |a_nb_n-Ab_n|=|(a_n-A)b_n|<\frac{\epsilon}{M}\cdot M=\epsilon. \]
+Therefore, this implies that $\lim(a_nb_n-Ab_n)=0$.
+
+Since we have shown that the two parts are equal to $0$, we can conclude that $\lim(a_nb_n-AB)=0$.
+\end{proof}
+
+\begin{proposition}
+If $\{a_n\}$ and $\{b_n\}$ are converging, $b_n$ is never $0$ and $\lim b_n \neq 0$, then \[ \lim\frac{a_n}{b_n}=\frac{\lim a_n}{\lim b_n}. \]
+\end{proposition}
+
+\begin{proof}
+Since we already have third proposition, it is sufficient for us to show that $\lim\frac{1}{b_n}=\frac{1}{\lim b_n}$.
+
+Let $b=\lim b_n$, then we consider the limit
+\[ \lim\brac{\frac{1}{b_n}-\frac{1}{b}}=\lim\brac{\frac{b-b_n}{b_nb}}. \]
+
+Again, the important term here is $b-b_n$, but there is an extra term of $\frac{1}{b_nb}$, so we'll need to control this.
+
+Since we need this to be bounded, we actually cannot have $b_n$ to be close to $0$. The good thing here is that $b\neq0$, so we can restrict $b_n$ to be close enough to $b$ so that it stays away from $0$.
+
+So we can first pick $N_1$ such that for all $n>N_1$,
+\[ |b_n-b|<\frac{|b|}{2}. \]
+
+Then
+\begin{align*}
+|b_nb-b^2|&<\frac{b^2}{2}\\
+\frac{b^2}{2}<b_nb<\frac{3b^2}{2}
+\end{align*}
+
+This show that if $n>N_1$, $b_nb$ would always be positive, and $\frac{1}{b_nb}<\frac{2}{b^2}$.
+
+Let $M=\frac{2}{b^2}$, then we may refer back to the original statement
+\[ \absolute{\frac{b-b_n}{b_nb}}<M|b-b_n| \]
+We pick $N_2$ such that for all $n>N_2$, $|b_n-b|<\frac{\epsilon}{M}$.
+
+Let $N=\max\{N_1,N_2\}$, then for all $n>N$,
+\[ \absolute{\frac{b-b_n}{b_nb}}<M\cdot\frac{\epsilon}{M}=\epsilon. \]
+\end{proof}
+
+Now let's talk a little bit about the arithmetic properties of limsups and liminfs
+:
+There are quite a number of differences for this; essentially the arithmetical properties aren't as well-behaved as the more specific case of limits
+:
+(i) $\limsup ka_n = k \limsup a_n$ holds if $k>0$
+However, if $k<0$, then $\limsup ka_n = k \liminf a_n$.
+
+(ii) $\limsup(a_n+b_n)$ is in general not equal to $\limsup a_n + \limsup b_n$
+However, we do have the following:
+\[ \limsup(a_n+b_n)\le\limsup a_n+\limsup b_n \]
+Moreover, $\limsup(a_n+b_n)$ may be bounded from below as follows:
+\[ \limsup(a_n+b_n)\ge\limsup a_n+\liminf b_n \]
+
+Your homework for today is to write down the analogous properties for liminf, and to prove (i) and (ii)
+
+Now you should try to prove (i) for liminf as well; as for (ii), try to explain why properties (i),(ii) for limsup and property (i) for liminf would imply property (ii) for $\liminf$
+
+\begin{prbm}
+Let $\{x_n\}$ be a sequence of real numbers and let $\alpha\ge2$ be a constant. Define the sequence $\{y_n\}$ as follows:
+\[ y_n=x_n+\alpha x_{n+1}, n=1,2,\dots \]
+Show that if $\{y_n\}$ is convergent, then $\{x_n\}$ is also convergent.
+\end{prbm}
+\pagebreak
+
+\section{Series}
+\begin{definition}
+Given a sequence $\{a_n\}$ we associate a sequence $\{s_n\}$, where
+\[ s_n=\sum_{k=1}^na_k \]
+which we call a \vocab{series}. The numbers $s_n$ are called the \vocab{partial sums} of the series.
+
+If $\{s_n\}$ converges to $s$, we say that the series \vocab{converges}, and write
+\[ \sum_{n=1}^\infty a_n=s; \]
+$s$ is called the sum of the series -- the limit of a sequence of sums.
+
+If $\{s_n\}$ diverges, the series is said to diverge.
+\end{definition}
+
+The Cauchy criterion can 
+
+\begin{proposition}
+
+\end{proposition}

@@ -1,0 +1,777 @@
+\chapter{Number Systems}
+\section{Natural Numbers $\NN$}
+\subsection{Construction}
+In Peano's development, it is assumed that there is a set $\NN$ (the natural numbers) of undefined objects with a distinguished element $1$ such that
+\begin{enumerate}[label=(\roman*)]
+\item $1$ is a natural number; that is $1\in\NN$;
+\item every $n\in\NN$ has a successor $S(n)\in\NN$;
+\item for every $n$, $S(n)\neq1$ (there is no number with 1 as successor)
+\item if $S(n)=S(m)$, then $n=m$;
+\item if $A$ is a set of natural numbers such that $1\in A$ and
+\[n\in A\implies S(n)\in A,\]
+then $A$ contains all natural numbers.
+\end{enumerate}
+
+\subsection{Properties}
+\begin{theorem}[Archimedean property of $\NN$]
+$\NN$ is not bounded above.
+\end{theorem}
+
+\begin{proof}
+Suppose, for a contradiction, that $\NN$ is bounded above. Then $\NN$ is non-empty and bounded above, so by completeness (of $\RR$) $\NN$ has a supremum.
+
+By the Approximation property with $\epsilon=\frac{1}{2}$, there is a natural number $n\in\NN$ such that $\sup\NN-\frac{1}{2}<n\le\sup\NN$.
+
+Now $n+1\in\NN$ and $n+1>\sup\NN$. This is a contradiction.
+\end{proof}
+\pagebreak
+
+\section{Rational Numbers $\QQ$}
+\subsection{Construction}
+\begin{notation}
+$\ZZ^\prime=\ZZ\setminus\{0\}$.
+\end{notation}
+
+\begin{definition}
+Let $\sim$ be the binary relation defined on $\ZZ\times\ZZ^\prime$ by
+\[ (a,b)\sim(c,d) \iff ad=bc. \]
+\end{definition}
+
+\begin{proposition}
+$\sim$ is an equivalence on $\ZZ\times\ZZ^\prime$.
+\end{proposition}
+
+\begin{proof}
+We just check that $\sim$ is transitive. So suppose that $(a,b)\sim(c,d)$ and $(c,d)\sim(e,f)$. Then
+\begin{equation*}\tag{1}
+ad=bc
+\end{equation*}
+\begin{equation*}\tag{2}
+cf=de
+\end{equation*}
+Multiplying (1) by $f$ and (2) by $b$, we obtain
+\begin{equation*}\tag{3}
+adf=bcf
+\end{equation*}
+\begin{equation*}\tag{4}
+bcf=bde
+\end{equation*}
+Hence $adf=bde$. Since $d\neq0$, the Cancellation Law implies that $af=bc$. Hence $(a,b)\sim(e,f)$.
+\end{proof}
+
+\begin{definition}
+The set of \vocab{rational numbers} is defined by
+\[ \QQ\coloneqq\ZZ\times\ZZ^\prime/\sim \]
+i.e. $\QQ$ is the set of $\sim$ equivalence classes.
+\end{definition}
+
+\begin{notation}
+For each $(a,b)\in\ZZ\times\ZZ^\prime$, the corresponding equivalence class is denoted by $[(a,b)]$.
+\end{notation}
+
+Next we want to define an addition operation on $\QQ$. You may know that
+\[\frac{a}{b}+\frac{c}{d}=\frac{ad+bc}{bd}.\]
+This suggests we make the following definition:
+
+\begin{definition}
+We define the binary operation $+_\QQ$ on $\QQ$ 
+by
+\[[(a,b)]+_\QQ[(c,d)]=[(ad+bc,bd)].\]
+\end{definition}
+
+\begin{remark}
+Since $b\neq0$ and $d\neq0$, we have that $bd\neq0$ and so $(ad+bc,bd)\in\ZZ\times\ZZ^\prime$.
+\end{remark}
+
+\begin{lemma}
+$+_\QQ$ is well-defined.
+\end{lemma}
+
+\begin{theorem}
+For all $q,r,s\in\QQ$, we have that
+\[q+_\QQ r=r+_\QQ q\]
+\[q+_\QQ(r+_\QQ s)=(q+_\QQ r)+_\QQ s.\]
+\end{theorem}
+
+\begin{definition}[Identity element for $+_\QQ$]
+$0_\QQ=[(0,1)]$.
+\end{definition}
+
+\begin{proposition}
+\begin{enumerate}[label=(\arabic*)]
+\item For any $q\in\QQ$, $q+_\QQ0_\QQ=q$.
+\item For any $q\in\QQ$, there exists a unique $r\in\QQ$ such that $q+_\QQ r=0_\QQ$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof} \
+\begin{enumerate}[label=(\arabic*)]
+\item Let $q=[(a,b)]$. Then
+\begin{align*}
+q+_\QQ0Q&=[(a,b)]+_\QQ[(0,1)]\\
+&=[(a\cdot1+0\cdot b,b\cdot1)]\\
+&=[(a,b)]\\
+&=q.
+\end{align*}
+\item To show that there exists at least one such element, consider $r=[(-a,b)]$. Then
+\begin{align*}
+q+_\QQ r&=[(a,b)]+_\QQ[(-a,b)]\\
+&=[(ab+(-a)b,b^2)]\\
+&=[(0,b^2)]
+\end{align*}
+Since $0\cdot1=0\cdot b^2$, we have $(0,b^2)=(0,1)$. Hence 
+\begin{align*}
+q+_\QQ r&=[(0,b^2)]\\
+&=[(0,1)]\\
+&=0_\QQ
+\end{align*}
+As before, simple algebra shows that there exists at most one such element.
+\end{enumerate}
+\end{proof}
+
+\begin{definition}
+For any $q\in\QQ$, $-q$ is the unique element of $\QQ$ such that
+\[q+_\QQ(-q)=0_\QQ.\]
+\end{definition}
+
+\begin{definition}
+We define the binary operation $-_\QQ$ on $\QQ$ by
+\[q-_\QQ r=q+_QQ(-r).\]
+\end{definition}
+
+Next we want to define a multiplication operation on $\QQ$. Note that
+\[\frac{a}{b}\cdot\frac{c}{d}=\frac{ac}{bd}.\]
+This suggests we make the following definition.
+
+\begin{definition}
+We define the binary operation $\cdot_\QQ$ on $\QQ$ by
+\[[(a,b)]\cdot_\QQ[(c,d)]=[(ac,bd)].\]
+\end{definition}
+
+\begin{remark}
+Since $b\neq0$ and $d\neq0$, we have that $bd\neq0$ and so $(ac,bd)\in\ZZ\times\ZZ^\prime$.
+\end{remark}
+
+\begin{lemma}
+$\cdot_\ZZ$ is well-defined.
+\end{lemma}
+
+\begin{theorem}
+For all $q,r,s\in\QQ$, we have that
+\begin{align*}
+q\cdot_\QQ r&=r\cdot_\QQ q\\
+(q\cdot_\QQ r)\cdot_\QQ s&=q\cdot_\QQ(r\cdot_\QQ s)\\
+q\cdot_\QQ(r+_\QQ s)&=(q\cdot_\QQ r)+_\QQ(q\cdot_\QQ s)
+\end{align*}
+\end{theorem}
+
+\begin{definition}[Identity element for $\cdot_\QQ$]
+$1_\QQ=[(1,1)]$.
+\end{definition}
+
+\begin{theorem}
+\begin{enumerate}[label=(\arabic*)]
+\item For all $q\in\QQ$, $q\cdot_\QQ1_\QQ=q$.
+\item For every $0_\QQ\neq q\in\QQ$, there exists a unique $r\in\QQ$ such that $q\cdot_\QQ r=1_\QQ$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof} \
+\begin{enumerate}[label=(\arabic*)]
+\item Let $q=[(a,b)]$. Then
+\begin{align*}
+q\cdot_\QQ1_\QQ
+\end{align*}
+\end{enumerate}
+\end{proof}
+
+
+
+\begin{theorem}
+$\QQ$ is an ordered set if $r<s$ is defined to mean that $s-r$ is a positive rational number.
+\end{theorem}
+\pagebreak
+
+\section{Real Numbers $\RR$}
+\subsection{Construction: Dedekind cuts}
+We shall construct $\RR$ from $\QQ$.
+
+\begin{definition}
+A \vocab{Dedekind cut} $\alpha\subset\QQ$ satisfies the following properties:
+\begin{enumerate}[label=(\roman*)]
+\item $\alpha\neq\emptyset$, $\alpha\neq\QQ$;
+\item if $p\in\alpha$, $q\in\QQ$ and $q<p$, then $q\in\alpha$;
+\item if $p\in\alpha$, then $p<r$ for some $r\in\alpha$.
+\end{enumerate}
+\end{definition}
+
+Note that (iii) simply says that $\alpha$ has no largest member; (ii) implies two facts which will be used freely:
+\begin{itemize}
+\item If $p\in\alpha$ and $q\notin\alpha$ then $p<q$.
+\item If $r\notin\alpha$ and $r<s$ then $s\notin\alpha$.
+\end{itemize}
+
+\begin{example}
+Let $r\in\QQ$ and define
+\[ \alpha_r\coloneqq\{p\in\QQ\mid p<r\}. \]
+We now check that this is indeed a Dedekind cut.
+\begin{enumerate}[label=(\arabic*)]
+\item $p=1+r\notin\alpha_r$ thus $\alpha_r\neq\QQ$. $p=r-1\in\alpha_r$ thus $\alpha_r\neq\emptyset$.
+
+\item Suppose that $q\in\alpha_r$ and $q^\prime<q$. Then $q^\prime<q<r$ which implies that $q^\prime<r$ thus $q^\prime\in\alpha_r$.
+
+\item Suppose that $q\in\alpha_r$. Consider $\dfrac{q+r}{2}\in\QQ$ and $q<\dfrac{q+r}{2}<r$. Thus $\dfrac{q+r}{2}\in\alpha_r$.
+\end{enumerate}
+\end{example}
+
+This example shows that every rational $r$ corresponds to a Dedekind cut $\alpha_r$.
+
+\begin{example}
+$\sqrt[3]{2}$ is not rational, but it is real. $\sqrt[3]{2}$ corresponds to the cut
+\[ \alpha=\{p\in\QQ\mid p^3<2\}. \]
+\begin{enumerate}[label=(\arabic*)]
+\item Trivial.
+\item If $q<p$, by the monotonicity of the cubic function, this implies that $q^3<p^3<2$ thus $q\in\alpha$.
+\item If $p\in\alpha$, consider $\brac{p+\frac{1}{n}}^3<2$.
+\end{enumerate}
+\end{example}
+
+\begin{definition}
+The set of real numbers, denoted by $\RR$, is the set of all Dedekind cuts.
+\[ \RR\coloneqq\{\alpha\mid\alpha\text{ is a Dedekind cut}\} \]
+\end{definition}
+
+\begin{proposition}
+$\RR$ has an order.
+\end{proposition}
+
+\begin{proof}
+We define $\alpha<\beta$ to mean that $\alpha\subset\beta$. Let us check if this is an order (check for transitivity and trichotomy).
+\begin{enumerate}[label=(\arabic*)]
+\item For $\alpha,\beta,\gamma\in\RR$, if $\alpha<\beta$ and $\beta<\gamma$ it is clear that $\alpha<\gamma$. (A proper subset of a proper subset is a proper subset.)
+
+\item It is clear that at most one of the three relations
+\[ \alpha<\beta, \quad \alpha=\beta, \quad \beta<\alpha \]
+can hold for any pair $\alpha,\beta$. 
+
+To show that at least one holds, assume that the first two fail. Then $\alpha$ is not a subset of $\beta$. Hence there exists some $p\in\alpha$ with $p\in\beta$.
+
+If $q\in\beta$, it follows that $q<p$ (since $p\notin\beta$), hence $q\in\alpha$, by (ii). Thus $\beta\subset\alpha$. Since $\beta\neq\alpha$, we conclude that $\beta<\alpha$.
+\end{enumerate}
+Thus $\RR$ is an ordered set.
+\end{proof}
+
+\begin{proposition}
+The ordered set $\RR$ has the least-upper-bound property.
+\end{proposition}
+
+\begin{proof}
+Let $A\neq\emptyset$, $A\subset\RR$. Assume that $\beta\in\RR$ is an upper bound of $A$.
+
+Define $\beta$ to be the union of all $\alpha\in A$; in other words, $p\in\gamma$ if and only if $p\in\alpha$ for some $\alpha\in A$. We shall prove that $\gamma\in\RR$ by checking the definition of Dedekind cuts:
+\begin{enumerate}[label=(\arabic*)]
+\item Since $A$ is not empty, there exists an $\alpha_0\in A$. This $\alpha_0$ is not empty. Since $\alpha_0\subset\gamma$, $\gamma$ is not empty.
+
+Next, $\gamma\subset\beta$ (since $\alpha\subset\beta$ for every $\alpha\in A$), and therefore $\gamma\neq\QQ$.
+
+\item Pick $p\in\gamma$. Then $p\in\alpha_1$ for some $\alpha_1\in A$. If $q<p$, then $q\in\alpha_1$, hence $q\in\gamma$.
+
+\item If $r\in\alpha_1$ is so chosen that $r>p$, we see that $r\in\gamma$ (since $\alpha_1\subset\gamma$).
+\end{enumerate}
+
+Next we prove that $\gamma=\sup A$.
+\begin{enumerate}[label=(\arabic*)]
+\item It is clear that $\alpha\le\gamma$ for every $\alpha\in A$.
+\item Suppose $\delta<\gamma$. Then there is an $s\in\gamma$ and that $s\notin\delta$. Since $s\in\gamma$, $s\in\alpha$ for some $\alpha\in A$. Hence $\delta<\alpha$, and $\delta$ is not an upper bound of $A$.
+\end{enumerate}
+\end{proof}
+
+\begin{proposition}
+$\RR$ is closed under addition.
+\end{proposition}
+
+\begin{proof}
+Let $\alpha = (A,B)$, $\beta = (C,D)$, then $\alpha + \beta = (X,Y)$ where
+\[ X = \{a+c \mid a \in A, c \in C\} \]
+
+To show that $(X,Y)$ is a Dedekind cut, we simply need to check the conditions for Dedekind cuts. 
+\begin{itemize}
+\item Property 1 is trivial.
+
+\item Property 2 is by definition.
+
+\item Property 3:
+
+Let $x,y \in X$ satisfy $x<y$, $y \in X$. 
+
+Let $y = a + c$, $a \in A$, $c \in C$.
+
+Let $\epsilon = y - x$.
+
+Let $a^\prime = a - \dfrac{\epsilon}{2}$, $c^\prime = c - \dfrac{\epsilon}{2}$.
+
+Then \[ a^\prime + c^\prime = a + c - \epsilon = x \]
+$a^\prime < a, a \in A \implies a^\prime \in A$. Similarly, $c^\prime \in C$.\\
+$\therefore\:x = a^\prime +c^\prime \in X$.
+
+\item Property 4:
+
+$\forall a+c \in X, a \in A, c \in C$, $\exists a^\prime \in A, c^\prime \in C$ such that $a<a^\prime, c<c^\prime$.
+
+$\therefore\:a^\prime +c^\prime \in X$ satisfies $a+c < a^\prime+c^\prime$.
+\end{itemize}
+\end{proof}
+
+We now prove that the set of real numbers satisfies the commutative, associative, and identity field axioms with respect to addition.
+
+\begin{proposition}
+Addition is commutative on $\RR$: $\forall\alpha,\beta\in\RR$,
+\[ \alpha+\beta=\beta+\alpha \]
+\end{proposition}
+
+\begin{proof}
+We need to show that $\alpha+\beta\subseteq\beta+\alpha$ and $\beta+\alpha\subseteq\alpha+\beta$.
+
+Let $r\in\alpha+\beta$. Then $r=a+b$ for $a\in\alpha$ and $b\in\beta$. Thus $r=b+a$ since $+$ is commutative on $\QQ$. Hence $r\in\beta+\alpha$. Therefore $\alpha+\beta\subseteq\beta+\alpha$.
+
+Similarly, $\beta+\alpha\subseteq\alpha+\beta$.
+
+Therefore $\alpha+\beta=\beta+\alpha$.
+\end{proof}
+
+\begin{proposition}
+Addition is associative on $\RR$: $\forall\alpha,\beta,\gamma\in\RR$,
+\[ \alpha+(\beta+\gamma)=(\alpha+\beta)+\gamma. \]
+\end{proposition}
+
+\begin{proof}
+Let $r\in\alpha+(\beta+\gamma)$. Then $r=a+(b+c)$ where $a\in\alpha,b\in\beta,c\in\gamma$. Thus $r=(a+b)+c$ by associativity of $+$ on $\QQ$. Therefore $r\in(\alpha+\beta)+\gamma$, hence $\alpha+(\beta+\gamma)\subseteq(\alpha+\beta)+\gamma$.
+
+Similarly, $(\alpha+\beta)+\gamma\subseteq\alpha+(\beta+\gamma)$.
+\end{proof}
+
+\begin{proposition}
+Define $0^*\coloneqq\{p\in\QQ\mid p<0\}$. Then $\alpha+0^*=\alpha$.
+\end{proposition}
+
+\begin{proof}
+Let $r\in\alpha+0^*$. Then $r=a+p$ for some $a\in\alpha,p\in0^*$. Thus $r=a+p<a+0=a$ by ordering on $\QQ$ and identity on $\QQ$. Hence $\alpha+0^*\subseteq\alpha$.
+
+Let $r\in\alpha$. Then there exists $r^\prime>p$ where $r^\prime\in\alpha$. Thus $r-r^\prime<0$, so $r-r^\prime\in0^*$. We see that
+\[ r=\underbrace{r^\prime}_{\in\alpha}+\underbrace{(r-r^\prime)}_{\in0^*}. \]
+Hence $\alpha\subseteq\alpha+0*$.
+\end{proof}
+
+%%%%%%%%%%%%%%%%
+
+\begin{exercise}
+Express $-\alpha$ in terms of $\alpha$; show
+\[ \alpha+(-\alpha)=0=(-\alpha)+\alpha \]
+\end{exercise}
+
+\begin{proof}
+We split this into two cases.
+
+\textbf{Case 1}: $\alpha$ is a rational number, then $\alpha=(A,B)$ where $A = \{x \mid x < \alpha\}$, $B = \{x \mid x \ge \alpha\}$.
+
+Let $-\alpha=(A^\prime,B^\prime)$, where $A^\prime = \{x \mid x < -\alpha\}$, $B^\prime = \{x \mid x\ge -\alpha\}$. 
+We see that $\alpha+(-\alpha) \le 0$ is obvious.
+
+On the other hand, since $0=(O,O^\prime)$, for any $\epsilon<0$ we have
+\[ \epsilon = \brac{\alpha+\frac{\epsilon}{2}} + \brac{-\alpha+\frac{\epsilon}{2}} \in A+A^\prime \]
+Hence $\alpha+(-\alpha)=0$.
+
+\
+
+\textbf{Case 2}: $\alpha$ is irrational, let $\alpha = (A,B)$ where $B$ does not have a lowest value. 
+Then $-B = \{-x \mid x \in B\}$ does not have a highest value.
+
+We wish to define $-\alpha=(-B,-A)$, but first we need to show that this is well-defined by checking through all the conditions.
+
+\begin{itemize}
+\item Property 1: This is trivial.
+
+\item Property 2: Prove that $- A$ and $B$ are disjoint.
+
+Note that $\forall x \in \RR$, if $x=-y$, then exactly one out of $y \in A$ and $y \in B$ is true $\implies$ exactly one out of $x \in -B$ and $x \in -A$ is true.
+
+\item Property 3: Prove $-B$ is closed downwards.
+
+Suppose otherwise, that $x<y, y \in -B$ but $x \notin -B$. Then $-y \in B$, $-x \notin B$. Since $A$ is the complement of $B$, $-y \notin A$, $-x \in A$. But $-y<-x$, which is a contradiction.
+
+\item Property 4 is already guaranteed by the irrationality of $\alpha$.
+\end{itemize}
+
+All of these properties imply that the real numbers form a commutative group by addition.
+\end{proof}
+
+\subsubsection{Negation}
+Given any set $X \subset \RR$, let $-X$ denote the set of the negatives of those rational numbers. That is $x \in X$ if and only if $-x \in -X$. 
+
+If $(A,B)$ is a Dedekind cut, then $-(A,B)$ is defined to be
+$(-B,-A)$.
+
+This is pretty clearly a Dedekind cut. - proof
+
+\subsubsection{Signs}
+A Dedekind cut $(A,B)$ is \textbf{positive} if $0 \in A$ and \textbf{negative} if $0 \in B$. If $(A,B)$ is neither positive nor negative, then $(A,B)$ is the cut representing 0.
+
+If $(A,B)$ is positive, then $-(A,B)$ is negative. Likewise, if $(A,B)$ is negative, then $-(A,B)$ is positive. The cut $(A,B)$ is non-negative if it is either positive or 0.
+
+\subsubsection{Multiplication}
+% Define multiplication of real numbers; you will need to define them for positive real numbers first
+
+%\subsubsection{Positive multiplication}
+Let $\alpha = (A,B)$ and $\beta = (C,D)$ where $\alpha, \beta$ are both non-negative.
+
+We define $\alpha \times \beta$ to be the pair $(X,Y)$ where
+
+$X$ is the set of all products $ac$ where $a \in A, c \in C$ and at least one of the two numbers is non-negative. 
+$Y$ is the set of all products $bd$ where $b \in B, d \in D$.
+
+%\subsubsection{General Multiplication}
+
+
+% https://www.math.brown.edu/reschwar/INF/handout3.pdf
+
+\subsection{Properties}
+\begin{theorem}[$\RR$ is archimedian]\label{thrm:r-archimedian}
+For any $x\in\RR^+$ and $y\in\RR^+$, there exists some $n\in\ZZ^+$ so that
+\[n\cdot x>y.\]
+\end{theorem}
+
+\begin{proof}
+In particular, if we take $x=1$ from this theorem, we immediately get the following statement.
+
+\begin{proposition}\label{prop:r-archimedian}
+For any $y\in\RR$, there exists some positive integer $n$ so that $n>y$.
+\end{proposition}
+
+We now give a proof of Proposition \ref{prop:r-archimedian} directly without using Theorem \ref{thrm:r-archimedian}, and then we prove Theorem \ref{thrm:r-archimedian} from Proposition \ref{prop:r-archimedian}. This shows that these two statements are in fact equivalent, though Proposition \ref{prop:r-archimedian} looks much simpler.
+
+\begin{proof}
+Assume $n\in\ZZ^+$ does not exist; that is to say that the set of positive integers $\ZZ^+$ has an upper bound $y$. Then using the l.u.b. property of $\RR$, $\sup\ZZ^+$ exists, which we denote by $x_0\in\RR$.
+
+Now we look at $x_0-1$. This is not an upper bound by definition of $x_0$, which means there exists some $N\in\ZZ^+$ such that
+\[x_0-1<N.\]
+Then it follows that $x_0<N+1$. Notice that $N+1\in\ZZ^+$. So this contradicts the assumption that $x_0$ is an upper bound.
+
+Hence our original assumption cannot be true, and thus there exists $n\in\ZZ^+$ with $n>y$.
+\end{proof}
+
+For any $x\in\RR^+$ and $y\in\RR$, consider $y\cdot x^{-1}\in\RR$. From Proposition \ref{prop:r-archimedian}, there exists some $n\in\ZZ^+$ such that
+\[n>y\cdot x^{-1}.\]
+Then this is equivalent to $n-yx^{-1}>0$. Since $x>0$, and $\RR$ is an ordered field, we have
+\[(n-y\cdot x^{-1})\cdot x>0.\]
+This is equivalent to $n\cdot x>y$.
+\end{proof}
+
+\begin{remark}
+The archimedian property guarantees that we can use decimals to represent real numbers. %See Rudin 1.22
+\end{remark}
+
+% https://mth32015.files.wordpress.com/2015/01/jan-26-30.pdf
+
+\begin{theorem}[$\QQ$ is dense in $\RR$]
+For any $a,b\in\RR$ with $a<b$, there exists some $x\in\QQ$ such that $a<x<b$.
+\end{theorem}
+
+\begin{proof}
+This means one can find some $m\in\ZZ$ and $n\in\ZZ^+$ so that
+\[a<\frac{m}{n}<b,\]
+which is further equivalent to finding $m\in\ZZ$ and $n\in\ZZ^+$ so that
+\[an<m<bn.\]
+Notice that $b-a>0$, so by the archimedian property, there exists $n\in\ZZ^+$ so that
+\[bn-an=(b-a)n>1.\]
+We now argue that there exists some integer between two real numbers, whenever their difference is larger than 1.
+
+\begin{lemma*}
+For any $\alpha,\beta\in\RR$ with $\beta-\alpha>1$, there exists some integer $m$ so that $\alpha<m<\beta$.
+\end{lemma*}
+
+\begin{proof}
+We prove this lemma by finding such $m$. First, using archimedian property of $\RR$, we can find some integer $N>0$ so that
+\[-N<\alpha<\beta<N.\]
+Then consider the integers which are smaller than $N$ and greater than $\alpha$, i.e., the set
+\[A\coloneqq\{k\in\ZZ\mid a<k\le N\}.\]
+It is not empty since $N\in A$. Since this a subset of $\{-N+1,-N+2,\dots,N-2,N-1,N\}$ which is a finite set, it contains only finite elements. We can pick the smallest one from it and denote it by $m$, i.e., $m\coloneqq\min A$. We claim this $m$ is just the one we are looking for.
+
+First since $m\in A$, $m>\alpha$. Then we only need to check $m<\beta$. If this is not true, i.e., $m\ge\beta$, then we consider $m-1$. It follows
+\[m-1\ge\beta-1\ge\alpha.\]
+This contradicts the fact that $m$ is the smallest integer which is greater than $\alpha$.
+
+Above all, we are done with the lemma.
+\end{proof}
+
+At last, apply the lemma to $\alpha=an$ and $\beta=bn$, we are done.
+\end{proof}
+
+\begin{theorem}[$\RR$ is closed under taking roots]
+For every $y\in\RR^+$ and every $n\in\ZZ^+$, there exists a unique $x\in\RR^+$ so that $x^n=y$.
+\end{theorem}
+
+\begin{proof}
+We first claim that such $x\in\RR^+$, if exists, must be unique. Otherwise, assume that both $x_1,x_2\in\RR^+$ are solutions of the equation
+\[x^n=y,\quad y\in\RR^+,n\in\ZZ^+.\]
+Assume now $x_1<x_2$, then from the fact that $\RR$ is an ordered field, we have $x_1^n<x_2^n$ (why?), a contradiction. Similarly, $x_1>x_2$ also leads to a contradiction, and so $x_1=x_2$.
+
+Now we look for a solution for the equation. Consider a subset of $\RR$ as
+\[S\coloneqq\{a\in\RR^+\mid a^n<y\}.\]
+Try to check that
+\begin{enumerate}[label=(\arabic*)]
+\item $S\neq\emptyset$;
+\item $S$ has an upper bound.
+\end{enumerate}
+Then using the fact that $\RR$ has the l.u.b. property, $\sup S$ exists. Define it as $x$, clearly $x\in\RR^+$. We show that $x$ solves the equation. (The idea of the proof is similar to the proof of $\sup_\QQ\{x\in\QQ\mid x^2\le2\}$ does not exist.)
+
+First, we show that if $x^n<y$, then we can construct some $x_0\in S$ which is greater than $x$, which says $x$ is not an upper bound of $S$. So $x^n\ge y$.
+
+Second, we show that if $x^n>y$, then we can find an upper bound of $S$ which is smaller than $x$, which says that $x$ is not the least upper bound. So $x^n\le y$.
+
+Above all, we must have $x^n=y$.
+
+From now on, we use $y^\frac{1}{n}$ to denote the unique solution for the equation
+\[x^n=y,\quad y\in\RR^+,n\in\ZZ^+,\]
+and call it the $n$-th real root of $y$. The property
+\[(ab)^\frac{1}{n}=a^\frac{1}{n}\cdot b^\frac{1}{n}\]
+immediately follows from the uniqueness of $n$-th real root.
+\end{proof}
+
+\begin{theorem}[Completeness axiom for $\RR$]
+If non-empty $E\subset\RR$ is bounded above, then $E$ has a supremum.
+\end{theorem}
+
+Any set in the reals bounded from above/below must have a supremum/infimum.
+
+\begin{proof}
+We prove this using Dedekind cuts.
+
+Let $S$ be a real number set. 
+We consider the rational number set $A = \{x \in \QQ \mid \exists y \in S\}$. Set $B$ is defined to be the complement of $A$ in $\QQ$.
+
+We go through the definitions to check that $(A|B)$ is a Dedekind cut.
+\begin{enumerate}
+\item Since $S \neq \emptyset$, pick $y \in S$, then $[y]-1$ is a real number smaller than some element in $S$, hence $[y]-1 \in A$ and thus $A \neq \emptyset$.
+
+Since we're given that $S$ is bounded, $\exists M>0$ as the upper bound for $S$, thus $B \neq \emptyset$.
+
+(Note that an upper bound is simply a number that is bigger than anything from the set, and is not the supremum
+
+\item We defined $B$ to be the complement of $A$ in $\QQ$, so this condition is trivial.
+
+\item For any $x,y \in A$, if $x<y$ and $y\in A$, then $\exists z \in S$ such that $y<z \implies x<z \implies x \in A$.
+
+\item Suppose otherwise that $x \in A$ is the largest element in A, then $\exists y \in S$ such that $x<y$
+We then pick a rational number $z$ between $x$ and $y$. 
+Since we still have $z<y$, we have $z \in A$ but $z>x$, contradictory to $z$ being the largest.
+
+Now there's actually an issue with the proof for property 4 here
+How exactly are we finding z?
+
+First $x \in \QQ$. 
+Then $y \in \RR$ so we rewrite it as $y=(C|D)$ via definition.
+
+$x<y$ translates to the fact that $x \in C$.
+
+Since $y$ is real, by definition we know that $C$ must not have a largest element.
+
+In particular, $x$ is not largest and we can pick $z \in C$ such that $z>x$. 
+This is in fact the $z$ that we need
+\end{enumerate}
+
+Now that all the properties of a real number are validated, we may finally conclude that $\alpha=(A|B)$ is indeed a real number.
+
+Now we need to show that $\alpha = \sup S$.
+
+Let $x \in S$. 
+If $x$ is not the maximum value of $S$, i.e. $\exists y \in S,x<y$, then $x \in A$ and thus $x<\alpha$.
+
+If $x$ is the maximum value of $S$, then for any rational number $y<x$ we have $y \in A$, and for any rational number $y \ge x$ we have $y \in B$.
+Thus $x=(A|B)=\alpha$.
+
+In conclusion, $x \le \alpha$ for all $x \in S$.
+
+For any upper bound $x$ of $S$, since $\forall y \in S, x \ge y$ we have $x \in B$ and thus $x \ge \alpha$.
+
+$\therefore$ $\alpha$ is the smallest upper bound of $S$ and thus $\sup S = \alpha$ exists.
+\end{proof}
+
+\subsection{Extended real number system}
+\begin{definition}
+We add $\pm\infty$ to $\RR$, and call the union $\RR\cup\{\pm\infty\}$ the \vocab{extended real number system}. Now any non-empty set $E\subset\RR$ has a supremum and infimum, since we can define
+\[\sup E=+\infty,\quad\text{if $E$ has no upper bound in $\RR$}\]
+and
+\[\inf E=-\infty,\quad\text{if $E$ has no lower bound in $\RR$.}\]
+\end{definition}
+
+The extended real number system does not form a field, but it is customary to make the following conventions:
+\begin{enumerate}[label=(\arabic*)]
+\item If $x$ is real then
+\[ x+\infty=+\infty, \quad x-\infty=-\infty, \quad \frac{x}{+\infty}=\frac{x}{-\infty}=0. \]
+\item If $x>0$ then $x\cdot(+\infty)=+\infty$, $x\cdot(-\infty)=-\infty$.
+\item If $x<0$ then $x\cdot(+\infty)=-\infty$, $x\cdot(-\infty)=+\infty$.
+\end{enumerate}
+When it is desired to make the distinction between real numbers on the one hand and the symbols $+\infty$ and $-\infty$ on the other quite explicit, the former are called \emph{finite}.
+\pagebreak
+
+\section{Euclidean Plane $\RR^2$}
+We consider the Cartesian product of $\RR$ with $\RR$; that is,
+\[ \RR^2\coloneqq\RR\times\RR\coloneqq\{(x_1,x_2)\mid x_1,x_2\in\RR\}. \]
+Over $\RR^2$, we can define operations
+\begin{itemize}
+\item Addition $+$: $(x_1,x_2)+(y_1,y_2)=(x_1+y_1,x_2+y_2)$;
+\item Scalar multiplication $\RR\times\RR^2\to\RR^2$: $c\cdot(x_1,x_2)=(c\cdot x_1,c\cdot x_2)$.
+\end{itemize}
+
+This two operations make $\RR^2$ a 2-dimensional vector space (linear space) over the real field $\RR$. We also say $\RR^2$ is a $\RR$-linear space of real dimension 2. For example, $\{(1,0),(0,1)\}$ form a basis of $\RR^2$.
+
+Moreover, over the linear space $\RR^2$, one can define an inner product as
+\[ \langle(x_1,x_2),(y_1,y_2)\rangle=x_1y_1+x_2y_2. \]
+The inner product induces a norm
+\[ |(x_1,x_2)|=\sqrt{\langle(x_1,x_2),(x_1,x_2)\rangle}=\sqrt{x_1^2+x_2^2}. \]
+From now on, we use $\vec{x}$ to denote $(x_1,x_2)$.
+\begin{proposition} \
+\begin{itemize}
+\item $|\vec{x}|\ge0$, where equality holds if and only if $\vec{x}=\vec{0}$.
+\item $|c\cdot\vec{x}|=|c||\vec{x}|$
+\item $|\vec{x}+\vec{y}|\le|\vec{x}|+|\vec{y}|$
+\item $|\langle\vec{x},\vec{y}\rangle|\le|\vec{x}||\vec{y}|$
+\end{itemize}
+\end{proposition}
+
+All constructions here can be easily generalised to any $\RR^n$ with $n\in\ZZ^+$.
+
+\section{Complex Numbers $\CC$}
+
+
+Over $\RR^2$, we can define a multiplication $\cdot$ as
+\[ (a,b)\cdot(c,d)=(ac-bd,ad+bc). \]
+If we identity $\RR^2$ with
+\[ \CC\coloneqq\{x+yi\mid x,y\in\RR\} \]
+via $(x,y)\mapsto x+yi$, then all structures defined above are induced to $\CC$. In particular, the multiplication is induced to $\CC$ via requiring $i^2=-1$. A nontrivial fact is that $(\CC,+,\cdot)$ is a field. A element in $\CC$ is called a complex number. Usually, people prefer to use $z=x+yi$, $x,y\in\RR$, to denote a complex number. Here $x$ is called the real part of $z$ and $y$ is called the imaginary part of $z$. We use $|z|$ to denote its norm.
+\pagebreak
+
+\section{Euclidean Spaces}
+For each positive integer $n$, let $\RR^n$ be the set of all ordered $n$-tuples
+\[ \vb{x}=(x_1,x_2,\dots,x_n), \]
+where $x_1,\dots,x_n$ are real numbers, called the \emph{coordinates} of $\vb{x}$. The elements of $\RR^n$ are called points, or vectors, especially when $n>1$. We shall denote vectors by boldfaced letters.
+
+Since $\RR^n$ is a vector space (over $\RR$), $\RR^n$ has the following extra properties
+\begin{itemize}
+\item For any two vectors $\vb{x}$ and $\vb{y}$ we may perform addition:
+\[ \vb{x}+\vb{y}=(x_1+y_1,\dots,x_n+y_n) \]
+Properties of addition:
+\begin{enumerate}
+\item $\vb{x}+\vb{y}=\vb{y}+\vb{x}$
+\item $(\vb{x}+\vb{y})+\vb{z}=\vb{x}+(\vb{y}+\vb{z})$
+\item Zero vector $\vb{0}=(0,\dots,0)$ satisfies $\vb{x}+\vb{0}=\vb{0}+\vb{x}=\vb{x}$
+\item For any vector $\vb{x}$, its negative $-\vb{x}$ satisfies $\vb{x}+(-\vb{x})=(-\vb{x})+\vb{x}=\vb{0}$
+\end{enumerate}
+\item For any vector $\vb{x}$ and scalar $k\in\RR$ we may perform scalar multiplication:
+\[ k\vb{x}=(kx_1,\dots,kx_n) \]
+Properties of scalar multiplication:
+\begin{enumerate}
+\item $0\cdot\vb{x}=\vb{0},1\cdot\vb{x}=\vb{x}$
+\item $(kl)\vb{x}=k(l\vb{x})=l(k\vb{x})$
+\item $k(\vb{x}+\vb{y})=k\vb{x}+k\vb{y}$
+\item $(k+l)\vb{x}=k\vb{x}+l\vb{x}$
+\end{enumerate}
+\end{itemize}
+
+We define the \textbf{inner product} (or scalar product) of $\vb{x}$ and $\vb{y}$ by
+\[ \vb{x}\cdot\vb{y}\coloneqq\sum_{i=1}^nx_iy_i. \]
+
+The Euclidean space builds upon the vector space $\RR^n$; specifically speaking, it is $\RR^n$ endowed with two extra notions:
+\begin{itemize}
+\item The \textbf{norm} of the Euclidean space $\norm{\cdot}$ is a real-valued function $\norm{\cdot}:\RR^n\to\RR$. Given a vector $\vb{x}=(x_1,\dots,x_n)$ in $\RR^n$, the norm of $\vb{x}$ is defined as
+\[ \norm{\vb{x}}\coloneqq\sqrt{\vb{x}\cdot\vb{x}}=\sqrt{\sum_{i=1}^nx_i^2}=\sqrt{x_1^2+\cdots+x_n^2}. \]
+\item The \textbf{metric} $d$ of the Euclidean space is a real-valued function $d:\RR^n\times\RR^n\to\RR$. Given two vectors $\vb{x}=(x_1,\dots,x_n)$ and $\vb{y}=(y_1,\dots,y_n)$, the distance between $\vb{x}$ and $\vb{y}$ is defined as
+\[ d(\vb{x},\vb{y})\coloneqq\norm{\vb{x}-\vb{y}}=\sqrt{\sum_{i=1}^n(x_i-y_i)^2}=\sqrt{(x_1-y_1)^2+\cdots+(x_n-y_n)^2}. \]
+\end{itemize}
+
+\begin{remark}
+The norm is something like the length of the vector itself (distant to the origin); the metric refers to the distance function which measures the length between two points in $\RR^n$ (determined by their positional vectors $\vb{x}$ and $\vb{y}$). Essentially, the metric is a much more general notion than the norm: the norm can only be defined on vector spaces; the metric can literally be defined on any set.
+\end{remark}
+
+Norms are required to satisfy the following properties:
+\begin{enumerate}[label=(\arabic*)]
+\item (\textbf{positive definiteness}) for any vector $\vb{x}$, $\norm{\vb{x}}\ge0$, and equality holds if and only if $\vb{x}=\vb{0}$.
+\item (\textbf{absolute homogeneity}) for any vector $\vb{x}$ and scalar $a$, $\norm{a\vb{x}}=|a|\norm{\vb{x}}$.
+\item (\textbf{triangle inequality}) for any two vectors $\vb{x}$ and $\vb{y}$, $\norm{\vb{x}+\vb{y}}\le\norm{\vb{x}}+\norm{\vb{y}}$.
+\end{enumerate}
+
+Metrics are required to satisfy the following properties:
+\begin{enumerate}[label=(\arabic*)]
+\item (\textbf{positive definiteness}) for any two elements $\vb{x}$ and $\vb{y}$, $d(\vb{x},\vb{y})\ge0$, equality holds if and only if $\vb{x}=\vb{y}$.
+\item (\textbf{symmetry}) for any two elements $\vb{x}$ and $\vb{y}$, $d(\vb{x},\vb{y})=d(\vb{y},\vb{x})$.
+\item (\textbf{triangle inequality}) for any three elements $\vb{x}$, $\vb{y}$ and $\vb{z}$, $d(\vb{x},\vb{z})\le d(\vb{x},\vb{y})+d(\vb{y},\vb{z})$.
+\end{enumerate}
+
+Generally, if there is a norm $\norm{\cdot}$ on some vector space, then this norm naturally determines a metric $d(x,y)=\norm{x-y}$, which is precisely the case for Euclidean spaces.
+
+\begin{definition}
+$E\subset\RR^n$ is \vocab{bounded} if there exists $M>0$ such that $\norm{x}\le M$ for all $x\in E$.
+\end{definition}
+
+\begin{exercise}
+Given $E$ and $F$ in $\RR^n$ and real number $k$, define
+\[ kE=\{kx \mid x\in E\} \]
+\[ E+F=\{x+y \mid x\in E,y\in F\} \]
+\begin{enumerate}[label=(\alph*)]
+\item Show that if $E$ is bounded, then $kE$ is bounded;
+\item Show that if $E$ and $F$ are bounded, then $E+F$ is bounded.
+\end{enumerate}
+\end{exercise}
+
+\begin{definition}
+The \vocab{diameter} of $E\subset\RR^n$ is defined as
+\[ \diam E\coloneqq\sup_{x,y\in E}d(x,y). \]
+\end{definition}
+
+\begin{exercise}
+Find the diameter of the open unit ball in $\RR^n$ given by
+\[ B=\{x\in\RR^n \mid \norm{x}<1\}. \]
+\end{exercise}
+
+\begin{solution}
+First note that
+\[ d(x,y)=\norm{x-y}\le\norm{x}+\norm{-y}=\norm{x}+\norm{y}<1+1=2. \]
+On the other hand, for any $\epsilon>0$, we pick
+\[ x=\brac{1-\frac{\epsilon}{4},0,\dots,0}, \quad y=\brac{-\brac{1-\frac{\epsilon}{4}},0,\dots,0}. \]
+Then $d(x,y)=2-\dfrac{\epsilon}{2}>2-\epsilon$.
+
+Therefore $\diam B = 2$.
+\end{solution}
+
+\begin{exercise}
+Given a set $E$ in $\RR^n$, show that $E$ is bounded if and only if $\diam E<+\infty$.
+\end{exercise}
+\begin{proof} \
+
+($\implies$) If $E$ is bounded, then there exists $M>0$ such that $\norm{x}\le M$ for all $x \in E$.
+
+Thus for any $x,y \in E$,
+\[ d(x,y)=\norm{x-y}\le\norm{x}+\norm{y}\le2M. \]
+Thus $\diam E = \sup d(x,y) \le 2M<+\infty$.
+
+($\impliedby$) Suppose that $\diam E=r$. Pick a random point $x \in E$, suppose that $\norm{x}=R$.
+
+Then for any other $y \in E$,
+\[ \norm{y}=\norm{x+(y-x)}\le\norm{x}+\norm{y-x}\le R+r. \]
+Thus, by picking $M=R+r$, we obtain $\norm{y}\le M$ for all $y \in E$, and we are done.
+
+\begin{remark}
+Basically you use $x$ to confine $E$ within a ball, which is then confined within an even bigger ball centered at the origin.
+\end{remark}
+\end{proof}
+
+\begin{definition}
+The \vocab{distance between sets} $E\subset\RR^n$ and $F\subset\RR^n$ is defined as
+\[ d(E,F)\coloneqq\inf_{x\in E,y\in F}\norm{x-y}. \]
+\end{definition}
+
+Obviously $d(E,F)>0$ implies that $E$ and $F$ are disjoint, but $E$ and $F$ may still be disjoint even if $d(E,F)=0$. For example, the closed intervals $E=(-1,0)$ and $F=(0,1)$.
+
+\begin{exercise}
+Suppose that $E$ and $F$ are sets in $\RR^n$ where $E$ and $F$ is finite. Prove that $E$ and $F$ are disjoint if and only if $d(E,F)>0$.
+\end{exercise}

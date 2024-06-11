@@ -1,0 +1,59 @@
+\chapter{Sequence and Series of Functions}
+\section{Uniform Convergence}
+\begin{definition}
+Suppose $\{f_n\}$, $n=1,2,3,\dots$ is a sequence of functions defined on a set $E$, and suppose that the sequence of numbers $\{f_n(x)\}$ converges for every $x\in E$. We can then define a function $f$ by
+\[ f(x)=\lim_{n\to\infty}f_n(x). \]
+We say that $\{f_n\}$ \vocab{converges pointwise} to $f$ on $E$, denoted by $f_n\to f$.
+
+Similarly, if $\sum f_n(x)$ converges for every $x\in E$, and if we define
+\[ f(x)=\sum_{n=1}^\infty f_n(x) \]
+the function $f$ is called the \vocab{sum of the series} $\sum f_n$.
+\end{definition}
+pointwise convergence
+
+\begin{definition}
+Assume $\{f_n\}$ is a sequence of functions defined over a set $X$ and $f$ is also a function defined over $X$. We say $\{f_n\}$ \vocab{uniformly converges} to $f$ over $X$, if for any $\epsilon>0$, there exists $N>0$ (which is independent of $x$) so that for any $x\in X$,
+\[ |f_n(x)-f(x)|<\epsilon. \]
+\end{definition}
+
+\begin{notation}
+We denote this uniform convergence over $X$ by $f_n\rightrightarrows f$.
+\end{notation}
+
+\section{Uniform Convergence and Continuity}
+
+\section{Uniform Convergence and Integration}
+\begin{theorem}
+Assume $\{f_n\}$ is a sequence of functions defined over $[a,b]$ and each $f_n\in R_\alpha[a,b]$. If $f_n\to f$, then $f\in R_\alpha[a,b]$, and
+\[ \lim_{n\to\infty}\int_a^bf_n\dd{\alpha}=\int_a^bf\dd{\alpha}. \]
+\end{theorem}
+
+\begin{proof}
+Define
+\end{proof}
+
+\begin{corollary}
+Assume $a_n\in R_\alpha[a,b]$ and
+\[ f(x)\coloneqq\sum_{n=0}^\infty a_n(x) \]
+converges uniformly. Then it follows
+\[ \int_a^bf\dd{\alpha}=\sum_{n=0}^\infty a_n\dd{\alpha}. \]
+\end{corollary}
+
+\begin{proof}
+Consider the sequence of partial sums 
+\[ f_n(x)\coloneqq\sum_{k=0}^na_k(x), \quad n=0,1,\dots \]
+It follows $f_n\in R_\alpha[a,b]$ and $f_n\rightrightarrows f$. Apply above theorem to $\{f_n\}$ and the conclusion follows.
+\end{proof}
+
+\section{Uniform Convergence and Differentiation}
+\begin{theorem}
+Assume $\{f_n\}$ is a sequence of functions defined over $[a,b]$ and differentiable. If $\{f_n^\prime\}$ uniformly converges on $[a,b]$ and $\{f_n\}$ converges at some point $x_0\in[a,b]$, then $\{f_n\}$ uniformly converges on $[a,b]$ to some function $f$. Moreover, $f$ is differentiable and
+\[ f^\prime(x)=\lim_{n\to\infty}f_n^\prime(x) \]
+for any $x\in[a,b]$.
+\end{theorem}
+
+\begin{proof}
+
+\end{proof}
+
+\section{Stone--Weierstrass Approximation Theorem}

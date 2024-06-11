@@ -1,0 +1,53 @@
+\chapter{Continuity}
+\section{Limit of Functions}
+Assume $(X,d_X)$ is metric space and $E\subset X$ is a subset of $X$. Then the metric $d_X$ induces a metric on $E$. We now consider another metric space $(Y,d_Y)$. A map $f:E\to Y$ is also called a function over $E$ with values in $Y$. In particular, if $Y=\RR$, then $f$ is called a real-valued function; and if $Y=\CC$, $f$ is called a complex-valued function.
+
+\begin{definition}\label{defn:limit-function}
+Consider a limit point $p\in E$ and a point $q\in Y$. We say the \vocab{limit} of the funcion $f(x)$ at $p$ is $q$, denoted as
+\[ \lim_{x\to p}f(x)=q \]
+if $\forall\epsilon>0$, $\exists\delta>0\suchthat\forall x\in E$ with $0<d_X(x,p)<\delta$, there is
+\[ d_Y\brac{f(x), q}<\epsilon. \]
+\end{definition}
+
+We can recast this definition in terms of limits of sequences:
+\begin{proposition}
+Let $X,Y,E,f,p$ be as in Definition \ref{defn:limit-function}. Then $\displaystyle\lim_{x\to p}f(x)=q$ if and only if
+\[\lim_{n\to\infty}f(p_n)=q\]
+for every sequence $\{p_n\}$ in $E$ such that $p_n \neq p$ and $\displaystyle\lim_{n\to\infty}p_n=p$.
+\end{proposition}
+
+\begin{proof} \
+
+($\implies$) Suppose $\displaystyle\lim_{x\to p}f(x)=q$. Choose $\{p_n\}$ in $E$ satisfying $p_n \neq p$ and $\displaystyle\lim_{n\to\infty}p_n=p$.
+
+Let $\epsilon>0$ be given. Then there exists $\delta>0$ such that $d_Y\brac{f(x),q}<\epsilon$ if $x\in E$ and $0<d_X(x,p)<\delta$.
+
+Also, there exists $N\in\NN$ such that $n>N$ implies $0<d_X(p_n,p)<\delta$. Thus for $n>N$, we have $d_Y\brac{f(p_n),q}<\epsilon$, which shows that $\displaystyle\lim_{n\to\infty}f(p_n)=q$.
+
+($\impliedby$) 
+\end{proof}
+
+By the same proofs as for sequences, limits are unique, and in $\RR$ they add/multiply/divide as expected.
+
+\begin{definition}
+$f$ is \vocab{continuous} at $p$ if
+\[ \lim_{x\to p}f(x) = f(p). \]
+In the case where $p$ is not a limit point of the domain $E$, we say $f$ is continuous at $p$. If $f$ is continuous at all points of $E$, then we say $f$ is continuous on $E$.
+\end{definition}
+
+The sequential definition of continuity follows almost directly from the sequential definition of limits: 
+$f$ is continuous at $p$ if for every sequence $x_n$ converging to $p$, the sequence $f(x_n)$ converges to $f(p)$.
+
+
+
+\section{Continuous Functions}
+
+\section{Continuity and Compactness}
+
+\section{Continuity and Connectedness}
+
+\section{Discontinuities}
+
+\section{Monotonic Functions}
+
+\section{Infinite Limits and Limits at Infinity}
