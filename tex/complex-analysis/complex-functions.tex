@@ -1,0 +1,191 @@
+\chapter{Complex Functions}\label{chap:complex-functions}
+\section{Complex Differentiability}
+\begin{definition} \
+Suppose $a\in\CC$, $U\subseteq\CC$.
+\begin{enumerate}[label=(\roman*)]
+\item The \vocab{open ball} of radius $r>0$ centred at $a$ is defined as
+\[B_r(a)\coloneqq\{z\in\CC\mid |z-a|<r\}.\]
+For the \vocab{closed ball}, we use the condition $|z-a|\le r$ instead.
+\item $U$ is \vocab{open} if for every $z\in U$ there exists an open ball $B_r(z)\subset U$.
+\item $a$ is a \vocab{boundary point} of $U$ if every $B_r(a)$ contains both points of $U$ and points not in $U$.
+%\item $a$ is \vocab{adherent} to $U$ if every $B_r(a)$ contains some element of $U$.
+\item $a$ is an \vocab{interior point} of $U$ if there exists $B_r(a)\subset U$.
+\item $U$ is \vocab{closed} if it contains all its boundary points. The complement of a closed set is then open.
+\item The closure of $U$ is defined to be the union of $U$ and all its boundary points.
+\item $U$ is \vocab{bounded} if there exists $C>0$ such that $|z|\le C$ for all $z\in U$.
+\end{enumerate}
+\end{definition}
+
+\begin{definition}[Limit]
+For $f:U\setminus\{a\}\to\CC$, we say that $\displaystyle\lim_{z\to a}f(z)=w$ if $\forall\epsilon>0$, $\exists\delta>0$ such that $\forall z\in U$,
+\[0<|z-a|<\delta\implies |f(z)-w|<\epsilon.\]
+\end{definition}
+
+\begin{definition}[Continuity]
+Let $a\in U$. We say that $f$ is \vocab{continuous} at $a$ if
+\[\lim_{z\to a}f(z)=f(a).\]
+\end{definition}
+
+\begin{definition}[Convergence]
+Given a sequence of complex numbers $(z_n)_{n\in\NN}$, we say that $\displaystyle w=\lim_{n\to\infty}z_n$ if $\forall\epsilon>0$, $\exists N\in\NN\suchthat\forall n\ge N$, $|z_n-w|<\epsilon$.
+\end{definition}
+
+\begin{definition}[Cauchy sequence]
+A sequence $(z_n)$ is a \vocab{Cauchy sequence} if $\forall\epsilon>0$, $\exists N\in\NN\suchthat\forall m,n\ge N$, $|z_n-z_m|<\epsilon$.
+\end{definition}
+
+%pg21 of Serge Lang
+
+\begin{definition}[Complex differentiability]
+Let $a\in\CC$, and suppose that $f:U\to\CC$ is a function, where $U$ is a neighbourhood of $a$. In particular, $f$ is defined on some ball $B_r(a)$. Then we say that $f$ is (complex) differentiable at $a$ if
+\[\lim_{z\to a}\frac{f(z)-f(a)}{z-a}\]
+exists. If the limit exists, we write $f^\prime(a)$ for it and call this the derivative of $f$ at $a$.
+\end{definition}
+
+Since we will be talking exclusively about functions on $\CC$, we just use the terms differentiable/derivative and omit the word ``complex''. The following lemma collects the basic facts about derivatives. We omit the proof, which is essentially identical to the real case.
+
+\begin{lemma}
+Let $a\in\CC$, let $U$ be a neighbourhood of $a$ and let $f,g:U\to\CC$.
+\begin{enumerate}[label=(\arabic*)]
+\item (Sums, products) If $f,g$ are differentiable at $a$, then $f+g$ and $fg$ are differeitnable at $a$, and
+\[(f+g)^\prime(a)=f^\prime(a)+g^\prime(a)\]
+and
+\[(fg)^\prime(a)=f^\prime(a)g(a)+f(a)g^\prime(a).\]
+\item (Quotients) If $f,g$ are differentiable at $a$ and $g(a)\neq0$ then $f/g$ is differentiable at $a$ and
+\[\brac{\frac{f}{g}}^\prime(a)=\frac{f^\prime(a)g(a)-f(a)g^\prime(a)}{g(a)^2}.\]
+\item (Chain rule) If $U$ and $V$ are open subsets of $\CC$ and $f:V\to U$, $g:U\to\CC$, where $f$ is differentiable at $a\in V$ and $g$ is differeitnable at $f(a)\in U$, then $g\circ f$ is differentiable at $a$, with
+\[(g\circ f)^\prime(a)=g^\prime(f(a))f^\prime(a).\]
+\end{enumerate}
+\end{lemma}
+
+\begin{example}
+$f(z)=1$ and $f(z)=z$ are analytic functions from $\CC$ to $\CC$, with derivatives $f^\prime(z)=0$ and $f^\prime(z)=1$ respectively.
+
+Therefore, all polynomials $f(z)=a_nz^n+\cdots+a_1z+a_0$ are analytic, with $f^\prime(z)=na_nz^{n-1}+\cdots+a_1$.
+\end{example}
+
+Just as in the real-variable case one can formulate complex differentiability in the following form, which is in fact the better form to use in most instances.
+
+\begin{lemma}
+Let $a\in\CC$, let $U$ be a neighbourhood of $a$ and let $f:U\to\CC$. Then $f$ is differentiable at $a$, with derivative $f^\prime(a)$, if and only if we have
+\begin{equation}
+f(z)=f(a)+f^\prime(a)(z-a)+\epsilon(z)(z-a)
+\end{equation}
+where $\epsilon(z)\to0$ as $z\to a$.
+\end{lemma}
+
+It is an easy exercise to check that this definition is indeed equivalent to (really just a reformulation of) the previous one.
+
+Finally, we give an important definition.
+
+\begin{definition}[Holomorphic function]
+Let $U\subseteq\CC$ be an open set (for example, a domain). Let $f:U\to\CC$ be a function. If $f$ is complex differentiable at every $a\in U$, we say that $f$ is holomorphic on $U$.
+\end{definition}
+
+\begin{comment}
+\begin{definition}[Continuity]
+$f:\Omega\to\CC$ for $\Omega\subset\CC$ open is \vocab{continuous} at $z_0$ if $\displaystyle\lim_{z\to z_0}=f(z_0)$.
+\end{definition}
+
+\begin{proposition}
+$f$ is continuous if and only if $f$ is continuous at all $a\in\Omega$.
+\end{proposition}
+
+\begin{proposition}
+If $f,g:\Omega\to\CC$ are continuous, then so are $f+g$, $fg$ and $f/g$ (where the last one is defined over $\Omega\setminus\{x\mid g(x)=0\}$).
+\end{proposition}
+
+\begin{proposition}
+An analytic function is continuous.
+\end{proposition}
+
+\begin{proof}
+Suppose $f:\Omega\to\CC$ is analytic with derivative 
+\[f^\prime(z)=\lim_{h\to0}\frac{f(z+h)-f(z)}{h}.\]
+Then
+\[\lim_{h\to0}\brac{f(z+h)-f(z)}=f^\prime(z)\lim_{h\to0}h=0.\]
+\end{proof}
+\end{comment}
+
+\subsection{Cauchy--Riemann Equations}
+A function from $\CC$ to $\CC$ may also be thought of as a function from $\RR^2$ to $\RR^2$, and it is useful to study what differentiability means in this language.
+
+Let $a\in\CC$, and let $U$ be a neighbourhood of $a$. Let $f:U\to\CC$ be a function. We abuse notation and identify $\CC\cong\RR^2$ in the usual way, and identify $a$ with $(a_1,a_2)$ (thus $a=a_1+ia_2$). Then (again with some abuse of notation) we may think of $U$ as an open subset of $\RR^2$ and write $f=(u,v)$, where $u,v:\RR^2\to\RR$ (the letters $u,v$ are quite traditional in this context, and sometimes we call these the components of $f$). Another way to think of this is that $f(x+iy)=u(x,y)+iv(x,y)$.
+
+\begin{example}
+Consider the function $f(z)=z^2$ (which is holomorphic on all of $\CC$). Since $(x+iy)^2=(x^2-y^2)+2ixy$, we see that the components of $f$ are given by $u(x,y)=x^2-y^2$, $v(x,y)=2xy$.
+\end{example}
+
+We have the partial derivatives
+\[\pdv{u(a)}{x}\coloneqq\lim_{h\to0}\frac{u(a_1+h,a_2)-u(a_1,a_2)}{h}\]
+(if the limit exists) and
+\[\pdv{u(a)}{y}\coloneqq\lim_{k\to0}\frac{u(a_1,a_2+k)-u(a_1,a_2)}{k},\]
+and similarly for $v$. It is important to note that $h, k$ in these limits are real.
+
+An important fact is that if $f$ is differentiable then these partial derivatives do exist, and moreover they are subject to a constraint.
+
+\begin{theorem}[Cauchy--Riemann equations]
+Let $a\in\CC$, let $U$ be a neighbourhood of $a$, and let $f:U\to\CC$ be a function which is complex differentiable at $a$. Let $u,v:\RR^2\to\RR$ be the components of $f$. Then the four partial derivatives $\displaystyle\pdv{u}{x}, \pdv{u}{y}, \pdv{v}{x}, \pdv{v}{y}$ exist at $a$. Moreover, we have the Cauchy--Riemann equations
+\begin{equation}
+\pdv{u}{x}=\pdv{v}{y}\quad\text{and}\quad\pdv{v}{x}=-\pdv{u}{y}
+\end{equation}
+and $\displaystyle f^\prime(a)=\pdv{u(a)}{x}+i\pdv{v(a)}{x}$.
+\end{theorem}
+
+\begin{proof}
+Write $f(z)=u(z)+iv(z)$, where $u,v:\Omega\to\RR$ are real-valued functions. Suppose $f$ is analytic. We compare two ways of taking the limit $f^\prime(z)$:
+
+First take $h$ to be a real number approaching $0$. Then
+\[f^\prime(z)=\pdv{f}{x}=\pdv{u}{x}+i\pdv{v}{x}.\]
+Next, take $h$ to be purely imaginary, i.e., let $h=ik$ for some $k\in\RR$. Then
+\[f^\prime(z)=\lim_{k\to0}\frac{f(z+ik)-f(z)}{ik}=-i\pdv{f}{y}=-i\pdv{u}{y}+\pdv{v}{y}.\]
+Comparing real and imaginary parts, we obtain
+\[\pdv{f}{x}=-i\pdv{f}{y},\]
+or, equivalently,
+\[\pdv{u}{x}=\pdv{v}{y}\quad\text{and}\quad\pdv{v}{x}=-\pdv{u}{y}.\]
+\end{proof}
+
+Assuming for the time being that $u,v$ have continuous partial derivatives of all orders (and in particular the mixed partials are equal), we can show that
+\[\Delta u=\pdv[2]{u}{x}+\pdv[2]{u}{y}=0,\quad\Delta v=\pdv[2]{v}{x}+\pdv[2]{v}{y}=0.\]
+Such an equation $\Delta u=0$ is called Laplace's equation and its solution is said to be a harmonic function.
+
+Let us pause to give a simple example using the Cauchy-Riemann equations, which shows that complex differentiation is a much more rigid property than one might think at first sight.
+
+\begin{example}
+The function $f(z)=\bar{z}$ is not (complex) differentiable anywhere.
+\end{example}
+
+\begin{proof}
+Let $u,v:\RR^2\to\RR$ be the components of $f$. Then clearly $u(x,y) = x$, $v(x,y)=-y$ and so $\partial_x u=1,\partial_y u=0, \partial_x v=0, \partial_y v=-1$. Thus $\partial_xu$ is never equal to $\partial_yv$, so the Cauchy--Riemann equations are never satisfied.
+\end{proof}
+
+\begin{comment}
+$\CC$ is $\RR^2$ with a multiplication. Note that each map $f:\CC\to\CC$ induces a map $f_R:\RR^2\to\RR^2$ (and vice versa).
+\begin{example}
+Consider $f:\CC\to\CC$, $z\mapsto z^2$.
+
+This is equivalent to $x+iy\mapsto (x+iy)^2=(x^2-y^2)+(2xy)i$.
+
+Thus the mapping is the same as $f_R:\RR^2\to\RR^2$, $(x,y)\mapsto(x^2-y^2,2xy)$.
+\end{example}
+We want to form a connection between differentiability in $\CC$ and $\RR^2$.
+\begin{definition}
+A map $f_R:\RR^2\to\RR^2$ is called (totally) differentiable at $\begin{pmatrix}x_0\\ y_0\end{pmatrix}$ if there is a matrix $J\in\RR^{2\times2}$ and a map $\phi:\RR^2\to\RR^2$
+\[f_R\brac{\begin{pmatrix}x\\y\end{pmatrix}}=\underbrace{f_R\brac{\begin{pmatrix}x_0\\y_0\end{pmatrix}}+J\brac{\begin{pmatrix}x\\y\end{pmatrix}-\begin{pmatrix}x_0\\ y_0\end{pmatrix}}}_{\text{linear approximation}}+\underbrace{\phi\brac{\begin{pmatrix}x\\ y\end{pmatrix}}}_{\text{error term}}\]
+where $\frac{\phi\brac{\begin{pmatrix}x\\ y\end{pmatrix}}}{\norm{\begin{pmatrix}x\\y\end{pmatrix}-\begin{pmatrix}x_0\\ y_0\end{pmatrix}}}\to0$ as $\begin{pmatrix}x\\y\end{pmatrix}\to\begin{pmatrix}x_0\\ y_0\end{pmatrix}$.
+
+$J$ is called the \textbf{Jacobian matrix} of $f_R$ at $\begin{pmatrix}x_0\\y_0\end{pmatrix}\in\RR^2$:
+\[J=\begin{pmatrix}
+\vdots&\vdots\\
+\frac{\partial f_R}{\partial x}&\frac{\partial f_R}{\partial y}\\
+\vdots&\vdots
+\end{pmatrix}\]
+\end{definition}
+\begin{example}
+Considering the above example, 
+\[J=\begin{pmatrix}
+2x&-2y\\
+2y&2x
+\end{pmatrix}.\]
+\end{example}
+\end{comment}

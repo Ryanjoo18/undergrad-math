@@ -1,18 +1,15 @@
-\chapter{Number Systems}
-\section{Natural Numbers $\NN$}
-\subsection{Construction}
+\chapter{Number Systems}\label{chap:number-systems}
+\section{Natural Numbers}
 In Peano's development, it is assumed that there is a set $\NN$ (the natural numbers) of undefined objects with a distinguished element $1$ such that
 \begin{enumerate}[label=(\roman*)]
 \item $1$ is a natural number; that is $1\in\NN$;
 \item every $n\in\NN$ has a successor $S(n)\in\NN$;
 \item for every $n$, $S(n)\neq1$ (there is no number with 1 as successor)
 \item if $S(n)=S(m)$, then $n=m$;
-\item if $A$ is a set of natural numbers such that $1\in A$ and
-\[n\in A\implies S(n)\in A,\]
-then $A$ contains all natural numbers.
+\item if $A$ is a set of natural numbers such that $1\in A$ and $n\in A\implies S(n)\in A$, then $A$ contains all natural numbers.
 \end{enumerate}
+These are known as \vocab{Peano's axioms}.
 
-\subsection{Properties}
 \begin{theorem}[Archimedean property of $\NN$]
 $\NN$ is not bounded above.
 \end{theorem}
@@ -26,8 +23,29 @@ Now $n+1\in\NN$ and $n+1>\sup\NN$. This is a contradiction.
 \end{proof}
 \pagebreak
 
-\section{Rational Numbers $\QQ$}
-\subsection{Construction}
+\section{Integers}
+\begin{definition}
+For $(a,b),(c,d)\in\NN\times\NN$, we define a relation
+\[(a,b)\sim(c,d)\iff a+d=b+c.\]
+\end{definition}
+
+\begin{proposition}
+$\sim$ is an equivalence relation on $\NN\times\NN$.
+\end{proposition}
+
+\begin{proof}
+Suppose $(a,b),(c,d),(e,f)\in\NN\times\NN$.
+\begin{enumerate}[label=(\roman*)]
+\item $\sim$ is reflexive: $(a,b)\sim(a,b)$ because $a+b=b+a$ in $\NN$, by commutativity in $\NN$.
+\item $\sim$ is symmetric: If $(a,b)\sim(c,d)$, then $(c,d)\sim(a,b)$ because if $a+d=b+c$, then $c+b=d+a$ in $\NN$.
+\item $\sim$ is transitive: 
+\end{enumerate}
+\end{proof}
+
+%https://www.math.wustl.edu/~freiwald/310integers.pdf
+\pagebreak
+
+\section{Rational Numbers}
 \begin{notation}
 $\ZZ^\prime=\ZZ\setminus\{0\}$.
 \end{notation}
@@ -61,7 +79,7 @@ Hence $adf=bde$. Since $d\neq0$, the Cancellation Law implies that $af=bc$. Henc
 
 \begin{definition}
 The set of \vocab{rational numbers} is defined by
-\[ \QQ\coloneqq\ZZ\times\ZZ^\prime/\sim \]
+\[\QQ\coloneqq\ZZ\times\ZZ^\prime/\sim\]
 i.e. $\QQ$ is the set of $\sim$ equivalence classes.
 \end{definition}
 
@@ -69,51 +87,35 @@ i.e. $\QQ$ is the set of $\sim$ equivalence classes.
 For each $(a,b)\in\ZZ\times\ZZ^\prime$, the corresponding equivalence class is denoted by $[(a,b)]$.
 \end{notation}
 
-Next we want to define an addition operation on $\QQ$. You may know that
-\[\frac{a}{b}+\frac{c}{d}=\frac{ad+bc}{bd}.\]
-This suggests we make the following definition:
-
-\begin{definition}
-We define the binary operation $+_\QQ$ on $\QQ$ 
-by
+We define addition $+_\QQ$ and multiplication $\cdot_\QQ$ on $\QQ$ as follows:
 \[[(a,b)]+_\QQ[(c,d)]=[(ad+bc,bd)].\]
-\end{definition}
-
-\begin{remark}
-Since $b\neq0$ and $d\neq0$, we have that $bd\neq0$ and so $(ad+bc,bd)\in\ZZ\times\ZZ^\prime$.
-\end{remark}
-
-\begin{lemma}
-$+_\QQ$ is well-defined.
-\end{lemma}
-
-\begin{theorem}
-For all $q,r,s\in\QQ$, we have that
-\[q+_\QQ r=r+_\QQ q\]
-\[q+_\QQ(r+_\QQ s)=(q+_\QQ r)+_\QQ s.\]
-\end{theorem}
-
-\begin{definition}[Identity element for $+_\QQ$]
-$0_\QQ=[(0,1)]$.
-\end{definition}
+\[[(a,b)]\cdot_\QQ[(c,d)]=[(ac,bd)].\]
 
 \begin{proposition}
-\begin{enumerate}[label=(\arabic*)]
-\item For any $q\in\QQ$, $q+_\QQ0_\QQ=q$.
-\item For any $q\in\QQ$, there exists a unique $r\in\QQ$ such that $q+_\QQ r=0_\QQ$.
-\end{enumerate}
+$+_\QQ$ and $\cdot_\QQ$ are well-defined.
 \end{proposition}
 
-\begin{proof} \
-\begin{enumerate}[label=(\arabic*)]
-\item Let $q=[(a,b)]$. Then
+\begin{lemma}
+$\QQ$ is a field, with addition and multiplication as defined above.
+\end{lemma}
+
+\begin{proof}
+We check the field axioms.
+\begin{enumerate}[label=(\roman*)]
+\item commutativity of addition
+\item associativity of addition
+\item Let $0_\QQ=[(0,1)]$. We now show that $0_\QQ$ is an additive identity.
+
+Let $q=[(a,b)]$. Then
 \begin{align*}
-q+_\QQ0Q&=[(a,b)]+_\QQ[(0,1)]\\
+q+_\QQ 0_\QQ&=[(a,b)]+_\QQ[(0,1)]\\
 &=[(a\cdot1+0\cdot b,b\cdot1)]\\
 &=[(a,b)]\\
 &=q.
 \end{align*}
-\item To show that there exists at least one such element, consider $r=[(-a,b)]$. Then
+Since for any $q\in\QQ$, $q+_\QQ0_\QQ=q$, thus $0_\QQ$ is an additive identity. Hence an additive identity exists.
+
+\item Consider $r=[(-a,b)]$. Then
 \begin{align*}
 q+_\QQ r&=[(a,b)]+_\QQ[(-a,b)]\\
 &=[(ab+(-a)b,b^2)]\\
@@ -125,78 +127,93 @@ q+_\QQ r&=[(0,b^2)]\\
 &=[(0,1)]\\
 &=0_\QQ
 \end{align*}
-As before, simple algebra shows that there exists at most one such element.
-\end{enumerate}
-\end{proof}
+Since for any $q\in\QQ$, there exists a unique $r\in\QQ$ such that $q+_\QQ r=0_\QQ$, hence the additive inverse exists.
 
-\begin{definition}
-For any $q\in\QQ$, $-q$ is the unique element of $\QQ$ such that
-\[q+_\QQ(-q)=0_\QQ.\]
-\end{definition}
+\item commutativity of multiplication
 
-\begin{definition}
-We define the binary operation $-_\QQ$ on $\QQ$ by
-\[q-_\QQ r=q+_QQ(-r).\]
-\end{definition}
+We want to show that for all $q,r\in\QQ$, $q\cdot_\QQ r=r\cdot_\QQ q$.
 
-Next we want to define a multiplication operation on $\QQ$. Note that
-\[\frac{a}{b}\cdot\frac{c}{d}=\frac{ac}{bd}.\]
-This suggests we make the following definition.
+\item associativity of multiplication
 
-\begin{definition}
-We define the binary operation $\cdot_\QQ$ on $\QQ$ by
-\[[(a,b)]\cdot_\QQ[(c,d)]=[(ac,bd)].\]
-\end{definition}
+We want to show that for all $q,r\in\QQ$, $(q\cdot_\QQ r)\cdot_\QQ s=q\cdot_\QQ(r\cdot_\QQ s)$.
 
-\begin{remark}
-Since $b\neq0$ and $d\neq0$, we have that $bd\neq0$ and so $(ac,bd)\in\ZZ\times\ZZ^\prime$.
-\end{remark}
+\item distributivity
 
-\begin{lemma}
-$\cdot_\ZZ$ is well-defined.
-\end{lemma}
+We want to show that for all $q,r,s\in\QQ$, $q\cdot_\QQ(r+_\QQ s)=(q\cdot_\QQ r)+_\QQ(q\cdot_\QQ s)$.
 
-\begin{theorem}
-For all $q,r,s\in\QQ$, we have that
-\begin{align*}
-q\cdot_\QQ r&=r\cdot_\QQ q\\
-(q\cdot_\QQ r)\cdot_\QQ s&=q\cdot_\QQ(r\cdot_\QQ s)\\
-q\cdot_\QQ(r+_\QQ s)&=(q\cdot_\QQ r)+_\QQ(q\cdot_\QQ s)
-\end{align*}
-\end{theorem}
+\item Let $1_\QQ=[(1,1)]$. We now show that $1_\QQ$ is a multiplicative identity.
 
-\begin{definition}[Identity element for $\cdot_\QQ$]
-$1_\QQ=[(1,1)]$.
-\end{definition}
-
-\begin{theorem}
-\begin{enumerate}[label=(\arabic*)]
-\item For all $q\in\QQ$, $q\cdot_\QQ1_\QQ=q$.
-\item For every $0_\QQ\neq q\in\QQ$, there exists a unique $r\in\QQ$ such that $q\cdot_\QQ r=1_\QQ$.
-\end{enumerate}
-\end{theorem}
-
-\begin{proof} \
-\begin{enumerate}[label=(\arabic*)]
-\item Let $q=[(a,b)]$. Then
+Let $q=[(a,b)]$. Then
 \begin{align*}
 q\cdot_\QQ1_\QQ
+&=[(a,b)]\cdot_\QQ[(1,1)]\\
+&=[(a\cdot1,b\cdot1)]\\
+&=[(a,b)]\\\
+&=1_\QQ
+\end{align*}
+
+Since for all $q\in\QQ$, $q\cdot_\QQ1_\QQ=q$, $1_\QQ$ is a multiplicative identity. Hence a multiplicative identity exists.
+
+\item Suppose that $q=[(a,b)]\neq[(0,1)]$. Then $a\neq0$ and so $(b,a)\in\ZZ\times\ZZ^\prime$. Let $r=[(b,a)]$. Then
+\begin{align*}
+q\cdot_\QQ r
+&=[(a,b)]\cdot_\QQ[(b,a)]\\
+&=[(ab,ba)]\\
+&=[(1,1)]\\
+&=1_\QQ.
 \end{align*}
 \end{enumerate}
+Since for every $0_\QQ\neq q\in\QQ$, there exists a unique $r\in\QQ$ such that $q\cdot_\QQ r=1_\QQ$, thus $r$ is a multiplicative inverse. Hence a multiplicative inverse exists.
 \end{proof}
 
+Since $\QQ$ is a field, we have the following results:
+\begin{enumerate}[label=(\arabic*)]
+\item The additive identity in $\QQ$ is unique.
+\item The additive inverse of an element of $\QQ$ is unique.
+\item The multiplicative identity of $\QQ$ is unique.
+\item The multiplicative inverse of a nonzero element of $\QQ$ is unique.
+\end{enumerate}
 
+\begin{notation}
+Since the additive inverse is unique, we denote the additive inverse of $q\in\QQ$ by $-q$; we define the binary operation $-_\QQ$ on $\QQ$ by
+\[q-_\QQ r=q+_\QQ(-r).\]
+\end{notation}
 
-\begin{theorem}
-$\QQ$ is an ordered set if $r<s$ is defined to mean that $s-r$ is a positive rational number.
-\end{theorem}
-\pagebreak
+\begin{notation}
+Since the multiplicative inverse is unique, we denote the additive inverse of $q\in\QQ$ by $q^{-1}$.
+\end{notation}
 
-\section{Real Numbers $\RR$}
-\subsection{Construction: Dedekind cuts}
-We shall construct $\RR$ from $\QQ$.
+Finally we want to define an order relation on $\QQ$.
+\begin{definition}[Order on $\QQ$]
+Suppose that $r,s\in\QQ$ and that $r=[(a,b)]$ and $s=[(c,d)]$, where $b,d>0$. Then
+\[r\le_\QQ s\iff ad<bc.\]
+\end{definition}
+
+\begin{proposition}
+$<_\QQ$ is well-defined.
+\end{proposition}
 
 \begin{definition}
+If $q\in\QQ$, then
+\begin{itemize}
+\item $q$ is \vocab{positive} if and only if $0_\QQ<_\QQ q$,
+\item $q$ is \vocab{negative} if and only if $q<_\QQ0_\QQ$.
+\end{itemize}
+\end{definition}
+
+\begin{definition}
+If $q\in\QQ$, then the \vocab{absolute value} of $q$ is
+\[|q|=\begin{cases}
+-q&\text{if $q$ is negative,}\\
+q&\text{if otherwise.}
+\end{cases}\]
+\end{definition}
+\pagebreak
+
+\section{Real Numbers}
+One method to construct $\RR$ from $\QQ$ is Dedekind cuts.
+
+\begin{definition}[Dedekind cut]
 A \vocab{Dedekind cut} $\alpha\subset\QQ$ satisfies the following properties:
 \begin{enumerate}[label=(\roman*)]
 \item $\alpha\neq\emptyset$, $\alpha\neq\QQ$;
@@ -286,47 +303,33 @@ Next we prove that $\gamma=\sup A$.
 \end{enumerate}
 \end{proof}
 
-\begin{proposition}
-$\RR$ is closed under addition.
+\begin{definition}
+Given $\alpha,\beta\in\RR$. Define 
+\[\alpha+\beta\coloneqq\{r\in\QQ\mid r=a+b,a\in\alpha,b\in\beta\}.\]
+\end{definition}
+
+\begin{proposition}[Addition on $\RR$ is closed]
+$\alpha+\beta\in\RR$.
 \end{proposition}
 
-\begin{proof}
-Let $\alpha = (A,B)$, $\beta = (C,D)$, then $\alpha + \beta = (X,Y)$ where
-\[ X = \{a+c \mid a \in A, c \in C\} \]
+\begin{proof} \
+\begin{enumerate}[label=(\arabic*)]
+\item $\alpha\neq\emptyset$ and $\beta\neq\emptyset$ implies there exists $a\in\alpha$ and $b\in\beta$. Hence $r=a+b\in\alpha+\beta$ so $\alpha+\beta\neq\emptyset$.
 
-To show that $(X,Y)$ is a Dedekind cut, we simply need to check the conditions for Dedekind cuts. 
-\begin{itemize}
-\item Property 1 is trivial.
+Since $\alpha\neq\QQ$ and $\beta\neq\QQ$, there is $c\neq\alpha$ and $d\neq\beta$. $r^\prime=c+d>a+b$ for any $a\in\alpha,b\in\beta$, so $r^\prime\notin\alpha+\beta$. Hence $\alpha+\beta\neq\QQ$.
 
-\item Property 2 is by definition.
+\item Suppose that $r\in\alpha+\beta$ and $r^\prime<r$. We want to show that $r^\prime\in\alpha+\beta$.
 
-\item Property 3:
+$r=a+b$ for some $a\in\alpha,b\in\beta$. $r^\prime-a<b$. Since $\beta\in\RR$, $r^\prime-a\in\beta$ so $r^\prime-a=b_1$ for some $b_1\in\beta$. Hence $r^\prime=a+b_1\in\alpha+\beta$.
 
-Let $x,y \in X$ satisfy $x<y$, $y \in X$. 
-
-Let $y = a + c$, $a \in A$, $c \in C$.
-
-Let $\epsilon = y - x$.
-
-Let $a^\prime = a - \dfrac{\epsilon}{2}$, $c^\prime = c - \dfrac{\epsilon}{2}$.
-
-Then \[ a^\prime + c^\prime = a + c - \epsilon = x \]
-$a^\prime < a, a \in A \implies a^\prime \in A$. Similarly, $c^\prime \in C$.\\
-$\therefore\:x = a^\prime +c^\prime \in X$.
-
-\item Property 4:
-
-$\forall a+c \in X, a \in A, c \in C$, $\exists a^\prime \in A, c^\prime \in C$ such that $a<a^\prime, c<c^\prime$.
-
-$\therefore\:a^\prime +c^\prime \in X$ satisfies $a+c < a^\prime+c^\prime$.
-\end{itemize}
+\item Suppose $r\in\alpha+\beta$, so $r=a+b$ for some $a\in\alpha,b\in\beta$. There exists $a^\prime\in\alpha,b^\prime\in\beta$ with $a<a^\prime$ and $b<b^\prime$. Then $r=a+b<a^\prime+b^\prime\in\alpha+\beta$. We define $r^\prime=a^\prime+b^\prime\in\alpha+\beta$ with $r<r^\prime$.
+\end{enumerate}
 \end{proof}
 
 We now prove that the set of real numbers satisfies the commutative, associative, and identity field axioms with respect to addition.
 
-\begin{proposition}
-Addition is commutative on $\RR$: $\forall\alpha,\beta\in\RR$,
-\[ \alpha+\beta=\beta+\alpha \]
+\begin{proposition}[Addition on $\RR$ is commutative]
+$\forall\alpha,\beta\in\RR$, $\alpha+\beta=\beta+\alpha$.
 \end{proposition}
 
 \begin{proof}
@@ -339,9 +342,8 @@ Similarly, $\beta+\alpha\subseteq\alpha+\beta$.
 Therefore $\alpha+\beta=\beta+\alpha$.
 \end{proof}
 
-\begin{proposition}
-Addition is associative on $\RR$: $\forall\alpha,\beta,\gamma\in\RR$,
-\[ \alpha+(\beta+\gamma)=(\alpha+\beta)+\gamma. \]
+\begin{proposition}[Addition on $\RR$ is associative]
+$\forall\alpha,\beta,\gamma\in\RR$, $\alpha+(\beta+\gamma)=(\alpha+\beta)+\gamma$.
 \end{proposition}
 
 \begin{proof}
@@ -418,21 +420,33 @@ A Dedekind cut $(A,B)$ is \textbf{positive} if $0 \in A$ and \textbf{negative} i
 
 If $(A,B)$ is positive, then $-(A,B)$ is negative. Likewise, if $(A,B)$ is negative, then $-(A,B)$ is positive. The cut $(A,B)$ is non-negative if it is either positive or 0.
 
-\subsubsection{Multiplication}
-% Define multiplication of real numbers; you will need to define them for positive real numbers first
-
-%\subsubsection{Positive multiplication}
-Let $\alpha = (A,B)$ and $\beta = (C,D)$ where $\alpha, \beta$ are both non-negative.
-
-We define $\alpha \times \beta$ to be the pair $(X,Y)$ where
-
-$X$ is the set of all products $ac$ where $a \in A, c \in C$ and at least one of the two numbers is non-negative. 
-$Y$ is the set of all products $bd$ where $b \in B, d \in D$.
-
-%\subsubsection{General Multiplication}
 
 
-% https://www.math.brown.edu/reschwar/INF/handout3.pdf
+
+\begin{definition}[Multiplication on $\RR$]
+Given $\alpha,\beta\in\RR$, $\alpha,\beta>0^*$. Define
+\[\alpha\cdot\beta\coloneqq\{p\in\QQ\mid p\le ab,a\in\alpha,b\in\beta,a,b>0\}.\]
+\end{definition}
+
+\begin{proposition}[Multiplication on $\RR$ is closed]
+$\alpha\cdot\beta\in\RR$.
+\end{proposition}
+
+\begin{proof} \
+\begin{enumerate}[label=(\arabic*)]
+\item $\alpha\neq\emptyset$ means there exists $a\in\alpha,a>0$. Similarly, $\beta\neq\emptyset$ means there exists $b\in\beta,b>0$. Then $a\cdot b\in\QQ$ and $ab\le ab$, so $ab\in\alpha\cdot\beta\neq\emptyset$.
+
+$\alpha\neq\QQ$ means there exists $a^\prime\notin\alpha,a^\prime>a$ for all $a\in\alpha$. $\beta\neq\QQ$ means there exists $b^\prime\in\beta,b^\prime>b$ for all $b\in\beta$. Then $a^\prime b^\prime>ab$ for all $a\in\alpha,b\in\beta$, so $a^\prime b^\prime\notin\alpha\cdot\beta$, thus $\alpha\cdot\beta\neq\QQ$.
+
+\item $p<\alpha\cdot\beta$ means $p\le a\cdot b$ for some $a\in\alpha,b\in\beta,a,b>0$.
+
+For $q<p$, $q<p\le a\cdot b$ so $q\in\alpha\cdot\beta$.
+
+\item $p\in\alpha\cdot\beta$ means $p\le a\cdot b$ for some $a\in\alpha,b\in\beta,a,b>0$. Pick $a^\prime\in\alpha$ and $b^\prime\in\beta$ with $a^\prime>a$ and $b^\prime>b$. Form $a^\prime b^\prime>ab\ge p$, $a^\prime b^\prime\le a^\prime b^\prime$ means $a^\prime b^\prime\in\alpha\cdot\beta$.
+\end{enumerate}
+Hence $\alpha\cdot\beta$ is a Dedekind cut.
+\end{proof}
+\pagebreak
 
 \subsection{Properties}
 \begin{theorem}[$\RR$ is archimedian]\label{thrm:r-archimedian}
@@ -485,9 +499,9 @@ Notice that $b-a>0$, so by the archimedian property, there exists $n\in\ZZ^+$ so
 \[bn-an=(b-a)n>1.\]
 We now argue that there exists some integer between two real numbers, whenever their difference is larger than 1.
 
-\begin{lemma*}
+\begin{lemma}
 For any $\alpha,\beta\in\RR$ with $\beta-\alpha>1$, there exists some integer $m$ so that $\alpha<m<\beta$.
-\end{lemma*}
+\end{lemma}
 
 \begin{proof}
 We prove this lemma by finding such $m$. First, using archimedian property of $\RR$, we can find some integer $N>0$ so that
@@ -611,10 +625,10 @@ The extended real number system does not form a field, but it is customary to ma
 \item If $x>0$ then $x\cdot(+\infty)=+\infty$, $x\cdot(-\infty)=-\infty$.
 \item If $x<0$ then $x\cdot(+\infty)=-\infty$, $x\cdot(-\infty)=+\infty$.
 \end{enumerate}
-When it is desired to make the distinction between real numbers on the one hand and the symbols $+\infty$ and $-\infty$ on the other quite explicit, the former are called \emph{finite}.
+When it is desired to make the distinction between real numbers on the one hand and the symbols $+\infty$ and $-\infty$ on the other quite explicit, the former are called \vocab{finite}.
 \pagebreak
 
-\section{Euclidean Plane $\RR^2$}
+\section{Complex Numbers}
 We consider the Cartesian product of $\RR$ with $\RR$; that is,
 \[ \RR^2\coloneqq\RR\times\RR\coloneqq\{(x_1,x_2)\mid x_1,x_2\in\RR\}. \]
 Over $\RR^2$, we can define operations
@@ -641,9 +655,6 @@ From now on, we use $\vec{x}$ to denote $(x_1,x_2)$.
 
 All constructions here can be easily generalised to any $\RR^n$ with $n\in\ZZ^+$.
 
-\section{Complex Numbers $\CC$}
-
-
 Over $\RR^2$, we can define a multiplication $\cdot$ as
 \[ (a,b)\cdot(c,d)=(ac-bd,ad+bc). \]
 If we identity $\RR^2$ with
@@ -654,7 +665,7 @@ via $(x,y)\mapsto x+yi$, then all structures defined above are induced to $\CC$.
 \section{Euclidean Spaces}
 For each positive integer $n$, let $\RR^n$ be the set of all ordered $n$-tuples
 \[ \vb{x}=(x_1,x_2,\dots,x_n), \]
-where $x_1,\dots,x_n$ are real numbers, called the \emph{coordinates} of $\vb{x}$. The elements of $\RR^n$ are called points, or vectors, especially when $n>1$. We shall denote vectors by boldfaced letters.
+where $x_1,\dots,x_n$ are real numbers, called the \vocab{coordinates} of $\vb{x}$. The elements of $\RR^n$ are called points, or vectors, especially when $n>1$. We shall denote vectors by boldfaced letters.
 
 Since $\RR^n$ is a vector space (over $\RR$), $\RR^n$ has the following extra properties
 \begin{itemize}
@@ -774,4 +785,21 @@ Obviously $d(E,F)>0$ implies that $E$ and $F$ are disjoint, but $E$ and $F$ may 
 
 \begin{exercise}
 Suppose that $E$ and $F$ are sets in $\RR^n$ where $E$ and $F$ is finite. Prove that $E$ and $F$ are disjoint if and only if $d(E,F)>0$.
+\end{exercise}
+\pagebreak
+
+\begin{exercise}[Rudin Q1]
+If $r\neq0$ is rational and $x$ is irrational, prove that $r+x$ and $rx$ are irrational.
+\end{exercise}
+
+\begin{solution}
+We prove by contradiction. Suppose $r+x$ is rational, then $r+x=\dfrac{m}{n},m,n\in\ZZ$, and $m,n$ have no common factors. Then $m=n(r+x)$. Let $r=\frac{p}{q},p,q\in\ZZ$, the former equation implies that $m=n\brac{\frac{p}{q}+x}$, i.e., $qm=n(p+qx)$, giving
+\[x=\frac{mq-np}{nq},\]
+which says that $x$ can be written as the quotient of two integers, so $x$ is rational, a contradiction.
+
+The proof for the case $rx$ is similar.
+\end{solution}
+
+\begin{exercise}[Rudin Q2]
+Prove that there is no rational number whose square is $12$.
 \end{exercise}

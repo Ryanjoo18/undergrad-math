@@ -1,9 +1,9 @@
-\part{Calculus (Single Variable)}
 \chapter{Limits}
-\section{Precise Definition of a Limit}
-\begin{definition}
-Let $f(x)$ be a function defined on an open interval around $x_0$. We say that the \vocab{limit} of $f(x)$ as $x$ approaches $x_0$ is $L$, that is $\displaystyle\lim_{x \to x_0}f(x)=L$, if for every $\epsilon>0$ there exists $\delta > 0$ such that $\forall x \in \RR$, 
-\[ 0<\absolute{x-x_0}<\delta \implies \absolute{f(x)-L}<\epsilon \] 
+\section{Definition of a Limit}
+\begin{definition}[Limit]
+The function $f$ approaches the limit $l$ near $a$ means: $\forall\epsilon>0$, $\exists\delta>0$, $\forall x\in\RR$,
+\[0<\absolute{x-a}<\delta \implies\absolute{f(x)-l}<\epsilon.\]
+This is denoted by $\displaystyle\lim_{x \to x_0}f(x)=l$.
 \end{definition} 
 
 Visualising this graphically, as $\epsilon$ becomes smaller and smaller, there always exists a $\delta$ that satisfies the property that for any $x$ in the open interval $(x_0-\delta,x_0+\delta)$, the value of $f(x)$ lies in the interval $(L-\epsilon, L+\epsilon)$.
@@ -54,43 +54,126 @@ Hence, we can define
 \[ \epsilon \coloneqq \frac{2}{3} \delta \]
 which we can use in our proof.
 
-\begin{proposition}[Sum Law]
-If $\lim_{x\to a}f(x)=L$ and $\lim_{x\to a}g(x)=M$ both exist, then
-\[ \lim_{x\to a}[f(x)+g(x)]=L+M. \]
+\begin{proposition}[Uniqueness of limit]
+A function cannot approach two different limits near $a$, i.e., if $f$ approaches $l$ near $a$, and $f$ approaches $m$ near $a$, then $l=m$.
 \end{proposition}
 
 \begin{proof}
-Let $\epsilon>0$ be given. We must find $\delta>0$ such that
-\[ 0<|x-a|<\delta \implies |f(x)+g(x)-(L+M)|<\epsilon. \]
-Using the Triangle Inequality we can write
-\begin{align*}
-\absolute{f(x)+g(x)-(L+M)}&=\absolute{\brac{f(x)-L}+\brac{g(x)-M}}\\
-&\le|f(x)-L|+|g(x)-M|
-\end{align*}
-We make $\absolute{f(x)+g(x)-(L+M)}$ less than $\epsilon$ by making each of the terms $|f(x)-L|$ and $|g(x)-M|$ less than $\frac{\epsilon}{2}$.
+Since $f$ approaches $l$ near $a$, $\forall\epsilon>0$, $\exists\delta_1>0$ such that $\forall x\in\RR$,
+\[0<|x-a|<\delta_1\implies|f(x)-l|<\epsilon.\]
+Since $f$ approaches $m$ near $a$, $\forall\epsilon>0$, $\exists\delta_2>0$ such that $\forall x\in\RR$,
+\[0<|x-a|<\delta_2\implies|f(x)-l|<\epsilon.\]
+We have had to use two numbers, $\delta_1$ and $\delta_2$, since there is no guarantee that the $\delta$ which works in one definition will work in the other. But in fact, it is now easy to conclude that $\forall\epsilon>0$, $\exists\delta>0$ such that $\forall x\in\RR$,
+\[0<|x-a|<\delta\implies|f(x)-l|<\epsilon\text{ and }|f(x)-m|<\epsilon;\]
+we simply choose $\delta=\min\{\delta_1,\delta_2\}$.
 
-Since $\frac{\epsilon}{2}>0$ and $\lim_{x\to a}f(x)=L$, there exists $\delta_1>0$ such that
-\[ 0<|x-a|<\delta_1 \implies |f(x)-L|<\frac{\epsilon}{2}. \]
-Similarly, since $\lim_{x\to a}g(x)=M$, there exists $\delta_2>0$ such that
-\[ 0<|x-a|<\delta_2 \implies |g(x)-M|<\frac{\epsilon}{2}. \]
-Let $\delta=\min\{\delta_1,\delta_2\}$, the smaller of the numbers $\delta_1$ and $\delta_2$. Notice that
-\[ 0<|x-a|<\delta \implies 0<|x-a|<\delta_1 \text{ and } 0<|x-a|<\delta_2 \]
-and so
-\[ |f(x)-L|<\frac{\epsilon}{2} \text{ and } |g(x)-M|<\frac{\epsilon}{2}. \]
-Therefore
+To complete the proof we just have to pick a particular $\epsilon>0$ for which the two conditions
+\[|f(x)-l|<\epsilon\text{ and }|f(x)-m|<\epsilon\]
+cannot both hold, if $l\neq m$. If $l\neq m$, so that $|l-m|>0$, we can choose $|l-m|/2$ as our $\epsilon$. It follows that $\exists\delta>0$ such that $\forall x\in\RR$,
+\[0<|x-a|<\delta\implies|f(x)-l|<\frac{|l-m|}{2}\text{ and }|f(x)-m|<\frac{|l-m|}{2}.\]
+This implies that for $0<|x-a|<\delta$ we have
 \begin{align*}
-\absolute{f(x)+g(x)-(L+M)}&\le|f(x)-L|+|g(x)-M|\\
-&<\frac{\epsilon}{2}+\frac{\epsilon}{2}=\epsilon.
+|l-m|&=|l-f(x)+f(x)-m|\\
+&\le|l-f(x)|+|f(x)-m|\\
+&<\frac{|l-m|}{2}+\frac{|l-m|}{2}\\
+&=|l-m|,
 \end{align*}
-To summarise,
-\[ 0<|x-a|<\delta \implies \absolute{f(x)+g(x)-(L+M)}<\epsilon. \]
-Thus by the definition of a limit,
-\[ \lim_{x\to a}[f(x)+g(x)]=L+M. \]
+a contradiction.
 \end{proof}
 \pagebreak
 
 \section{Limit Laws}
-Let $f(x)$ and $g(x)$ be defined for all $x\neq a$ over some open interval containing $a$. Assume that $L$ and $M$ are real numbers such that $\lim_{x\to a}f(x)=L$ and $\lim_{x\to a}g(x)=M$, $c$ is a constant. Then each of the following statements holds.
+The following lemma says that if $x$ is close to $x_0$, and $y$ is close to $y_0$, then $x+y$ will be close to $x_0+y_0$, and $xy$ will be close to $x_0y_0$, and $1/y$ will be close to $1/y_0$.
+
+\begin{lemma} \
+\begin{enumerate}[label=(\arabic*)]
+\item If 
+\[|x-x_0|<\frac{\epsilon}{2}\text{ and }|y-y_0|<\frac{\epsilon}{2},\]
+then
+\[|(x+y)-(x_0+y_0)|<\epsilon.\]
+\item If
+\[|x-x_0|<\min\crbrac{1,\frac{\epsilon}{2(|y_0|+1)}}\text{ and }|y-y_0|<\frac{\epsilon}{2(|x_0|+1)},\]
+then
+\[|xy-x_0y_0|<\epsilon.\]
+\item If $y_0\neq0$ and
+\[|y-y_0|<\min\crbrac{\frac{|y_0|}{2},\frac{\epsilon|y_0|^2}{2}},\]
+then $y\neq0$ and
+\[\absolute{\frac{1}{y}-\frac{1}{y_0}}<\epsilon.\]
+\end{enumerate}
+\end{lemma}
+
+\begin{proof} \
+\begin{enumerate}[label=(\arabic*)]
+\item \begin{align*}
+|(x+y)-(x_0+y_0)|
+&=|(x-x_0)+(y-y_0)|\\
+&\le|x-x_0|+|y-y_0|\\
+&<\frac{\epsilon}{2}+\frac{\epsilon}{2}=\epsilon.
+\end{align*}
+
+\item Since $|x-x_0|<1$ we have
+\[|x|-|x_0|\le|x-x_0|<1\]
+so that
+\[|x|<1+|x_0|.\]
+Thus
+\begin{align*}
+|xy-x_0y_0|
+&=|x(y-y_0)+y_0(x-x_0)|\\
+&\le|x|\cdot|y-y_0|+|y_0|\cdot|x-x_0|\\
+&<(1+|x_0|)\cdot\frac{\epsilon}{2(|x_0|+1)}+|y_0|\cdot\frac{\epsilon}{2(|y_0|+1)}\\
+&<\frac{\epsilon}{2}+\frac{\epsilon}{2}=\epsilon.
+\end{align*}
+
+\item We have
+\[|y_0|-|y|\le|y-y_0|<\frac{y_0}{2},\]
+so $|y|>|y_0|/2$. In particular, $y\neq0$, and
+\[\frac{1}{|y|}<\frac{2}{|y_0|}.\]
+Thus
+\[\absolute{\frac{1}{y}-\frac{1}{y_0}}=\frac{|y_0-y|}{|y|\cdot|y_0|}<\frac{2}{|y_0|}\cdot\frac{1}{|y_0|}\cdot\frac{\epsilon|y_0|^2}{2}=\epsilon.\]
+\end{enumerate}
+\end{proof}
+
+\begin{theorem}[Limit laws]\label{thrm:limit-laws}
+If $\lim_{x\to a}f(x)=l$ and $\lim_{x\to a}g(x)=m$, then
+\begin{enumerate}[label=(\arabic*)]
+\item (\textbf{sum law}) $\lim_{x\to a}(f+g)(x)=l+m$;
+\item (\textbf{product law}) $\lim_{x\to a}(f\cdot g)(x)=l\cdot m$;
+\item (\textbf{reciprocal}) $\lim_{x\to a}\brac{\frac{1}{g}}(x)=\frac{1}{m}$, if $m\neq0$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof} \
+\begin{enumerate}[label=(\arabic*)]
+\item The hypothesis means that $\forall\epsilon>0$, $\exists\delta_1,\delta_2>0$ such that $\forall x\in\RR$,
+\[0<|x-a|<\delta_1\implies|f(x)-l|<\frac{\epsilon}{2}\]
+and
+\[0<|x-a|<\delta_2\implies|g(x)-m|<\frac{\epsilon}{2}.\]
+Let $\delta=\min\{\delta_1,\delta_2\}$. If $0<|x-a|<\delta$, then $0<|x-a|<\delta_1$ and $0<|x-a|<\delta_2$ are both true, so both
+\[|f(x)-l|<\frac{\epsilon}{2},\quad|g(x)-m|<\frac{\epsilon}{2}\]
+are true. By part (1) of the lemma this implies that $|(f+g)(x)-(l+m)|<\epsilon$. This proves (1).
+
+\item Let $\epsilon>0$ be given, $\exists\delta_1,\delta_2>0$ such that $\forall x\in\RR$,
+\[0<|x-a|<\delta_1\implies|f(x)-l|<\min\crbrac{1,\frac{\epsilon}{2(|m|+1)}},\]
+and
+\[0<|x-a|<\delta_2\implies|g(x)-m|<\frac{\epsilon}{2(|l|+1)}.\]
+Let $\delta=\min\{\delta_1,\delta_2\}$. If $0<|x-a|<\delta$, then
+\[|f(x)-l|<\min\crbrac{1,\frac{\epsilon}{2(|m|+1)}},\quad|g(x)-m|<\frac{\epsilon}{2(|l|+1)}.\]
+So, by the lemma, $|(f\cdot g)(x)-l\cdot m|<\epsilon$, and this proves (2).
+
+\item Let $\epsilon>0$ be given, $\exists\delta>0$ such that $\forall x\in\RR$,
+\[0<|x-a|<\delta\implies|g(x)-m|<\min\crbrac{\frac{|m|}{2},\frac{\epsilon|m|^2}{2}}.\]
+But according to part (3) of the lemma this means, first, that $g(x)\neq0$, so $(1/g)(x)$ makes sense, and second that
+\[\absolute{\brac{\frac{1}{g}}(x)-\frac{1}{m}}<\epsilon.\]
+This proves (3).
+\end{enumerate}
+\end{proof}
+
+\begin{definition}[Limit at infinity]
+The limit of $f(x)$ as $x$ approaches $\infty$, denoted by $\displaystyle\lim_{x\to\infty}f(x)=l$, means that $\forall\epsilon>0$, $\exists N\in\NN$, $\forall x\in\RR$,
+\[x>N\implies|f(x)-l|<\epsilon.\]
+\end{definition}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{itemize}
 \item \textbf{Sum law}: The limit of a sum is the sum of the limits.
@@ -227,9 +310,6 @@ Hence $\lim_{x\to\infty}f(x)=L$ and $\lim_{x\to\infty}f^\prime(x)=0$.
 \end{solution}
 \pagebreak
 
-% uniqueness of the limit
-
-
 \section{Important Limits}
 \begin{equation}
 \lim_{x \to 0} \frac{\sin x}{x} = 1
@@ -255,10 +335,10 @@ This can be proven using the squeeze theorem, which will be discussed later.
 \pagebreak
 
 \section{Continuity}
-\begin{definition}
-A function $f(x)$ is \vocab{continuous} at $x=a$ if 
-\[ \lim_{x\to a} f(x)=f(a). \]
-A function is said to be continuous on the interval $[a,b]$ if it is continuous at each point in the interval.
+\begin{definition}[Continuity]
+The function $f$ is \vocab{continuous} at $a$ if 
+\[\lim_{x\to a}f(x)=f(a).\]
+A function is said to be continuous on $[a,b]$ if it is continuous at $c$ for all $c\in[a,b]$.
 \end{definition}
 
 Note that this definition is also implicitly assuming that both $f(a)$ and $\lim_{x\to a}f(x)$ exist. If either of these do not exist the function will not be continuous at $x=a$.
@@ -284,6 +364,51 @@ Evaluate the following limit:
 Since we know that exponentials are continuous everywhere we can use the fact above.
 \[ \lim_{x \to 0} e^{\sin x} = e^{\lim_{x \to 0} \sin x} = e^0 = \boxed{1} \]
 \end{solution}
+
+\begin{theorem}
+If $f$ and $g$ are continuous at $a$, then
+\begin{enumerate}[label=(\arabic*)]
+\item $f+g$ is continuous at $a$;
+\item $f\cdot g$ is continuous at $a$;
+\item $1/g$ is continuous at $a$, if $g(a)\neq0$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof} \
+\begin{enumerate}[label=(\arabic*)]
+\item Since $f$ and $g$ are continuous at $a$,
+\[\lim_{x\to a}f(x)=f(a),\quad\lim_{x\to a}g(x)=g(a).\]
+By Theorem \ref{thrm:limit-laws}, we have
+\[\lim_{x\to a}(f+g)(x)=f(a)+g(a)=(f+g)(a)\]
+which is just the assertion that $f+g$ is continuous at $a$.
+\item Similar to above.
+\item Similar to above.
+\end{enumerate}
+\end{proof}
+
+\begin{proposition}
+If $g$ is continuous at $a$, and $f$ is continuous at $g(a)$, then $f\circ g$ is continuous at $a$.
+\end{proposition}
+
+\begin{proof}
+Let $\epsilon>0$. We wish to find some $\delta>0$ such that $\forall x\in\RR$,
+\[|x-a|<\delta\implies|(f\circ g)(x)-(f\circ g)(a)|<\epsilon,\]
+or
+\[|x-a|<\delta\implies|f(g(x))-f(g(a))|<\epsilon.\]
+We first use continuity of $f$ to estimate how close $g(x)$ must be to $g(a)$ in order for this inequality to hold. Since $f$ is continuous at $g(a)$, $\exists\delta^\prime>0$ such that $\forall y\in\RR$,
+\begin{equation*}\tag{1}
+|y-g(a)|<\delta^\prime\implies|f(y)-f(g(a))|<\epsilon.
+\end{equation*}
+In particular, this means that
+\begin{equation*}\tag{1}
+|g(x)-g(a)|<\delta^\prime\implies|f(g(x))-f(g(a))|<\epsilon.
+\end{equation*}
+we now use continuity of $g$ to estimate how close $x$ must be to $a$ in order for the inequality $|g(x)-g(a)|<\delta^\prime$ to hold. The number $\delta^\prime$ is positive number just like any other positive number; we can therefore take $\delta^\prime$ as the $\epsilon$ in the definition of continuity of $g$ at $a$. We conclude that there is a $\delta>0$ such that $\forall x\in\RR$,
+\[|x-a|<\delta\implies|g(x)-g(a)|<\delta^\prime.\]
+Combining (2) and (3) we see that $\forall x\in\RR$,
+\[|x-a|<\delta\implies|f(g(x))-f(g(a))|<\epsilon.\]
+\end{proof}
+
 
 Another very nice consequence of continuity is the Intermediate Value Theorem.
 \begin{theorem}[Intermediate Value Theorem]
@@ -1346,7 +1471,7 @@ A \textbf{solution} of a differential equation is a function of the independent 
 A \textbf{general solution} is a solution with an arbitrary constant (unknown); a \textbf{particular solution} is a solution where conditions are given to obtain the value of the arbitrary constant.
 \pagebreak
 
-\section{First-order ODEs}
+\section{First order differential equations}
 \textbf{First-order differential equations} take the form
 \[ \dv{y}{x} = f(x,y) \]
 There are several standard methods for solving first order ODEs and we look at some of these now.
@@ -1427,7 +1552,7 @@ Find the general solution of
 \[ \dv{y}{x} = \sin(x+y+1) \]
 \end{exercise}
 
-\begin{proof}[Solution]
+\begin{solution}
 Let $u(x) = x + y(x) + 1$ so that $\dv{u}{x} = 1 + \dv{y}{x}$. Then the original equation can be written as $\dv{u}{x} = 1 + \sin u$, which is separable. We have
 \[ \frac{1}{1+\sin u}\dv{u}{x} = 1 \]
 which integrates to
@@ -1447,7 +1572,7 @@ In terms of $x$ and $y$, the solution is given by
 or
 \[ \sin (x+y+1) - 1 = (x+c) \cos (x+y+1). \]
 This solution, where we have not found $y$ in terms of $x$, is called an \textbf{implicit solution}.
-\end{proof}
+\end{solution}
 
 A special group of first order differential equations is those of the form
 \[ \dv{y}{x} = f\brac{\frac{y}{x}} \]
@@ -1466,7 +1591,8 @@ LHS is an exact derivative.
 Solve 
 \[ \sin x\dv{y}{x}+y\cos x=3x^2. \]
 \end{exercise}
-\begin{proof}[Solution]
+
+\begin{solution}
 Notice that the LHS is an exact derivative.
 \begin{align*}
 \sin x\dv{y}{x}+y\cos x &= \dv{x}y\sin x \\
@@ -1474,13 +1600,14 @@ Notice that the LHS is an exact derivative.
 y \sin x &= \int 3x^2\dd{x} = x^3+c \\
 y &= \frac{x^3+c}{\sin x}
 \end{align*}
-\end{proof}
+\end{solution}
 
 \subsection{Integrating Factor}
 Looking specifically at first order linear ODEs, which take the general form
 \[ \dv{y}{x} + P(x)y = Q(x) \]
 we see that the homogeneous form, that is when $Q(x)=0$, is separable. On the other hand, the inhomogeneous form can be solved using an \textbf{integrating factor} $I(x)$ given by
 \[ I(x) = e^{\int P(x) \dd{x}} \]
+
 \begin{proof}
 Simply multiply the general equation for first-order linear ODEs through by the integrating factor to obtain
 \[ e^{\int P(x) \dd{x}} \dv{y}{x} + P(x) e^{\int P(x) \dd{x}}y = e^{\int P(x) \dd{x}} Q(x) \]
@@ -1494,6 +1621,7 @@ and we can now integrate directly and rearrange, to obtain
 Solve the linear differential equation 
 \[ \dv{y}{x} + 2xy = 2xe^{-x^2}. \]
 \end{exercise}
+
 \begin{solution}
 We can easily see that the given differential equation is in the form of a first-order linear ODE.
 
@@ -1530,7 +1658,7 @@ y&=y_0+(t-t_0)f(t_0,y_0)
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.75\linewidth]{images/euler-method-de.png}
+    \includegraphics[width=0.8\linewidth]{images/euler-method-de.png}
 \end{figure}
 
 If we choose a step size of $\Delta t$ on the $t$-axis, then $t_1=t_0+\Delta t$. By using Euler's method, at $t=t_1$, we can obtain an approximate value $y_1$ from
@@ -1552,10 +1680,10 @@ The improved Euler's method works as follows: We first apply Euler's method to f
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.75\linewidth]{images/euler-method-de-improved.png}
+    \includegraphics[width=0.8\linewidth]{images/euler-method-de-improved.png}
 \end{figure}
 
-The Improved Euler's method (also known as the Heun’s formula) consists of two steps:
+The Improved Euler's method (also known as the Heun's formula) consists of two steps:
 \begin{equation}
 \begin{split}
 \bar{y}_{n+1}&=y_n+\Delta t\cdot f(t_n,y_n)\\
@@ -1564,7 +1692,44 @@ y_{n+1}&=y_n+\Delta t\cdot\sqbrac{\frac{f(t_n,y_n)+f(t_{n+1},\bar{y}_{n+1})}{2}}
 \end{equation}
 \pagebreak
 
-\section{Second-order homogeneous linear ODEs}
+\section{Second order linear differential equations}
+The main subject of this section is linear ODEs with constant coefficients, but before we look at these we give two theorems that are valid in the more general case.
+
+\subsection{Two theorems}
+Recall that a homogeneous linear ODE of order $k$ takes the form
+\[a_k(x)\dv[k]{y}{x}+a_{k-1}(x)\dv[k-1]{y}{x}+\cdots+a_1(x)\dv{y}{x}+a_0(x)y=0.\]
+As you will see, here and in other courses, the space of solutions to this ODE has some nice algebraic properties.
+
+\begin{theorem}
+Let $y_1$ and $y_2$ be solutions of a homogeneous linear ODE and let $\alpha_1$ and $\alpha_2$ be real numbers. Then $\alpha_1y_1+\alpha_2y_2$ is also a solution of the ODE. Note also that the zero function is always a solution. This means that the space of solutions of the ODE is a \textbf{real vector space}.
+\end{theorem}\
+
+\begin{proof}
+We know that
+\begin{equation*}\tag{1}
+a_k(x)\dv[k]{y_1}{x}+a_{k-1}(x)\dv[k-1]{y_1}{x}+\cdots+a_1(x)\dv{y_1}{x}+a_0(x)y_1=0,
+\end{equation*}
+\begin{equation*}\tag{2}
+a_k(x)\dv[k]{y_2}{x}+a_{k-1}(x)\dv[k-1]{y_2}{x}+\cdots+a_1(x)\dv{y_2}{x}+a_0(x)y_2=0.
+\end{equation*}
+If we add $\alpha_1$ times (1) to $\alpha_2$ times (2) and rearrange we find that
+\[a_k(x)\dv[k]{(\alpha_1y_1+\alpha_2y_2)}{x}+a_{k-1}(x)\dv[k-1]{(\alpha_1y_1+\alpha_2y_2)}{x}+\cdots+a_1(x)\dv{(\alpha_1y_1+\alpha_2y_2)}{x}+a_0(x)(\alpha_1y_1+\alpha_2y_2)=0,\]
+which shows that $\alpha_1y_1+\alpha_2y_2$ is also a solution of the ODE.
+\end{proof}
+
+The above holds simply due to differentiation being a \textbf{linear map}.
+
+In the case where the ODE is linear but inhomogeneous, solving the inhomogeneous equation still strongly relates to the solution of the associated homogeneous equation.
+
+\begin{theorem}
+Let $y_p(x)$ be a solution, known as a \textbf{particular integral}, of the inhomogeneous ODE
+\[a_k(x)\dv[k]{y}{x}+a_{k-1}(x)\dv[k-1]{y}{x}+\cdots+a_1(x)\dv{y}{x}+a_0(x)y=f(x),\]
+that is, $y=y_p$ satisfies the above equation. Then a function $y(x)$ is a solution of the inhomogeneous linear ODE if and only if $y(x)$ can be written as
+\[y(x)=y_c(x)+y_p(x),\]
+where $y_c(x)$ is a solution of the corresponding homogeneous linear ODE, that is
+\end{theorem}
+
+\subsection{Second-order homogeneous linear ODEs}
 This section introduces a method for finding a second solution to a second order homogeneous linear ODE, when one solution has already been found. Suppose $z(x)\neq0$ is a non-trivial solution to the second order homogeneous linear differential equation
 \[ P(x)\dv[2]{y}{x}+Q(x)\dv{y}{x}+R(x)y=0. \]
 We can make the substitution $y(x)=u(x)z(x)$, so that
@@ -1705,483 +1870,10 @@ For the sake of convenience we will often denote Laplace transforms as
 \end{notation}
 
 \section{Systems of Differential Equations}
-\pagebreak
 
-\part{Calculus (Multivariable)}
-\chapter{Partial Derivatives}
-In multivariable calculus, we extend notions of differential calculus from functions of one variable to more general functions
-\[ f:\RR^n\to\RR^m. \]
-
-\section{Computation of partial derivatives}
-Let $f:\RR^n\to\RR$ be a function of $n$ variables $x_1,x_2,\dots,x_n$. Then the \vocab{partial derivative}
-\[ \pdv{f}{x_i}(p_1,\dots,p_n) \]
-is the rate of change of $f$, at $(p_1,\dots,p_n)$, when we vary only the variable $x_i$ about $p_i$ and keep all of the other variables constant. Precisely, we have
-\begin{equation}\label{eqn:partial-diff}
-\pdv{f}{x_i}(p_1,\dots,p_n)=\lim_{h\to0}\frac{f(p_1,\dots,p_{i-1},p_i+h,p_{i+1},\dots,p_n)-f(p_1,\dots,p_n)}{h}.
-\end{equation}
-
-\begin{notation}
-We shall occasionally write $f_x$ for $\delta f/\delta x$, etc.
-\end{notation}
-
-Derivatives such as \cref{eqn:partial-diff}, where $f$ has been differentiated once, are called \vocab{first order} partial derivatives. We will look at higher orders in a moment.
-
-\begin{exercise}
-Find all the first order derivatives of
-\[ f(x,y,z)=x^2+ye^{2x}+\frac{z}{y}. \]
-\end{exercise}
-
-\begin{solution}
-Keep in mind that we only need to find the derivative of functions with respect to one variable by keeping the rest of the variables constant.
-
-Thus we have
-\[ \pdv{f}{x}=2x+2ye^{2x}, \quad \pdv{f}{y}=e^{2x}-\frac{z}{y^2}, \quad \pdv{f}{z}=\frac{1}{y}. \]
-\end{solution}
-
-We define second and higher order partial derivatives in a similar manner to how we define them for full derivatives. So, in the case of second order partial derivatives of a function $f(x,y)$ we have
-\[ \begin{split}
-f_{xx} &= \pdv{}{x}\brac{\pdv{f}{x}} = \pdv[order={2}]{f}{x} \\
-f_{yy} &= \pdv{}{y}\brac{\pdv{f}{y}} = \pdv[order={2}]{f}{y} \\
-f_{xy} &= \pdv{}{y}\brac{\pdv{f}{x}} = \pdv{f}{x,y} \\
-f_{yx} &= \pdv{}{x}\brac{\pdv{f}{y}} = \pdv{f}{y,x}
-\end{split} \]
-
-Observe that
-\[ \pdv{f}{y,x}=\pdv{f}{x,y}, \quad \pdv{f}{z,x}=\pdv{f}{x,z}, \quad \pdv{f}{z,y}=\pdv{f}{y,z}. \]
-This will typically be the case in the examples we will see in this course, but it is not guaranteed unless the derivatives in question are continuous.
-
-we might have a function $f(u,v)$ of two variables $u$ and $v$, each of which is itself a function of $x$ and $y$. We can make the composition
-\[ F(x,y)=f(u(x,y),v(x,y)) \]
-which is a function of $x$ and $y$, and we might then want to calculate the partial derivatives
-\[ \pdv{F}{x}\text{ and }\pdv{F}{y}. \]
-
-\begin{theorem}[Chain rule]
-Let $F(t)=f(u(t),v(t))$ with $u$ and $v$ differentiable and $f$ being continuously differentiable in each variable. Then
-\begin{equation}
-\dv{F}{t}=\pdv{f}{u}\pdv{u}{t}+\pdv{f}{v}\pdv{v}{t}
-\end{equation}
-\end{theorem}
-
-\begin{corollary}
-Let $F(x,y)=f(u(x,y),v(x,y))$ with $u$ and $v$ differentiable in each variable and $f$ being continuously differentiable in each variable. Then
-\[ \pdv{F}{x}=\pdv{f}{u}\pdv{u}{x}+\pdv{f}{v}\pdv{v}{x}, \quad \pdv{F}{y}=\pdv{f}{u}\pdv{u}{y}+\pdv{f}{v}\pdv{v}{y}. \]
-\end{corollary}
-
-\begin{exercise}
-A particle $P$ moves in three dimensional space on a helix so that at time $t$,
-\[ x(t)=\cos t, \quad y(t)=\sin t, \quad z(t)=t. \]
-The temperature $T$ at $(x,y,z)$ equals $xy+yz+zx$. Use the chain rule to calculate $\dv{T}{t}$.
-\end{exercise}
-
-\begin{solution}
-The chain rule in this case says that
-\begin{align*}
-\dv{T}{t} &= \pdv{T}{x}\dv{x}{t}+\pdv{T}{y}\dv{y}{t}+\pdv{T}{z}\dv{z}{t} \\
-&= (y+z)(-\sin t)+(x+z)\cos t+(y+x)(1) \\
-&= (\sin t+t)(-\sin t)+(\cos t+t)\cos t+(\cos t+\sin t) \\
-&= -\sin^2t+\cos^2t+\sin t+\cos t+t\cos t-t\sin t.
-\end{align*}
-\end{solution}
-
-\begin{exercise}
-Let $z=f(xy)$, where $f$ is an arbitrary differentiable function in one variable. Show that
-\[ x\pdv{z}{x}-y\pdv{z}{y}=0. \]
-\end{exercise}
-
-\begin{solution}
-By the chain rule,
-\[ \pdv{z}{x}=yf^\prime(xy) \quad \text{and} \quad \pdv{z}{y}=xf^\prime(xy), \]
-where the prime denotes the derivative with respect to $xy$. Hence we have
-\[ x\pdv{z}{x}-y\pdv{z}{y}=xyf^\prime(xy)-yxf^\prime(xy)=0. \]
-\end{solution}
-
-\section{Directional Derivatives}
-To this point we've only looked at the two partial derivatives $f_x(x,y)$ and $f_y(x,y)$. Recall that these derivatives represent the rate of change of $f$ as we vary x (holding $y$ fixed) and as we vary $y$ (holding $x$ fixed) respectively. 
-
-We now discuss how to find the rate of change of $f$ if we allow both $x$ and $y$ to change simultaneously. The problem here is that there are many ways to allow both $x$ and $y$ to change. For instance, one could be changing faster than the other and then there is also the issue of whether or not each is increasing or decreasing. So, before we get into finding the rate of change we need to get a couple of preliminary ideas taken care of first. The main idea that we need to look at is just how are we going to define the changing of $x$ and/or $y$.
-
-Let's start off by supposing that we wanted the rate of change of $f$ at a particular point, say $(x_0,y_0)$. Let's also suppose that both $x$ and $y$ are increasing and that, in this case, $x$ is increasing twice as fast as $y$ is increasing. So as $y$ increases one unit of measure, $x$ increases two units of measure.
-
-Let's suppose that a particle is sitting at $(x_0,y_0)$ and the particle will move in the direction given by the changing 
-$x$ and $y$. At this point, the particle can be said to be moving in the direction
-\[ \vec{v} = \langle {2,1} \rangle \]
-
-There is still a small problem with this however. There are many vectors that point in the same direction. For instance, all of the following vectors point in the same direction as $\vec v = \langle {2,1} \rangle$:
-\[ \vec{v} = \left\langle {\frac{1}{5},\frac{1}{10}}\right\rangle \quad \vec{v} = \langle {6,3}\rangle \quad \vec{v} = \left\langle {\frac{2}{\sqrt{5}},\frac{1}{\sqrt{5}}}\right\rangle \]
-
-We need a way to consistently find the rate of change of a function in a given direction. We will do this by insisting that the vector that defines the direction of change be a unit vector. This means that for the example that we started off thinking about we would want to use
-\[ \vec{v} = \left\langle {\frac{2}{\sqrt{5}},\frac{1}{\sqrt{5}}}\right\rangle \]
-
-\begin{definition}[Directional derivative]
-Rate of change of $f(x,y)$ in the direction of the unit vector $\vec{u}=\langle{a,b}\rangle$ is called the directional derivative and is denoted by $D_{\vec{u}} f(x,y)$.
-
-The definition of the directional derivative is
-\begin{equation}
-{D_{\vec u}}f(x,y) = \lim_{h\to0} \frac{f(x + ah,y + bh) - f(x,y)}{h}
-\end{equation}
-\end{definition}
-
-To derive an equivalent formula for taking directional derivatives, we define a new function of a single variable
-\[ g(z) = f(x_0+az,y_0+bz) \]
-where $x_0$, $y_0$, $a$, $b$ are some fixed numbers. Note that this really is a function of a single variable $z$.
-
-Then by the definition of the derivative for functions of a single variable we have
-\[ g^\prime(z) = \lim_{h\to0} \frac{g(z+h)-g(z)}{h} \]
-and the derivative at $z=0$ is given by
-\[ g^\prime(0) = \lim_{h\to0} \frac{g(h)-g(0)}{h} \]
-If we now substitute in for $g(z)$ we get
-\[ g^\prime(0) = \lim_{h\to0} \frac{g(h)-g(0)}{h} = \lim_{h\to0} \frac{f(x_0+ah,y_0+bh) - f(x_0,y_0)}{h} = D_{\vec u}f(x_0,y_0) \]
-This gives us
-\begin{equation}\tag{1}
-g^\prime(0) = D_{\vec u}f(x_0,y_0)
-\end{equation}
-
-Now, let's look at this from another perspective. Let's rewrite $g(z)$ as $g(z) = f(x,y)$ where $x=x_0+az$ and $y=y_0+bz$. Applying chain rule,
-\[ g^\prime(z) = \odv{g}{z} = \pdv{f}{x}\odv{x}{z} + \pdv{f}{y}\odv{y}{z} = f_x (x,y)a + f_y (x,y)b \]
-This gives us
-\[ g^\prime(z) = f_x (x,y)a + f_y (x,y)b \]
-If we take $z=0$ we get $x=x_0$ and $y=y_0$. Plugging these into the above equation gives
-\begin{equation}\tag{2}
-g^\prime(0) = f_x (x_0,y_0)a + f_y (x_0,y_0)b
-\end{equation}
-Equating (1) and (2) gives
-\[ {D_{\vec u}}f(x_0,y_0) = f_x(x_0,y_0)a + f_y(x_0,y_0)b \]
-Allowing $x$ and $y$ to be any number we get the following formula for computing directional derivatives:
-\[ {D_{\vec u}}f(x,y) = f_x(x,y)a + f_y(x,y)b \]
-For three variables, directional derivative of $f(x,y,z)$ in the direction of the unit vector $\vec{u}=\langle{a,b,c}\rangle$ is given by
-\begin{equation}
-{D_{\vec u}}f(x,y,z) = f_x (x,y,z)a + f_y (x,y,z)b + f_z (x,y,z)c
-\end{equation}
-
-We can write the directional derivative as a \textbf{dot product} and notice that the second vector is nothing more than the unit vector $\vec u$ that gives the direction of change.
-\begin{equation}
-{D_{\vec u}} f(x,y,z) = \langle {f_x,f_y,f_z} \rangle \cdot \langle {a,b,c} \rangle
-\end{equation}
-
-Now let's give a name and notation to the first vector in the dot product since this vector will show up fairly regularly.
-\begin{definition}[Gradient vector]
-The gradient vector of $f$ is defined to be
-\begin{equation}
-\nabla f = \langle f_x,f_y,f_z \rangle
-\end{equation}
-\end{definition}
-
-With the definition of the gradient we can now say that the directional derivative is given by
-\[ {D_{\vec u}}f = \nabla f\cdot \vec u \]
-
-\begin{theorem}
-Maximum value of $D_{\vec u} f(\vec{x})$ (and hence then the maximum rate of change of the function $f(\vec{x})$) is given by $\left\|\nabla f(\vec{x})\right\|$ and will occur in the direction given by $\nabla f(\vec{x})$.
-\end{theorem}
-
-\begin{proof}
-
-\end{proof}
-\pagebreak
-
-\chapter{Partial Differential Equations}
-\section{Definitions and Terminology}
-\begin{definition}
-A \vocab{partial differential equation} is an equation involving a function and/or its partial derivatives. 
-\end{definition}
-
-We can classify PDEs based on:
-\begin{itemize}
-\item \textbf{Order.}
-
-The order is the number corresponding to the order of the highest partial derivative in the equation. 
-
-For instance, the order of the following PDE is 2. 
-\[ \pdv[order={2}]{f}{x}=\pdv{f}{t} \]
-
-This also applies to mixed partial derivatives. For instance, the order of the following PDE is 3.
-\[ \pdv[order={2,1}]{f}{x,y}=\pdv{f}{t} \]
-
-\item \textbf{Number of independent variables.}
-
-An independent variable is what we differentiate with respect to. 
-
-\item \textbf{Linearity.}
-
-A linear PDE is one in which the \emph{dependent} variable (the one being differentiated) appears only in a linear fashion.
-
-For instance, the two PDEs above are linear as the partial derivatives are not being raised to a power or multiplied with each other.
-
-The following PDE is non-linear.
-\[ f\pdv[order={2}]{f}{x}=\pdv{f}{t} \]
-
-\item \textbf{Homogeneity.}
-
-A homogenous PDE is one in which every term only involves the dependent variable and/or its derivatives.
-
-The first two PDEs above are homogenous as every term contains $f$ or its derivatives.
-
-The following PDE is non-homogenous as there are two terms that do not contain $f$.
-\[ \pdv[order={2}]{f}{x}=\pdv{f}{t}+x^2+\tan t \]
-
-\item \textbf{Coefficient type.}
-
-The coefficient here refers to the coefficient of the term involving the dependent variable and its derivatives. It can be either constant or variable.
-
-For instance, the coefficients of the terms in the first two examples are 1. We say that these two PDEs have constant coefficients.
-
-The following PDE has variable coefficients.
-\[ \tan x\pdv[order={2}]{f}{x}=\pdv{f}{t} \]
-
-\item \textbf{Parabolic, Hyperbolic, or Elliptic.}
-
-We can do this classification for linear 2nd order PDEs which take the form of 
-\[ A\pdv[order={2}]{f}{x} + B\pdv{f}{x,y} + C\pdv[order={2}]{f}{y} + D\pdv{f}{x} + E\pdv{f}{y} + Ff = G \]
-where the coefficients are generally functions of $x$ or $y$.
-
-For a \textbf{hyperbolic} PDE, $B^2-4AC>0$. Using variable substitutions to change $x$ and $y$ to $\eta$ and $\epsilon$ respectively, we can reduce the PDE to \[ \pdv[order={2}]{f}{\eta} - \pdv[order={2}]{f}{\epsilon} + g = 0 \] where $g$ denotes the first and lower order terms. This is similar to the equation of a hyperbola: $x^2-y^2=1$.
-
-For a \textbf{parabolic} PDE, $B^2-4AC=0$. Using variable substitutions, we can reduce the PDE to \[ \pdv[order={2}]{f}{\eta} + g = 0. \] This is similar to the equation of a parabola: $x^2+y=0$.
-
-For an \textbf{elliptic} PDE, $B^2-4AC<0$. Using variable substitutions, we can reduce the PDE to \[ \pdv[order={2}]{f}{\eta} + \pdv[order={2}]{f}{\epsilon} + g = 0. \] This is similar to the equation of an ellipse: $x^2+y^2=1$.
-
-Note that if the coefficients are constants, the PDE can be hyperbolic, parabolic or elliptic. However, if the coefficients are variables, then it is possible for the PDE to be hyperbolic in some regions, and elliptic or parabolic in some regions.
-\end{itemize}
-
-\section{Solutions and Auxiliary Conditions}
-\begin{exercise}
-Show that $f(x,y)=\tan^{-1}\frac{y}{x}$ satisfies Laplace's equation in the plane:
-\[ \pdv{[order={2}]}{f}{x}+\pdv{[order={2}]}{f}{y}=0. \]
-\end{exercise}
-
-\begin{solution}
-The first order partial derivatives are
-\[ \pdv{f}{x}=\frac{1}{1+\brac{\frac{y}{x}}^2}\brac{-\frac{y}{x^2}}=-\frac{y}{x^2+y^2} \]
-and
-\[ \pdv{f}{y}=\frac{1}{1+\brac{\frac{y}{x}}^2}\brac{\frac{1}{x}}=\frac{x}{x^2+y^2}. \]
-Hence we have
-\[ \pdv{[order={2}]}{f}{x}=\frac{2xy}{x^2+y^2} \quad \text{and} \quad \pdv{[order={2}]}{f}{y}=-\frac{2xy}{(x^2+y^2)^2}, \]
-from which we see that
-\[ \pdv{[order={2}]}{f}{x}+\pdv{[order={2}]}{f}{y}=0 \]
-as required.
-\end{solution}
-
-In the above example we verified that a given solution satisfied a given PDE. We now look at how to find solutions to simple PDEs.
-
-\begin{exercise}
-Find all the solutions of the form $f(x,y)$ of the PDEs
-\begin{enumerate}[label=(\alph*)]
-\item $\pdv{f}{y,x}=0$,
-\item $\pdv{[order={2}]}{f}{x}=0$.
-\end{enumerate}
-\end{exercise}
-
-\begin{solution} \
-\begin{enumerate}[label=(\alph*)]
-\item We have
-\[ \pdv{}{y}\brac{\pdv{f}{x}}=0. \]
-Those functions $g(x,y)$  which satisfy $\delta g/\delta y=0$ are functions which solely depend on $x$. So we have
-\[ \pdv{f}{x}=p(x), \]
-where $p$ is an arbitrary function of $x$. We can now integrate again, but this time with respect to $x$ rather than $y$. Now, $\delta/\delta x$ sends to zero any function which solely depends on $y$. The solution to the PDE is therefore
-\[ f(x,y)=P(x)+Q(y), \]
-where $Q(y)$ is an arbitrary function of $y$ and $P(x)$ is an anti-derivative of $p(x)$, i.e. $P^\prime(x)=p(x)$.
-\end{enumerate}
-\end{solution}
-
-If a PDE involves derivatives with respect to one variable only, we can treat it like an ODE in that variable, holding all other variables constant. The difference, as noted above, is that our arbitrary ``constants'' will now be arbitrary functions of the variables that we have held constant.
-
-\begin{exercise}
-Find solutions $u(x,y)$ of the PDE
-\[ u_{xx}-u=0. \]
-\end{exercise}
-
-\begin{solution}
-Since there are no derivatives with respect to $y$, we can solve the associated ODE
-\[ \dv[2]{u}{x}-u=0, \]
-where $u$ is treated as being a function of $x$ only. This ODE has solution $u(x)=C_1e^x+C_2e^{-x}$, where $C_1$ and $C_2$ are constants, and so the solution to the original PDE is
-\[ u(x,y)=A(y)e^x+B(y)e^{-x}, \]
-where $A$ and $B$ are arbitrary functions of $y$ only.
-\end{solution}
-
-we look at one specific method for solving PDEs, that of \textbf{separating the variables}.
-
-\begin{exercise}
-Find all solutions of the form $T(x,t)=A(x)B(t)$ to the one-dimensional heat/diffusion equation
-\[ \pdv{T}{t}=\kappa\pdv{[order={2}]}{T}{x}, \]
-where $\kappa$ is a positive constant, called the thermal diffusivity.
-\end{exercise}
-
-Solutions of the form $A(x)B(t)$ are known as separable solutions
-
-There are a lot of solutions to a given PDE, hence it is important for us to know the auxiliary conditions, i.e. boundary and initial conditions, which dictate which technique we use to solve the PDE.
-\begin{itemize}
-\item A boundary condition expresses the behavior of a function on the boundary (border) of its area of definition. An initial condition is like a boundary condition, but then for the time-direction.
-\end{itemize}
-\pagebreak
-
-\chapter{Multiple Integrals}
-\section{Double Integrals}
-To motivate the idea of double integrals, we give an example of calculating areas.
-
-We want to integrate a function of two variables, $f(x,y)$. With functions of one variable we integrated over an \emph{interval} (i.e. a one-dimensional space) and so it makes some sense then that when integrating a function of two variables we will integrate over a \emph{region} of $\RR^2$ (two-dimensional space). 
-
-\begin{exercise}
-Calculate the area of the disc $x^2+y^2\le a^2$.
-\end{exercise}
-
-\begin{solution}
-we know the answer, namely $\pi a^2$. If we wish to capture all of the disc's area then we let $x$ vary from $-a$ to $a$ and, at each $x$ we let $y$ vary from $-\sqrt{a^2-x^2}$ to $\sqrt{a^2-x^2}$.
-
-Thus we have
-\begin{align*}
-A &= \int_{x=-a}^{x=a}\int_{y=-\sqrt{a^2-x^2}}^{y=\sqrt{a^2-x^2}}\dd{y}\dd{x} \\
-&= \int_{x=-a}^{x=a}2\sqrt{a^2-x^2}\dd{x} \\
-&= \int_{\theta=-\frac{\pi}{2}}^{\theta=\frac{\pi}{2}}2\sqrt{a^2-a^2\sin^2\theta}a\cos\theta\dd{\theta} \quad [x=a\sin\theta] \\
-&= a^2\int_{\theta=-\frac{\pi}{2}}^{\theta=\frac{\pi}{2}}2\cos^2\theta\dd{\theta}=\pi a^2
-\end{align*}
-\end{solution}
-
-\begin{definition}
-Let $R\subset\RR^2$. Then we define the \vocab{area} of $R$ to be
-\[ A(R)=\iint_{(x,y)\in R}\dd{x}\dd{y}. \]
-\end{definition}
-
-% https://tutorial.math.lamar.edu/classes/calciii/DoubleIntegrals.aspx
-
-Recall that given a function $f(x)$, the definite integral $\int_a^bf(x)\dd{x}$ evaluates the area under the curve $y=f(x)$ between $x=a$ and $x=b$. Similarly given a function $f(x,y)$, the volume of the solid below the graph $z=f(x,y)$ and above the region $R$ in the $xy$-plane is given by 
-\begin{equation}
-V=\iint_Rf(x,y)\dd{A}.
-\end{equation}
-
-\begin{remark}
-You can think of $\iint$ as a sum of heights $f(x,y)$ and areas $\dd{A}$, which evaluates to give a volume.
-\end{remark}
-
-\begin{exercise}
-Let $R$ be the triangle whose vertices are $(0,0,0)$, $(0,1,0)$ and $(1,0,0)$. Evaluate $\iint_R1\dd{A}$.
-\end{exercise}
-
-\begin{solution}
-$\iint_R1\dd{A}$ is the volume of a prism with height $1$ and base of area $R$. Hence
-\[ \iint_R1\dd{A}=\text{Area of }R\times1=\frac{1}{2}\times1\times1\times1=\boxed{\frac{1}{2}} \]
-\end{solution}
-
-To evaluate double integrals we need a notion called iterated integrals, which are basically two integrals with one nested inside the other.
-
-\begin{exercise}
-Evaluate 
-\begin{enumerate}[label=(\alph*)]
-\item $\displaystyle\int_0^1\int_1^2x+2y\dd{x}\dd{y}$
-\item $\displaystyle\int_{-1}^1\int_0^x3x^2+2y\dd{y}\dd{x}$
-\end{enumerate}
-\end{exercise}
-
-\begin{solution}
-\begin{enumerate}[label=(\alph*)]
-\item 
-\begin{align*}
-\int_0^1\int_1^2x+2y\dd{x}\dd{y}
-&= \int_0^1\brac{\int_1^2x+2y\dd{x}}\dd{y} \\
-&= \int_0^1\sqbrac{\frac{x^2}{2}+2yx}_{x=1}^{x=2}\dd{y} \\
-&= \int_0^12y+\frac{3}{2}\dd{y} \\
-&= \sqbrac{y^2+\frac{3}{2}y}_{y=0}^{y=1}=\boxed{\frac{5}{2}}
-\end{align*}
-
-\item 
-\begin{align*}
-\int_{-1}^1\int_0^x3x^2+2y\dd{y}\dd{x}
-&= \int_{-1}^1\brac{\int_0^x3x^2+2y\dd{y}}\dd{x} \\
-&= \int_{-1}^1\sqbrac{3x^2y+y^2}_{y=0}^{y=x}\dd{x} \\
-&= \int_{-1}^13x^3+x^2\dd{x} \\
-&= \sqbrac{\frac{3x^4}{4}+\frac{x^3}{3}}_{x=-1}^{x=1}=\boxed{\frac{2}{3}}
-\end{align*}
-\end{enumerate}
-\end{solution}
-
-\section{Iterated Integrals}
-Now we are going to discuss the relation between double integrals and iterated integrals.
-
-$R$ is called simple if $R$ is a rectangle given by $a\le x\le b$ and $c\le y\le d$, in which case
-\[ \iint_Rf(x,y)\dd{A}=\int_a^b\int_c^df(x,y)\dd{y}\dd{x}=\int_c^d\int_a^bf(x,y)\dd{x}\dd{y}. \]
-This is known as Fubini's Theorem.
-
-$R$ is called vertically simple if $R$ is given by $a\le x\le b$, $g(x)\le y\le h(x)$, in which case
-\[ \iint_Rf(x,y)\dd{A}=\int_a^b\int_{g(x)}^{h(x)}f(x,y)\dd{y}\dd{x}. \]
-
-$R$ is called horizontally simple if $R$ is given by $c\le y\le d$, $g(y)\le x\le h(y)$, in which case
-\[ \iint_Rf(x,y)\dd{A}=\int_c^d\int_{g(y)}^{h(y)}f(x,y)\dd{x}\dd{y}. \]
-
-% https://tutorial.math.lamar.edu/Classes/CalcIII/DIGeneralRegion.aspx
-\pagebreak
-
-\chapter{Line Integrals}
-\section{Vector fields}
-A vector field is basically what you get when associating each point in space with a vector.
-
-\begin{definition}
-A \vocab{vector field} on two (or three) dimensional space is a function $\vec{F}$ that assigns eahc point $(x,y)$ (or $(x,y,z)$) a two (or three) dimensional vector given by $\vec{F}(x,y)$ (or $\vec{F}(x,y,z)$).
-\end{definition}
-
-The standard notation for the function $\vec{F}$ is:
-\begin{align*}
-\vec{F}(x,y) &= P(x,y)\hat{i} + Q(x,y)\hat{j} \\
-\vec{F}(x,y,z) &= P(x,y,z)\hat{i} + Q(x,y,z)\hat{j} + R(x,y,z)\hat{k}
-\end{align*}
-depending on whether or not we're in two or three dimensions. The functions $P$, $Q$, $R$ are called \textbf{scalar functions}.
-
-\begin{exercise}
-Sketch the following vector field:
-\[ \vec{F}(x,y) = -y\hat{i} + x\hat{j} \]
-\end{exercise}
-\begin{solution}
-To graph the vector field we need to get some ``values'' of the function. This means plugging in some points into the function. Here are a couple of evaluations:
-\begin{align*}
-\vec{F}\brac{{\frac{1}{2},\frac{1}{2}}} &=  -\frac{1}{2}\hat{i} + \frac{1}{2}\hat{j} \\
-\vec{F}\brac{{\frac{1}{2},-\frac{1}{2}}} &=  -\brac{{-\frac{1}{2}}}\hat{i} + \frac{1}{2}\hat{j} = \frac{1}{2}\hat{i} + \frac{1}{2}\hat{j} \\
-\vec{F}\brac{{\frac{3}{2},\frac{1}{4}}} &=  -\frac{1}{4}\hat{i} + \frac{3}{2}\hat{j}
-\end{align*}
-So what do these evaluations tell us? The first one tells us that at the point $\brac{\dfrac{1}{2},\dfrac{1}{2}}$ we plot the vector $-\frac{1}{2}\hat{i} + \frac{1}{2}\hat{j}$.
-
-Plotting points gives us the following sketch of the vector field:
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=8cm]{images/vec_field2.png}
-\end{figure}
-\end{solution}
-
-Recall that given a function $f(x,y,z)$ the gradient vector is defined as such:
-\begin{definition}
-Given a function $f(x,y,z)$, the gradient vector is defined by
-\[ \nabla f\coloneqq\left\langle {{f_x},{f_y},{f_z}} \right\rangle. \]
-This is a vector field and is often called a \vocab{gradient vector field}.
-\end{definition}
-
-\section{Types of line integrals}
-
-\section{Fundamental Theorem for Line Integrals}
-\begin{theorem}[Fundamental Theorem of Line Integrals]
-Suppose that $C$ is a smooth curve from points $A$ to $B$ parameterised by $\vb{r}(t)$ for $t\in[a,b]$. Let $f$ be a differentiable function whose domain includes $C$ and whose gradient vector $\nabla f$ is continuous on $C$. Then
-\begin{equation}
-\int_C \nabla f \dd{\vb{r}} = f(\vb{r}(b)) - f(\vb{r}(a)) = f(B) - f(A)
-\end{equation}
-\end{theorem}
-
-\begin{remark}
-Similar to the fundamental theorem of calculus, the primary change is that gradient $\nabla f$ takes the place of the derivative $f^\prime$.
-\end{remark}
-% https://www.math.uci.edu/~ndonalds/math2e/16-3fundthm.pdf
-% https://www.youtube.com/watch?v=_60sKaoRmhU
-
-\section{Conservative Vector Fields}
-
-\section{Green's Theorem}
-
-
-to compute arc lengths, areas of curves 
-
-applications of integrals to find area and volume
-
-\chapter{Surface Integrals}
-
-
-\part{Differential Geometry}
-\textbf{Readings:}
-\begin{itemize}
-\item \href{https://aetemad.iut.ac.ir/sites/aetemad.iut.ac.ir/files/files_course/william_m._boothby_an_introduction_to_differentibookfi.org_.pdf}{Introduction to Differentiable Manifolds and Riemannian Geometry}
-\item \href{http://www2.ing.unipi.it/griff/files/dC.pdf}{Differential Geometry of Curves and Surfaces}
-\end{itemize}
+%\part{Differential Geometry}
+%\textbf{Readings:}
+%\begin{itemize}
+%\item \href{https://aetemad.iut.ac.ir/sites/aetemad.iut.ac.ir/files/files_course/william_m._boothby_an_introduction_to_differentibookfi.org_.pdf}{Introduction to Differentiable Manifolds and Riemannian Geometry}
+%\item \href{http://www2.ing.unipi.it/griff/files/dC.pdf}{Differential Geometry of Curves and Surfaces}
+%\end{itemize}

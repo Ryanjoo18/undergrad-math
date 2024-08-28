@@ -1,12 +1,15 @@
-\documentclass[12pt,a4 paper]{extreport}
-\usepackage[a4paper, top=1.0in, bottom=1.0in, left=1.0in, right=1.0in, heightrounded]{geometry}
+\documentclass[10pt,a4paper]{extreport}
+\usepackage[top=1.0in, bottom=1.0in, left=1.0in, right=1.0in, heightrounded]{geometry}
+\usepackage{tgpagella} % text only
+\usepackage{mathpazo}  % math & text
+
 \usepackage{ryan}
 \usepackage[bottom]{footmisc}
 \usepackage{pdfpages}
 
 \pagestyle{fancy}
 \fancyhf{}
-\fancyhead[L]{\slshape\nouppercase{\leftmark}}
+\fancyhead[L]{\nouppercase{\leftmark}}%\slshape
 \fancyhead[R]{\thepage}
 \renewcommand{\headrulewidth}{0.4pt}
 \renewcommand{\arraystretch}{1.5}
@@ -18,105 +21,76 @@ sorting=anyt
 ]{biblatex}
 \addbibresource{biblio.bib}
 
-\makeglossaries
-
-\newacronym{h3math}{H3M}{H3 Mathematics}
-\newacronym{h2fmath}{H2FM}{H2 Further Mathematics}
-\newacronym{mat}{MAT}{Oxford Maths Admissions Test}
-\newacronym{putnam}{PUTNAM}{William Lowell Putnam Mathematics Competition}
-
 \begin{document}
-\begin{titlepage}
-\title{\sffamily\bfseries Fons}
-\author{Ryan Joo Rui An}
-\date{\today}
-
-\vfill
-\titlepic{\includegraphics[width=0.5\textwidth]{images/logo.png}}
-%\url{ryanjoo18.github.io/publications/fons.html}
-\vfill
-\vfill
-\end{titlepage}
-
-\maketitle
+\input{tex/frontmatter/title-page.tex}
 \pagebreak
 
-\
-
-\vfill
-
-\begin{quote}
-\textit{The mathematician does not study mathematics because it is useful; he studies it because he delights in it and he delights in it because it is beautiful.}
-
-\begin{flushright}--- Henri Poincar\'{e} (1854--1912)\\
-French mathematician and theoretical physicist\end{flushright}
-\end{quote}
-
-\vfill
-
-\copyright 2024 Ryan Joo Rui An.\\
-Text licensed under \href{https://creativecommons.org/licenses/by-sa/4.0/}{CC-by-SA-4.0}. Source files licensed under \href{https://choosealicense.com/licenses/gpl-3.0/}{GNU GPL v3}.
-
-This is (still!) an incomplete draft. Please send corrections and comments to \url{ryanjooruian18@gmail.com}, or pull-request at \url{https://github.com/Ryanjoo18/fons}.
-
-Last updated \today.
-\thispagestyle{empty}
-
-\input{preface.tex}
+\pagenumbering{roman}
+\input{tex/frontmatter/copyright.tex}
 \pagebreak
 
-\input{intro.tex}
+\setcounter{page}{1}
+\input{tex/frontmatter/author.tex}
+\pagebreak
+
+\input{tex/frontmatter/preface.tex}
 \pagebreak
 
 \tableofcontents
 \pagebreak
 %\printglossary[type=\acronymtype]
 
-% Materials to be cleared:
-% https://www.seab.gov.sg/docs/default-source/national-examinations/syllabus/alevel/2022syllabus/9649_y22_sy.pdf
-% Intl A level Further Maths: https://www.cambridgeinternational.org/Images/597381-2023-2025-syllabus.pdf
+\pagenumbering{arabic}
+\setcounter{page}{1}
+\part{Preliminaries}\label{part:prelim}
+\input{tex/prelim/proofs.tex}
+\input{tex/prelim/set-theory.tex}
 
-\input{tex/intro.tex}
+\part{Linear Algebra}\label{part:linear-algebra}
+\input{tex/linear-algebra/vector-spaces.tex}
+\input{tex/linear-algebra/finite-dim-vector-spaces.tex}
+\input{tex/linear-algebra/linear-maps.tex}
 
-\part{Abstract Algebra}
+\part{Abstract Algebra}\label{part:abstract-algebra}
 \input{tex/abstract-algebra/group-theory.tex}
-\input{tex/abstract-algebra/ring-theory.tex}
-\input{tex/abstract-algebra/field-theory.tex}
+%\input{tex/abstract-algebra/ring-theory.tex}
+%\input{tex/abstract-algebra/field-theory.tex}
 
-\input{tex/linear_algebra.tex}
-
-\part{Real Analysis}
+\part{Real Analysis}\label{part:real-analysis}
 \input{tex/real-analysis/number-systems.tex}
 \input{tex/real-analysis/basic-topology.tex}
 \input{tex/real-analysis/sequences-series.tex}
 \input{tex/real-analysis/continuity.tex}
-\input{tex/real-analysis/differentiation-integration.tex}
+\input{tex/real-analysis/differentiation.tex}
+\input{tex/real-analysis/integration.tex}
 \input{tex/real-analysis/sequences-series-functions.tex}
 \input{tex/real-analysis/special-functions.tex}
 
-%\input{tex/calculus.tex}
+\part{Complex Analysis}\label{part:complex-analysis}
+\input{tex/complex-analysis/complex-plane.tex}
+\input{tex/complex-analysis/complex-functions.tex}
 
-\input{tex/complex_analysis.tex}
-
-%\input{tex/harmonic_analysis.tex}
-
+\part{Topology}\label{part:topology}
 \input{tex/topology.tex}
+
+%\part{Single Variable Calculus}
+%\input{tex/single-calculus/calculus.tex}
+
+%\part{Multivariable Calculus}
+%\input{tex/multi-calculus/vector-functions.tex}
+%\input{tex/multi-calculus/partial-derivatives.tex}
+%\input{tex/multi-calculus/multiple-integrals.tex}
+%\input{tex/multi-calculus/vector-calculus.tex}
 
 %\input{tex/discrete.tex}
 
 %\input{tex/stats.tex}
-
-\input{tex/appendix.tex}
 \pagebreak
 
 %\printbibliography[type=book,title={Books}]
 \printbibliography[title={Bibliography}]
 
-%\textbf{Lecture notes:}
-%\begin{itemize}
-%\item Lecture notes by the University of Oxford.
-%\item Lecture notes by the University of Cambridge. %https://dec41.user.srcf.net/notes/
-%\item Lecture notes on MIT OpenCourseWare.
-%\end{itemize}
-
+%Lecture notes by the University of Oxford.
+%Lecture notes by the University of Cambridge. %https://dec41.user.srcf.net/notes/ & https://thirdsgames.co.uk/maths.html
+%Lecture notes on MIT OpenCourseWare.
 \end{document}

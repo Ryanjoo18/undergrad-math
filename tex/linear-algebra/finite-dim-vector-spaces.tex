@@ -1,0 +1,168 @@
+\chapter{Finite-Dimensional Vector Spaces}\label{chap:finite-dim-vector-spaces}
+\section{Span and Linear Independence}
+\begin{definition}[Linear combination]
+A \vocab{linear combination} of vectors $\{v_1,\dots,v_n\}$ in $V$ is a vector of the form
+\[a_1v_1+\cdots+a_nv_n\]
+where $a_i\in\FF$.
+\end{definition}
+
+\begin{definition}[Span]
+The \vocab{span} of $\{v_1,\dots,v_n\}$ is the set of all linear combinations of $v_1,\dots,v_n$:
+\[\spn\{v_1,\dots,v_n\}=\{a_1v_1+\cdots+a_nv_n\mid a_i\in\FF\}.\]
+The span of the empty list $(\:)$ is defined to be $\{\vb{0}\}$.
+
+We say that $v_1,\dots,v_n$ \vocab{spans} $V$ if $\spn\{v_1,\dots,v_n\}=V$.
+\end{definition}
+
+\begin{proposition}
+$\spn\{v_1,\dots,v_n\}$ in $V$ is the smallest subspace of $V$ containing $v_1,\dots,v_n$.
+\end{proposition}
+
+\begin{proof}
+First we show that $\spn\{v_1,\dots,v_n\}$ is a subspace of $V$.
+\begin{enumerate}[label=(\roman*)]
+\item Additive identity $\vb{0}=0v_1+\cdots+0v_n\in\spn\{v_1,\dots,v_n\}$
+\item $(a_1v_1+\cdots+a_nv_n)+(c_1v_1+\cdots+c_nv_n)=(a_1+c_1)v_1+\cdots+(a_n+c_n)v_n\in\spn\{v_1,\dots,v_n\}$, so $\spn\{v_1,\dots,v_n\}$ is closed under addition.
+\item $\lambda(a_1v_1+a_nv_n)=(\lambda a_1)v_1+\cdots+(\lambda a_n)v_n\in\spn\{v_1,\dots,v_n\}$, so $\spn\{v_1,\dots,v_n\}$ is closed under scalar multiplication.
+\end{enumerate}
+Thus $\spn\{v_1,\dots,v_n\}$ is a subspace of $V$.
+
+Each $v_i$ is a linear combination of $v_1,\dots,v_n$:
+\[v_i=0v_1+\cdots+0v_{i-1}+1v_i+0v_{i+1}+\cdots+0v_n.\]
+Thus $v_i\in\spn\{v_1,\dots,v_n\}$. Conversely, since subspaces are closed under scalar multiplication and addition, every subspace of $V$ containing each $v_i$ contains $\spn\{v_1,\dots,v_n\}$.
+
+Hence $\spn\{v_1,\dots,v_n\}$ is the smallest subspace of $V$ containing $v_1,\dots,v_n$.
+\end{proof}
+
+\begin{definition}[Finite-dimensional vector space]
+$V$ is \vocab{finite-dimensional} if there exists $v_1,\dots,v_n$ that spans $V$; otherwise, it is infinite-dimensional.
+\end{definition}
+
+\begin{example}
+$\FF^3$ is finite-dimensional because $\FF^3=\spn\{(1,0,0),(0,1,0),(0,0,1)\}$; $\FF^\infty$ is infinite-dimensional.
+\end{example}
+
+Otherwise mentioned, all subsequent vector spaces are finite-dimensional. 
+
+\begin{definition}[Polynomial]
+A function $p:\FF\to\FF$ is a \vocab{polynomial} with coefficients in $\FF$ if there exist $a_i\in\FF$ such that
+\[p(z)=a_0+a_1z+\cdots+a_nz^n\]
+for all $z\in\FF$.
+
+We denote the set of all polynomials with coefficients in $\FF$ by $\mathcal{P}(\FF)$.
+
+A polynomial $p\in\mathcal{P}(\FF)$ is has degree $n$ if there exist scalars $a_0,a_1,\dots,a_n\in\FF$ with $a_n\neq0$ such that $p(z)=a_0+a_1z+\cdots+a_nz^n$ for all $z\in\FF$; if $p$ has degree $n$, we write $\deg p=n$.
+
+For non-negative integer $n$, $\mathcal{P}^n(\FF)$ denotes the set of all polynomials with coefficients in $\FF$ and degree at most $n$.
+\end{definition}
+
+\begin{definition}[Linear independence]
+$\{v_1,\dots,v_n\}$ is \vocab{linearly independent} in $V$ if the only choice of $a_1,\dots,a_n\in\FF$ that makes $a_1v_1+\cdots+a_nv_n=\vb{0}$ is $a_1=\cdots=a_n=0$; otherwise, it is \vocab{linearly dependent}.
+\end{definition}
+
+\cref{lemma:linear-dependence} will often be useful; it states that given a linearly dependent list of vectors, one of the vectors is in the span of the previous ones and furthermore we can throw out that vector without changing the span of the original list.
+
+\begin{lemma}[Linear dependence lemma]\label{lemma:linear-dependence}
+Suppose $\{v_1,\dots,v_n\}$ is linearly dependent in $V$. Then there exists $v_k$ such that the following hold:
+\begin{enumerate}[label=(\roman*)]
+\item $v_k\in\spn\{v_1,\dots,v_{k-1}\}$
+\item $\spn\{v_1,\dots,v_{k-1},v_{k+1},\dots,v_n\}=\spn\{v_1,\dots,v_n\}$
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Since $\{v_1,\dots,v_n\}$ is linearly dependent, there exists $a_1,\dots,a_n\in\FF$, not all $0$, such that
+\[a_1v_1+\cdots+a_nv_n=0.\]
+Let $k=\max\{1,\dots,n\}$ such that $a_k\neq0$. Then
+\[v_k=-\frac{a_1}{a_k}v_1-\cdots-\frac{a_{k-1}}{a_k}v_{k-1},\]
+proving (i).
+
+To prove (ii), suppose $u\in\spn\{v_1,\dots,v_n\}$. Then there exists $c_1,\dots,c_n\in\FF$ such that
+\[u=c_1v_1+\cdots+c_nv_n.\]
+
+\end{proof}
+
+\cref{prop:length-linind-span} says that no linearly independent list in $V$ is longer than a spanning list in $V$.
+
+\begin{proposition}\label{prop:length-linind-span}
+The length of every linearly independent list of vectors is less than or equal to the length of every spanning list of vectors.
+\end{proposition}
+
+\begin{proof}
+Suppose $\{u_1,\dots,u_m\}$ linearly independent in $V$, $\{w_1,\dots,w_n\}$ spans $V$. We want to show $m\le n$. We do so through the following steps:
+\begin{itemize}
+\item[Step 1] 
+\end{itemize}
+\end{proof}
+
+\section{Bases}
+\begin{definition}[Basis]
+$\{v_1\dots,v_n\}$ is a \vocab{basis} of $V$ if it is linearly independent and spans $V$.
+\end{definition}
+
+\begin{example}
+Let $\vb{e}_i=(0,\dots,0,1,0,\dots,0)$ where the $i$-th coordinate is $1$. $\{\vb{e}_1,\dots,\vb{e}_n\}$ is a basis of $\FF^n$, called the \vocab{standard basis} of $\FF^n$.
+\end{example}
+
+\begin{example}
+$\{1,z,\dots,z^n\}$ is a basis of $\mathcal{P}^n(\FF)$.
+\end{example}
+
+\begin{lemma}[Criterion for basis]\label{lemma:basis-criterion}
+The following are equivalent:
+\begin{enumerate}[label=(\roman*)]
+\item $\{v_1,\dots,v_n\}$ is a basis of $V$.
+\item Every $v\in V$ is uniquely expressed as a linear combination of $v_1,\dots,v_n$.
+\item $v_i\neq0$, $V=Fv_1\oplus\cdots\oplus Fv_n$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+
+\end{proof}
+
+\begin{proposition}
+Every spanning list in a vector space can be reduced to a basis of the vector space.
+\end{proposition}
+
+\begin{proposition}
+Every finite-dimensional vector space has a basis.
+\end{proposition}
+
+\begin{proof}
+By definition, a finite-dimensional vector space has a spanning list. The previous result tells us that each spanning list can be reduced to a basis.
+\end{proof}
+
+\begin{proposition}
+Every linearly independent list of vectors in a finite-dimensional vector space can be extended to a basis of the vector space.
+\end{proposition}
+
+\begin{proposition}
+Suppose $U$ is a subspace of $V$. Then there exists a subspace $W$ of $V$ such that $V=U\oplus W$.
+\end{proposition}
+
+\begin{proof}
+
+\end{proof}
+
+\section{Dimension}
+\begin{definition}[Dimension]
+The \vocab{dimension} of $V$ is the length of any basis of $V$, denoted by $\dim V$.
+\end{definition}
+
+\begin{proposition}
+Suppose $U$ is a subspace of $V$, then $\dim U\le\dim V$.
+\end{proposition}
+
+\begin{proposition}
+Every linearly independent list of vectors in $V$ with length $\dim V$ is a basis of $V$.
+\end{proposition}
+
+\begin{proposition}
+Every spanning list of vectors in $V$ with length $\dim V$ is a basis of $V$.
+\end{proposition}
+
+\begin{lemma}[Dimension of a sum]
+Suppose $U_1$ and $U_2$ are subspaces of $V$, then
+\[\dim(U_1+U_2)=\dim U_1+\dim U_2-\dim(U_1\cap U_2).\]
+\end{lemma}

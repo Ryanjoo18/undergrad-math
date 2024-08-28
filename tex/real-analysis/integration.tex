@@ -1,0 +1,319 @@
+\chapter{Riemann--Stieltjes Integral}
+\section{Definition of Riemann--Stieltjes Integral}
+Assume $[a,b]$ is a closed interval in $\RR$. By a \vocab{partition} $P$, we mean a finite set of points $x_0,x_1,\dots,x_n$ where
+\[ a=x_0\le x_1\le\cdots\le x_{n-1}\le x_n=b. \]
+Assume $f$ is a bounded real-valued function over $[a,b]$ and $\alpha$ is an increasing function over $[a,b]$. Denote by
+\[ M_i=\sup_{[x_{i-1},x_i]}f(x), \quad m_i=\inf_{[x_{i-1},x_i]}f(x) \]
+and by
+\[ \Delta\alpha_i=\alpha(x_i)-\alpha(x_{i-1}). \]
+Define the \vocab{upper sum} of $f$ with respect to the partition $P$ and $\alpha$ as
+\[ U(f,\alpha;P)=\sum_{i=1}^n M_i \Delta \alpha_i \]
+and the \vocab{lower sum} of $f$ with respect to the partition $P$ and $\alpha$ as
+\[ L(f,\alpha;P)=\sum_{i=1}^n m_i \Delta \alpha_i. \]
+Define the upper Riemann--Stieltjes integral as
+\[ \upperint_a^bf(x)\dd{\alpha(x)}\coloneqq\inf_P U(f,\alpha;P) \]
+and the lower Riemann--Stieltjes integral as
+\[ \lowerint_a^bf(x)\dd{\alpha(x)}\coloneqq\sup_P L(f,\alpha;P). \]
+It is easy to see from definition that
+\[ \lowerint_a^bf(x)\dd{\alpha(x)}\le\upperint_a^bf(x)\dd{\alpha(x)}. \]
+
+\begin{definition}
+A function $f$ is \vocab{Riemann--Stieltjes integrable} with respect to $\alpha$ over $[a,b]$, if
+\[ \lowerint_a^bf(x)\dd{\alpha(x)}=\upperint_a^bf(x)\dd{\alpha(x)}. \]
+\end{definition}
+
+\begin{notation}
+We use $\displaystyle\int_a^bf(x)\dd{\alpha(x)}$ to denote the common value, and call it the Riemann--Stieltjes of $f$ with respect to $\alpha$ over $[a,b]$.
+\end{notation}
+
+\begin{notation}
+We use the notation $R_\alpha[a,b]$ to denote the set of Riemann--Stieljes integrable functions with respect to $\alpha$ over $[a,b]$.
+\end{notation}
+
+In particular, when $\alpha(x)=x$, we call the corresponding Riemann--Stieljes integration the \vocab{Riemann integration}, and use $R[a,b]$ to denote the set of Riemann integrable functions.
+
+\begin{definition}
+The partition $P^\prime$ is a \vocab{refinement} of $P$ if $P^\prime\supset P$. Given two partitions $P_1$ and $P_2$, we say that $P^\prime$ is their \vocab{common refinement} if $P^\prime=P_1\cup P_2$.
+\end{definition}
+
+Intuitively, a refinement will give a better estimation than the original partition, so the upper and lower sums of a refinement should be more restrictive.
+
+\begin{proposition}
+If $P^\prime$ is a refinement of $P$, then
+\[ L(f,\alpha;P)\le L(f,\alpha;P^\prime) \]
+and
+\[ U(f,\alpha;P^\prime)\le U(f,\alpha;P). \]
+\end{proposition}
+
+\begin{proof}
+Suppose that
+\[ P: a\le x_0\le x_1\le ...\le x_n=b \]
+and
+\[ P^\prime: a\le y_0\le y_1\le ...\le y_m=b. \]
+Then there exists a strictly increasing sequence of indices $j_0=0,j_1,\dots,j_n=m$ such that $y_{j_k}=x_k$.
+
+Now consider each closed interval $[x_{i-1},x_i]$
+%(From my definition of partitions, points may be equal; though if $x_{i-1}=x_i$, then both the set of points $\{x_{i-1},x_i\}$ in $P$ and $\{y_{j_{i-1}}, y_{j_{i-1}_1},\dots,y_{j_i}\}$ in $P^\prime$ will contribute nothing towards the upper and lower sums of P and $P^\prime$ respectively)
+
+Focusing on the upper sum, we have
+\[ \sup_{[x_{i-1},x_i]} f \ge \sup_{[y_{k-1},y_k]} f \]
+for $k=j_{i-1}+1,\dots,j_i$. 
+This is because $[y_{k-1},y_k]$ is contained in $[x_{i-1},x_i]$
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{images/RSintegral-partitions.png}
+    \caption{Partitions}
+\end{figure}
+
+Continuing from
+\[ \sup_{[x_{i-1},x_i]} f \ge \sup_{[y_{k-1},y_k]} f, \]
+We then multiply by $\alpha(y_k)-\alpha(y_{k-1})$ on both sides and then take the sum from $k=j_{i-1}+1$ to $k=j_i$
+:
+The RHS corresponds to the (weighted) sum of the thin rectangles that you see in the above picture
+:
+The LHS is actually a telescoping sum, and the sum would be
+\[ (\sup_{[x_{i-1},x_i]} f) \cdot [\alpha(y_{j_i})-\alpha(y_{j_{i-1}})] = (\sup_{[x_{i-1},x_i]} f) \cdot [\alpha(x_i)-\alpha(x_{i-1})] \]
+Finally, we take the sum from $i=1$ to $i=n$ of the above inequality
+LHS $\ge$ RHS (sorry I don't know of a better way to put it)
+We then obtain $U(P,f,\alpha)\ge U(P^\prime,f,\alpha)$
+
+(On the LHS we're collecting all the rectangles for the upper sum wrt $P$, but on the RHS we're collecting up collections of upper rectangles to obtain the entire collective of upper rectangles for the upper sum wrt $P^\prime$)
+:
+Lower sum is similar
+:
+Now, a lemma used to prove 6.5
+Given any two partitions $P_1$ and $P_2$, we have
+\[ L(P_1,f,\alpha)\le U(P_2,f,\alpha) \]
+So a lower sum will always be no larger than any other upper sum
+:
+So this includes the cases where we have the most refined of $P_1$'s and $P_2$'s, with no information regarding the partition points whatsoever
+To be honest, the result seems to be both intuitive and unclear at the same time
+
+The key here is to use common refinements as a link for both sums
+The idea is stated in the proof of 6.5 and I don't think I need to elaborate further
+
+What's nice here is that now we have two completely independent partitions $P_1$ and $P_2$, so by fixing one partition, say $P_2$, and taking the 'limit' over the other (here we take the supremum over all possible $P_1$) we then obtain an inequality between a Darboux integral and a Darboux sum (here it's the lower integral and an upper sum)
+
+Since the Darboux integral is just a number, we can then safely take the 'limit' over the other partition to obtain the inequality in 6.5
+\end{proof}
+
+\begin{proposition}
+\[ \lowerint_a^bf\dd{\alpha}=\upperint_a^bf\dd{\alpha}. \]
+\end{proposition}
+
+\begin{proof}
+
+\end{proof}
+
+Now we move on to integrability conditions for $f$. The first one looks a lot like the $\epsilon-N$ or $\epsilon-\delta$ definition of limits:
+
+\begin{theorem}
+$f\in R_\alpha[a,b]$ if and only if for each $\epsilon>0$, there exists some partition $P$ such that
+\[ U(f,\alpha;P)-L(f,\alpha;P)<\epsilon. \]
+\end{theorem}
+%%%%%%%%%%%%%%%%%%%%
+
+\begin{proof} \
+
+($\implies$) Assume $f\in R_\alpha[a,b]$. By definition,
+\[ \inf_PU(f,\alpha;P)=\int_a^bf\dd{\alpha}=\sup_PL(f,\alpha;P). \]
+For every $\epsilon>0$, 
+
+($\impliedby$) 
+\end{proof}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+% Darboux sums, Darboux integrals
+
+\begin{example}[Dirichlet function]
+The Dirichlet function is given by
+\[ f(x)=\begin{cases}
+1 & x\in\QQ \\
+0 & x\notin\QQ
+\end{cases} \]
+We try to calculate the two on the interval $[0,1]$.
+
+The Dirichlet function is pathological because for each subinterval $[x_{i-1},x_i]$, the supremum is always $1$ and the infimum is always $0$.
+
+So no matter what partition we use, $U(f,P)$ is always $1$ whereas $L(f,P)$ is always $0$. This means that $U(f)=1$ and $L(f)=0$, so there are two different values for ``the integral of $f$''.
+
+This is like the case where we try to find the limit of the Dirichlet function where $x$ is approaching any given real number $r$, there exists two sequences approaching $r$ whose image approaches two different values.
+\end{example}
+
+Now, a very important and fun case about the more general RS-integral, which we'll discuss next week (do try the exercise yourself first)
+
+\begin{exercise}
+The Heaviside step function $H$ is a real-valued function defined by the following:
+\[ H(x)=\begin{cases}
+0 & x<0 \\
+1 & x\ge0
+\end{cases} \]
+For the purpose of this question we assume the convention $\infty\cdot0=0$.
+\begin{enumerate}[label=(\alph*)]
+\item Let $f$ be a real-valued function over $\RR$. Show that $f\in\RR_H [a,b]$ if and only if $f$ is continuous at $0$, and find the RS-integral $\int_{-\infty}^\infty f\dd{H}$.
+\item Suppose that the definition for $H$ is changed for $x=0$, say $H(0)=\frac{1}{2}$. Show that the above result still holds.
+\item Examine the RS-integral of $f$ over $\RR\setminus\{0\}$ wrt $H$, where $f$ is a real-valued function over $\RR\setminus\{0\}$ such that $\lim_{x\to0}f(x)=\infty$ or $-\infty$.
+\end{enumerate}
+(You may read up on more information regarding the Heaviside function, and the (in)famous Dirac delta function)
+\end{exercise}
+
+
+
+
+Now we've been talking a lot about upper and lower sums because they're arguably the simplest way to define integrals, in the sense that there's not a whole lot of things that we could go wrong here
+By considering only upper and lower bound, we're essentially picking the most conservative route possible
+
+It would be nice if we could just pick like one random point within each interval and consequently calculate the Riemann(-Stieltjes) sums
+
+This method, of course, fails to be well defined for pathological functions like the Dirichlet function
+On the other hand, by using upper and lower sums, we could give a persuasive explanation as to why the Dirichlet function is not Riemann integrable
+
+However, instead of throwing this idea away, there's actually a way for us to make this into a strict definition
+
+When we were talking about the sequential definition for limits of functions, we noted that there are certain scenarios where the limit cannot exist because there may be two distinct sequences may give different limit
+Based on this observation, we then gave a reasonable condition as follows:
+"$\lim_{x\to a} f(x)$ exists and is equal to $L$ if and only if for all sequences $x_n$ converging but not containing a, $f(x_n)$ converges to $L$"
+
+Well here, it's actually the same kind of scenario
+Given any partition $P$, we consider the Riemann sum $\sum f(\xi_i)\Delta x_i$ where $\xi_i$ is any point where $x_{i-1}\le\xi_i\le x_i$
+
+For the Dirichlet function over $[0,1]$, given any partition P (here we may assume that the partition points are distinct), we will always be able to specifically pick $\xi_i,\eta_i\in[x_{i-1},x_i]$ such that $\xi_i$ is rational but $\eta_i$ is irrational
+
+Then $\sum f(\xi_i)\Delta x_i=1$ but $\sum f(\eta_i)\Delta x_i=0$
+
+Now be very mindful that this alone cannot be evidence that f is non-integrable
+The key is that this somehow occured for all partitions P, no matter how refined they are; for every single partition P, there exists two sets of 'representing points' $\xi_i,\eta_i$ such that the two Riemann sums are constantly far apart (1 and 0 in this case)
+
+Let $\epsilon_0=1$, then this ultimately translates to the following:
+The Dirichlet function cannot be Riemann integrable because
+There exists some $\epsilon_0>0$, such that for any given partition $P$, there exists two sets of representing points $\xi_i,\eta_i$ such that their corresponding Riemann sums satisfy that
+\[ |\sum f(\xi_i)\Delta x_i - \sum f(\eta_i)\Delta x_i|\ge\epsilon_0. \]
+
+Now if we always pick the representatives such that $\xi_i>\eta_i$ then we can neglect the absolute value
+
+So now, let's take the converse
+A function $f$ is said to be RS-integrable if
+For every $\epsilon>0$,
+There exists a partition P, such that
+For any two sets of representing points $\xi_i,\eta_i$,
+Their corresponding Riemann sums satisfy that
+\[ \sum[f(\xi_i)-f(\eta_i)]\Delta x_i<\epsilon \]
+(The last one should be $\Delta \alpha_i$ for RS-integrals, not $\Delta x_i$)
+
+Unfortunately this is still not quite the correct definition according to Apostol, but we're pretty close
+The problem with this definition is that it is too weak if we're considering general $\alpha$ of bounded variation; if we were only talking about monotonically increasing $\alpha$ then this will actually be an equivalent definition
+
+The official definition for the RS-integral wrt $\alpha$ of bounded variation is as follows:
+\begin{definition}
+For every $\epsilon>0$, there exists a partition $P$, such that
+[For any refinement $P^\prime$ of P, and]
+For any two sets of representing points $\xi_i,\eta_i$ [of $P^\prime$], their corresponding Riemann sums satisfy that
+\[ \sum[f(\xi_i)-f(\eta_i)]\Delta x_i<\epsilon. \]
+\end{definition}
+
+Now this definition is what mathematicians would refer to as a 'Cauchy' definition, since it defines a notion by comparing a pair of arbitrary values that are similar to one another, and if they agree in some sense then we say that that something satisfies some property.
+
+The integral is then obtained as follows: If $f$ were to satisfy the above Cauchy definition, then we may pick an arbitrary sequence of refinements
+\[ P_1 \subset P_2 \subset P_3 \subset ...; \]
+and for each partition we pick a set of representatives to obtain a sequence RS-sum
+$I_1, I_2, I_3, ...$
+:
+This sequence will be a Cauchy sequence of real numbers, and so will converge to a specific value $I$ which we consider to be RS-integral of f
+:
+Now the reason why Apostol needed to strengthen the definition is that, otherwise this value $I$ may not be unique
+:
+So if you look at the statement you see in 6.7(b)(c), then they correspond to the Cauchy definition and the 'value-based' definition respectively
+For monotonically increasing $\alpha$, it is much easier to discuss them using upper and lower sums
+So your exercise today will be to read the statements and proofs in Theorem 6.7
+
+\begin{theorem}
+$f\in R_\alpha[a,b]$, $m\le f\le M$, and $\phi$ is uniformly continuous on $[m,M]$, then
+\[ \phi\circ f\in R_\alpha[a,b]. \]
+\end{theorem}
+
+\begin{proof}
+Choose $\epsilon>0$. Since $\phi$ is uniformly continuous on $[m,M]$, there exists $\delta>0$ such that $\delta<\epsilon$ and $|\phi(s)-\phi(t)|$
+\end{proof}
+
+\section{Properties of the Integral}
+\begin{theorem} \
+\begin{enumerate}[label=(\arabic*)]
+\item If $f_1,f_2\in R_\alpha[a,b]$, then 
+\[ f_1+f_2\in R_\alpha[a,b]; \]
+$cf\in R_\alpha[a,b]$ for every $c\in\RR$, and
+\[ \int_a^b(f_1+f_2)\dd{\alpha}=\int_a^bf_1\dd{\alpha}+\int_a^bf_2\dd{\alpha}, \]
+\[ \int_a^b(cf)\dd{\alpha}=c\int_a^bf\dd{\alpha}. \]
+
+\item If $f_1,f_2\in R_\alpha[a,b]$ and $f_1\le f_2$, then
+\[ \int_a^bf_1\dd{\alpha}\le\int_a^bf_2\dd{\alpha}. \]
+
+\item If $f\in R_\alpha[a,b]$ and $c\in[a,b]$, then $f\in R_\alpha[a,c]$ and $f\in R_\alpha[c,b]$, and
+\[ \int_a^bf\dd{\alpha}=\int_a^c\dd{\alpha}+\int_c^b\dd{\alpha}. \]
+
+\item If $f\in R_\alpha[a,b]$ and $|f|\le M$, then
+\[ \absolute{\int_a^bf\dd{\alpha}}\le M\sqbrac{\alpha(b)-\alpha(a)}. \]
+
+\item If $f\in R_{\alpha_1}[a,b]$ and $f\in R_{\alpha_2}[a,b]$, then $f\in R_{\alpha_1+\alpha_2}[a,b]$ and
+\[ \int_a^bf\dd{(\alpha_1+\alpha_2)}=\int_a^bf\dd{\alpha_1}+\int_a^bf\dd{\alpha_2}; \]
+if $f\in R_\alpha[a,b]$ and $c$ is a positive constant, then $f\in R_{c\alpha}[a,b]$ and
+\[ \int_a^bf\dd{(c\alpha)}=c\int_a^bf\dd{\alpha}. \]
+
+\item If $f\in R_\alpha[a,b]$ and $g\in R_\alpha[a,b]$, then $fg\in R_\alpha[a,b]$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof} \
+\begin{enumerate}[label=(\arabic*)]
+\item If $f=f_1+f_2$ and $P$ is any partition of $[a,b]$, we have
+\begin{align*}
+L(f_1,\alpha;P)+L(f_2,\alpha;P)&\le L(f,\alpha;P)\\
+&\le U(f,\alpha;P)\\
+&\le U(f_1,\alpha;P)+U(f_2,\alpha;P).
+\end{align*}
+
+If $f_1\in R_\alpha[a,b]$ and $f_2\in R_\alpha[a,b]$, let $\epsilon>0$ be given. There are partitions $P_1$ and $P_2$ such that
+
+
+\item 
+\item 
+\item 
+\item 
+\item 
+\end{enumerate}
+\end{proof}
+
+\begin{theorem}[Triangle inequality]
+$f\in R_\alpha[a,b]$, then $|f|\in R_\alpha[a,b]$,
+\[ \absolute{\int_a^bf\dd{\alpha}}\le\int_a^b|f|\dd{\alpha}. \]
+\end{theorem}
+
+\begin{proof}
+
+\end{proof}
+
+6.14 6.15
+Heaviside step function
+
+6.16 corollary
+for intinite sum, need $\sum c_n$ to converge
+(23) comparison test
+
+6.17 integration by substitution
+\begin{theorem}
+$\alpha$ increasing, $\alpha^\prime\in R[a,b]$, $f$ bounded on $[a,b]$, then
+\[ f\in R_\alpha[a,b]\iff f\alpha^\prime\in R[a,b]. \]
+\end{theorem}
+
+6.19 change of variables
+
+\section{Fundamental Theorem of Calculus}
+6.20 6.21
+
+\begin{theorem}
+
+\end{theorem}
+
+6.22 integration by parts

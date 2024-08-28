@@ -1,8 +1,6 @@
-# Fons: A University Mathematics Source
+# Undergraduate Mathematics
 
-Welcome to Fons! (Latin for "source" or "fountain")
-
-This book is a collection of notes on core university-level mathematics concepts, designed to be a continuous wellspring of knowledge for your studies.  Just as a fountain provides a constant flow of water, Fons aims to be a reliable source to quench your thirst for mathematical understanding.
+This book is a collection of notes on core undergraduate-level mathematics concepts.
 
 ## Author's Background
 
@@ -26,9 +24,3 @@ The book mainly contains the following sections:
 - real analysis,
 - complex analysis, and
 - topology.
-
-## Please Note
-
-As this book is based on my current understanding and may not be a comprehensive resource, it's recommended to use it in conjunction with other established textbooks and course materials.
-
-I hope you find Fons to be a valuable companion on your journey through the fascinating world of university mathematics!

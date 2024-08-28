@@ -1,0 +1,89 @@
+\chapter{Vector Functions}
+\section{Vector Functions and Space Curves}
+A \textbf{vector-valued function} is a function whose domain is a set of real numbers and whose range is a set of vectors.
+
+In the case of vector functions $\vb{r}$ whose values are three-dimensional vectors, we write
+\[\vb{r}(t)=\langle f(t),g(t),h(t)\rangle=f(t)\vb{i}+g(t)\vb{j}+h(t)\vb{k}\]
+where real-valued functions $f,g,h$ are called the \textbf{component functions} of $\vb{r}$.
+
+\begin{remark}
+We usually use the letter $t$ to denote the independent variable because it represents time in most applications of vector functions.
+\end{remark}
+
+The \textbf{limit} of a vector function $\vb{r}$ is defined by taking the limits of its component functions as follows.
+
+\begin{definition}[Limit]
+If $\vb{r}(t)=\langle f(t),g(t),h(t)\rangle$, then
+\[\lim_{t\to a}\vb{r}(t)=\langle\lim_{t\to a}f(t),\lim_{t\to a}g(t),\lim_{t\to a}h(t)\rangle\]
+provided the limits of the component functions exist.
+\end{definition}
+
+Equivalently, we could have used an epsilon--delta definition (see Exercise 45). Limits of vector functions obey the same rules as limits of real-valued functions (see Exercise 43).
+
+A vector function $\vb{r}$ is \textbf{continuous} at $a$ if
+\[\lim_{t\to a}\vb{r}(t)=\vb{r}(a).\]
+In view of the above definition, we see that $\vb{r}$ is continuous at $a$ if and only if its component functions $f,g,h$ and are continuous at $a$.
+
+There is a close connection between continuous vector functions and space curves. Suppose that $f,g,h$ and are continuous real-valued functions on an interval $I$. Then the set of all points in space, where
+\[x=f(t)\quad y=g(t)\quad z=h(t)\]
+and $t$ varies throughout the interval $I$, is called a \textbf{space curve}. The equation above is called the \textbf{parametric equations} of $C$, and $t$ is called a \textbf{parameter}.
+
+\begin{remark}
+We can think of as $C$ being
+traced out by a moving particle whose position at time $t$ is $\brac{f(t),g(t),h(t)}$. If we now consider the vector function $\vb{r}(t)=\langle f(t),g(t),h(t)\rangle$, then $\vb{r}(t)$ is the position vector of the point $P\brac{f(t),g(t),h(t)}$ on $C$. Thus any continuous vector function $\vb{r}$ defines a space curve $C$ that is traced out by the tip of the moving vector $\vb{r}(t)$.
+\end{remark}
+
+\section{Derivatives and Integrals of Vector Functions}
+The \textbf{derivative} $\vb{r}^\prime$ of a vector function $\vb{r}$ is defined in much the same way as for real-valued functions:
+\begin{equation}
+\dv{\vb{r}}{t}=\vb{r}^\prime(t)=\lim_{h\to0}\frac{\vb{r}(t+h)-\vb{r}(t)}{h}
+\end{equation}
+if this limit exists. The vector $\vb{r}^\prime(t)$ is also called the \textbf{tangent vector} to the curve $C$ defined by $\vb{r}$ at a point $P$, provided that $\vb{r}^\prime(t)$ exists and $\vb{r}^\prime(t)\neq\vb{0}$. The \textbf{tangent line} to $C$ at $P$ is defined to be the line through $P$ parallel to the tangent vector $\vb{r}^\prime(t)$. We will also have occasion to consider the \textbf{unit tangent vector}, which is
+\[\vb{T}(t)=\frac{\vb{r}^\prime(t)}{|\vb{r}^\prime(t)|}.\]
+
+The following theorem gives us a convenient method for computing the derivative of a vector function $\vb{r}$: just differentiate each component of $\vb{r}$.
+
+\begin{theorem}
+If $\vb{r}(t)=\langle f(t),g(t),h(t)\rangle=f(t)\vb{i}+g(t)\vb{j}+h(t)\vb{k}$, where $f,g,h$ are differentiable functions, then
+\[\vb{r}^\prime(t)=\langle f^\prime(t),g^\prime(t),h^\prime(t)\rangle=f^\prime(t)\vb{i}+g^\prime(t)\vb{j}+h^\prime(t)\vb{k}.\]
+\end{theorem}
+
+\begin{proof}
+\begin{align*}
+\vb{r}^\prime(t)&=\lim_{\Delta t\to0}\frac{1}{\Delta t}[\vb{r}(t+\Delta t)-\vb{r}(t)]\\
+&=\lim_{\Delta t\to0}\frac{1}{\Delta t}[\langle f(t+\Delta t),g(t+\Delta t),h(t+\Delta t)\rangle-\langle f(t),g(t),h(t)\rangle]\\
+&=\lim_{\Delta t\to0}\left\langle\frac{f(t+\Delta t)-f(t)}{\Delta t},\frac{g(t+\Delta t)-g(t)}{\Delta t},\frac{h(t+\Delta t)-h(t)}{\Delta t}\right\rangle\\
+&=\left\langle\lim_{\Delta t\to0}\frac{f(t+\Delta t)-f(t)}{\Delta t},\lim_{\Delta t\to0}\frac{g(t+\Delta t)-g(t)}{\Delta t},\lim_{\Delta t\to0}\frac{h(t+\Delta t)-h(t)}{\Delta t}\right\rangle\\
+&=\langle f^\prime(t),g^\prime(t),h^\prime(t)\rangle.
+\end{align*}
+\end{proof}
+
+Just as for real-valued functions, the second derivative of a vector function $\vb{r}$ is the derivative of $\vb{r}^\prime$, that is, $(\vb{r}^\prime)^\prime$.
+
+The next theorem shows that the differentiation rules for real-valued functions have their counterparts for vector-valued functions.
+
+\begin{theorem}[Differentiation rules]
+Suppose $\vb{u}$ and $\vb{v}$ are differentiable vector functions, $c$ is a scalar, and $f$ is a real-valued function. Then
+\begin{enumerate}[label=(\arabic*)]
+\item (addition) $\displaystyle\dv{t}[\vb{u}(t)+\vb{v}(t)]=\vb{u}^\prime(t)+\vb{v}^\prime(t)$
+\item (scalar multiplication) $\displaystyle\dv{t}[c\vb{u}(t)]=c\vb{u}^\prime(t)$
+\item (product rule) $\displaystyle\dv{t}[f(t)\vb{u}(t)]=f^\prime(t)\vb{u}(t)+f(t)\vb{u}^\prime(t)$
+\item (dot product rule) $\displaystyle\dv{t}[\vb{u}(t)\cdot\vb{v}(t)]=\vb{u}^\prime(t)\cdot\vb{v}(t)+\vb{u}(t)\cdot\vb{v}^\prime(t)$
+\item (cross product rule) $\displaystyle\dv{t}[\vb{u}(t)\times\vb{v}(t)]=\vb{u}^\prime(t)\times\vb{v}(t)+\vb{u}(t)\times\vb{v}^\prime(t)$
+\item (chain rule) $\displaystyle\dv{t}[\vb{u}(f(t))]=f^\prime(t)\vb{u}^\prime(f(t))$
+\end{enumerate}
+\end{theorem}
+
+The proof of (4) follows; the remaining proofs are left as exercises.
+
+\begin{proof}
+
+\end{proof}
+
+\begin{lemma}
+If $|\vb{r}(t)|=c$ is a constant, then $\vb{r}^\prime(t)$ is orthogonal to $\vb{r}(t)$ for all $t$.
+\end{lemma}
+
+\begin{proof}
+
+\end{proof}

@@ -9,8 +9,8 @@
 \newcommand{\absolute}[1]{\left|#1\right|}
 \newcommand{\crbrac}[1]{\left\{#1\right\}}
 \providecommand{\arc}[1]{\wideparen{#1}}
-\newcommand{\vocab}[1]{\textbf{\color{blue}\sffamily#1}}
-\renewcommand{\epsilon}{\varepsilon}
+\newcommand{\vocab}[1]{\textit{\bfseries #1}}
+%\renewcommand{\epsilon}{\varepsilon}
 \newcommand{\unit}[1]{\,\mathrm{#1}}
 \newcommand{\degC}{^\circ{\mathrm C}}
 \newcommand{\tab}{\hspace{0.5cm}}
@@ -36,6 +36,9 @@
 \DeclareMathOperator{\arcosh}{arcosh}
 \DeclareMathOperator{\artanh}{artanh}
 \DeclareMathOperator{\cosech}{cosech}
+\DeclareMathOperator{\spn}{span}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\id}{id}
 
 %Inequalities
 \newcommand{\cycsum}{\sum_{\mathrm{cyc}}}
@@ -45,24 +48,29 @@
 
 %Convenient Environments
 \usepackage{amsthm}
-\renewenvironment{proof}{{\bfseries Proof. }}{\qed}
-\newenvironment{solution}{{\bfseries Solution.} }{\qed}
-\newenvironment{remark}{{\bfseries Remark. }}{}
-\newenvironment{notation}{{\bfseries Notation. }}{}
-\newenvironment{derivation}{{\bfseries Derivation. }}{\qed}
+%\renewenvironment{proof}{{\bfseries Proof. }}{\qed}
+
+\newenvironment{solution}{{\bfseries Solution. } }{\qed}
+%\newenvironment{notation}{{\bfseries Notation. }}{}
+%\newenvironment{derivation}{{\bfseries Derivation. }}{\qed}
+
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+\newtheorem*{notation}{Notation}
 
 %Letters
-\newcommand{\BB}{\mathbb B}
-\newcommand{\CC}{\mathbb C}
-\newcommand{\DD}{\mathbb D}
-\newcommand{\EE}{\mathbb E}
-\newcommand{\FF}{\mathbb F}
-\newcommand{\KK}{\mathbb K}
-\newcommand{\NN}{\mathbb N}
-\newcommand{\PP}{\mathbb P}
-\newcommand{\QQ}{\mathbb Q}
-\newcommand{\RR}{\mathbb R}
-\newcommand{\ZZ}{\mathbb Z}
+\newcommand{\BB}{\mathbf B}
+\newcommand{\CC}{\mathbf C}
+\newcommand{\DD}{\mathbf D}
+\newcommand{\EE}{\mathbf E}
+\newcommand{\FF}{\mathbf F}
+\newcommand{\KK}{\mathbf K}
+\newcommand{\NN}{\mathbf N}
+\newcommand{\PP}{\mathbf P}
+\newcommand{\QQ}{\mathbf Q}
+\newcommand{\RR}{\mathbf R}
+\newcommand{\SSS}{\mathbf S}
+\newcommand{\ZZ}{\mathbf Z}
 
 %Asymptote setup
 \usepackage{asymptote}
@@ -131,7 +139,7 @@ breaklines=true
 \usepackage{wrapfig}
 
 % Additional symbols
-\usepackage{MnSymbol}
+%\usepackage{MnSymbol}
 
 % Customise lists (such as itemize, enumerate, description)
 \usepackage{enumerate}
@@ -154,7 +162,9 @@ breaklines=true
 }
 
 % Cross referencing
-\usepackage{varioref,cleveref}
+\usepackage{varioref}
+\usepackage[capitalise]{cleveref}
+\usepackage{nameref}
 
 % Tables
 \usepackage{array}
@@ -272,7 +282,8 @@ breaklines=true
     nobreak=true,
 }
 \declaretheoremstyle[
-    headfont=\sffamily\bfseries\color{ForestGreen!70!black},
+    headfont=%\sffamily
+    \bfseries\color{ForestGreen!70!black},
     mdframed={style=mdgreenbox},
     headpunct={\\[3pt]},
     postheadspace={0pt},
@@ -290,8 +301,8 @@ breaklines=true
 }
 \declaretheoremstyle[
     headfont=\bfseries,
-    spaceabove=0pt,
-    spacebelow=0pt,
+    headpunct={\\[3pt]},
+    postheadspace={0pt},
     mdframed={style=mdblackbox}
 ]{thmblackbox}
 
@@ -314,25 +325,30 @@ breaklines=true
 
 %Theorem setup
 \theoremstyle{definition}
+\newtheorem{definition}{Definition}[chapter]
+\newtheorem{theorem}[definition]{Theorem}
+\newtheorem{lemma}[definition]{Lemma}
+\newtheorem{proposition}[definition]{Proposition}
+\newtheorem{corollary}[definition]{Corollary}
 
 \newtheorem{prbm}{Problem}[]
 \newtheorem*{claim}{Claim}
 
-\declaretheorem[style=thmbluebox,name=Theorem,numberwithin=section]{theorem}
-\declaretheorem[style=thmredbox,name=Definition,sibling=theorem]{definition}
-\declaretheorem[style=thmpurplebox,name=Lemma,sibling=theorem]{lemma}
-\declaretheorem[style=thmpurplebox,name=Proposition,sibling=theorem]{proposition}
-\declaretheorem[style=thmpurplebox,name=Corollary,sibling=theorem]{corollary}
-\declaretheorem[style=thmpurplebox,name=Assumption,sibling=theorem]{assume}
-\declaretheorem[style=thmbluebox,name=Theorem,numbered=no]{theorem*}
-\declaretheorem[style=thmredbox,name=Definition,numbered=no]{definition*}
-\declaretheorem[style=thmpurplebox,name=Lemma,numbered=no]{lemma*}
-\declaretheorem[style=thmpurplebox,name=Proposition,numbered=no]{proposition*}
-\declaretheorem[style=thmpurplebox,name=Corollary,numbered=no]{corollary*}
-\declaretheorem[style=thmpurplebox,name=Assumption,numbered=no]{assume*}
+%\declaretheorem[style=thmbluebox,name=Theorem,numberwithin=chapter]{theorem}
+%\declaretheorem[style=thmredbox,name=Definition,sibling=theorem]{definition}
+%\declaretheorem[style=thmpurplebox,name=Lemma,sibling=theorem]{lemma}
+%\declaretheorem[style=thmpurplebox,name=Proposition,sibling=theorem]{proposition}
+%\declaretheorem[style=thmpurplebox,name=Corollary,sibling=theorem]{corollary}
+%\declaretheorem[style=thmpurplebox,name=Assumption,sibling=theorem]{assume}
+%\declaretheorem[style=thmbluebox,name=Theorem,numbered=no]{theorem*}
+%\declaretheorem[style=thmredbox,name=Definition,numbered=no]{definition*}
+%\declaretheorem[style=thmpurplebox,name=Lemma,numbered=no]{lemma*}
+%\declaretheorem[style=thmpurplebox,name=Proposition,numbered=no]{proposition*}
+%\declaretheorem[style=thmpurplebox,name=Corollary,numbered=no]{corollary*}
+%\declaretheorem[style=thmpurplebox,name=Assumption,numbered=no]{assume*}
 \declaretheorem[style=thmblackbox,name=Example,sibling=theorem]{example}
-\declaretheorem[style=thmblackbox,name=Example,numbered=no]{example*}
-\declaretheorem[style=thmgreenbox,name=Exercise]{exercise}
+%\declaretheorem[style=thmblackbox,name=Example,numbered=no]{example*}
+\declaretheorem[style=thmblackbox,name=Exercise]{exercise}
 
 %Custom theorem environments using tcolorbox
 %\tcbuselibrary{theorems}
@@ -340,10 +356,10 @@ breaklines=true
 %Fancy section and chapter heads
 \definecolor{darkred}{rgb}{0.9, 0.0, 0.0}
 \usepackage[T1]{fontenc}
-\titleformat{\chapter}[hang]{\sffamily\fontsize{60}{70}\bfseries}{{\color{darkred}\thechapter}\hspace{20pt}}{0pt}{\Huge\bfseries}
-\titleformat{\section}{\sffamily\Large\bfseries}{{\color{darkred}\S\thesection}}{1em}{}
-\titleformat{\subsection}{\sffamily\large\bfseries}{{\color{darkred}\S\thesubsection}}{1em}{}
-\titleformat{\subsubsection}{\sffamily\normalsize\bfseries}{{\color{darkred}\S\thesubsubsection}}{1em}{}
+\titleformat{\chapter}[hang]{\fontsize{60}{70}\bfseries}{{\color{darkred}\thechapter}\hspace{20pt}}{0pt}{\Huge\bfseries}
+\titleformat{\section}{\Large\bfseries}{{\color{darkred}\S\thesection}}{1em}{\itshape}
+\titleformat{\subsection}{\large\bfseries}{{\color{darkred}\S\thesubsection}}{1em}{\itshape}
+\titleformat{\subsubsection}{\normalsize\bfseries}{{\color{darkred}\S\thesubsubsection}}{1em}{\itshape}
 %\setcounter{secnumdepth}{3}
 
 \makeatletter

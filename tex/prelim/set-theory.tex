@@ -1,0 +1,1286 @@
+\chapter{Set Theory}\label{chap:set-theory}
+\section{Basics}
+A \vocab{set} $S$ can be loosely defined as a collection of objects. For a set $S$, we write $x \in S$ to mean that $x$ is an \vocab{element} of $S$, and $x \notin S$ if otherwise. A set can be defined in terms of some property $P(x)$ that the elements $x \in S$ satisfy, denoted by the following \vocab{set builder notation}:
+\[ \{x \in S \mid P(x)\} \]
+
+Some basic sets (of numbers) you should be familiar with:
+\begin{itemize}
+\item $\NN=\{0,1,2,3,\dots\}$ denotes the natural numbers (non-negative integers).
+\item $\ZZ=\{\dots,-2,-1,0,1,2,\dots\}$ denotes the integers.
+\item $\QQ=\{\frac{p}{q} \mid p,q\in\ZZ, q\neq0\}$ denotes the rational numbers.
+\item $\RR$ denotes the real numbers, which can be expressed in terms of decimal expansion.
+\item $\CC=\{x+yi \mid x,y\in\RR\}$ denotes the of complex numbers.
+\end{itemize}
+
+The \vocab{empty set} is the set with no elements, denoted by $\emptyset$.
+
+$A$ is a \vocab{subset} of $B$ if every element of $A$ is in $B$, denoted by $A \subseteq B$.
+\[ A \subseteq B \iff \forall x, x\in A \implies x\in B \]
+
+\begin{proposition}[$\subseteq$ is transitive]
+If $A \subseteq B$ and $B \subseteq C$, then $A \subseteq C$.
+\end{proposition}
+
+\begin{proof}
+Let $x\in A$. 
+Since $A \subseteq B$ and $x\in A$, $x\in B$. 
+Since $B \subseteq C$ and $x\in B$, $x\in C$. 
+Hence $A \subseteq C$.
+\end{proof}
+
+$A$ is a \vocab{proper subset} of $B$ if $A \subseteq B$ and $A \neq B$, denoted by $A \subset B$.
+
+Using this definition, we have the relationship 
+\[ \NN \subset \ZZ \subset \QQ \subset \RR \]
+
+\begin{itemize}
+\item $A$ and $B$ are \vocab{equal} if and only if they contain the same elements, denoted by $A=B$.
+
+To prove that $A$ and $B$ are equal, we simply need to prove that $A \subseteq B$ and $A \subseteq B$.
+
+\begin{proof}
+We have 
+\begin{align*}
+A = B &\iff (\forall x)[x \in A \iff x \in B] \\
+&\iff (\forall x)[(x \in A \implies x \in B) \land (x \in B \implies x \in A)] \\
+&\iff \{(\forall x)[x \in A \implies x \in B]\} \land {(\forall x)[x \in B \implies x \in A)]} \\
+&\iff (A \subseteq B) \land (B \subseteq A)
+\end{align*}
+\end{proof}
+
+\item Some frequently occurring subsets of the real numbers are known as \vocab{intervals}, which can be visualised as sections of the real line:
+\begin{itemize}
+\item Open interval
+\[ (a,b) = \{x\in\RR \mid a<x<b\} \]
+\item Closed interval
+\[ [a,b] = \{x\in\RR \mid a\le x<b\} \]
+\item Half open interval
+\[ (a,b] = \{x\in\RR \mid a<x\le b\} \]
+\end{itemize}
+
+\item The \vocab{power set} $\mathcal{P}(A)$ of $A$ is the set of all subsets of $A$ (including the set itself and the empty set).
+
+\item An \vocab{ordered pair} is denoted by $(a,b)$, where the order of the elements matters. Two pairs $(a_1,b_1)$ and $(a_2,b_2)$ are equal if and only if $a_1=a_2$ and $b_1=b_2$. 
+
+Similarly, we have ordered triples $(a,b,c)$, quadruples $(a,b,c,d)$ and so on. If there are $n$ elements it is called an $n$-tuple.
+
+\item 
+\end{itemize}
+
+The \vocab{Cartesian product} of sets $A$ and $B$, denoted by $A \times B$, is the set of all ordered pairs with the first element of the pair coming from $A$ and the
+second from $B$:
+\begin{equation}
+A \times B = \{(a,b) \mid a \in A, b \in B\}
+\end{equation}
+More generally, we define $A_1 \times A_2 \times \cdots \times A_n$ to be the set of all ordered $n$-tuples $(a_1, a_2, \dots, a_n)$, where $a_i \in A_i$ for $1 \le i \le n$. If all the $A_i$ are the same, we write the product as $A^n$.
+
+\begin{example}
+$\RR^2$ is the Euclidean plane, $\RR^3$ is the Euclidean space, and $\RR^n$ is the $n$-dimensional Euclidean space.
+\begin{align*}
+\RR \times \RR = \RR^2 &= \{(x,y) \mid x,y \in \RR\} \\
+\RR \times \RR \times \RR = \RR^3 &= \{(x,y,z) \mid x,y,z \in \RR\} \\
+\RR^n &= \{(x_1,x_2,\dots,x_n) \mid x_1,x_2,\dots,x_n \in \RR\}
+\end{align*}
+\end{example}
+
+We now disuss the algebra of sets. Given $A \subset S$ and $B \subset S$.
+
+The \vocab{union} $A \cup B$ is the set consisting of elements that are in $A$ or $B$ (or both):
+\[ A\cup B=\{x \in S \mid x\in A \lor x\in B\} \]
+
+The \vocab{intersection} $A \cap B$ is the set consisting of elements that are in both $A$ and $B$:
+\[ A\cap B=\{x \in S \mid x\in A \land x\in B\} \]
+
+$A$ and $B$ are \vocab{disjoint} if both sets have no element in common:
+\[ A\cap B = \emptyset \]
+
+More generally, we can take unions and intersections of arbitrary numbers of sets, even infinitely many. If we have a family of subsets $\{A_i \mid i \in I\}$, where $I$ is an \vocab{indexing set}, we write
+\[ \bigcup_{i\in I} A_i = \{x \mid \exists i\in I\,(x\in A_i)\} \]
+and
+\[ \bigcap_{i\in I} A_i = \{x \mid \forall i\in I\,(x\in A_i)\} \] 
+
+The \vocab{complement} of $A$, denoted by $A^c$, is the set containing elements that are not in A:
+\[ A^c = \{x \in S \mid x \notin A\} \]
+
+The \vocab{set difference}, or complement of $B$ in $A$, denoted by $A\setminus B$, is the subset consisting of those elements that are in $A$ and not in $B$:
+\[ A\setminus B = \{x \in A \mid x \notin B\} \]
+Note that $A\setminus B = A \cap B^c$.
+
+\begin{proposition}[Double Inclusion]
+Let $A\subset S$ and $B\subset S$. Then 
+\begin{equation}
+A = B \iff A \subseteq B \text{ and } B \subseteq A
+\end{equation}
+\end{proposition}
+
+\begin{proof} \
+
+($\implies$) If $A = B$, then every element in $A$ is an element in $B$, so certainly $A \subseteq B$, and
+similarly $B \subseteq A$. 
+
+($\impliedby$) Suppose $A \subseteq B$, and $B \subseteq A$. Then for every element $x \in S$, if $x \in A$ then $A \subseteq B$ implies that $x \in B$, and if $x \notin A$ then $B \subseteq A$ means $x \notin B$. So $x \in A$ if and only if $x \in B$, and therefore $A = B$.
+\end{proof}
+
+\begin{proposition}[Distributive Laws]
+Let $A\subset S$, $B\subset S$ and $C\subset S$. Then
+\begin{equation}
+(A\cup B)\cap C = (A\cap C)\cup(B\cap C)
+\end{equation}
+\begin{equation}
+(A\cap B)\cap C = (A\cup C)\cap(B\cup C)
+\end{equation}
+\end{proposition}
+\begin{proof}
+For the first one, suppose $x$ is in the LHS, that is $x \in A\cup(B \cap C)$. This means that $x \in A$ or $x \in B \cap C$ (or both). Thus either $x \in A$ or $x$ is in both $B$ and $C$ (or $x$ is in all three sets). If $x \in A$ then $x \in A\cup B$ and $x \in A\cup C$, and therefore $x$ is in the RHS. If $x$ is in both $B$ and $C$ then similarly $x$ is in both $A\cup B$ and $A\cup C$. Thus every element of the LHS is in the RHS, which means we have shown $A \cup (B \cap C) \subseteq (A \cup B) \cap (A \cup C)$.
+
+Conversely suppose that $x \in (A \cup B) \cap (A \cup C)$. Then $x$ is in both $A \cup B$ and $A\cup C$. Thus either $x \in A$ or, if $x \notin A$, then $x \in B$ and $x \in C$. Thus $x \in A\cup(B \cap C)$. Hence $(A \cup B) \cap (A \cup C) \subseteq A \cup (B \cap C)$.
+
+By double inclusion, $(A \cup B) \cap (A \cup C) = A \cup (B \cap C)$.
+
+The proof of the second one follows similarly and is left as an exercise.
+\end{proof}
+
+\begin{proposition}[De Morgan's Laws]
+Let $A \subset S$ and $B \subset S$. Then
+\begin{equation}
+(A \cup B)^c = A^c \cap B^c
+\end{equation}
+\begin{equation}
+(A \cap B)^c = A^c \cup B^c
+\end{equation}
+\end{proposition}
+\begin{proof}
+For the first one, suppose $x \in (A \cup B)^c$. Then $x$ is not in either $A$ or $B$. Thus $x \in A^c$ and $x \in B^c$, and therefore $x \in A^c \cap B^c$. 
+
+Conversely, suppose $x \in A^c \cap B^c$. Then $x \notin A$ and $x \notin B$, so $x$ is in neither $A$ nor $B$, and therefore $x \in (A \cup B)^c$.
+
+By double inclusion, the first result holds. The second result follows similarly and is left as an exercise.
+\end{proof}
+
+De Morgan’s laws extend naturally to any number of sets, so if $\{A_i \mid i \in I\}$ is a family of subsets of $S$, then
+\[ \brac{\bigcap_{i\in I}A_i}^c = \bigcup_{i\in I}A_i^c \quad \text{and} \quad \brac{\bigcup_{i\in I}A_i}^c = \bigcap_{i\in I}A_i^c \]
+
+\begin{exercise}{}{}
+Prove the following:
+\begin{enumerate}
+\item $\brac{\bigcup_{i\in I}A_i}\cup B=\bigcup_{i\in I}(A_i\cup B)$
+\item $\brac{\bigcap_{i\in I}A_i}\cup B=\bigcap_{i\in I}(A_i\cup B)$
+\item $\brac{\bigcup_{i\in I}A_i}\cup\brac{\bigcup_{j\in J}B_j}=\bigcup_{(i,j)\in I\times J}(A_i\cup B_j)$
+\item $\brac{\bigcap_{i\in I}A_i}\cup\brac{\bigcap_{j\in J}B_j}=\bigcap_{(i,j)\in I\times J}(A_i\cup B_j)$
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+Let $S\subset A\times B$. Express the set $A_S$ of all elements of $A$ which appear as the first entry in at least one of the elements in $S$.
+
+($A_S$ here may be called the projection of $S$ onto $A$.)
+\end{exercise}
+\pagebreak
+
+\section{Relations}
+\begin{definition}[Relation]
+$R$ is a \vocab{relation} between $A$ and $B$ if and only if $R\subseteq A\times B$.
+
+$a \in A$ and $b \in B$ are \vocab{related} if $(a,b) \in R$, denoted $a R b$.
+\end{definition}
+
+\begin{remark}
+A relation is a set of ordered pairs.
+\end{remark}
+
+Visually speaking, a relation is uniquely determined by a simple bipartite graph over $A$ and $B$. On the bipartite graph, this is usually represented by an edge between $a$ and $b$.
+
+\begin{definition}[Binary relation]
+A \vocab{binary relation} in $A$ is a relation between $A$ and itself, i.e. $R \subseteq A \times A$.
+\end{definition}
+
+$A$ and $B$ are the \vocab{domain} and \vocab{range} of $R$ respectively, denoted by $\dom R$ and $\ran R$ respectively, if and only if $A \times B$ is the smallest Cartesian product of which $R$ is a subset.
+
+\begin{example}
+Given $R=\{(1,a),(1,b),(2,b),(3,b)\}$, then $\dom R=\{1,2,3\}$ and $\ran R=\{a,b\}$.
+\end{example}
+
+In many cases we do not actually use $R$ to write the relation because there is some other conventional notation:
+
+\begin{example} \
+\begin{itemize}
+\item The ``less than or equal to'' relation $\le$ on the set of real numbers is $\{(x,y) \in \RR^2 \mid x \le y\}$. We write $x \le y$ if $(x,y)$ is in this set.
+\item The ``divides'' relation $\mid$ on $\NN$ is $\{(m,n) \in \NN^2: m \text{ divides } n\}$. We write $m \mid n$ if $(m,n)$ is in this set.
+\item For a set S, the ``subset'' relation $\subseteq$ on $\mathcal{P}(S)$ is $\{(A,B) \in \mathcal{P}(S)^2 \mid A \subseteq B\}$. We write $A \subseteq B$ if $(A,B)$ is in this set.
+\end{itemize}
+\end{example}
+
+We now discuss some properties of relations. Let $A$ be a set, $R$ a relation on $A$, $x,y,z \in A$. We say that
+\begin{itemize}
+\item $R$ is \vocab{reflexive} if $xRx$ for all $x\in A$;
+\item $R$ is \vocab{symmetric} if $xRy \implies yRx$;
+\item $R$ is \vocab{anti-symmetric} if $xRy \text{ and } yRx \implies x=y$;
+\item $R$ is \vocab{transitive} if $xRy \text{ and } yRz \implies xRz$.
+\end{itemize}
+
+\begin{example}[Less than or equal to]
+The relation $\le$ on $R$ is reflexive, anti-symmetric, and transitive, but not symmetric. 
+\end{example}
+
+\begin{definition}
+A \vocab{partial order} on a non-empty set $A$ is a relation $\le$ on $A$ satisfying
+\begin{enumerate}[label=(\roman*)]
+\item reflexivity,
+\item anti-symmetry,
+\item transitivity.
+\end{enumerate} 
+
+A \vocab{total ordering} on $A$ is a partial ordering on $A$ such that if for every $x, y \in A$, either $xRy$ or $yRx$ (or both).
+
+A \vocab{well ordering} on $A$ is a total ordering on $A$ such that every non-empty subset of $A$ has a minimal element, i.e. for each non-empty $B\subseteq A$ there exists some $s\in B$ such that $s\le b$ for all $b\in B$.
+\end{definition}
+
+\begin{example}[Less than]
+The relation $<$ on $R$ is not reflexive, symmetric, or anti-symmetric, but it is transitive.
+\end{example}
+
+\begin{example}[Not equal to]
+The relation $\neq$ on $R$ is not reflexive, anti-symmetric or transitive, but it is symmetric.
+\end{example}
+
+\begin{exercise}{Congruence modulo $n$}{}
+Let $n \ge 2$ be an integer, and define $R$ on $\ZZ$ by saying $aRb$ if and only if $a-b$ is a multiple of $n$. Prove that $R$ is reflexive, symmetric and transitive.
+\end{exercise}
+\begin{proof} \
+\begin{enumerate}[label=(\roman*)]
+\item Reflexivity: For any $a \in \ZZ$ we have $aRa$ as 0 is a multiple of $n$.
+\item Symmetry: If $aRb$ then $a-b=kn$ for some integer $k$. So $b-a=-kn$, and hence $bRa$.
+\item Transitivity: If $aRb$ and $bRc$ then $a-b=kn$ and $b-c=ln$ for integers $k,l$. So then $a-c=(a-b)+(b-c)=(k+l)n$, and hence $aRc$.
+\end{enumerate}
+\end{proof}
+
+\begin{definition}
+Let the non-empty set $A$ be partially ordered by $\le$.
+\begin{itemize}
+\item A subset $B\subseteq A$ is called a \vocab{chain} if for all $x,y\in B$, either $x\le y$ or $y\le x$.
+\item An \vocab{upper bound} for a subset $B\subseteq A$ is an element $u\in A$ such that $b\le u$ for all $b\in B$.
+\item A \vocab{maximal element} of $A$ is an element $m\in A$ such that $m\le x$ for any $x\in A$, then $m=x$.
+\end{itemize}
+\end{definition}
+
+\begin{lemma}[Zorn's lemma]
+If $A$ is a non-empty partially ordered set in which every chain has an upper bound, then $A$ has a maximal element.
+\end{lemma}
+
+It is a non-trivial result that Zorn's lemma is independent of the usual (Zermelo--Fraenkel) axioms of set theory in the sense that if the axioms of set theory are consistent, then so are these axioms together with Zorn's lemma; and if the axioms of set theory are consistent, then so are these axioms together with the negation of Zorn's lemma.
+
+\begin{lemma}[Axiom of choice]
+The Cartesian product of any non-empty collection of non-empty sets is non-empty. In other words, if $I$ is any non-empty (indexing) set and $A_i$ is a non-empty set for all $i\in I$, then there exists a choice function from $I$ to $\bigcup_{i\in I}A_i$.
+\end{lemma}
+
+\begin{lemma}[Well-ordering principle]
+Every non-empty set $A$ has a well-ordering.
+\end{lemma}
+
+\begin{theorem}
+Assuming the usual (Zermelo--Fraenkel) axioms of set theory, the following are equivalent:
+\begin{enumerate}[label=(\roman*)]
+\item Zorn's lemma
+\item Axiom of choice
+\item Well-ordering principle
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+This follows from elementary set theory. We refer the reader to \textit{Real and Abstract Analysis} by Hewitt and Stromberg, Section 3.
+\end{proof}
+
+One important type of relation is an equivalence relation. An equivalence relation is a way of saying two objects are, in some particular sense, ``the same''.
+
+\begin{definition}[Equivalence relation]
+A binary relation $R$ on $A$ is an \vocab{equivalence relation} if it is reflexive, symmetric and transitive.
+\end{definition}
+
+\begin{notation}
+We use the symbol $\sim$ to denote the equivalence relation $R$ in $A \times A$: whenever $(a,b)\in R$ we denote $a \sim b$.
+\end{notation}
+
+An equivalence relation provides a way of grouping together elements that can be viewed as being the same:
+
+\begin{definition}[Equivalence class]
+Given an equivalence relation $\sim$ on a set $A$, and given $x \in A$, the \vocab{equivalence class} of $x$ is
+\[[x]\coloneqq\{y\in A\mid y\sim x\}.\]
+\end{definition}
+
+\begin{example}[Congruence modulo $n$]
+For the equivalence relation of congruence modulo $n$, the equivalence class of 1 is the set $1 = \{\dots, -n+1, 1, n+1, 2n+1, \dots\}$; that is, all the integers that are congruent to 1 modulo $n$.
+\end{example}
+
+Properties of equivalence classes:
+\begin{itemize}
+\item Every two equivalence classes are disjoint
+\item The union of equivalence classes form the entire set
+\end{itemize}
+
+You can translate these properties into the point of view from the elements: Every element belongs to one and only one equivalence class.
+\begin{itemize}
+\item No element belongs to two distinct classes
+\item All elements belong to an equivalence class
+\end{itemize}
+
+\begin{definition}
+The \vocab{set of equivalence classes} (quotient sets) are the set of all equivalence classes, denoted by $A/\sim$.
+\end{definition}
+
+Grouping the elements of a set into equivalence classes provides a partition of the set, which we define as follows:
+
+\begin{definition}[Partition]
+A \vocab{partition} of a set $A$ is a collection of subsets $\{A_i\subseteq A\mid i\in I\}$, where $I$ is an indexing set, with the property that
+\begin{enumerate}[label=(\roman*)]
+\item $A_i \neq \emptyset$ for all $i \in I$ (all the subsets are non-empty)
+\item $\bigcup_{i\in I} Ai = A$ (every member of $A$ lies in one of the subsets)
+\item $A_i \cap A_j = \emptyset$ for every $i \neq j$ (the subsets are disjoint)
+\end{enumerate}
+The subsets are called the \vocab{parts} of the partition.
+\end{definition}
+
+\begin{example}[Odd and even natural numbers]
+$\{\{n \in \NN \mid n \text{ is divisible by } 2\}, \{n \in \NN \mid n+1 \text{ is divisible by } 2\}\}$ forms a partition of the natural numbers, into evens and odds.
+\end{example}
+\pagebreak
+
+\section{Functions}
+\begin{definition}[Function]
+A \vocab{function} $f:X\to Y$ is a mapping of every element of $X$ to some element of $Y$.
+
+$X$ and $Y$ are known as the \vocab{domain} and \vocab{codomain} of $f$ respectively.
+\end{definition}
+
+\begin{remark}
+The definition requires that a unique element of the codomain is assigned for every element of the domain. For example, for a function $f:\RR \to \RR$, the assignment $f(x)=\frac{1}{x}$ is not sufficient as it fails at $x=0$. Similarly, $f(x)=y$ where $y^2=x$ fails because $f(x)$ is undefined for $x<0$, and for $x>0$ it does not return a unique value; in such cases, we say the the function is \vocab{ill-defined}. We are interested in the opposite; functions that are \vocab{well-defined}.
+\end{remark}
+
+\begin{definition}
+Given a function $f:X \to Y$, the \vocab{image} (or range) of $f$ is
+\[ f(X) = \{f(x) \mid x \in X\} \subseteq Y \]
+More generally, given $A \subseteq X$, the image of $A$ under $f$ is
+\[ f(A) = \{f(x) \mid x \in A\} \subseteq Y \]
+Given $B \subseteq Y$, the \vocab{pre-image} of $B$ under $f$ is
+\[ f^{-1}(B) = \{x \mid f(x) \in B\} \subseteq X \]
+\end{definition}
+
+\begin{remark}
+Beware the potentially confusing notation: for $x \in X$, $f(x)$ is a single element of $Y$, but for $A \subseteq X$, $f(A)$ is a set (a subset of $Y$). Note also that $f^{-1}(B)$ should be read as ``the pre-image of $B$'' and not as ``$f$-inverse of $B$''; the pre-image is defined even if no inverse function exists (in which case $f^{-1}$ on its own has no meaning; we discuss invertibility of a function below).
+\end{remark}
+
+\begin{exercise}
+Prove the following statements:
+\begin{enumerate}[label=(\alph*)]
+\item $f(A\cup B)=f(A)\cup f(B)$
+\item $f(A_1\cup\cdots\cup A_n)=f(A_1)\cup\cdots\cup f(A_n)$
+\item $f(\bigcup_{\lambda\in A}A_\lambda)=\bigcup_{\lambda\in A}f(A_\lambda)$
+\item $f(A\cap B)\subset f(A)\cap f(B)$
+\item $f^{-1}(f(A))\supset A$
+\item $f(f^{-1}(A))\subset A$
+\item $f^{-1}(A\cup B)=f^{-1}(A)\cup f^{-1}(B)$
+\item $f^{-1}(A\cap B)=f^{-1}(A)\cap f^{-1}(B)$
+\item $f^{-1}(A_1\cup\cdots\cup A_n)=f^{-1}(A_1)\cup\cdots\cup f^{-1}(A_n)$
+\item $f^{-1}(\bigcup_{\lambda\in A}A_\lambda)=\bigcup_{\lambda\in A}f^{-1}(A_\lambda)$
+\end{enumerate}
+\end{exercise}
+
+If a function is defined on some larger domain than we care about, it may be helpful to restrict the domain:
+
+\begin{definition}[Restriction]
+Given a function $f:X \to Y$ and a subset $A \subseteq X$, the \vocab{restriction} of $f$ to $A$ is the map $f|_A:A \to Y$ defined by $f|_A(x) = f(x)$ for all $x \in A$.
+\end{definition}
+
+The restriction is almost the same function as the original $f$ -- just the domain has changed.
+
+Another rather trivial but nevertheless important function is the identity map:
+
+\begin{definition}[Identity map]
+Given a set $X$, the \vocab{identity} $\id_X:X \to X$ is defined by $\id_X(x) = x$ for all $x \in X$.
+\end{definition}
+
+\begin{notation}
+If the domain is unambiguous, the subscript may be removed.
+\end{notation}
+
+\begin{definition}[Injectivity]
+$f:X\to Y$ is \vocab{injective} if each element of $Y$ has at most one element of $X$ that maps to it.
+\[\forall x_1,x_2\in X,\:f(x_1)=f(x_2) \implies x_1=x_2\]
+\end{definition}
+
+\begin{definition}[Surjectivity]
+$f:X\to Y$ is \vocab{surjective} if every element of $Y$ is mapped to at least one element of $X$.
+\[ \forall y\in Y,\:\exists x\in X \suchthat f(x)=y \]
+\end{definition}
+
+\begin{definition}[Bijectivity]
+$f:X\to Y$ is \vocab{bijective} if it is both injective and surjective: each element of $Y$ is mapped to a unique element of $X$.
+\end{definition}
+
+\begin{notation}
+Given two sets $X$ and $Y$ , we will write $X\sim Y$ to denote the existence of a bijection from $X$ to $Y$ . One easily checks that $\sim$ is transitive, i.e. if $X\sim Y$ and $Y\sim Z$, then $X\sim Z$.
+\end{notation}
+
+\begin{theorem}[Cantor--Schroder--Bernstein]
+If $f:A\to B$ and $g:B\to A$ are both injections, then $A\sim B$.
+\end{theorem}
+
+\begin{proof}
+%https://web.williams.edu/Mathematics/lg5/CanBer.pdf
+\end{proof}
+\pagebreak
+
+\subsection{Composition and invertibility}
+\begin{definition}[Composition]
+Given two functions $f:X\to Y$ and $g:Y\to Z$, the \vocab{composition} $g\circ f:X\to Z$ is defined by
+\[ (g \circ f)(x)=g(f(x))\quad(\forall x \in X)\]
+\end{definition}
+
+The composition of functions is not commutative. However, composition is associative, as the following results shows:
+
+\begin{proposition}[Associativity]
+Let $f:X\to Y$, $g:Y\to Z$, $h:Z\to W$ be three functions. Then
+\[ f \circ (g \circ h) = (f \circ g) \circ h. \]
+\end{proposition}
+
+\begin{proof}
+Let $x \in X$. Then, by the definition of composition, we have
+\[ (f \circ (g \circ h))(x) = f((g \circ h)(x)) = f(g(h(x))) = (f \circ g)(h(x)) = ((f \circ g) \circ h)(x). \]
+\end{proof}
+
+\begin{proposition}[Composition preserves injectivity]
+If $f:X \to Y$ is injective and $g:Y \to Z$ is injective, then $g \circ f:X \to Z$ is injective.
+\end{proposition}
+\begin{proof}
+Let $f:X \to Y$ and $g:Y \to Z$ be arbitrary injective functions. We want prove that the function $g \circ f:X \to Z$ is also injective.
+
+To do so, we will prove $\forall x,x^\prime \in X$ that 
+\[ (g \circ f)(x) = (g \circ f)(x^\prime) \implies x=x^\prime \]
+
+Suppose that $(g \circ f)(x) = (g \circ f)(x^\prime)$. Expanding out the definition of $g \circ f$, this means that $g(f(x)) = g(f(x^\prime))$.
+
+Since $g$ is injective and $g(f(x)) = g(f(x^\prime))$, we know $f(x)=f(x^\prime)$.
+
+Similarly, since $f$ is injective and $f(x) = f(x^\prime)$, we know that $x=x^\prime$, as required.
+\end{proof}
+
+\begin{proposition}
+$f$ is injective if and only if for any set $Z$ and any functions $g_1,g_2:Z\to X$ we have $f\circ g_1=f\circ g_2 \implies g_1=g_2$.
+\end{proposition}
+
+\begin{proof}
+($\implies$) If $f$ is injective, we ultimately wish to show that $g_1=g_2$, so in order to do this we consider all possible inputs $z \in Z$, hoping to show that $g_1(z)=g_2(z)$.
+
+But this is quite simple because we are given that $f\circ g_1=f\circ g_2$ and that $f$ is injective, so
+\[ f \circ g_1(z)=f \circ g_2(z) \implies g_1(z)=g_2(z) \]
+
+($\impliedby$) We specifically pick $Z=\{1\}$, basically some random one-element set.
+
+Then $\forall x,y \in X$, we define
+\begin{align*}
+& g_1:Z \to X, g_1(1)=x \\
+& g_2:Z \to Y, g_2(1)=y \\
+\end{align*}
+Then
+\[ f(x)=f(y) \implies f(g_1(1))=f(g_2(1)) \implies g_1(1)=g_2(1) \implies x=y \]
+\end{proof}
+
+\begin{proposition}[Composition preserves surjectivity]
+If $f:X\to Y$ is surjective and $g:Y\to Z$ is surjective, then $g \circ f:X\to Z$ is surjective.
+\end{proposition}
+\begin{proof}
+Let $f:X\to Y$ and $g:Y\to Z$ be arbitrary surjective functions. We want to prove that the function $g \circ f:X\to Z$ is subjective. 
+
+To do so, we want to prove that for any $z \in Z$, there is some $x \in X$ such that $(g \circ f)(x) = z$. Equivalently, we want to prove that for any $z \in Z$, there is some $x \in X$ such that $g(f(x)) = z$.
+
+Consider any $z \in Z$. Since $g:Y\to Z$ is surjective, there is some $y \in Y$ such that $g(y) = z$. Similarly, since $f:X\to Y$ is surjective, there is some $x \in X$ such that $f(x) = y$. This means that there is some $x \in X$ such that $g(f(x)) = g(y) = z$, as required.
+\end{proof}
+
+\begin{proposition}
+$f$ is surjective if and only if for any set $Z$ and any functions $g_1,g_2:Y\to Z$ we have $g_1 \circ f=g_2 \circ f \implies g_1=g_2$.
+\end{proposition}
+
+\begin{proof} \
+
+($\implies$) Suppose that $f$ is surjective. Again, we wish to show that $g_1=g_2$, so we need to consider every possible input $y$ in Y. Then, since $f$ is injective, we can always pick $x \in X$ such that $f(x)=y$.
+
+Then
+\[ g_1 \circ f=g_2 \circ f \implies g_1 \circ f(x)=g_2 \circ f(x) \implies g_1(y)=g_2(y) \]
+
+On the other hand, if $f$ is not surjective, then there exists $y \in Y$ such that for all $x \in X$ we have $f(x)\neq y$. We then aim to construct set $Z$ and $g_1,g_2:Y\to Z$ such that
+\begin{enumerate}[label=(\roman*)]
+\item $g_1(y) \neq g_2(y)$
+\item $\forall y^\prime \neq y, g_1(y^\prime)=g_2(y^\prime)$
+\end{enumerate}
+
+Because if this is satisfied, then $\forall x \in X$, since $f(x)\neq y$ we have from (ii) that $g_1(f(x))=g_2(f(x))$; thus $g_1 \circ f=g_2 \circ f$, and yet from (i) we have $g_1 \neq g_2$.
+
+($\impliedby$) We construct $Z=Y\cup\{1,2\}$ for some random $1,2 \notin Y$.
+
+Then we define
+\begin{align*}
+&g_1:Y\to Z,g_1(y)=1,g_1(y^\prime)=y^\prime
+&g_2:Y\to Z,g_2(y)=2,g_2(y^\prime)=y^\prime
+\end{align*}
+
+Then when $y$ is not in the image of $f$, these two functions will satisfy $g_1 \circ f=g_2 \circ f$ but not $g_1=g_2$.
+
+So conversely, if for any set $Z$ and any functions $g_i:Y \to Z$ we have $g_1 \circ f=g_2 \circ f \implies g_1=g_2$, such a value $y$ that is in the codomain but not in the range of $f$ cannot appear, and hence $f$ must be surjective.
+\end{proof}
+
+The following proposition addresses the extent to which composition of functions preserves injectivity and surjectivity:
+\begin{proposition}
+Let $f:X\to Y$ and $g:Y\to Z$ be functions.
+\begin{enumerate}[label=(\roman*)]
+\item If $f$ and $g$ are injective then so is $g \circ f$. Conversely, if $g \circ f$ is injective, then $f$ is injective, but $g$ need not be.
+\item If $f$ and $g$ are surjective then so is $g \circ f$. Conversely, if $g \circ f$ is surjective, then $g$ is surjective, but $f$ need not be.
+\end{enumerate}
+\end{proposition}
+\begin{proof}
+For the first part of (i), suppose $(g \circ f)(x_1) = (g \circ f)(x_2)$ for some $x_1, x_2 \in X$. From the injectivity of $g$ we know that $g(f(x_1)) = g(f(x_2))$ implies $f(x_1) = f(x_2)$, and then from the injectivity of $f$ we know that this implies $x_1 = x_2$. So $g \circ f$ is injective.
+
+For the second part of (i), suppose $f(x_1) = f(x_2)$ for some $x_1, x_2 \in X$. Then applying g gives $g(f(x_1)) = g(f(x_2))$, and by the injectivity of $g \circ f$ this means $x_1 = x_2$. So $f$ is injective. To see that $g$ need not be injective, a counterexample is $X = Z = \{0\}, Y = \RR$, with $f(0) = 0$ and $g(y) = 0$ for all $y \in \RR$.
+\end{proof}
+
+Recalling that $\id_X$ is the identity map on $X$, we can define invertibility:
+
+\begin{definition}[Invertibility]
+A function $f:X\to Y$ is \vocab{invertible} if there exists $g:Y\to X$ such that $g\circ f=\id_X$ and $f\circ g=\id_Y$. $g$ is known as the \vocab{inverse} of $f$, denoted by $g=f^{-1}$.
+\end{definition}
+
+\begin{remark}
+Note that directly from the definition, if $f$ is invertible then $f^{-1}$ is also invertible, and $(f^{-1})^{-1}=f$.
+\end{remark}
+
+\begin{proposition}[Uniqueness of inverse]
+If $f:X \to Y$ is invertible then its inverse is unique.
+\end{proposition}
+
+\begin{proof}
+Let $g_1$ and $g_2$ be two functions for which $g_i \circ f = \id_X$ and $f \circ g_i = \id_Y$. Using the fact that composition is associative, and the definition of the identity maps, we can write
+\[ g_1 = g_1 \circ \id_Y = g_1 \circ (f \circ g_2) = (g_1 \circ f) \circ g_2 = \id_X \circ g_2 = g_2 \]
+\end{proof}
+
+The following result shows how to invert the composition of invertible functions:
+
+\begin{proposition}
+Let $f:X \to Y$ and $g:Y \to Z$ be functions. If $f$ and $g$ are invertible, then $g \circ f$ is invertible, and $(g \circ f)^{-1} = f^{-1} \circ g^{-1}$.
+\end{proposition}
+\begin{proof}
+Making repeated use of the fact that function composition is associative, and the definition of the inverses $f^{-1}$ and $g^{-1}$, we note that
+\begin{align*}
+(f^{-1}\circ g^{-1}) \circ (g \circ f) 
+&= ((f^{-1} \circ g^{-1}) \circ g) \circ f \\
+&= (f^{-1} \circ (g^{-1} \circ g)) \circ f \\
+&= (f^{-1} \circ \id_Y) \circ f \\
+&= f^{-1} \circ f \\
+&= \id_X
+\end{align*}
+and similarly,
+\begin{align*}
+(g \circ f) \circ (f^{-1} \circ g^{-1}) 
+&= g \circ (f \circ (f^{-1} \circ g^{-1})) \\
+&= g \circ ((f \circ f^{-1}) \circ g^{-1}) \\
+&= g \circ (\id_Y \circ g^{-1}) \\
+&= g \circ g^{-1} \\
+&= \id_Z
+\end{align*}
+which shows that $f^{-1} \circ g^{-1}$ satisfies the properties required to be the inverse of $g \circ f$.
+\end{proof}
+
+The following result provides an important and useful criterion for invertibility:
+
+\begin{theorem}
+A function $f:X \to Y$ is invertible if and only if it is bijective.
+\end{theorem}
+
+\begin{proof} \
+
+($\implies$) Suppose $f$ is invertible, so it has an inverse $f^{-1}: Y \to X$. To show $f$ is injective, suppose that for some $x_1, x_2 \in X$ we have $f(x_1) = f(x_2)$. Then applying $f^{-1}$ to both sides and noting that by definition $f^{-1} \circ f = \id_X$, we see that $x_1 = f^{-1}(f(x_1)) = f^{-1}(f(x_2)) = x_2$. So $f$ is injective. To show that $f$ is surjective, let $y \in Y$, and note that $f^{-1}(y) \in X$ has the property that $f(f^{-1}(y)) = y$. So $f$ is surjective. Therefore $f$ is bijective.
+
+($\impliedby$) Suppose $f$ is bijective, we aim to show that there is a well-defined $g:Y \to X$ such that $g \circ f = \id_X$ and $f \circ g = \id_Y$. Since $f$ is surjective, we know that for any $y \in Y$, there is an $x \in X$ such that $f(x) = y$. Furthermore, since $f$ is injective, we know that this $x$ is unique. So for each $y \in Y$ there is a unique $x \in X$ such that $f(x) = y$. This recipe provides a well-defined function $g(y) = x$, for which we have $g(f(x)) = x$ for any $x \in X$ and $f(g(y)) = y$ for any $y \in Y$. So $g$ satisfies the property required to be an inverse of $f$ and therefore $f$ is invertible.
+\end{proof}
+
+It is also possible to define left-inverse and right-inverse functions as functions that partially satisfy the definition of the inverse:
+
+\begin{definition}
+A function $f:X \to Y$ is \vocab{left invertible} if there exists a function $g:Y \to X$ such that $g \circ f = \id_X$, and is \vocab{right invertible} if there exists a function $h: Y \to X$ such that $f \circ h = \id_Y$.
+\end{definition}
+
+As may be somewht apparent from the previous proof, being left- and right-invertible is equivalent to being injective and surjective, respectively. We leave this as an exercise to show.
+\pagebreak
+
+\subsection{Monotonicity}
+\begin{definition}
+$f:[a,b]\to\RR$ is called
+\begin{enumerate}[label=(\arabic*)]
+\item \vocab{increasing}, if any $a<x_1\le x_2<b$, there is $f(x_1)\le f(x_2)$;
+\item \vocab{decreasing}, if any $a<x_1\le x_2<b$, there is $f(x_1)\ge f(x_2)$;
+\end{enumerate}
+$f$ is \vocab{monotonic} if it is increasing or decreasing.
+\end{definition}
+
+Suppose $f(x)$ is continuous in $[a,b]$. To locate the roots of $f(x)=0$:
+\begin{itemize}
+\item If $f(a)$ and $f(b)$ have \vocab{opposite} signs, i.e. $f(a)f(b)<0$, then there is an odd number of real roots (counting repeated) in $[a,b]$.
+
+Furthermore, if $f$ is either strictly increasing or decreasing in $[a,b]$, then $f(x)=0$ has \vocab{exactly one real root} in $[a,b]$.
+
+\item If $f(a)$ and $f(b)$ have \vocab{same} signs, i.e. $f(a)f(b)>0$, then there is an even number of roots (counting repeated) in $[a,b]$.
+\end{itemize}
+
+\subsection{Convexity and concavity}
+\begin{definition}
+A function $f$ is \vocab{convex} if for all $x_1,x_2\in D_f$ and $0\le t\le 1$, we have
+\[ f(tx_1+(1-t)x_2)\le tf(x_1)+(1-t)f(x_2). \]
+Note that equality holds when $x_1=x_2$.
+\end{definition}
+
+\begin{definition}
+A function $f$ is \vocab{strictly convex} if for all $x_1,x_2\in D_f$ with $x_1\neq x_2$ and $0<t<1$, we have
+\[ f(tx_1+(1-t)x_2)<tf(x_1)+(1-t)f(x_2). \]
+\end{definition}
+
+\begin{definition}
+A function $f$ is \vocab{concave} if for all $x_1,x_2\in D_f$ and $0\le t\le 1$, we have
+\[ f(tx_1+(1-t)x_2)\ge tf(x_1)+(1-t)f(x_2). \]
+Note that equality holds when $x_1=x_2$.
+\end{definition}
+
+\begin{definition}
+A function $f$ is \vocab{strictly concave} if for all $x_1,x_2\in D_f$ with $x_1\neq x_2$ and $0<t<1$, we have
+\[ f(tx_1+(1-t)x_2)>tf(x_1)+(1-t)f(x_2). \]
+\end{definition}
+
+\subsection{Other functions}
+\subsubsection{Piecewise Functions}
+A function that has its domain divided into \vocab{separate partitions} and each partition of the domain given a different formula or rule is known as a \vocab{piecewise funtion}, i.e. a function defined ``piece-wise''.
+
+\begin{definition}[Absolute value function]
+\[ f(x)=|x|=\begin{cases}
+-x & x<0, \\
+x & x\ge0.
+\end{cases} \]
+\end{definition}
+
+\begin{definition}[Floor function]
+The \vocab{floor function} $f(x)=\floor{x}$ is defined as the greatest integer smaller than or equal to $x$.
+
+For $x\in\RR$ and $n\in\ZZ$,
+\[ \floor{x}=n\iff n\le x<n+1. \]
+\end{definition}
+
+\begin{definition}[Ceiling function]
+The ceiling function $f(x)=\ceiling{x}$ is the direct opposite of the floor function; it maps all real numbers in the domain to the smallest integer not smaller than it.
+\[ \ceiling{x}=\begin{cases}
+\floor{x}+1 & x\notin\ZZ \\
+\floor{x} & x\in\ZZ
+\end{cases} \]
+\end{definition}
+
+\begin{exercise}
+Prove that
+\begin{enumerate}[label=(\alph*)]
+\item $\floor{\sqrt{x}}=\floor{\sqrt{\floor{x}}}$
+\item $\ceiling{\sqrt{x}}=\ceiling{\sqrt{\ceiling{x}}}$
+\end{enumerate}
+\end{exercise}
+
+\begin{solution} \
+\begin{enumerate}[label=(\alph*)]
+\item \begin{align*}
+&\floor{\sqrt{x}}=n \\
+&\iff n\le\sqrt{x}<n+1 \quad \text{[by definition of floor function]} \\
+&\iff n^2\le x<(n+1)^2 \quad \text{[square both sides]} \\
+&\iff n^2\le\floor{x}\le x<(n+1)^2 \\
+&\iff n\le\sqrt{\floor{x}}<n+1 \quad \text{[take square root throughout]} \\
+&\iff \floor{\sqrt{\floor{x}}}=n \quad \text{[by definition of floor function]}
+\end{align*}
+
+\item \begin{align*}
+&\ceiling{\sqrt{x}}=n+1 \\
+&\iff n<\sqrt{x}\le n+1 \quad \text{[by definition of ceiling function]} \\
+&\iff n^2<x\le(n+1)^2 \quad \text{[square both sides]} \\
+&\iff n^2<x\le\ceiling{x}\le(n+1)^2 \\
+&\iff n<\sqrt{\ceiling{x}}\le n+1 \quad \text{[take square root throughout]} \\
+&\iff \ceiling{\sqrt{\ceiling{x}}}=n+1 \quad \text{[by definition of ceiling function]}
+\end{align*}
+\end{enumerate}
+\end{solution}
+
+\subsubsection{Symmetrical Functions}
+There are special functions with some form of geometric symmetry.
+
+\begin{itemize}
+\item Even Functions
+
+$f$ is \vocab{even} if $f(-x)=f(x)$ for every $x\in D_f$.
+
+The graph of an even function is symmetric about the $y$-axis.
+
+\item Odd Functions
+
+$f$ is \vocab{odd} if $f(-x)=-f(x)$ for every $x\in D_f$.
+
+The graph of an odd function is symmetric about the origin.
+
+\item Periodic Functions
+
+$f$ is \vocab{periodic} if $f(x+p)=f(x)$ for every $x\in D_f$, where $p$ is a positive constant. The smallest such $p$ is known as the period.
+\end{itemize}
+
+\begin{exercise}{}{}
+For a triangle $ABC$ with corresponding angles $a$, $b$ and $c$, show that
+\[ \sin a+\sin b+\sin c\le\frac{3\sqrt{3}}{2} \]
+and determine when equality holds. (Hint: $y=\sin x$ is concave)
+\end{exercise}
+
+\begin{solution}
+Since $f(x)=\sin x$ is strictly concave on $[0,\pi]$,
+\begin{align*}
+&\frac{1}{3}f(a)+\frac{1}{3}f(b)+\frac{1}{3}f(c) \\
+&= \frac{1}{3}f(a)+\frac{2}{3}\brac{\frac{1}{2}f(b)+\frac{1}{2}f(c)} \\
+&\le \frac{1}{3}f(a)+\frac{2}{3}\brac{f\brac{\frac{b}{2}+\frac{c}{2}}} \quad \text{[Concavity Inequality]} \\
+&\le f\brac{\frac{a}{3}+\frac{2}{3}\brac{\frac{b+c}{2}}} \quad \text{[Concavity Inequality]} \\
+&= f\brac{\frac{a+b+c}{3}}
+\end{align*}
+Hence 
+\[ \sin a+\sin b+\sin c=f(a)+f(b)+f(c)\le3f\brac{\frac{a+b+c}{3}}=3\sin\frac{\pi}{3}=\frac{3\sqrt{3}}{2}. \]
+Equality holds when $a=b=c$, i.e. when $ABC$ is an equilateral triangle.
+\end{solution}
+\pagebreak
+
+\section{Boundedness}
+Let $S$ be a set.
+\begin{definition}[Order]
+An \vocab{order} on $S$ is a relation, denoted by $<$, with the following properties:
+\begin{enumerate}[label=(\roman*)]
+\item (\textbf{trichotomy}) $\forall x,y \in S$, one and only one of the statements
+\[ x<y, \quad x=y, \quad y<x \]
+is true.
+\item (\textbf{transitivity}) $\forall x,y,z \in S$, if $x<y$ and $y<z$, then $x<z$.
+\end{enumerate}
+\end{definition}
+
+\begin{notation}
+$x \le y$ indicates that $x<y$ or $x=y$, without specifying which of these two is to hold. In other words, $x\le y$ is the negation of $x>y$.
+\end{notation}
+
+\begin{definition}[Ordered set]
+An \vocab{ordered set} is a set $S$ in which an order is defined.
+\end{definition}
+
+\begin{example}
+$\QQ$ is an ordered set if $r<s$ is defined to mean that $s-r$ is a positive rational number.
+\end{example}
+
+\begin{definition}
+Suppose $S$ is an ordered set, and $E\subset S$.
+\begin{enumerate}[label=(\arabic*)]
+\item $M\in S$ is an \vocab{upper bound} of $E$ if $x\le M$ for all $x\in E$.
+
+$E$ is \vocab{bounded above} if there exists an upper bound $M\in S$.
+
+\item $m\in S$ is a \vocab{lower bound} of $E$ if $x\ge m$ for all $x\in E$.
+
+$E$ is \vocab{bounded below} if there exists a lower bound $m\in S$.
+
+\item $E$ is \vocab{bounded} in $S$ if it is bounded above and below.
+\end{enumerate}
+\end{definition}
+
+\begin{definition}[Supremum]
+Suppose $S$ is an ordered set, $E\subset S$, and $E$ is bounded above. Suppose there exists $\alpha\in S$ with the following properties:
+\begin{enumerate}[label=(\roman*)]
+\item $\alpha$ is an upper bound for $E$;
+\item if $\beta<\alpha$ then $\beta$ is not an upper bound of $E$, i.e. $\exists x\in S\suchthat x>\beta$ (least upper bound).
+\end{enumerate}
+Then we call $\alpha$ the \vocab{supremum} of $E$, and we write $\alpha=\sup E$.
+\end{definition}
+
+\begin{definition}[Infimum]
+Suppose there exists $\alpha\in S$ with the following properties:
+\begin{enumerate}[label=(\roman*)]
+\item $\alpha$ is a lower bound for $E$;
+\item if $\beta>\alpha$ then $\beta$ is not a lower bound of $E$, i.e. $\exists x\in S\suchthat x<\beta$ (greatest lower bound).
+\end{enumerate}
+Then we call $\alpha$ the \vocab{infimum} of $E$, and we write $\alpha=\inf E$.
+\end{definition}
+
+\begin{proposition}[Uniqueness of suprenum]
+If $E$ has a supremum, then it is unique.
+\end{proposition}
+
+\begin{proof}
+Assume that $M$ and $N$ are suprema of $E$.
+
+Since $N$ is a supremum, it is an upper bound for $E$. Since $M$ is a supremum, then it is the least upper bound and thus $M \le N$. 
+
+Similarly, since $M$ is a supremum, it is an upper bound for $E$; since $N$ is a supremum, it is a least upper bound and thus $N \le M$.
+
+Since $N \le M$ and $M \le N$, thus $M=N$. Therefore, a supremum for a set is unique if it exists.
+\end{proof}
+
+\begin{definition}
+An ordered set $S$ is said to have the \vocab{least-upper-bound property} (l.u.b.) if the following is true: if non-empty $E\subset S$ is bounded above, then $\sup E$ exists in $S$.
+\end{definition}
+
+We shall now show that there is a close relation between greatest lower bounds and least upper bounds, and that every ordered set with the least-upper-bound property also has the greatest-lower-bound property.
+
+\begin{theorem}
+Suppose $S$ is an ordered set with the least-upper-bound property, $B\subset S$, $B$ is not empty, and $B$ is bounded below. Let $L$ be the set of all lower bounds of $B$. Then
+\[ \alpha=\sup L \]
+exists in $S$, and $\alpha=\inf B$.
+
+In particular, $\inf B$ exists in $S$.
+\end{theorem}
+
+\begin{proof}
+Since $B$ is bounded below, $L$ is not empty. Since $L$ consists of exactly those $y\in S$ which satisfy the inequality $y\le x$ for every $x\in B$, we see that every $x\in B$ is an upper bound of $L$. Thus $L$ is bounded above. Our hypothesis about $S$ thus implies that $L$ has a supremum in $S$; call it $\alpha$.
+
+If $\gamma<\alpha$ then $\gamma$ is not an upper bound of $L$, hence $\gamma\notin B$. It follows that $\alpha\le x$ for every $x\in B$. Thus $\alpha\in L$.
+
+If $\alpha<\beta$ then $\beta\notin L$, since $\alpha$ is an upper bound of $L$.
+
+We have shown that $\alpha\in L$ but $\beta\notin L$ if $\beta>\alpha$. In other words, $\alpha$ is a lower bound of $B$, but $\beta$ is not if $\beta>\alpha$. This means that $\alpha=\inf B$.
+\end{proof}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{theorem}[Comparison Theorem]
+Let $S, T \subset \RR$ be non-empty sets such that $s \le t$ for every $s \in S$ and $t \in T$. If $T$ has a supremum, then so does $S$, and $\sup S \le \sup T$.
+\end{theorem}
+
+\begin{proof}
+Let $\tau = \sup T$. Since $\tau$ is a supremum for $T$, then $t \le \tau$ for all $t \in T$. Let $s \in S$ and choose any $t \in T$. Then, since $s \le t$ and $t \le \tau$ , then $s \le t$. Thus, $\tau$ is an upper bound for $S$. 
+
+By the Completeness Axiom, $S$ has a supremum, say $\sigma = \sup S$. We will show that $\sigma \le \tau$. Notice that, by the above, $\tau$ is an upper bound for $S$. Since $\sigma$ is the least upper bound for $S$, then $\sigma \le \tau$. Therefore,
+\[\sup S \le \sup T.\]
+\end{proof}
+
+Let's explore some useful properties of sup and inf.
+
+\begin{proposition}
+Let $S, T$ be non-empty subsets of $\RR$, with $S \subseteq T$ and with $T$ bounded above. Then $S$ is bounded above, and $\sup S \le \sup T$.
+\end{proposition}
+\begin{proof}
+Since $T$ is bounded above, it has an upper bound, say $b$. Then $t \le b$ for all $t \in T$, so certainly $t \le b$ for all $t \in S$, so $b$ is an upper bound for $S$.
+
+Now $S, T$ are non-empty and bounded above, so by completeness each has a supremum. Note that $\sup T$ is an upper bound for $T$ and hence also for $S$, so $\sup T \ge \sup S$ (since $\sup S$ is the least upper bound for $S$).
+\end{proof}
+
+\begin{proposition}
+Let $T \subseteq \RR$ be non-empty and bounded below. Let $S = \{-t \mid t \in T\}$. Then $S$ is non-empty and bounded above. Furthermore, $\inf T$ exists, and $\inf T = -\sup S$.
+\end{proposition}
+\begin{proof}
+Since $T$ is non-empty, so is $S$. Let $b$ be a lower bound for $T$, so $t \ge b$ for all $t \in T$. Then $-t \le -b$ for all $t \in T$, so $s \le -b$ for all $s \in S$, so $-b$ is an upper
+bound for $S$.
+
+Now $S$ is non-empty and bounded above, so by completeness it has a
+supremum. Then $s \le \sup S$ for all $s \in S$, so $t \ge -\sup S$ for all $t \in T$, so $-\sup S$ is a lower bound for $T$.
+
+Also, we saw before that if $b$ is a lower bound for $T$ then $-b$ is an upper bound for $S$. Then $-b \ge \sup S$ (since $\sup S$ is the least upper bound), so $b \le -\sup S$. So $-\sup S$ is the greatest lower bound.
+
+So $\inf T$ exists and $\inf T = -\sup S$.
+\end{proof}
+
+\begin{proposition}[Approximation Property]
+Let $S \subseteq \RR$ be non-empty and bounded above. For any $\epsilon > 0$, there is $s_\epsilon \in S$ such that $\sup S-\epsilon < s_\epsilon \le \sup S$.
+\end{proposition}
+\begin{proof}
+Take $\epsilon > 0$.
+
+Note that by definition of the supremum we have $s \le \sup S$ for all $s \in S$. Suppose, for a contradiction, that $\sup S-\epsilon \ge s$ for all $s \in S$.
+
+Then $\sup S-\epsilon$ is an upper bound for $S$, but $\sup S-\epsilon < \sup S$, which is a contradiction.
+
+Hence there is $s_\epsilon \in S$ with $\sup S-\epsilon<s_\epsilon$.
+\end{proof}
+\pagebreak
+
+\begin{prbm}
+Consider the set $\{\frac{1}{n} \mid n\in\ZZ^{+}\}$.
+\begin{enumerate}[label=(\alph*)]
+\item Show that $\max S = 1$.
+\item Show that if $d$ is a lower bound for $S$, then $d \le 0$.
+\item Use (b) to show that $0 = \inf S$.
+\end{enumerate}
+\end{prbm}
+
+\begin{proof}
+
+\end{proof}
+
+If we are dealing with rational numbers, the sup/inf of a set may not exist. For example, a set of numbers in $\QQ$, defined by $\{[\pi\cdot10^n]/10^n\}$.
+3,3.1,3.14,3.141,3.1415,3.14159,...
+But this set does not have an infimum in $\QQ$.
+
+By ZFC, we have the Completeness Axiom, which states that any non-empty set $A \subset \RR$ that is bounded above has a supremum; in other words, if $A$ is a non-empty set of real numbers that is bounded above, there exists a $M \in \RR$ such that $M = \sup A$.
+
+
+
+
+\begin{prbm}
+Find, with proof, the supremum and/or infimum of $\{\frac{1}{n}\}$.
+\end{prbm}
+
+\begin{proof}
+For the suprenum,
+\[ \sup\crbrac{\frac{1}{n}} = \max\crbrac{\frac{1}{n}} = 1. \]
+For the infinum, for all positive $a$ we can pick $n=[\frac{1}{a}]+1$, then $a>\frac{1}{n}$. Hence 
+\[ \inf\crbrac{\frac{1}{n}}=0. \]
+\end{proof}
+
+\begin{prbm}
+Find, with proof, the supremum and/or infimum of $\{\sin n\}$.
+\end{prbm}
+
+\begin{proof}
+The answer is easy to guess: $\pm1$
+
+For the supremum, we need to show that $1$ is the smallest we can pick, so for any $a=1-\epsilon<1$ we want to find an integer $n$ close enough to $2k\pi+\dfrac{\pi}{2}$ so that $\sin n > a$.
+
+Whenever we want to show the approximations between rational and irrational numbers we should think of the \textbf{pigeonhole principle}.
+\[ 2k\pi+\frac{\pi}{2}=6k+(2\pi-6)k+\frac{\pi}{2} \]
+Consider the set of fractional parts $\{(2\pi-6)k\}$. Since this an infinite set, for any small number $\delta$ there is always two elements $\{(2\pi-6)a\}<\{(2\pi-6)b\}$ such that
+\[ |\{(2\pi-6)b\}-\{(2\pi-6)a\}|<\epsilon \]
+
+Then $\{(2\pi-6)(b-a)\}<\delta$
+
+We then multiply by some number $m$ (basically adding one by one) so that
+\[ 0 \le \{(2\pi-6)\cdot m(b-a)\}-\brac{2-\frac{\pi}{2}}<\delta \]
+
+Picking $k=m(b-a)$ thus gives
+\begin{align*}
+2k\pi+\frac{\pi}{2} &= 6k+(2\pi-6)k+\frac{\pi}{2} \\
+&= 6k+[(2\pi-6)k]+2+{(2\pi-6)k}-\brac{2-\frac{\pi}{2}}
+\end{align*}
+
+Thus $n=6k+[(2\pi-6)k]+2$ satisfies $\absolute{2k\pi+\dfrac{\pi}{2}-n}<\delta$
+
+Now we're not exactly done here because we still need to talk about how well $\sin n$ approximates to 1.
+
+We need one trigonometric fact: $\sin x<x$ for $x>0$. (This simply states that the area of a sector in the unit circle is larger than the triangle determined by its endpoints.)
+
+\begin{align*}
+\sin n&=\sin\brac{n-\brac{2k\pi+\frac{\pi}{2}}+\brac{2k\pi+\frac{\pi}{2}}} \\
+&=\cos\brac{n-\brac{2k\pi+\frac{\pi}{2}}} \\
+&=\cos\theta
+\end{align*}
+
+\[ 1 - \sin n = 2 \sin^2 \frac{\theta}{2} = 2 \sin^2 \absolute{\frac{\theta}{2}} \le \frac{\theta^2}{2}<\delta \]
+
+Hence we simply pick $\delta=\epsilon$ to ensure that $1 - \sin n<\epsilon$, and we're done.
+\end{proof}
+\pagebreak
+
+\section{Cardinality}
+\begin{definition}
+If there exists a bijective mapping of $A$ onto $B$, we say that $A$ and $B$ can be put in \vocab{1-1 correspondence}, or that $A$ and $B$ have the same \vocab{cardinal number}, or, briefly, that $A$ and $B$ are \vocab{equivalent}, denoted by $A\sim B$ (an equivalence relation). 
+\end{definition}
+
+\begin{notation}
+For any positive integer $n$, let $J_n$ be the set whose elements are the integers $1,2,\dots,n$. Let $J$ be the set consisting of all positive integers. 
+\end{notation}
+
+\begin{definition}
+For any set $A$, we say
+\begin{itemize}
+\item $A$ is \vocab{finite} if $A\sim J_n$ for some $n$ (the empty set is also considered to be finite)
+\item $A$ is \vocab{infinite} if $A$ is not finite.
+\item $A$ is \vocab{countable} if $A\sim J$.
+\item $A$ is \vocab{uncountable} if $A$ is neither finite nor countable.
+\item $A$ is \vocab{at most countable} if $A$ is finite or countable.
+\end{itemize}
+\end{definition}
+
+For two finite sets $A$ and $B$, we evidently have $A\sim B$ if and only if $A$ and $B$ contain the same number of elements.
+
+For infinite sets, however, the idea of ``having the same number of elements'' becomes quite vague, whereas the notion of bijectivity retains its clarity.
+
+\begin{proposition}
+$2J=\{2n\mid n\in J\}$ is countable.
+\end{proposition}
+
+\begin{proof}
+We can find the function $f:J\to2J$ given by 
+\[f(n)=2n\]
+which is bijective. Thus there is a 1-1 correspondence between $J$ and $2J$.
+\end{proof}
+
+\begin{proposition}
+$\ZZ$ is countable.
+\end{proposition}
+
+\begin{proof}
+Consider the following arrangement of the sets $\ZZ$ and $J$:
+\begin{align*}
+\ZZ&:\quad0,1,-1,2,-2,3,-3,\dots\\
+J&:\quad1,2,3,4,5,6,7,\dots
+\end{align*}
+We can even give an explicit formula for a bijective function $f:J\to\ZZ$:
+\[f(n)=\begin{cases}
+\dfrac{n}{2}&\text{if }n\text{ is even,}\\[1ex]
+-\dfrac{n-1}{2}&\text{if }n\text{ is odd.}
+\end{cases}\]
+\end{proof}
+
+\begin{proposition}
+Every infinite subset of a countable set $A$ is countable.
+\end{proposition}
+
+\begin{proof}
+Suppose $E\subset A$, and $E$ is infinite. Arrange the elements $x\in A$ in a sequence $\{x_n\}$ of distinct elements.
+
+Construct a sequence $\{n_k\}$ as follows: Let $n_1$ be the smallest positive integer such that $x_{n_1}\in E$. Having chosen $n_1,\dots,n_{k-1}$ ($k=2,3,4,\dots$), let $n_k$ be the smallest integer greater than $n_{k-1}$ such that $x_{n_k}\in E$.
+
+Putting $f(k)=x_{n_k}$ ($k=1,2,3,\dots$), we obtain a 1-1 correspondence between $E$ and $J$.
+\end{proof}
+
+This shows that countable sets represent the ``smallest'' infinity: No uncountable set can be a subset of a countable set.
+
+\begin{proposition}
+Let $\{E_n\mid n\in J\}$ be a sequence of countable sets, and put
+\[S=\bigcup_{n=1}^\infty E_n.\]
+Then $S$ is countable.
+\end{proposition}
+
+\begin{proof}
+Let every set $E_n$ be arranged in a sequence $\{x_{n_k}\}$ ($k=1,2,3,\dots$), and consider the infinite array
+\begin{align*}
+&x_{11}\quad x_{12}\quad x_{13}\quad x_{14}\quad\cdots\\
+&x_{21}\quad x_{22}\quad x_{23}\quad x_{24}\quad\cdots\\
+&x_{31}\quad x_{32}\quad x_{33}\quad x_{34}\quad\cdots\\
+&x_{41}\quad x_{42}\quad x_{43}\quad x_{44}\quad\cdots\\
+&\vdots
+\end{align*}
+in which the elements of $E_n$ form the $n$-th row. The array contains all elements of $S$. These elements can be arranged in a sequence
+\[x_{11},x_{21},x_{12},x_{31},x_{22},x_{13},x_{41},x_{32},x_{23},x_{14},\dots\]
+
+\end{proof}
+
+\begin{proposition}
+Let $A$ and $B$ be finite sets. Then $|A \cup B| = |A| + |B| - |A \cap B|$.
+\end{proposition}
+
+\begin{proof}
+The proof is left as an exercise.
+\end{proof}
+
+\begin{proposition}[Subsets of a finite set]
+If a set $A$ is finite with $|A| = n$, then its power set has $|\mathcal{P}(A)| = 2^n$.
+\end{proposition}
+
+\begin{proof}
+We use induction. For the initial step, note that if $|A| = 0$ then $A = \emptyset$ has no elements, so there is a single subset $\emptyset$, and therefore $|\mathcal{P}(A)| = 1 = 2^0$.
+
+Now suppose that $n \ge 0$ and that $|P(S)| = 2^n$ for any set S with $|S| = n$. Let $A$ be any set with $|A| = n+1$. By definition, this means that there is an element $a$ and a set $A_0 = A\setminus\{a\}$ with $|A_0| = n$. Any subset of A must either contain the element a or not, so we can partition $\mathcal{P}(A) = P(A_0) \cup \{S \cup \{a\} \mid S \in P(A_0)\}$. These two sets are disjoint, and each of them has cardinality $|P(A_0)| = 2^n$ by the inductive hypothesis. Hence $|\mathcal{P}(A)| = 2^n + 2^n = 2^{n+1}$.
+
+Thus, by induction, the result holds for all $n$.
+\end{proof}
+
+Another way to see this is through combinatorics: Consider the process of creating a subset. We can do this systematically by going through each of the $|A|$ elements in $A$ and making the yes/no decision whether to put it in the subset. Since there are $|A|$ such choices, that yields $2^{|A|}$ different combinations of elements and therefore $2^{|A|}$ different subsets.
+
+% to include more stuff before introducing PIE
+
+\begin{theorem}[Principle of Inclusion and Exclusion]
+Let $S_i$ be finite sets. Then
+\begin{equation}
+\absolute{\bigcup_{i=1}^nS_i}=\sum_{i=1}|S_i|-\sum_{1\le i<j\le n}|S_i\cap S_j|+\sum_{1\le i<j<k\le n}|S_i\cap S_j\cap S_k|+\cdots+(-1)^{n+1}\absolute{\bigcap_{i=1}^nS_i}.
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+By induction.
+\end{proof}
+
+The following more elegant proof was presented to the author by Dr. Ho Weng Kin during a H3 Mathematics lecture in 2024.
+
+\begin{proof}
+Let $U$ be a finite set (interpreted as the universal set), and $S\subseteq U$. Define the characteristic/indicator function of $S$ by
+\[ \chi_S(x)=\begin{cases}
+1&\text{if }x\in S,\\
+0&\text{if }x\notin S.
+\end{cases} \]
+In other words,
+\[ x\in S\iff\chi_S(x)=1 \]
+and equivalently,
+\[ x\notin S\iff\chi_S(x)=0. \]
+Let $S_1,S_2\subseteq U$ be given. Then for any $x\in U$ it holds that
+\[ \chi_{S_1\cap S_2}(x)=\chi_{S_1}(x)\cdot\chi_{S_2}(x) \]
+where $\cdot$ denotes ordinary multiplication.
+
+Similarly,
+\[ \chi_{S_1\cup S_2}(x)=1-\brac{1-\chi_{S_1}(x)}\cdot\brac{1-\chi_{S_2}(x)}. \]
+In general, for any $x\in U$ it holds that
+\[ \chi_{S_1\cup\cdots\cup S_n}(x)=1-\brac{1-\chi_{S_1}(x)}\cdots\brac{1-\chi_{S_n}(x)} \]
+for any $S_1,\dots,S_n\subset U$.
+
+Since $x\in S$ if and only if $\chi_S(x)=1$, it follows that
+\[ |S|=\sum_{x\in U}\chi_S(x). \]
+To prove the PIE, we calculate
+\begin{align*}
+&|S_1\cup\cdots\cup S_n|\\
+&=\sum_{x\in U}\chi_{S_1\cup\cdots\cup S_n}(x)\\
+&=\sum_{x\in U}1-\brac{1-\chi_{S_1}(x)}\cdots\brac{1-\chi_{S_n}(x)}\\
+&=\brac{\chi_{S_1}(x)+\cdots+\chi_{S_n}(x)}-\brac{\chi_{S_1}(x)\chi_{S_2}(x)+\cdots+\chi_{S_{n-1}}(x)\chi_{S_n}(x)}+\cdots+(-1)^{n+1}\chi_{S_1}(x)\cdots\chi_{S_n}(x)\\
+&=\brac{\chi_{S_1}(x)+\cdots+\chi_{S_n}(x)}-\brac{\chi_{S_1\cap S_2}(x)+\cdots+\chi_{S_{n-1}\cap S_n}(x)}+\cdots+(-1)^{n+1}\chi_{S_1\cap\cdots\cap S_n}(x)\\
+&=\sum_{i=1}^n|S_i|-\sum_{J\subseteq\{1,\dots,n\},|J|=2}\absolute{\bigcap_{j\in J}S_j}+\cdots+(-1)^{k+1}\sum_{J\subseteq\{1,\dots,n\},|J|=k}\absolute{\bigcap_{j\in J}S_j}+\cdots+(-1)^{n+1}\absolute{\bigcap_{i=1}^nS_i}.
+\end{align*}
+\end{proof}
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{theorem}[Cantor]
+For a set $A$, $|A|<|\mathcal{P}(A)|$.
+\end{theorem}
+\begin{proof}
+Define the function $f:A \to \mathcal{P}(A)$ by $f(x) = \{x\}$. Then, $f$ is injective as $\{x\}=\{y\} \implies x=y$. Thus $|A| \le |\mathcal{P}(A)|$. To finish the proof now all we need to show is that $|A| \neq |\mathcal{P}(A)|$. We will do so through contradiction. Suppose that $|A| = |\mathcal{P}(A)|$. Then, there exists a surjection $g:A \to \mathcal{P}(A)$. We define the set $B$ as
+\[ B \coloneq \{x \in A \mid x \notin g(x)\} \in \mathcal{P}(A) \]
+Since $g$ is surjective, there exists a $b \in A$ such that $g(b) = B$. There are two cases:
+\begin{enumerate}
+\item $b \in B$. Then $b \notin g(b) = B \implies b \notin B$.
+\item $b \notin B$. Then $b \notin g(b) = B \implies b \in B$.
+\end{enumerate}
+In either case we obtain a contradiction. Thus, $g$ is not surjective so $|A| \neq |\mathcal{P}(A)|$.
+\end{proof}
+
+\begin{corollary}
+For all $n \in \NN \cup \{0\}$, $n<2^n$.
+\end{corollary}
+\begin{proof}
+This can be easily proven through induction.
+\end{proof}
+\pagebreak
+
+\section*{Exercises}
+\begin{prbm}
+Let $A$ be the set of all complex polynomials in $n$ variables. Given a subset $T \subset A$, define the \textit{zeros} of $T$ as the set
+\[ Z(T) = \{P=(a_1,\dots,a_n) \mid f(P)=0 \text{ for all } f \in T\} \]
+A subset $Y \in \CC^n$ is called an algebraic set if there exists a subset $T \subset A$ such that $Y=Z(T)$.
+
+Prove that the union of two algebraic sets is an algebraic set.
+\end{prbm}
+\begin{proof}
+We would like to consider $T=\{f_1, f_2, \dots\}$ expressed as indexed sets $T=\{f_i\}$. Then $Z(T)$ can also be expressed as $\{P \mid \forall i, f_i(P)=0\}$.
+
+Suppose that we have two algebraic sets $X$ and $Y$. Let $X=Z(S)$, $Y=Z(T)$ where $S,T$ are subsets of $A$ (basically, they are certain sets of polynomials). Then
+\[ X=\{P \mid \forall f \in S, f(P)=0\} \]
+\[ Y=\{P \mid \forall g \in T, g(P)=0\} \]
+
+We imagine that for $P\in X\cap Y$, we have $f(P)=0$ or $g(P)=0$. Hence we consider the set of polynomials
+\[ U=\{f\cdot g \mid f\in S, g\in T\} \]
+
+For any $P\in X\cup Y$ and for any $fg\in U$ where $f\in S$ and $f\in g$, either $f(P)=0$ or $g(P)=0$, hence $fg(P)=0$ and thus $P\in Z(U)$.
+
+On the other hand if $P\in Z(U)$, suppose otherwise that $P$ is not in $X\cup Y$, then $P$ is neither in $X$ nor in $Y$. This means that there exists $f\in S,g\in T$ such that $f(P)\neq0$ and $g(P)\neq0$, hence $fg(P)\neq0$. This is a contradiction as $P\in Z(U)$ implies $fg(P)=0$. Hence we have $X\cup Y=Z(U)$ and thus $X\cup Y$ is an algebraic set.
+
+Now the other direction is simpler and can actually be generalised: The intersection of arbitrarily many algebraic sets is algebraic. 
+
+The basic result is that if $X=Z(S)$ and $Y=Z(T)$ then $X\cap Y=Z(S\cup T)$. 
+\end{proof}
+\pagebreak
+
+\begin{prbm}[Modular Arithmetic]
+Define the ring of integers modulo $n$:
+\[ \ZZ/n\ZZ = \ZZ/\sim \text{ where } x \sim y \iff x-y \in n\ZZ. \]
+The equivalence classes are called congruence classes modulo $n$.
+\begin{enumerate}[label=(\alph*)]
+\item Define the sum of two congruence classes modulo $n$, $[x], [y] \in \ZZ/n\ZZ$, by
+\[ [x] + [y] = [x + y] \]
+Show that the above definition is well-defined.
+\item Define the product of two congruence classes modulo $n$ and show that such a definition is well-defined.
+\end{enumerate} 
+\end{prbm}
+
+\begin{solution} \
+\begin{enumerate}[label=(\alph*)]
+\item We often define such concepts by considering the \textbf{representatives} of the equivalence classes.
+
+For example, here we define $[x]+[y]=[x+y]$ for two elements $[x]$ and $[y]$ in $\ZZ/n\ZZ$. So what we know here are the classes $[x]$ and $[y]$. But what exactly are $x$ and $y$? They are just some element in the equivalence classes that was arbitrarily picked out. We then perform the sum $x+y$, and consequently, we used this to point towards the class $[x+y]$. 
+
+However, $x$ and $y$ are arbitrarily picked. We want to show that, regardless of which representatives are chosen from  the equivalence classes $[x]$ and $[y]$, we will always obtain the same result.
+
+In the definition itself, we have defined that, for the two representatives $x$ and $y$ we define $[x]+[y]=[x+y]$. So now, let's say that we take two other arbitrary representatives, $x^\prime\in [x]$ and $y^\prime\in [y]$. 
+Then by definition, we have
+\[ [x]+[y]=[x^\prime+y^\prime] \]
+
+Thus, our goal is to show that $x^\prime+y^\prime]=[x+y]$. 
+This expression means that the two sides of the equation are referring to the same equivalence class.
+Therefore, the expression above is completely equivalent to the condition.
+\[ x^\prime+y^\prime \sim x+y \]
+
+We then check that this final expression is indeed true:
+Since $x^\prime\in [x]$ and $y^\prime\in [y]$, we have 
+\begin{align*}
+&x^\prime\sim x \text{ and } y^\prime\sim y \\
+&\implies x^\prime-x, y^\prime-y\in n\ZZ \\
+&\implies (x^\prime+y^\prime)-(x+y)=(x^\prime-x)+(y^\prime-y)\in n\ZZ
+\end{align*}
+
+\item The product of two congruence classes is defined by
+\[ [x][y]=[xy] \]
+
+For any other representatives $x^\prime$, $y^\prime$ we have
+\begin{align*}
+&x^\prime y^\prime-xy \\
+&=x^\prime y^\prime-xy^\prime+xy^\prime-xy \\
+&=(x^\prime-x)y^\prime+x(y^\prime-y) \in n\ZZ
+\end{align*}
+
+Thus $[x^\prime y^\prime]=[xy]$ and the product is well-defined.
+\end{enumerate}
+\end{solution}
+\pagebreak
+
+\begin{prbm}
+Let $A = \RR$ and for any $x, y \in A$, $x \sim y$ if and only if $x-y \in \ZZ$. For any two equivalence classes $[x], [y] \in A/\sim$, define
+\[ [x] + [y] = [x + y] \text{ and } -[x] = [-x] \]
+\begin{enumerate}[label=(\alph*)]
+\item Show that the above definitions are well-defined.
+\item Find a one-to-one correspondence $\phi:X \to Y$ between $X = A/\sim$ and $Y:|z| = 1$, i.e. the unit circle in $\CC$, such that for any $[x_1], [x_2] \in X$ we have
+\[ \phi([x_1])\phi([x_2]) = \phi([x_1 + x_2]) \]
+\item Show that for any $[x] \in X$,
+\[ \phi(-[x]) = \phi([x])^{-1} \]
+\end{enumerate}
+\end{prbm}
+
+\begin{solution} \ 
+\begin{enumerate}[label=(\alph*)]
+\item 
+\[ (x^\prime+y^\prime)-(x+y)=(x^\prime-x)+(y^\prime-y)\in \ZZ \]
+Thus $[x^\prime+y^\prime]=[x+y]$
+
+\[ (-x^\prime)-(-x)=-(x^\prime-x)\in \ZZ \]
+Thus $[-x^\prime]=[-x]$.
+
+\item Complex numbers in the polar form: $z=re^{i\theta}$
+
+Then the correspondence is given by $\phi([x])=e^{2\pi ix}$
+\[ [x]=[y] \iff x-y\in \ZZ \iff e^{2\pi i(x-y)}=1 \iff e^{2\pi ix}=e^{2\pi iy} \]
+Hence this is a bijection.
+
+Before that, we also need to show that $\phi$ is well-defined, which is almost the same as the above.
+
+If we choose another representative $x^\prime$ then
+\[ \phi([x])=e^{2\pi ix^\prime} = e^{2\pi ix}\cdot e^{2\pi i(x^\prime-x)} = e^{2\pi ix} \]
+
+\item You can either refer to the specific correspondence $\phi([x])=e^{2\pi ix}$ or use its properties.
+\[ \phi(-[x])\phi([x]) = \phi([-x])\phi([x]) = \phi([-x+x]) = \phi([0]) = 1 \]
+\end{enumerate}
+\end{solution}
+\pagebreak
+
+\begin{prbm}[Complex Numbers]
+Let $\RR[x]$ denote the set of real polynomials. Define
+\[ \CC=\RR[x]/(x^2+1)\RR[x] \]
+where
+\[ f(x)\sim g(x) \iff x^2+1 \text{ divides } f(x)-g(x). \]
+The complex number $a+bi$ is defined to be the equivalence class of $a+bx$.
+\begin{enumerate}[label=(\alph*)]
+\item Define the sum and product of two complex numbers and show that such definitions are well-defined.
+\item Define the reciprocal of a complex number.
+\end{enumerate}
+\end{prbm}
+\pagebreak

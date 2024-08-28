@@ -1,0 +1,164 @@
+\chapter{Multiple Integrals}
+\section{Double Integrals}
+To motivate the idea of double integrals, we give an example of calculating areas.
+
+We want to integrate a function of two variables, $f(x,y)$. With functions of one variable we integrated over an \emph{interval} (i.e. a one-dimensional space) and so it makes some sense then that when integrating a function of two variables we will integrate over a \emph{region} of $\RR^2$ (two-dimensional space). 
+
+\begin{exercise}
+Calculate the area of the disc $x^2+y^2\le a^2$.
+\end{exercise}
+
+\begin{solution}
+we know the answer, namely $\pi a^2$. If we wish to capture all of the disc's area then we let $x$ vary from $-a$ to $a$ and, at each $x$ we let $y$ vary from $-\sqrt{a^2-x^2}$ to $\sqrt{a^2-x^2}$.
+
+Thus we have
+\begin{align*}
+A &= \int_{x=-a}^{x=a}\int_{y=-\sqrt{a^2-x^2}}^{y=\sqrt{a^2-x^2}}\dd{y}\dd{x} \\
+&= \int_{x=-a}^{x=a}2\sqrt{a^2-x^2}\dd{x} \\
+&= \int_{\theta=-\frac{\pi}{2}}^{\theta=\frac{\pi}{2}}2\sqrt{a^2-a^2\sin^2\theta}a\cos\theta\dd{\theta} \quad [x=a\sin\theta] \\
+&= a^2\int_{\theta=-\frac{\pi}{2}}^{\theta=\frac{\pi}{2}}2\cos^2\theta\dd{\theta}=\pi a^2
+\end{align*}
+\end{solution}
+
+\begin{definition}
+Let $R\subset\RR^2$. Then we define the \vocab{area} of $R$ to be
+\[ A(R)=\iint_{(x,y)\in R}\dd{x}\dd{y}. \]
+\end{definition}
+
+% https://tutorial.math.lamar.edu/classes/calciii/DoubleIntegrals.aspx
+
+Recall that given a function $f(x)$, the definite integral $\int_a^bf(x)\dd{x}$ evaluates the area under the curve $y=f(x)$ between $x=a$ and $x=b$. Similarly given a function $f(x,y)$, the volume of the solid below the graph $z=f(x,y)$ and above the region $R$ in the $xy$-plane is given by 
+\begin{equation}
+V=\iint_Rf(x,y)\dd{A}.
+\end{equation}
+
+\begin{remark}
+You can think of $\iint$ as a sum of heights $f(x,y)$ and areas $\dd{A}$, which evaluates to give a volume.
+\end{remark}
+
+\begin{exercise}
+Let $R$ be the triangle whose vertices are $(0,0,0)$, $(0,1,0)$ and $(1,0,0)$. Evaluate $\iint_R1\dd{A}$.
+\end{exercise}
+
+\begin{solution}
+$\iint_R1\dd{A}$ is the volume of a prism with height $1$ and base of area $R$. Hence
+\[ \iint_R1\dd{A}=\text{Area of }R\times1=\frac{1}{2}\times1\times1\times1=\boxed{\frac{1}{2}} \]
+\end{solution}
+
+To evaluate double integrals we need a notion called iterated integrals, which are basically two integrals with one nested inside the other.
+
+\begin{exercise}
+Evaluate 
+\begin{enumerate}[label=(\alph*)]
+\item $\displaystyle\int_0^1\int_1^2x+2y\dd{x}\dd{y}$
+\item $\displaystyle\int_{-1}^1\int_0^x3x^2+2y\dd{y}\dd{x}$
+\end{enumerate}
+\end{exercise}
+
+\begin{solution}
+\begin{enumerate}[label=(\alph*)]
+\item 
+\begin{align*}
+\int_0^1\int_1^2x+2y\dd{x}\dd{y}
+&= \int_0^1\brac{\int_1^2x+2y\dd{x}}\dd{y} \\
+&= \int_0^1\sqbrac{\frac{x^2}{2}+2yx}_{x=1}^{x=2}\dd{y} \\
+&= \int_0^12y+\frac{3}{2}\dd{y} \\
+&= \sqbrac{y^2+\frac{3}{2}y}_{y=0}^{y=1}=\boxed{\frac{5}{2}}
+\end{align*}
+
+\item 
+\begin{align*}
+\int_{-1}^1\int_0^x3x^2+2y\dd{y}\dd{x}
+&= \int_{-1}^1\brac{\int_0^x3x^2+2y\dd{y}}\dd{x} \\
+&= \int_{-1}^1\sqbrac{3x^2y+y^2}_{y=0}^{y=x}\dd{x} \\
+&= \int_{-1}^13x^3+x^2\dd{x} \\
+&= \sqbrac{\frac{3x^4}{4}+\frac{x^3}{3}}_{x=-1}^{x=1}=\boxed{\frac{2}{3}}
+\end{align*}
+\end{enumerate}
+\end{solution}
+
+\section{Iterated Integrals}
+Now we are going to discuss the relation between double integrals and iterated integrals.
+
+$R$ is called simple if $R$ is a rectangle given by $a\le x\le b$ and $c\le y\le d$, in which case
+\[ \iint_Rf(x,y)\dd{A}=\int_a^b\int_c^df(x,y)\dd{y}\dd{x}=\int_c^d\int_a^bf(x,y)\dd{x}\dd{y}. \]
+This is known as Fubini's Theorem.
+
+$R$ is called vertically simple if $R$ is given by $a\le x\le b$, $g(x)\le y\le h(x)$, in which case
+\[ \iint_Rf(x,y)\dd{A}=\int_a^b\int_{g(x)}^{h(x)}f(x,y)\dd{y}\dd{x}. \]
+
+$R$ is called horizontally simple if $R$ is given by $c\le y\le d$, $g(y)\le x\le h(y)$, in which case
+\[ \iint_Rf(x,y)\dd{A}=\int_c^d\int_{g(y)}^{h(y)}f(x,y)\dd{x}\dd{y}. \]
+
+% https://tutorial.math.lamar.edu/Classes/CalcIII/DIGeneralRegion.aspx
+\pagebreak
+
+\chapter{Line Integrals}
+\section{Vector fields}
+A vector field is basically what you get when associating each point in space with a vector.
+
+\begin{definition}
+A \vocab{vector field} on two (or three) dimensional space is a function $\vec{F}$ that assigns eahc point $(x,y)$ (or $(x,y,z)$) a two (or three) dimensional vector given by $\vec{F}(x,y)$ (or $\vec{F}(x,y,z)$).
+\end{definition}
+
+The standard notation for the function $\vec{F}$ is:
+\begin{align*}
+\vec{F}(x,y) &= P(x,y)\hat{i} + Q(x,y)\hat{j} \\
+\vec{F}(x,y,z) &= P(x,y,z)\hat{i} + Q(x,y,z)\hat{j} + R(x,y,z)\hat{k}
+\end{align*}
+depending on whether or not we're in two or three dimensions. The functions $P$, $Q$, $R$ are called \textbf{scalar functions}.
+
+\begin{exercise}
+Sketch the following vector field:
+\[ \vec{F}(x,y) = -y\hat{i} + x\hat{j} \]
+\end{exercise}
+\begin{solution}
+To graph the vector field we need to get some ``values'' of the function. This means plugging in some points into the function. Here are a couple of evaluations:
+\begin{align*}
+\vec{F}\brac{{\frac{1}{2},\frac{1}{2}}} &=  -\frac{1}{2}\hat{i} + \frac{1}{2}\hat{j} \\
+\vec{F}\brac{{\frac{1}{2},-\frac{1}{2}}} &=  -\brac{{-\frac{1}{2}}}\hat{i} + \frac{1}{2}\hat{j} = \frac{1}{2}\hat{i} + \frac{1}{2}\hat{j} \\
+\vec{F}\brac{{\frac{3}{2},\frac{1}{4}}} &=  -\frac{1}{4}\hat{i} + \frac{3}{2}\hat{j}
+\end{align*}
+So what do these evaluations tell us? The first one tells us that at the point $\brac{\dfrac{1}{2},\dfrac{1}{2}}$ we plot the vector $-\frac{1}{2}\hat{i} + \frac{1}{2}\hat{j}$.
+
+Plotting points gives us the following sketch of the vector field:
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=8cm]{images/vec_field2.png}
+\end{figure}
+\end{solution}
+
+Recall that given a function $f(x,y,z)$ the gradient vector is defined as such:
+\begin{definition}
+Given a function $f(x,y,z)$, the gradient vector is defined by
+\[ \nabla f\coloneqq\left\langle {{f_x},{f_y},{f_z}} \right\rangle. \]
+This is a vector field and is often called a \vocab{gradient vector field}.
+\end{definition}
+
+\section{Types of line integrals}
+
+\section{Fundamental Theorem for Line Integrals}
+\begin{theorem}[Fundamental Theorem of Line Integrals]
+Suppose that $C$ is a smooth curve from points $A$ to $B$ parameterised by $\vb{r}(t)$ for $t\in[a,b]$. Let $f$ be a differentiable function whose domain includes $C$ and whose gradient vector $\nabla f$ is continuous on $C$. Then
+\begin{equation}
+\int_C \nabla f \dd{\vb{r}} = f(\vb{r}(b)) - f(\vb{r}(a)) = f(B) - f(A)
+\end{equation}
+\end{theorem}
+
+\begin{remark}
+Similar to the fundamental theorem of calculus, the primary change is that gradient $\nabla f$ takes the place of the derivative $f^\prime$.
+\end{remark}
+% https://www.math.uci.edu/~ndonalds/math2e/16-3fundthm.pdf
+% https://www.youtube.com/watch?v=_60sKaoRmhU
+
+\section{Conservative Vector Fields}
+
+\section{Green's Theorem}
+
+
+to compute arc lengths, areas of curves 
+
+applications of integrals to find area and volume
+
+\chapter{Surface Integrals}

@@ -1,5 +1,5 @@
 % https://courses.maths.ox.ac.uk/pluginfile.php/93650/mod_resource/content/1/Richard_Earl_lectures.pdf
-\chapter{Group Theory}
+\chapter{Group Theory}\label{chap:group-theory}
 \section{Modular Arithmetic}
 Let $n$ be a fixed positive integer. Define a relation on $\ZZ$ by
 \[a\sim b\iff n\mid(b-a).\]
@@ -22,12 +22,12 @@ There are precisely $n$ distinct equivalence classes mod $n$, namely
 \[\overline{0},\overline{1},\dots,\overline{n-1}\]
 determined by the possible remainders after division by $n$ and these residue classes partition the integers $\ZZ$. The set of equivalence classes under this equivalence relation is denoted by $\ZZ/n\ZZ$, and called the \vocab{integers modulo $n$}.
 
-We can define addition and multiplication for the elements of $\ZZ/n\ZZ$, defining \emph{modular arithmetic} as follows: for $\overline{a},\overline{b}\in\ZZ/n\ZZ$,
+We can define addition and multiplication for the elements of $\ZZ/n\ZZ$, defining \vocab{modular arithmetic} as follows: for $\overline{a},\overline{b}\in\ZZ/n\ZZ$,
 \begin{enumerate}
 \item (addition) $\overline{a}+\overline{b}=\overline{a+b}$
 \item (multiplication) $\overline{a}\cdot\overline{b}=\overline{a\cdot b}$
 \end{enumerate}
-This means that to compute the sum (product) of two elements $\overline{a},\overline{b}\in\ZZ/n\ZZ$, take any \emph{representative} integer $a\in\overline{a}$ and any representative integer $b\in\overline{b}$, and add (multiply) integers $a$ and $b$ as usual in $\ZZ$, then take the equivalence class containing the result.
+This means that to compute the sum (product) of two elements $\overline{a},\overline{b}\in\ZZ/n\ZZ$, take any \vocab{representative} integer $a\in\overline{a}$ and any representative integer $b\in\overline{b}$, and add (multiply) integers $a$ and $b$ as usual in $\ZZ$, then take the equivalence class containing the result.
 
 \begin{theorem}
 Addition and mulltiplication on $\ZZ/n\ZZ$ are well-defined; that is, they do not depend on the choices of representatives for the classes involved. More precisely, if $a_1,a_2\in\ZZ$ and $b_1,b_2\in\ZZ$ with $\overline{a_1}=\overline{b_1}$ and $\overline{a_2}=\overline{b_2}$, then $\overline{a_1+a_2}=\overline{b_1+b_2}$ and $\overline{a_1a_2}=\overline{b_1b_2}$, i.e., If

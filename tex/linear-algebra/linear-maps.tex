@@ -1,0 +1,181 @@
+\chapter{Linear Maps}\label{chap:linear-maps}
+\section{Vector Space of Linear Maps}
+\begin{definition}[Linear map]
+A \vocab{linear map} from $V$ to $W$ is a function $T:V\to W$ with the following properties:
+\begin{enumerate}[label=(\roman*)]
+\item Additivity: $T(v+w)=Tv+Tw$ for all $v,w\in V$
+\item Homogeneity: $T(\lambda v)=\lambda T(v)$ for all $\lambda\in\FF$, $v\in V$
+\end{enumerate}
+\end{definition}
+
+\begin{notation}
+The set of all linear maps from $V$ to $W$ is denoted $\mathcal{L}(V,W)$; the set of linear transformations on $V$ is denoted $\mathcal{L}(V)$.
+\end{notation}
+
+\begin{proposition}[Linear map lemma]
+Suppose $\{v_1,\dots,v_n\}$ is a basis of $V$ and $w_1,\dots,w_n\in W$. Then there exists a unique linear map $T:V\to W$ such that
+\[Tv_i=w_i\quad(i=1,\dots,n)\]
+\end{proposition}
+
+\begin{proof}
+First we show the existence of a linear map $T$ with the desired property. Define $T:V\to W$ by
+\[T(c_1v_1+\cdots+c_nv_n)=c_1w_1+\cdots+c_nw_n,\]
+for some $c_i\in\FF$. Since $\{v_1,\dots,v_n\}$ is a basis of $V$, by \cref{lemma:basis-criterion}, each $v\in V$ can be uniquely expressed as a linear combination of $v_1,\dots,v_n$, thus the equation above does indeed define a function $T:V\to W$. For $i=1,\dots,n$, take $c_i=1$ and the other $c$'s equal to $0$ to show that $Tv_i=w_i$.
+
+We now show that $T:V\to W$ is a linear map:
+\begin{enumerate}[label=(\roman*)]
+\item If $u,v\in V$ with $u=a_1v_1+\cdots+a_nv_n$ and $c_1v_1+\cdots+c_nv_n$, then
+\begin{align*}
+T(u+v)&=T\brac{(a_1+c_1)v_1+\cdots+(a_n+c_n)v_n}\\
+&=(a_1+c_1)w_1+\cdots+(a_n+c_n)w_n\\
+&=(a_1w_1+\cdots+a_nw_n)+(c_1w_1+\cdots+c_nw_n)\\
+&=Tu+Tv
+\end{align*}
+so $T$ satisfies additivity.
+
+\item If $\lambda\in\FF$ and $v=c_1v_1+\cdots+c_nv_n$, then
+\begin{align*}
+T(\lambda v)&=T(\lambda c_1v_1+\cdots+\lambda c_nv_n)\\
+&=\lambda c_1w_1+\cdots+\lambda c_nw_n\\
+&=\lambda(c_1w_1+\cdots+c_nw_n)\\
+&=\lambda Tv
+\end{align*}
+so $T$ satisfies homogeneity.
+\end{enumerate}
+
+To prove uniqueness, now suppose that $T\in\mathcal{L}(V,W)$ and $Tv_i=w_i$ for $i=1,\dots,n$. Let $c_i\in\FF$. The homogeneity of $T$ implies that $T(c_iv_i)=c_iw_i$. The additivity of $T$ now implies that 
+\[T(c_1v_1+\cdots+c_nv_n)=c_1w_1+\cdots+c_nw_n.\]
+Thus T is uniquely determined on $\spn\{v_1,\dots,v_n\}$. Since $\{v_1,\dots,v_n\}$ is a basis of $V$, this implies that $T$ is uniquely determined on $V$.
+\end{proof}
+
+\begin{proposition}
+$\mathcal{L}(V,W)$ is a vector space, with the operations addition and scalar multiplication defined as follows: suppose $S,T\in\mathcal{L}(V,W)$, $\lambda\in\FF$,
+\begin{enumerate}[label=(\roman*)]
+\item $(S+T)(v)=Sv+Tv$
+\item $(\lambda T)(v)=\lambda(Tv)$
+\end{enumerate}
+for all $v\in V$.
+\end{proposition}
+
+\begin{definition}[Product of linear maps]
+$T\in\mathcal{L}(U,V)$, $S\in\mathcal{L}(V,W)$, then the \vocab{product} $ST\in\mathcal{L}(U,W)$ is defined by
+\[(ST)(u)=S(Tu)\quad(\forall u\in U)\]
+\end{definition}
+
+\begin{remark}
+In other words, $ST$ is just the usual composition $S\circ T$ of two functions.
+\end{remark}
+
+\begin{remark}
+$ST$ is defined only when $T$ maps into the domain of $S$.
+\end{remark}
+
+\begin{proposition}[Algebraic properties of products of linear maps] \
+\begin{enumerate}[label=(\roman*)]
+\item Associativity: $(T_1T_2)T_3=T_1(T_2T_3)$ for all linear maps $T_1,T_2,T_3$ such that the products make sense (meaning that $T_3$ maps into the domain of $T_2$, $T_2$ maps into the domain of $T_1$)
+\item Iidentity: $TI=IT=T$ for all $T\in\mathcal{L}(V,W)$ (the first $I$ is the identity map on $V$, and the second $I$ is the identity map on $W$)
+\item Distributive: $(S_1+S_2)T=S_1T+S_2T$ and $S(T_1+T_2)=ST_1+ST_2$ for all $T,T_1,T_2\in\mathcal{L}(U,V)$ and $S,S_1,S_2\in\mathcal{L}(V,W)$
+\end{enumerate}
+\end{proposition}
+
+\begin{proposition}\label{prop:linear-map-0-0}
+$T\in\mathcal{L}(V,W)$. Then $T(0)=0$.
+\end{proposition}
+
+\begin{proof}
+By additivity, we have
+\[T(0)=T(0+0)=T(0)+T(0).\]
+Add the additive inverse of $T(0)$ to each side of the equation above to conclude that $T(0)=0$.
+\end{proof}
+
+\section{Kernel and Image}
+\begin{definition}[Kernel]
+For $T\in\mathcal{L}(V,W)$, the \vocab{kernel} of $T$ is the subset of $V$ consisting of those vectors that $T$ maps to $0$:
+\[\ker T\coloneqq\{v\in V\mid Tv=0\}.\]
+\end{definition}
+
+\begin{proposition}
+$T\in\mathcal{L}(V,W)$, $\ker T$ is a subspace of $V$.
+\end{proposition}
+
+\begin{proof}
+By \cref{lemma:subspace-conditions}, we check the conditions of a subspace:
+\begin{enumerate}[label=(\roman*)]
+\item $T(0)=0$ by \cref{prop:linear-map-0-0}, so $0\in\ker T$.
+\item For all $v,w\in\ker T$, 
+\[T(v+w)=Tv+Tw=0\implies v+w\in\ker T\]
+so $\ker T$ is closed under addition.
+\item For all $v\in\ker T$, $\lambda\in\FF$,
+\[T(\lambda v)=\lambda Tv=0\implies\lambda v\in\ker T\]
+so $\ker T$ is closed under scalar multiplication.
+\end{enumerate}
+\end{proof}
+
+\begin{definition}[Injectivity]
+$T:V\to W$ is \vocab{injective} if
+\[Tu=Tv\implies u=v.\]
+\end{definition}
+
+\begin{proposition}
+$T\in\mathcal{L}(V,W)$, $T$ is injective if and only if $\ker T=0$.
+\end{proposition}
+
+\begin{proof}
+
+\end{proof}
+
+\begin{definition}[Image]
+For $T:V\to W$, the \vocab{image} of $T$ is the subset of $W$ consisting of those vectors that are of the form $Tv$ for some $v\in V$:
+\[\im T\coloneqq\{Tv\mid v\in V\}.\]
+\end{definition}
+
+\begin{proposition}
+$T\in\mathcal{L}(V,W)$, $\im T$ is a subspace of $W$.
+\end{proposition}
+
+\begin{proof}
+
+\end{proof}
+
+\begin{definition}[Surjectivity]
+$T:V\to W$ is \vocab{surjective} if $\im T=W$.
+\end{definition}
+
+\begin{theorem}[Fundamental Theorem of Linear Maps]
+$T\in\mathcal{L}(V,W)$, then $\im T$ is finite-dimensional and
+\[\dim V=\dim\ker T+\dim\im T.\]
+\end{theorem}
+
+\section{Matrices}
+\begin{definition}[Matrix]
+A $m\times n$ \vocab{matrix} $A$ is a rectangular array with $m$ rows and $n$ columns:
+\[A=\begin{pmatrix}
+a_{11} & \cdots & a_{1n}\\
+\vdots & & \vdots\\
+a_{m1} & \cdots & a_{mn}
+\end{pmatrix}\]
+where $a_{ij}\in\FF$.
+\end{definition}
+
+\begin{definition}[Matrix of a linear map]
+$T\in\mathcal{L}(V,W)$, $\{v_1,\dots,v_n\}$ is a basis of $V$, $\{w_1,\dots,w_m\}$ is a basis of $W$. The \vocab{matrix} of $T$ with respect to these bases of the $m\times n$ matrix $M(T)$ whose entries $a_{ij}$ are defined by
+
+\end{definition}
+
+\section{Invertibility and Isomorphism}
+\begin{definition}[Invertibility]
+$T\in\mathcal{L}(V,W)$ is \vocab{invertible} if there exists $S\in\mathcal{L}(W,V)$ such that $ST=I_V$, $TS=I_W$, where $I_V$ and $I_W$ are the \vocab{identity maps} on $V$ and $W$ respectively; $S$ is known as the \vocab{inverse} of $T$.
+\end{definition}
+
+\begin{proposition}[Uniqueness of inverse]
+An invertible linear map has a unique inverse.
+\end{proposition}
+
+\begin{proof}
+Suppose $T\in\mathcal{L}(V,W)$ is invertible. $S_1$ and $S_2$ are inverses of $T$. Then
+\[S_1=S_1I=S_1(TS_2)=(S_1T)S_2=IS_2=S_2.\]
+Thus $S_1=S_2$.
+\end{proof}
+
+Now that we know that the inverse is unique, we can give it a notation.
+

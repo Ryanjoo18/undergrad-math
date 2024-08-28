@@ -1,12 +1,10 @@
-\chapter{Continuity}
+\chapter{Continuity}\label{chap:real-analysis_continuity}
 \section{Limit of Functions}
 Assume $(X,d_X)$ is metric space and $E\subset X$ is a subset of $X$. Then the metric $d_X$ induces a metric on $E$. We now consider another metric space $(Y,d_Y)$. A map $f:E\to Y$ is also called a function over $E$ with values in $Y$. In particular, if $Y=\RR$, then $f$ is called a real-valued function; and if $Y=\CC$, $f$ is called a complex-valued function.
 
-\begin{definition}\label{defn:limit-function}
-Consider a limit point $p\in E$ and a point $q\in Y$. We say the \vocab{limit} of the funcion $f(x)$ at $p$ is $q$, denoted as
-\[ \lim_{x\to p}f(x)=q \]
-if $\forall\epsilon>0$, $\exists\delta>0\suchthat\forall x\in E$ with $0<d_X(x,p)<\delta$, there is
-\[ d_Y\brac{f(x), q}<\epsilon. \]
+\begin{definition}[Limit of function]\label{defn:limit-function}
+Consider a limit point $p\in E$ and a point $q\in Y$. We say the \vocab{limit} of the funcion $f(x)$ at $p$ is $q$, denoted by $\lim_{x\to p}f(x)=q$, if
+\[\forall\epsilon>0, \exists\delta>0\suchthat\forall x\in E, 0<d_X(x,p)<\delta, d_Y\brac{f(x),q}<\epsilon.\]
 \end{definition}
 
 We can recast this definition in terms of limits of sequences:
@@ -41,13 +39,115 @@ $f$ is continuous at $p$ if for every sequence $x_n$ converging to $p$, the sequ
 
 
 \section{Continuous Functions}
+Consider metric spaces $(X,d_X)$ and $(Y,d_Y)$, $U\subset X$.
+
+\begin{definition}[Continuity]
+Let $(X,d_X)$ and $(Y,d_Y)$ be metric spaces, and $U\subseteq X$. We say that $f:U\to Y$ is \vocab{continuous} at $x_0\in U$, if 
+\[\forall\epsilon>0\exists\delta>0\suchthat\forall x\in X,d_X(x,x_0)<\delta\implies d_Y\brac{f(x),f(x_0)}.\]
+We say $f$ is continuous in $U$ if it is continuous at every $x_0\in X$.
+\end{definition}
+
+As for functions on the reals, one may also phrase the definition of continuity
+in terms of limits.
+
+\begin{lemma}
+Let $f:X\to Y$ be a function between metric spaces. Then $f$ is continuous at $a$ if and only if the following is true: for any sequence $(x_n)_{n=1}^\infty$ with $\lim_{n\to\infty}x_n=a$, we have $\lim_{n\to\infty}f(x_n)=f(a)$.
+\end{lemma}
+
+\begin{proof} \
+($\implies$)
+
+($\impliedby$)
+\end{proof}
+
+\begin{definition}[Uniform continuity]
+Let $(X,d_X)$ and $(Y,d_Y)$ be metric spaces, and $U\subseteq X$. We say that $f:U\to Y$ is \vocab{uniformly continuous} if
+\[\forall\epsilon>0\exists\delta>0\suchthat\forall x,y\in U,d_X(x,y)<\delta\implies d_Y\brac{f(x),f(y)}<\epsilon.\]
+\end{definition}
+
+\subsection{Continuity of linear functions in normed spaces}
+A great deal of power comes from considering the set of all functions on a space satisfying some property, such as continuity, as a metric space in its own right. In this section we consider some important examples of such spaces.
+
+We begin with the space of bounded real-valued functions on a set $X$. At this stage we assume nothing about $X$.
+
+\begin{definition}[Space of bounded real-valued functions]
+If $X$ is any set, we define $B(X)$ to be the space of functions $f:X\to\RR$ for which $f(X)=\{f(x)\mid x\in X\}$ is bounded. If $f\in B(X)$, define $\norm{f}_\infty=\sup_{x\in X}|f(x)|$.
+\end{definition}
+
+\begin{lemma}
+For any set $X$, $B(X)$ is a vector space, and $\norm{\cdot}_\infty$ is a norm.
+\end{lemma}
+
+\begin{proof}
+
+\end{proof}
+
+Now we turn to the space of continuous real-valued functions, $C(X)$. To make sense of what this means we now need $X$ to be a metric space.
+
+\begin{definition}
+Let $X$ be a metric space. We write $C(X)$ for the space of all continuous functions $f:X\to\RR$.
+\end{definition}
+
+
 
 \section{Continuity and Compactness}
+Assume $(X,d_X)$ and $(Y,d_Y)$ are metric spaces.
+
+\begin{theorem}
+Assume $f:X\to Y$ is a continuous map. Then for any compact subset $K\subset X$, the image set $f(K)$ is a compact subset of $Y$.
+\end{theorem}
+
+\begin{proof}
+We prove it by definition. Assume $\{V_i\mid i\in I\}$ is an open cover of $f(K)$. By the continuity of $f$ and 
+\end{proof}
 
 \section{Continuity and Connectedness}
+\begin{proposition}
+If $f$ is a continous mapping of a metric space $X$ into a metric space $Y$, and if $E$ is a connected subset of $X$, then $f(E)$ is connected.
+\end{proposition}
+
+\begin{proof}
+
+\end{proof}
+
+\begin{theorem}[Intermediate value theorem]
+Let $f:[a,b]\to\RR$ be continuous. If $f(a)<f(b)$ and $f(a)<c<f(b)$, then $\exists x\in(a,b)\suchthat f(x)=c$.
+\end{theorem}
+
+\begin{proof}
+
+\end{proof}
 
 \section{Discontinuities}
+Let $f:X\to Y$. If $f$ is not continuous at $x\in X$, we say that $f$ is discontinuous at $x$, or that $f$ has a discontinuity at $x$.
+
+If $f$ is defined on an interval or a segment, it is customary to divide discontinuities into two types. Before giving this classification, we have to define the \vocab{right-hand} and the \vocab{left-hand limits} of $f$ at $x$, denoted by $f(x+)$ and $f(x-)$ respectively.
+
+\begin{definition}[Right-hand and left-hand limits]
+Let $f:(a,b)\to\RR$. Consider any point $x$ such that $a\le x<b$. 
+\end{definition}
+
+\begin{definition}[Discontinuities]
+Let $f:[a,b]\to\RR$. If $f$ is discontinuous at $x$, and if $f(x+)$ and $f(x-)$ exist, then $f$ is said to have a \vocab{discontinuity of the first kind}, or a \vocab{simple discontinuity}, at $x$. Otherwise the discontinuity is said to be of the \vocab{second kind}.
+\end{definition}
+
+There are two ways in which a function can have a simple discontinuity: either  
 
 \section{Monotonic Functions}
+\begin{proposition}
+Let $f:[a,b]\to\RR$ be monotonically increasing. Then $f(x+)$ and $f(x-)$ exist for all $x\in(a,b)$; more precisely,
+\[\sup_{t\in(a,x)}f(t)=f(x-)\le f(x)\le f(x+)=\inf_{t\in(x,b)}f(t).\]
+Furthermore, if $a<x<y<b$, then
+\[f(x+)\le f(y-).\]
+\end{proposition}
+
+Analogous results evidently hold for monotically decreasing functions.
 
 \section{Infinite Limits and Limits at Infinity}
+\begin{definition}
+For $c\in\RR$, the set $\{x\in\RR\mid x>c\}$ is called a neighbourhood of $+\infty$ and is written $(c,+\infty)$. Similarly, the set $(-\infty,c)$ is a neighbourhood of $-\infty$.
+\end{definition}
+
+\begin{definition}
+Let $f:E\subset\RR\to\RR$. We say that $\displaystyle\lim_{t\to x}f(t)=A$ where $A$ and $x$ are in the extended real number system, if for every neighbourhood of $U$ of $A$ there is a neighbourhood $V$ of $x$ such that $V\cap E$ is not empty, and such that $f(t)\in U$ for all $t\in V\cap E$, $t\neq x$.
+\end{definition}

@@ -1,26 +1,124 @@
 \chapter{Sequence and Series of Functions}
 \section{Uniform Convergence}
-\begin{definition}
+\begin{definition}[Pointwise convergence]
 Suppose $\{f_n\}$, $n=1,2,3,\dots$ is a sequence of functions defined on a set $E$, and suppose that the sequence of numbers $\{f_n(x)\}$ converges for every $x\in E$. We can then define a function $f$ by
 \[ f(x)=\lim_{n\to\infty}f_n(x). \]
-We say that $\{f_n\}$ \vocab{converges pointwise} to $f$ on $E$, denoted by $f_n\to f$.
+We say that $\{f_n\}$ \vocab{converges pointwise} to $f$ on $E$, denoted by $f_n\to f$, and $f$ is the \vocab{limit}, or the \vocab{limit function}, of $\{f_n\}$.
+\[\forall\epsilon>0,\forall x\in E,\exists N\in\NN\suchthat\forall n>N,|f_n(x)-f(x)|<\epsilon.\]
 
 Similarly, if $\sum f_n(x)$ converges for every $x\in E$, and if we define
 \[ f(x)=\sum_{n=1}^\infty f_n(x) \]
 the function $f$ is called the \vocab{sum of the series} $\sum f_n$.
 \end{definition}
-pointwise convergence
 
-\begin{definition}
-Assume $\{f_n\}$ is a sequence of functions defined over a set $X$ and $f$ is also a function defined over $X$. We say $\{f_n\}$ \vocab{uniformly converges} to $f$ over $X$, if for any $\epsilon>0$, there exists $N>0$ (which is independent of $x$) so that for any $x\in X$,
-\[ |f_n(x)-f(x)|<\epsilon. \]
+Most properties are not preserved by pointwise continuity; that is, $f$ does not inherit most properties of $f_n$.
+
+\begin{example}[$f_n$ continuous, $f$ discontinuous]
+Let $f_n(x)=x^n$ for $x\in[0,1]$. Then
+\[f(x)=\lim_{n\to\infty}f_n(x)=\begin{cases}
+0&\text{if }x\in(0,1]\\
+1&\text{if }x=1
+\end{cases}\]
+and so the limit function $f(x)$ is discontinuous.
+\end{example}
+
+\begin{example}[$f_n$ integrable, $f$ not integrable]
+Recall that the Dirichlet function
+\[D(x)=\begin{cases}
+1&\text{if }x\in\QQ\\
+0&\text{if }x\in\RR\setminus\QQ
+\end{cases}\]
+is not integrable.
+
+\begin{proof}
+Consider the interval $[0,1]$. We partition $P:0=x_0<x_1<\cdots<x_n=1$. The sum is given by $\sum_{i=1}^n D(t_i)\Delta x_i$. Then
+\[M_i=\max_{t\in[x_{i-1},x_i]}D(t)=1\implies U(D;P)=1\quad\forall P\]
+and
+\[m_i=\min_{t\in[x_{i-1},x_i]}D(t)=0\implies L(D;P)=0\quad\forall P.\]
+Hence 
+\[\upperint_0^1 D(x)\dd{x}=1,\quad\lowerint_0^1 D(x)\dd{x}=0\]
+so $\upperint_0^1 D(x)\dd{x}\neq\lowerint_0^1 D(x)\dd{x}$, and thus $D(x)$ is not integrable.
+\end{proof}
+
+We define a sequence of functions as follows:
+\[D_n(x)=\begin{cases}
+1&\text{if }x=\frac{p}{q},p\in\ZZ,q\in\ZZ\setminus\{0\},|q|\le n\\
+0&\text{if otherwise}
+\end{cases}\]
+
+\end{example}
+
+\begin{definition}[Uniform convergence]
+We say that $\{f_n\}$ \vocab{uniformly converges} to $f$ over $E$, if 
+\[\forall\epsilon>0, \exists N\in\NN\suchthat \forall x\in E,\forall n>N,|f_n(x)-f(x)|<\epsilon.\]
+We denote this by $f_n\rightrightarrows f$.
 \end{definition}
 
-\begin{notation}
-We denote this uniform convergence over $X$ by $f_n\rightrightarrows f$.
-\end{notation}
+Uniform convergence is stronger than pointwise convergence, since $N$ is uniform (or ``fixed'') for all $x\in E$; for pointwise convergence, the choice of $N$ is determined by $x$.
+
+\begin{definition}
+If $X$ is a metric space, we denote the set of all complex-valued, continuous, bounded functions with domain $X$ by $C(X)$.
+
+If $f\in C(X)$, we define 
+\[\norm{f}\coloneqq\sup_{x\in X}|f(x)|,\]
+known as the \vocab{suprenum norm} of $f$.
+\end{definition}
+
+\begin{lemma}
+$\norm{f}$ gives a norm on $C(X)$.
+\end{lemma}
+
+\begin{proof}
+Check that $\norm{f}$ satisfies the conditions for a norm:
+\begin{enumerate}[label=(\arabic*)]
+\item 
+\end{enumerate}
+\end{proof}
+
+\begin{proposition}
+$\brac{C(X),\norm{\cdot}}$ is a metric space.
+\end{proposition}
+
+\begin{lemma}[Cauchy criterion]
+$\{f_n\}\rightrightarrows f$ if and only if
+\[\forall\epsilon>0,\exists N\in\NN\suchthat\forall x\in E,\forall n,m>N,|f_n(x)-f_m(x)|<\epsilon.\]
+\end{lemma}
+
+\begin{proof} \
+
+($\implies$) Suppose $f_n\rightrightarrows f$, then
+\[\forall\epsilon>0, \exists N\in\NN\suchthat \forall x\in E,\forall n>N,|f_n(x)-f(x)|<\frac{\epsilon}{2}.\]
+Then for all $n,m>N$,
+\begin{align*}
+|f_n(x)-f_m(x)|
+&=\absolute{\brac{f_n(x)-f(x)}-\brac{f_m(x)-f(x)}}\\
+&\le|f_n(x)-f(x)|+|f_m(x)-f(x)|\\
+&<\frac{\epsilon}{2}+\frac{\epsilon}{2}=\epsilon
+\end{align*}
+by triangle inequality.
+
+($\impliedby$) 
+\[\forall\epsilon>0,\exists N\in\NN\suchthat\forall x\in E,\forall n,m>N,|f_n(x)-f_m(x)|<\epsilon.\]
+
+\end{proof}
+
+The uniform convergence of series is defined similarly: 
+
+\begin{lemma}[Cauchy criterion]
+
+\end{lemma}
+
+\begin{theorem}[Weierstrass M-test]
+$\sum_{n=1}^\infty f_n(x)$ uniformly converges if
+\[\exists\{M_n\}\in\RR^+\suchthat|f_n(x)|<M_n,\sum_{n=1}^\infty M_n\text{ convergent}\]
+where $\sum_{n=1}^\infty M_n$ is convergent if
+\[\forall\epsilon>0,\exists N\in\NN\suchthat\forall n,m>N,\sum_{k=m+1}^n M_k<\epsilon.\]
+\end{theorem}
 
 \section{Uniform Convergence and Continuity}
+We now consider properties preserved by uniform convergence.
+
+
 
 \section{Uniform Convergence and Integration}
 \begin{theorem}
@@ -47,13 +145,16 @@ It follows $f_n\in R_\alpha[a,b]$ and $f_n\rightrightarrows f$. Apply above theo
 
 \section{Uniform Convergence and Differentiation}
 \begin{theorem}
-Assume $\{f_n\}$ is a sequence of functions defined over $[a,b]$ and differentiable. If $\{f_n^\prime\}$ uniformly converges on $[a,b]$ and $\{f_n\}$ converges at some point $x_0\in[a,b]$, then $\{f_n\}$ uniformly converges on $[a,b]$ to some function $f$. Moreover, $f$ is differentiable and
-\[ f^\prime(x)=\lim_{n\to\infty}f_n^\prime(x) \]
-for any $x\in[a,b]$.
+$\{f_n\}$ differentiable on $[a,b]$, $\exists x_0\in[a,b]\suchthat f_n(x_0)\to y_0=f(x_0)$ and $f_n^\prime\rightrightarrows f^\prime$. Then $f_n\rightrightarrows f$ on $[a,b]$, and $f$ is differentiable, $f^\prime(x)=\lim_{n\to\infty}f_n^\prime(x)$ for any $x\in[a,b]$.
 \end{theorem}
 
 \begin{proof}
-
+$f_n(x_0)\to y_0$ thus
 \end{proof}
 
 \section{Stone--Weierstrass Approximation Theorem}
+\begin{theorem}[Weierstrass approximation theorem]
+If $f$ is a continuous complex function on $[a,b]$, there exists a sequence of polynomials $P_n$ such that $P_n\rightrightarrows f$ on $[a,b]$.
+
+If $f$ is real, then $P_n$ may be taken real.
+\end{theorem}
