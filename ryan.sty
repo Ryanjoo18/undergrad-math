@@ -1,3 +1,7 @@
+% Font
+\usepackage{tgpagella} % text only
+\usepackage{mathpazo}  % math & text
+
 \usepackage{amsmath,amssymb}
 %Define some macros
 \newcommand{\cbrt}[1]{\sqrt[3]{#1}}
@@ -9,8 +13,8 @@
 \newcommand{\absolute}[1]{\left|#1\right|}
 \newcommand{\crbrac}[1]{\left\{#1\right\}}
 \providecommand{\arc}[1]{\wideparen{#1}}
-\newcommand{\vocab}[1]{\textit{\bfseries #1}}
-%\renewcommand{\epsilon}{\varepsilon}
+\newcommand{\vocab}[1]{{\sffamily\color{blue}\bfseries #1}}
+\renewcommand{\epsilon}{\varepsilon}
 \newcommand{\unit}[1]{\,\mathrm{#1}}
 \newcommand{\degC}{^\circ{\mathrm C}}
 \newcommand{\tab}{\hspace{0.5cm}}
@@ -39,6 +43,11 @@
 \DeclareMathOperator{\spn}{span}
 \DeclareMathOperator{\im}{im}
 \DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\ch}{ch}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\Ann}{Ann}
+\renewcommand{\le}{\leqslant}
+\renewcommand{\ge}{\geqslant}
 
 %Inequalities
 \newcommand{\cycsum}{\sum_{\mathrm{cyc}}}
@@ -49,8 +58,8 @@
 %Convenient Environments
 \usepackage{amsthm}
 %\renewenvironment{proof}{{\bfseries Proof. }}{\qed}
-
-\newenvironment{solution}{{\bfseries Solution. } }{\qed}
+\newenvironment{solution}{\begin{proof}[Solution]}{\end{proof}}
+%\newenvironment{solution}{{\bfseries Solution. } }{\qed}
 %\newenvironment{notation}{{\bfseries Notation. }}{}
 %\newenvironment{derivation}{{\bfseries Derivation. }}{\qed}
 
@@ -326,12 +335,17 @@ breaklines=true
 %Theorem setup
 \theoremstyle{definition}
 \newtheorem{definition}{Definition}[chapter]
+\newtheorem*{definition*}{Definition}
 \newtheorem{theorem}[definition]{Theorem}
+\newtheorem*{theorem*}{Theorem}
 \newtheorem{lemma}[definition]{Lemma}
+\newtheorem*{lemma*}{Lemma}
 \newtheorem{proposition}[definition]{Proposition}
+\newtheorem*{proposition*}{Proposition}
 \newtheorem{corollary}[definition]{Corollary}
+\newtheorem*{corollary*}{Corollary}
 
-\newtheorem{prbm}{Problem}[]
+\newtheorem{prbm}{Problem}[chapter]
 \newtheorem*{claim}{Claim}
 
 %\declaretheorem[style=thmbluebox,name=Theorem,numberwithin=chapter]{theorem}
@@ -346,9 +360,9 @@ breaklines=true
 %\declaretheorem[style=thmpurplebox,name=Proposition,numbered=no]{proposition*}
 %\declaretheorem[style=thmpurplebox,name=Corollary,numbered=no]{corollary*}
 %\declaretheorem[style=thmpurplebox,name=Assumption,numbered=no]{assume*}
-\declaretheorem[style=thmblackbox,name=Example,sibling=theorem]{example}
+\declaretheorem[style=thmblackbox,name=Example,numbered=no]{example}
 %\declaretheorem[style=thmblackbox,name=Example,numbered=no]{example*}
-\declaretheorem[style=thmblackbox,name=Exercise]{exercise}
+\declaretheorem[style=thmgreenbox,name=Exercise,numbered=no]{exercise}
 
 %Custom theorem environments using tcolorbox
 %\tcbuselibrary{theorems}
@@ -357,10 +371,10 @@ breaklines=true
 \definecolor{darkred}{rgb}{0.9, 0.0, 0.0}
 \usepackage[T1]{fontenc}
 \titleformat{\chapter}[hang]{\fontsize{60}{70}\bfseries}{{\color{darkred}\thechapter}\hspace{20pt}}{0pt}{\Huge\bfseries}
-\titleformat{\section}{\Large\bfseries}{{\color{darkred}\S\thesection}}{1em}{\itshape}
-\titleformat{\subsection}{\large\bfseries}{{\color{darkred}\S\thesubsection}}{1em}{\itshape}
-\titleformat{\subsubsection}{\normalsize\bfseries}{{\color{darkred}\S\thesubsubsection}}{1em}{\itshape}
-%\setcounter{secnumdepth}{3}
+\titleformat{\section}{\LARGE\bfseries}{{\color{darkred}\S\thesection}}{1em}{}
+\titleformat{\subsection}{\Large\bfseries}{{\color{darkred}\S\thesubsection}}{1em}{\itshape}
+%\titleformat{\subsubsection}{\normalsize\bfseries}{{\color{darkred}\S\thesubsubsection}}{1em}{\itshape}
+\setcounter{secnumdepth}{1}
 
 \makeatletter
 \NewDocumentCommand{\lowerint}{}{\mathop{}\mathpalette\lowerint@\relax\!\int}

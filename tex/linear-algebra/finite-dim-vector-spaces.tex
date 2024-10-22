@@ -1,17 +1,33 @@
 \chapter{Finite-Dimensional Vector Spaces}\label{chap:finite-dim-vector-spaces}
+Key concepts in this chapter include linear combinations, span, linear independence, bases and dimension.
+
+To build some intuition,
+
+\begin{mdframed}
+A linear combination is a way of mixing vectors.
+
+The span is the set of all possible mixtures you can make from a set of vectors.
+
+Vectors are linearly independent if none of them is just a mixture of the others.
+
+A basis is a set of linearly independent vectors that can be mixed to reach any point in the space.
+
+The dimension is the number of vectors you need in a basis to describe the entire space.
+\end{mdframed}
+
 \section{Span and Linear Independence}
 \begin{definition}[Linear combination]
-A \vocab{linear combination} of vectors $\{v_1,\dots,v_n\}$ in $V$ is a vector of the form
+A \vocab{linear combination}\index{linear combination} of vectors $\{v_1,\dots,v_n\}$ in $V$ is a vector of the form
 \[a_1v_1+\cdots+a_nv_n\]
 where $a_i\in\FF$.
 \end{definition}
 
 \begin{definition}[Span]
-The \vocab{span} of $\{v_1,\dots,v_n\}$ is the set of all linear combinations of $v_1,\dots,v_n$:
+The \vocab{span}\index{span} of $\{v_1,\dots,v_n\}$ is the set of all linear combinations of $v_1,\dots,v_n$:
 \[\spn\{v_1,\dots,v_n\}=\{a_1v_1+\cdots+a_nv_n\mid a_i\in\FF\}.\]
 The span of the empty list $(\:)$ is defined to be $\{\vb{0}\}$.
 
-We say that $v_1,\dots,v_n$ \vocab{spans} $V$ if $\spn\{v_1,\dots,v_n\}=V$.
+We say that $v_1,\dots,v_n$ \textbf{spans} $V$ if $\spn\{v_1,\dots,v_n\}=V$.
 \end{definition}
 
 \begin{proposition}
@@ -21,7 +37,7 @@ $\spn\{v_1,\dots,v_n\}$ in $V$ is the smallest subspace of $V$ containing $v_1,\
 \begin{proof}
 First we show that $\spn\{v_1,\dots,v_n\}$ is a subspace of $V$.
 \begin{enumerate}[label=(\roman*)]
-\item Additive identity $\vb{0}=0v_1+\cdots+0v_n\in\spn\{v_1,\dots,v_n\}$
+\item For the additive identity, $\vb{0}=0v_1+\cdots+0v_n\in\spn\{v_1,\dots,v_n\}$
 \item $(a_1v_1+\cdots+a_nv_n)+(c_1v_1+\cdots+c_nv_n)=(a_1+c_1)v_1+\cdots+(a_n+c_n)v_n\in\spn\{v_1,\dots,v_n\}$, so $\spn\{v_1,\dots,v_n\}$ is closed under addition.
 \item $\lambda(a_1v_1+a_nv_n)=(\lambda a_1)v_1+\cdots+(\lambda a_n)v_n\in\spn\{v_1,\dots,v_n\}$, so $\spn\{v_1,\dots,v_n\}$ is closed under scalar multiplication.
 \end{enumerate}
@@ -35,29 +51,31 @@ Hence $\spn\{v_1,\dots,v_n\}$ is the smallest subspace of $V$ containing $v_1,\d
 \end{proof}
 
 \begin{definition}[Finite-dimensional vector space]
-$V$ is \vocab{finite-dimensional} if there exists $v_1,\dots,v_n$ that spans $V$; otherwise, it is infinite-dimensional.
+$V$ is \vocab{finite-dimensional}\index{finite-dimensional} if there exists $\{v_1,\dots,v_n\}$ that spans $V$; otherwise, it is infinite-dimensional.
 \end{definition}
 
 \begin{example}
 $\FF^3$ is finite-dimensional because $\FF^3=\spn\{(1,0,0),(0,1,0),(0,0,1)\}$; $\FF^\infty$ is infinite-dimensional.
 \end{example}
 
-Otherwise mentioned, all subsequent vector spaces are finite-dimensional. 
+Otherwise mentioned, all subsequent vector spaces are finite-dimensional.
 
-\begin{definition}[Polynomial]
-A function $p:\FF\to\FF$ is a \vocab{polynomial} with coefficients in $\FF$ if there exist $a_i\in\FF$ such that
+\begin{example}[Polynomial]
+A function $p:\FF\to\FF$ is a \textbf{polynomial} with coefficients in $\FF$ if there exist $a_i\in\FF$ such that
 \[p(z)=a_0+a_1z+\cdots+a_nz^n\]
 for all $z\in\FF$.
 
-We denote the set of all polynomials with coefficients in $\FF$ by $\mathcal{P}(\FF)$.
+The set of all polynomials with coefficients in $\FF$ is denoted by $\FF[z]$.
 
-A polynomial $p\in\mathcal{P}(\FF)$ is has degree $n$ if there exist scalars $a_0,a_1,\dots,a_n\in\FF$ with $a_n\neq0$ such that $p(z)=a_0+a_1z+\cdots+a_nz^n$ for all $z\in\FF$; if $p$ has degree $n$, we write $\deg p=n$.
+With the usual operations of addition and scalar multiplication, $\FF[z]$ is a vector space over $\FF$, as you should verify. Hence $\FF[z]$ is a subspace of $\FF^\FF$.
 
-For non-negative integer $n$, $\mathcal{P}^n(\FF)$ denotes the set of all polynomials with coefficients in $\FF$ and degree at most $n$.
-\end{definition}
+A polynomial $p\in\FF[z]$ is has \textbf{degree} $n$, denoted by $\deg p=n$, if there exist scalars $a_0,a_1,\dots,a_n\in\FF$ with $a_n\neq0$ such that $p(z)=a_0+a_1z+\cdots+a_nz^n$ for all $z\in\FF$.
+
+For non-negative integer $n$, $\FF_n[z]$ denotes the set of all polynomials with coefficients in $\FF$ and degree at most $n$.
+\end{example}
 
 \begin{definition}[Linear independence]
-$\{v_1,\dots,v_n\}$ is \vocab{linearly independent} in $V$ if the only choice of $a_1,\dots,a_n\in\FF$ that makes $a_1v_1+\cdots+a_nv_n=\vb{0}$ is $a_1=\cdots=a_n=0$; otherwise, it is \vocab{linearly dependent}.
+$\{v_1,\dots,v_n\}$ is \vocab{linearly independent}\index{linear independence} in $V$ if the only choice of $a_1,\dots,a_n\in\FF$ that makes $a_1v_1+\cdots+a_nv_n=\vb{0}$ is $a_1=\cdots=a_n=0$; otherwise, it is \textbf{linearly dependent}.
 \end{definition}
 
 \cref{lemma:linear-dependence} will often be useful; it states that given a linearly dependent list of vectors, one of the vectors is in the span of the previous ones and furthermore we can throw out that vector without changing the span of the original list.
@@ -91,21 +109,27 @@ The length of every linearly independent list of vectors is less than or equal t
 \begin{proof}
 Suppose $\{u_1,\dots,u_m\}$ linearly independent in $V$, $\{w_1,\dots,w_n\}$ spans $V$. We want to show $m\le n$. We do so through the following steps:
 \begin{itemize}
-\item[Step 1] 
+\item[Step 1] Adjoin $u_1$ at the beginning of $\{w_1,\dots,w_n\}$. Then $\{u_1,w_1,\dots,w_n\}$ is linearly dependent.
+
+By linear dependence lemma, one of the vectors in $\{u_1,w_1,\dots,w_n\}$ is a linear combination of the previous vectors. Since $\{u_1,\dots,u_m\}$ is linearly independent, $u_1\neq\vb{0}$, so 
 \end{itemize}
 \end{proof}
 
 \section{Bases}
 \begin{definition}[Basis]
-$\{v_1\dots,v_n\}$ is a \vocab{basis} of $V$ if it is linearly independent and spans $V$.
+$\{v_1\dots,v_n\}$ is a \vocab{basis}\index{basis} of $V$ if it is
+\begin{enumerate}[label=(\roman*)]
+\item linearly independent, and
+\item spans $V$.
+\end{enumerate}
 \end{definition}
 
-\begin{example}
-Let $\vb{e}_i=(0,\dots,0,1,0,\dots,0)$ where the $i$-th coordinate is $1$. $\{\vb{e}_1,\dots,\vb{e}_n\}$ is a basis of $\FF^n$, called the \vocab{standard basis} of $\FF^n$.
+\begin{example}[Standard basis]
+Let $\vb{e}_i=(0,\dots,0,1,0,\dots,0)$ where the $i$-th coordinate is $1$. $\{\vb{e}_1,\dots,\vb{e}_n\}$ is a basis of $\FF^n$, called the \textbf{standard basis} of $\FF^n$.
 \end{example}
 
 \begin{example}
-$\{1,z,\dots,z^n\}$ is a basis of $\mathcal{P}^n(\FF)$.
+$\{1,z,\dots,z^n\}$ is a basis of $\FF_n[z]$.
 \end{example}
 
 \begin{lemma}[Criterion for basis]\label{lemma:basis-criterion}
@@ -121,21 +145,44 @@ The following are equivalent:
 
 \end{proof}
 
-\begin{proposition}
+\begin{lemma}\label{lemma:reduce-spanninglist-basis}
 Every spanning list in a vector space can be reduced to a basis of the vector space.
-\end{proposition}
+\end{lemma}
+
+\begin{proof}
+Suppose $B=\{v_1,\dots,v_n\}$ spans $V$. We want to remove some vectors from $B$ so that the remaining vectors form a basis of $V$. We do this through the multistep process described below.
+
+\begin{enumerate}
+\item[Step 1] If $v_1=\vb{0}$, delete $v_1$ from $B$. If $v_1\neq\vb{0}$, leave $B$ unchanged.
+\item[Step $k$] If $v_k\in\spn\{v_1,\dots,v_{k-1}\}$, delete $v_k$ from $B$. If $v_k\notin\spn\{v_1,\dots,v_{k-1}\}$, leave $B$ unchanged.
+\end{enumerate}
+
+Stop the process after step $n$.
+
+Since our original list spanned $V$ and we have discarded only vectors that were already in the span of the previous vectors, the resulting list $B$ spans $V$ because
+
+The process ensures that no vector in $B$ is in the span of the previous ones. By linear dependence lemma, $B$ is linearly independent.
+
+Since $B$ is linearly independent and spans $V$, $B$ is a basis of $V$.
+\end{proof}
 
 \begin{proposition}
 Every finite-dimensional vector space has a basis.
 \end{proposition}
 
 \begin{proof}
-By definition, a finite-dimensional vector space has a spanning list. The previous result tells us that each spanning list can be reduced to a basis.
+By definition, a finite-dimensional vector space has a spanning list. By \cref{lemma:reduce-spanninglist-basis}, the spanning list can be reduced to a basis.
 \end{proof}
 
-\begin{proposition}
+\begin{lemma}\label{lemma:extend-linind-basis}
 Every linearly independent list of vectors in a finite-dimensional vector space can be extended to a basis of the vector space.
-\end{proposition}
+\end{lemma}
+
+\begin{proof}
+Suppose $\{u_1,\dots,u_m\}$ linearly independent in $V$, $\{w_1,\dots,w_n\}$ spans $V$. Thus
+\[\{u_1,\dots,u_m,w_1,\dots,w_n\}\]
+spans $V$. By \cref{lemma:reduce-spanninglist-basis}, we can reduce this list to a basis of $V$ consisting $u_1,\dots,u_m$ (since $\{u_1,\dots,u_m\}$ linearly independent) and some of the $w$'s.
+\end{proof}
 
 \begin{proposition}
 Suppose $U$ is a subspace of $V$. Then there exists a subspace $W$ of $V$ such that $V=U\oplus W$.
@@ -145,14 +192,32 @@ Suppose $U$ is a subspace of $V$. Then there exists a subspace $W$ of $V$ such t
 
 \end{proof}
 
+\begin{proposition}\label{prop:bases-same-length}
+Any two bases of a finite-dimensional vector space have the same length.
+\end{proposition}
+
+\begin{proof}
+Suppose $V$ is finite-dimensional. Let $B_1$ and $B_2$ be two bases of $V$. Then $B_1$ is linearly independent in $V$ and $B_2$ spans $V$, so by \cref{prop:length-linind-span}, the length of $B_1$ is at most the length of $B_2$.
+
+Similarly, $B_2$ is linearly independent in $V$ and $B_1$ spans $V$, so the length of $B_2$ is at most the length of $B_1$.
+
+Hence the length of $B_1$ equals the length of $B_2$, as desired.
+\end{proof}
+
 \section{Dimension}
+By \cref{prop:bases-same-length}, since any two bases of a fnite-dimensional vector space have the same length, we can formally define the dimension of such spaces.
+
 \begin{definition}[Dimension]
-The \vocab{dimension} of $V$ is the length of any basis of $V$, denoted by $\dim V$.
+The \vocab{dimension}\index{dimension} of $V$ is the length of any basis of $V$, denoted by $\dim V$.
 \end{definition}
 
 \begin{proposition}
 Suppose $U$ is a subspace of $V$, then $\dim U\le\dim V$.
 \end{proposition}
+
+\begin{proof}
+Suppose $V$ is fnite-dimensional and $U$ is a subspace of $V$. Think of a basis of $U$ as a linearly independent list in $V$, and think of a basis of $V$ as a spanning list in $U$. Now use 2.22 to conclude that $\dim U\le\dim V$.
+\end{proof}
 
 \begin{proposition}
 Every linearly independent list of vectors in $V$ with length $\dim V$ is a basis of $V$.

@@ -1,4 +1,6 @@
 \chapter{Vector Spaces}\label{chap:vector-spaces}
+This chapter introduces vector spaces and subspaces.
+
 \section{Definition of Vector Space}
 \begin{notation}
 $\FF$ denotes $\RR$ or $\CC$.
@@ -11,7 +13,7 @@ For $(x_1,\dots,x_n)\in\FF^n$ and $i=1,\dots,n$, we say that $x_i$ is the $i$-th
 \end{notation}
 
 \begin{definition}[Vector space]
-$V$ is a \vocab{vector space} over $\FF$ if the following properties hold:
+$V$ is a \vocab{vector space}\index{vector space} over $\FF$ if the following properties hold:
 \begin{enumerate}[label=(\roman*)]
 \item Addition is commutative: $u+v=v+u$ for all $u,v\in V$
 \item Addition is associative: $(u+v)+w=u+(v+w)$ for all $u,v,w\in V$
@@ -32,10 +34,10 @@ For the rest of this text, $V$ denotes a vector space over $\FF$.
 $\RR^n$ is a vector space over $\RR$, $\CC^n$ is a vector space over $\CC$.
 \end{example}
 
-Elements of a vector space are called \vocab{vectors} or \vocab{points}.
+Elements of a vector space are called \textbf{vectors} or \textbf{points}.
 
 The scalar multiplication in a vector space depends on $\FF$. Thus when we
-need to be precise, we will say that $V$ is a vector space over $\FF$ instead of saying simply that $V$ is a vector space. For example, $\RR^n$ is a vector space over $\RR$, and $\CC^n$ is a vector space over $\CC$. A vector space over $\RR$ is called a \vocab{real vector space}; a vector space over $\CC$ is called a \vocab{complex vector space}.
+need to be precise, we will say that $V$ is a vector space over $\FF$ instead of saying simply that $V$ is a vector space. For example, $\RR^n$ is a vector space over $\RR$, and $\CC^n$ is a vector space over $\CC$. A vector space over $\RR$ is called a \textbf{real vector space}; a vector space over $\CC$ is called a \textbf{complex vector space}.
 
 \begin{proposition}[Uniqueness of additive identity]
 A vector space has a unique additive identity.
@@ -62,6 +64,8 @@ Because additive inverses are unique, the following notation now makes sense.
 \begin{notation}
 Let $v,w\in V$. Then $-v$ denotes the additive inverse of $v$; $w-v$ is defined to be $w+(-v)$.
 \end{notation}
+
+We now prove some seemingly trivial facts.
 
 \begin{proposition}[The number 0 times a vector]
 For every $v\in V$, $0v=\vb{0}$.
@@ -98,49 +102,63 @@ Since $v+(-1)v=\vb{0}$, $(-1)v$ is the additive inverse of $v$.
 \begin{example}
 $\FF^\infty$ is defined to be the set of all sequences of elements of $\FF$:
 \[\FF^\infty\coloneqq\{(x_1,x_2,\dots)\mid x_i\in\FF\}\]
-Addition and scalar multiplication on $\FF^\infty$ are defined as expected:
-\begin{align*}
-(x_1,x_2,\dots)+(y_1,y_2,\dots)&=(x_1+y_1,x_2+y_2,\dots)\\
-\lambda(x_1,x_2,\dots)&=(\lambda x_1,\lambda x_2,\dots)
-\end{align*}
-With these definitions, $\FF^\infty$ becomes a vector space over $\FF$, as you should verify. The additive identity in this vector space is $\vb{0}=(0,0,\dots)$.
+\begin{itemize}
+\item Addition on $\FF^\infty$ is defined by
+\[(x_1,x_2,\dots)+(y_1,y_2,\dots)=(x_1+y_1,x_2+y_2,\dots)\]
+\item Scalar multiplication on $\FF^\infty$ is defined by
+\[\lambda(x_1,x_2,\dots)=(\lambda x_1,\lambda x_2,\dots)\]
+\end{itemize}
+
+Verify that $\FF^\infty$ becomes a vector space over $\FF$. Also verify that the additive identity in $\FF^\infty$ is $\vb{0}=(0,0,\dots)$.
 \end{example}
 
 Our next example of a vector space involves a set of functions.
 
-\begin{notation}
+\begin{example}
 If $S$ is a set, $\FF^S\coloneqq\{f\mid f:S\to\FF\}$.
-
-For $f,g\in\FF^S$, the sum $f+g\in\FF^S$ is the function defined by
+\begin{itemize}
+\item Addition on $\FF^S$ is defined by 
 \[(f+g)(x)=f(x)+g(x)\quad(\forall x\in S)\]
-
-For $\lambda\in\FF$, $f\in\FF^S$, the product $\lambda f\in\FF^S$ is the function defined by
+for all $f,g\in\FF^S$.
+\item Multiplication on $\FF^S$ is defined by
 \[(\lambda f)(x)=\lambda f(x)\quad(\forall x\in S)\]
-\end{notation}
+for all $\lambda\in\FF$, $f\in\FF^S$.
+\end{itemize}
 
-\begin{example}
-If $S=[0,1]$ and $\FF=\RR$, then $\RR^{[0,1]}$ is the set of real-valued functions on the interval $[0,1]$.
-\end{example}
+Verify that if $S$ is a non-empty set, then $\FF^S$ is a vector space over $\FF$.
 
-\begin{example}
-If $S$ is a non-empty set, then $\FF^S$ (with the operations of addition and scalar multiplication as defined above) is a vector space over $\FF$.
-
-Additive identity of $\FF^S$ is the function $0:S\to\FF$ defined by
+Also verify that the additive identity of $\FF^S$ is the function $0:S\to\FF$ defined by
 \[0(x)=0\quad(\forall x\in S)\]
-
-For $f\in\FF^S$, additive inverse of $f$ is the function $-f:S\to\FF$ defined by
+and for $f\in\FF^S$, additive inverse of $f$ is the function $-f:S\to\FF$ defined by
 \[(-f)(x)=-f(x)\quad(\forall x\in S)\]
 \end{example}
 
-It is easy to see that $\FF^n$ and $\FF^\infty$ are special cases of the vector space $\FF^S$ because a list of length $n$ of numbers in $\FF$ can be thought of as a function from $\{1,2,\dots,n\}$ to $\FF$ and a sequence of numbers in $\FF$ can be thought of as a function from the set of positive integers to $\FF$. In other words, we can think of $\FF^n$ as $\FF^{\{1,2,\dots,n\}}$ and we can think of $\FF^\infty$ as $\FF^{\{1,2,\dots\}}$.
+\begin{remark}
+$\FF^n$ and $\FF^\infty$ are special cases of the vector space $\FF^S$; think of $\FF^n$ as $\FF^{\{1,2,\dots,n\}}$, and $\FF^\infty$ as $\FF^{\{1,2,\dots\}}$.
+\end{remark}
+
+\begin{example}[Complexification]
+Suppose $V$ is a real vector space. The \emph{complexifcation} of $V$, denoted by $V_\CC$, equals $V\times V$. An element of $V_\CC$ is an ordered pair $(u,v)$, where $u,v\in V$, which we write as $u+iv$.
+\begin{itemize}
+\item Addition on $V_\CC$ is defined by
+\[(u_1+iv_1)+(u_2+iv_2)=(u_1+u_2)+i(v_1+v_2)\]
+for all $u_1,v_2,u_2,v_2\in V$.
+\item Complex scalar multiplication on $V_\CC$ is defined by
+\[(a+bi)(u+iv)=(au-bv)+i(av+bu)\]
+for all $a,b\in\RR$ and all $u,v\in V$.
+\end{itemize}
+You should verify that with the defnitions of addition and scalar multiplication as above, $V_\CC$ is a (complex) vector space.
+\end{example}
 
 \section{Subspaces}
 \begin{definition}[Subspace]
-$U\subset V$ is a \vocab{subspace} of $V$ if $U$ is also a vector space (with the same addition and scalar multiplication as on $V$).
+$U\subseteq V$ is a \vocab{subspace}\index{subspace} of $V$ if $U$ is also a vector space (with the same addition and scalar multiplication as on $V$). We denote this as $U\le V$.
 \end{definition}
 
-\begin{lemma}[Conditions for a subspace]\label{lemma:subspace-conditions}
-$U\subset V$ is a subspace of $V$ if and only if $U$ satisfies the following conditions:
+The following result is useful in determining whether a given subset of $V$ is a subspace of $V$.
+
+\begin{lemma}[Subspace test]\label{lemma:subspace-conditions}
+Suppose $U\subseteq V$. $U\le V$ if and only if $U$ satisfies the following conditions:
 \begin{enumerate}[label=(\roman*)]
 \item Additive identity: $\vb{0}\in U$
 \item Closed under addition: $u+w\in U$ for all $u,w\in U$
@@ -148,22 +166,19 @@ $U\subset V$ is a subspace of $V$ if and only if $U$ satisfies the following con
 \end{enumerate}
 \end{lemma}
 
-\begin{proof}
-If $U$ is a subspace of $V$, then $U$ satisfies the three conditions above by the definition of vector space.
+\begin{proof} \
 
-Conversely, suppose $U$ satisfies the three conditions above. (i) ensures that the additive identity of $V$ is in $U$. (ii) ensures that addition makes sense on $U$. (iii) ensures that scalar multiplication makes sense on $U$.
+\fbox{$\implies$} If $U\le V$, then $U$ satisfies the three conditions above by the definition of vector space.
+
+\fbox{$\impliedby$} Conversely, suppose $U$ satisfies the three conditions above. (i) ensures that the additive identity of $V$ is in $U$. (ii) ensures that addition makes sense on $U$. (iii) ensures that scalar multiplication makes sense on $U$.
 
 If $u\in U$, then $-u=(-1)u\in U$ by (iii). Hence every element of $U$ has an additive inverse in $U$.
 
 The other parts of the definition of a vector space, such as associativity and commutativity, are automatically satisfied for $U$ because they hold on the larger space $V$. Thus $U$ is a vector space and hence is a subspace of $V$.
 \end{proof}
 
-\begin{remark}
-The three conditions in \cref{lemma:subspace-conditions} usually enable us to determine quickly whether a given subset of $V$ is a subspace of $V$.
-\end{remark}
-
 \begin{definition}[Sum of subsets]
-Suppose $U_1,\dots,U_n\subset V$. The \vocab{sum} of $U_1,\dots,U_n$ is the set of all possible sums of elements of $U_1,\dots,U_n$:
+Suppose $U_1,\dots,U_n\subset V$. The \vocab{sum}\index{sum of subsets} of $U_1,\dots,U_n$ is the set of all possible sums of elements of $U_1,\dots,U_n$:
 \[U_1+\cdots+U_n\coloneqq\{u_1+\cdots+u_n\mid u_i\in U_i\}.\]
 \end{definition}
 
@@ -180,21 +195,17 @@ Suppose that $U=\{(x,x,y,y)\in\FF^4\mid x,y\in\FF\}$ and $W=\{(x,x,x,y)\in\FF^4\
 The next result states that the sum of subspaces is a subspace, and is in fact the smallest subspace containing all the summands.
 
 \begin{proposition}
-Suppose $U_1,\dots,U_n$ are subspaces of $V$. Then $U_1+\cdots+U_n$ is the smallest subspace of $V$ containing $U_1,\dots,U_n$.
+Suppose $U_1,\dots,U_n\le V$. Then $U_1+\cdots+U_n$ is the smallest subspace of $V$ containing $U_1,\dots,U_n$.
 \end{proposition}
 
 \begin{proof}
-It is easy to see that $\vb{0}\in U_1+\cdots+U_n$ and that $U_1+\cdots+U_n$ is closed under addition and scalar multiplication. Hence $U_1+\cdots+U_n$ is a subspace of $V$.
+It is easy to see that $\vb{0}\in U_1+\cdots+U_n$ and that $U_1+\cdots+U_n$ is closed under addition and scalar multiplication, hence $U_1+\cdots+U_n\le V$.
 
 Clearly $U_1,\dots,U_n$ are all contained in $U_1+\cdots+U_n$ (to see this, consider sums $u_1+\cdots+u_n$ where all except one of the $u$'s are $\vb{0}$). Conversely, every subspace of $V$ containing $U_1,\dots,U_n$ contains $U_1+\cdots+U_n$ (because subspaces must contain all finite sums of their elements). Thus $U_1+\cdots+U_n$ is the smallest subspace of $V$ containing $U_1,\dots,U_n$.
 \end{proof}
 
-\begin{remark}
-Sums of subspaces in the theory of vector spaces are analogous to unions of subsets in set theory. Given two subspaces of a vector space, the smallest subspace containing them is their sum. Analogously, given two subsets of a set, the smallest subset containing them is their union.
-\end{remark}
-
 \begin{definition}[Direct sum]
-Suppose $U_1,\dots,U_n$ are subspaces of $V$. The sum $U_1+\cdots+U_n$ is called a \vocab{direct sum} if each element of $U_1+\cdots+U_n$ can be written in only one way a sum of $u_1+\cdots+u_n$, $u_i\in U_i$. In this case, we denote the sum as
+Suppose $U_1,\dots,U_n\le V$. The sum $U_1+\cdots+U_n$ is called a \vocab{direct sum}\index{direct sum} if each element of $U_1+\cdots+U_n$ can be written in only one way a sum of $u_1+\cdots+u_n$, $u_i\in U_i$. In this case, we denote the sum as
 \[U_1\oplus\cdots\oplus U_n.\]
 \end{definition}
 
@@ -207,7 +218,7 @@ Suppose $U_i$ is the subspace of $\FF^n$ of those vectors whose coordinates are 
 \end{example}
 
 \begin{lemma}[Condition for direct sum]\label{lemma:condition-direct-sum}
-Suppose $V_1,\dots,V_n$ are subspaces of $V$, $W=V_1+\cdots+V_n$. Then the following are equivalent:
+Suppose $V_1,\dots,V_n\le V$, let $W=V_1+\cdots+V_n$. Then the following are equivalent:
 \begin{enumerate}[label=(\roman*)]
 \item Any element in $W$ can be uniquely expressed as the sum of vectors in $V_1,\dots,V_n$.
 \item If $v_i\in V_i$ satisfies $v_1+\cdots+v_n=\vb{0}$, then $v_1=\cdots=v_n=\vb{0}$.
@@ -246,15 +257,14 @@ so $v_1+\cdots+v_{n-1}=\vb{0}$, $v_n=\vb{0}$. Induction on $n$ gives $v_1=\cdots
 \end{proof}
 
 \begin{proposition}
-Suppose $U$ and $W$ are subspaces of $V$. Then $U+W$ is a direct sum if and only if $U\cap W=\{\vb{0}\}$.
+Suppose $U,W\le V$. Then $U+W$ is a direct sum if and only if $U\cap W=\{\vb{0}\}$.
 \end{proposition}
 
-\begin{proof}
-First suppose that $U+W$ is a direct sum. If $v\in U\cap W$, then $\vb{0}=v+(-v)$, where $v\in U$, $-v\in W$. By the unique representation of $\vb{0}$ as the sum of a vector in $U$ and a vector in $W$, we have $v=\vb{0}$. Thus $U\cap W=\{\vb{0}\}$.
+\begin{proof} \
 
-Now suppose $U\cap W=\{\vb{0}\}$. To prove that $U+W$ is a direct sum, suppose $u\in U$, $w\in W$, and
-\[0=u+w.\]
-$u=-w\in W$, thus $u\in U\cap W$, so $u=w=\vb{0}$. By \cref{lemma:condition-direct-sum}, $U+W$ is a direct sum.
+\fbox{$\implies$} Suppose that $U+W$ is a direct sum. If $v\in U\cap W$, then $\vb{0}=v+(-v)$, where $v\in U$, $-v\in W$. By the unique representation of $\vb{0}$ as the sum of a vector in $U$ and a vector in $W$, we have $v=\vb{0}$. Thus $U\cap W=\{\vb{0}\}$.
+
+\fbox{$\impliedby$} Suppose $U\cap W=\{\vb{0}\}$. Suppose $u\in U$, $w\in W$, and $0=u+w$. $u=-w\in W$, thus $u\in U\cap W$, so $u=w=\vb{0}$. By \cref{lemma:condition-direct-sum}, $U+W$ is a direct sum.
 \end{proof}
 \pagebreak
 

@@ -59,33 +59,6 @@ Here are some useful properties when handling logical statements. You can easily
 \[ \lnot (P\land Q) \iff (\lnot P\lor \lnot Q) \]
 \end{proposition}
 
-\begin{exercise}
-Negate the statement $1<x<2$.
-\end{exercise}
-
-\begin{solution}
-\begin{align*}
-\lnot(1<x<2)&\iff\lnot[(x>1)\land(x<2)]\\
-&\iff\lnot(x>1)\lor\lnot(x<2)\\
-&\iff(x\le1)\lor(x\ge2)
-\end{align*}
-where the last step follows from the trichotomy axiom of real numbers.
-\end{solution}
-
-\begin{exercise}
-Negate the statement
-\[n=2\quad\text{or}\quad n\text{ is odd.}\]
-\end{exercise}
-
-\begin{solution}
-\begin{align*}
-\lnot [(n = 2) \lor (n \text{ is odd})] &\iff \lnot(n = 2) \land \lnot(n \text{ is odd}) \\
-&\iff (n \neq 2) \land (n \text{ is even})
-\end{align*}
-where we have used the fact that every integer is either even or odd, but not both.
-\end{solution}
-\pagebreak
-
 \subsection{If, only if}
 \vocab{Implication} is denoted by $P \implies Q$, which means ``$P$ implies $Q$'', i.e. if $P$ holds then $Q$ also holds. It is equivalent to saying ``If $P$ then $Q$''. The only case when $P \implies Q$ is false is when the hypothesis $P$ is true and the conclusion $Q$ is false.
 
@@ -166,7 +139,6 @@ Read from left to right, and as new elements or statements are introduced they a
 \begin{remark}
 To avoid confusion, it is a good idea to keep to the convention that the quantifiers come first, before any statement to which they relate.
 \end{remark}
-\pagebreak
 
 \section{Proofs}
 A \vocab{direct proof} of $P \implies Q$ is a series of valid arguments that start with the hypothesis $P$ and end with the conclusion $Q$. It may be that we can start from $P$ and work directly to $Q$, or it may be that we make use of $P$ along the way.
@@ -210,7 +182,7 @@ To prove existential statements, we can adopt two approaches:
 \begin{enumerate}
 \item Constructive proof (direct proof): 
 
-To prove statements of the form $\exists x\in X \suchthat P(x)$, find or construct \vocab{a specific example} for $x$. To prove statements of the form $\forall y\in Y,\:\exists x\in X\suchthat P(x,y)$, construct example for $x$ \vocab{in terms of $y$} (since $x$ is dependent on $y$).
+To prove statements of the form $\exists x\in X \suchthat P(x)$, find or construct \vocab{a specific example} for $x$. To prove statements of the form $\forall y\in Y,\:\exists x\in X\suchthat P(x,y)$, construct example for $x$ in terms of $y$ (since $x$ is dependent on $y$).
 
 In both cases, you have to justify that your example $x$
 \begin{enumerate}
@@ -244,7 +216,7 @@ Hence the existential statement is proven.
 Prove that for all rational numbers $p$ and $q$ with $p<q$, there is a rational number $x$ such that $p<x<q$.
 \end{exercise}
 \begin{proof}
-We prove this by construction. Our goal is to find such a rational $x$ \vocab{in terms of $p$ and $q$}.
+We prove this by construction. Our goal is to find such a rational $x$ in terms of $p$ and $q$.
 
 We take the average. Let $x=\dfrac{p+q}{2}$ which is a rational number.
 
@@ -280,10 +252,8 @@ Since $q<p$, $r=p+\text{(positive number)}>p$. On the other hand, $\dfrac{q-p}{\
 We prove by contradiction. Suppose $r$ is rational. We have $\sqrt{2}=\dfrac{q-p}{r-p}$. Since $p,q,r$ are all rational (and $r-p\neq0$), RHS is rational. This implies that LHS is rational, i.e. $\sqrt{2}$ is rational, a contradiction.
 \end{proof}
 
-\subsubsection{Non-constructive proof}
-
-
-\begin{exercise}{}{}
+Non-constructive proof:
+\begin{exercise}
 Prove that every integer greater than $1$ is divisible by a prime.
 \end{exercise}
 
@@ -307,7 +277,7 @@ Hence we conclude that there must be a divisor $d_i$ of $n$ that is prime.
 This proof is also known as \vocab{proof by infinite descent}, a method which relies on the well-ordering principle of the positive integers.
 \end{remark}
 
-\begin{exercise}{}{}
+\begin{exercise}
 Prove that the equation $x^2+y^2=3z^2$ has no solutions $(x,y,z)$ in integers where $z\neq0$.
 \end{exercise}
 
@@ -337,13 +307,6 @@ Then $P(n)$ is true for all $n\in\ZZ^+$.
 
 Using logic notation, this is written as
 \[ \{P(1) \land (\forall n \in \ZZ^+) [P(k) \implies P(k+1)]\} \implies (\forall n \in \ZZ^+)P(n) \]
-
-\begin{remark}
-Induction is often visualised like toppling dominoes. The inductive step (ii) corresponds to placing each domino sufficiently close that it will be hit when the previous one falls over, and base case (i) corresponds to knocking over the first one.
-\[ P(1) \implies P(2) \implies \cdots \implies P(k) \implies P(k+1) \implies \cdots \]
-\end{remark}
-
-To practise, we go through a classic proof using induction.
 
 \begin{exercise}
 Prove that for any $n\in\ZZ^+$,
@@ -382,10 +345,9 @@ Then $P(n)$ is true for all $n \ge N$.
 This follows directly by applying the above theorem to the statement $Q(n) = P(n+N)$ for $n \in N$.
 \end{proof}
 
-\subsubsection{Strong induction}
-Another variant on induction is when the inductive step relies on some earlier case(s) but not necessarily the immediately previous case. This is known as \vocab{strong induction}:
+Another variant on induction is when the inductive step relies on some earlier case(s) but not necessarily the immediately previous case.
 
-\begin{theorem}[Strong Form of Induction]
+\begin{theorem}[Strong Induction]
 Let $P(n)$ be a family of statements indexed by the natural numbers. Suppose that
 \begin{enumerate}[label=(\roman*)]
 \item (\textbf{base case}) $P(1)$ is true and
@@ -397,22 +359,11 @@ Then $P(n)$ is true for all $n \in \NN$.
 Using logic notation, this is written as
 \[ \{P(1) \land (\forall m \in \ZZ^+) [P(1) \land P(2) \land \cdots \land P(m) \implies P(m+1)]\} \implies (\forall n \in \ZZ^+)P(n) \]
 
-\begin{proof}
-We can this it to an instance of ``normal'' induction by defining a related family of statements $Q(n)$. 
-
-Let $Q(n)$ be the statement ``$P(k)$ holds for $k=0,1,\dots,n$''. Then the conditions for the strong form are equivalent to 
-\begin{enumerate}[label=(\roman*)]
-\item $Q(0)$ holds and 
-\item for any $n$, if $Q(n)$ is true then $Q(n+1)$ is also true.
-\end{enumerate}
-It follows by induction that $Q(n)$ holds for all $n$, and hence $P(n)$ holds for all $n$.
-\end{proof}
-
 The following example illustrates how the strong form of induction can be useful:
 
-\begin{example}[Fundamental Theorem of Arithmetic]
-Every natural number greater than 1 may be expressed as a product of one or more prime numbers.
-\end{example}
+\begin{exercise}
+Prove the Fundamental Theorem of Arithmetic, which states that every natural number greater than 1 may be expressed as a product of one or more prime numbers.
+\end{exercise}
 
 \begin{proof}
 Let $P(n)$ be the statement that $n$ may be expressed as a product of prime numbers. 
@@ -430,7 +381,8 @@ Let $n \ge 2$ be a natural number and suppose that $P(m)$ holds for all $m<n$.
 Thus, whether $n$ is prime or not, we have have that $P(n)$ holds. By strong induction, $P(n)$ is true for all natural numbers. That is, every natural number greater than 1 may be expressed as a product of one or more primes.
 \end{proof}
 
-\subsubsection{Cauchy induction}
+The following is also another variant on induction.
+
 \begin{theorem}[Cauchy Induction]
 Let $P(n)$ be a family of statements indexed by $\ZZ^+_{\ge2}$. Suppose that
 \begin{enumerate}[label=(\roman*)]
@@ -440,12 +392,13 @@ Let $P(n)$ be a family of statements indexed by $\ZZ^+_{\ge2}$. Suppose that
 Then $P(n)$ is true for all $n\in\ZZ^+_{\ge2}$.
 \end{theorem}
 
-\begin{exercise}{}{}
+\begin{exercise}
 Using Cauchy Induction, prove the AM--GM Inequality for $n$ variables, which states that for positive reals $a_1, a_2,\dots a_n$,
-\[ \frac{a_1+a_2+\cdots+a_n}{n}\ge\sqrt[n]{a_1a_2\cdots a_n}. \]
+\[\frac{a_1+a_2+\cdots+a_n}{n}\ge\sqrt[n]{a_1a_2\cdots a_n}.\]
 \end{exercise}
+
 \begin{proof}
-Let $P(n)$ be $\frac{a_1+a_2+\cdots+a_n}{n}\ge\sqrt[n]{a_1a_2\cdots a_n}$.
+Let $\displaystyle P(n):\frac{a_1+a_2+\cdots+a_n}{n}\ge\sqrt[n]{a_1a_2\cdots a_n}$.
 
 Base case $P(2)$ is true because\[\frac{a_1+a_2}{2}\ge\sqrt{a_1a_2} \iff (a_1+a_2)^2\ge 4a_1a_2 \iff (a_1-a_2)^2\ge0\]
 
@@ -458,25 +411,9 @@ Finally we show that $P(n)\implies P(n-1)$, i.e. if AM--GM holds for $n$ variabl
 By Cauchy Induction, this proves the AM--GM inequality for $n$ variables.
 \end{proof}
 
-\subsubsection{Other variations}
-Apart from proving $P(n)$ indexed by $\ZZ^+$, we can also use PMI to prove statements of the form
-\begin{itemize}
-\item $(\forall n\in\ZZ) P(n)$
+Induction can be generalised to give the well-ordering principle:
 
-\textbf{Base case:} $P(0)$
-
-\textbf{Inductive step:} $(\forall k\in\ZZ_{\ge0}) P(k)\implies P(k+1)$ and $(\forall k\in\ZZ_{\le0}) P(k)\implies P(k-1)$
-\[ \cdots \Longleftarrow P(-n) \Longleftarrow \cdots \Longleftarrow P(-1) \Longleftarrow P(0) \implies P(1) \implies \cdots \implies P(n) \implies \cdots \]
-
-\item $(\forall n\in\QQ) P(n)$
-
-\textbf{Base case:} $P(0)$
-
-\textbf{Inductive step:} $P(x)\implies P(-x)$ and $P\brac{\frac{a}{b}}\implies P\brac{\frac{a+1}{b}}$ and $P\brac{\frac{a}{b}}\implies P\brac{\frac{a}{b+1}}$
-\end{itemize}
-
-\subsubsection{A more generalised version}
-\begin{definition}
+\begin{definition}[Well-ordering]
 A binary relation $\preceq$ on $X$ that satisfies the following conditions is called a \vocab{well-ordering} on $X$:
 \begin{enumerate}[label=(\roman*)]
 \item for every $a,b\in X$, $a\preceq b$ or $b\preceq a$,
@@ -727,7 +664,7 @@ Since $k<k+1 \iff \dfrac{1}{k}>\dfrac{1}{k+1}$,
 The rest of the proof follows easily.
 \end{proof}
 
-A sequence of integers $F_i$, where integer $1\le i\le n$, is called the \vocab{Fibonacci sequence} if and only if it is defined recursively by $F_1=1$, $F_2=1$, $F_n=F_{n-1}+F_{n-2}$ for $n>2$.
+A sequence of integers $F_i$, where integer $1\le i\le n$, is called the \emph{Fibonacci sequence} if and only if it is defined recursively by $F_1=1$, $F_2=1$, $F_n=F_{n-1}+F_{n-2}$ for $n>2$.
 
 \begin{prbm}
 Let $a_i$ where integer $1\le i\le n$ be a sequence of integers defined recursively by initial conditions $a_1=1$, $a_2=1$, $a_3=3$ and the recurrence relation $a_n=a_{n-1}+a_{n-2}+a_{n-3}$ for $n>3$.
@@ -784,14 +721,13 @@ F_{n+m+1}&=F_nF_m+F_{n+1}F_{m+1},\\
 F_{n+m+2}&=F_{n+1}F_m+F_{n+2}F_{m+1}.
 \end{align*}
 
-To prove $P(n+1)$ it remains to show that for all $m\in\NN$,
-\[ F_{n+m+3}=F_{n+2}F_m+F_{n+3}F_{m+1}. \]
-From our $P(n)$ assumptions and the definition of the Fibonacci numbers,
+Then
 \begin{align*}
-\text{LHS of (5)}&=F_{n+m+3}\\
+F_{n+m+3}
 &=F_{n+m+2}+F_{n+m+1}\\
 &=F_n F_m+F_{n+1}F_{m+1}+F_{n+1}F_m+F_{n+2}F_{m+1}\\
 &=(F_n+F_{n+1})Fm+(F_{n+1}+F_{n+2})F_{m+1}\\
-&=F_{n+2}F_m+F_{n+3}F_{m+1}=\text{RHS of (5).}
+&=F_{n+2}F_m+F_{n+3}F_{m+1}
 \end{align*}
+thus $P(n+1)$ is true, for all $m\in\NN$.
 \end{proof}

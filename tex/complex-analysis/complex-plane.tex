@@ -1,7 +1,18 @@
 \chapter{Complex Plane}
-The aim of this part of the course is to study functions $f:\CC\to\CC$, asking what it means for them to be differentiable, how to integrate them, and looking at the applications of all this. Before we begin, we discuss some basic properties of the complex numbers $\CC$.
+This chapter covers the basic geometry and topology of the complex plane, including the equations of lines and circles, extended complex plane which includes the Riemann sphere and stereographic projection, Mobius transformations acting on the extended complex plane, Mobius transformations take circlines to circlines.
 
-\section{$\CC$ as a metric space}
+\section{Review of Complex Numbers}
+The imaginary unit $i$ has the property $i^2=-1$. A complex number is of the form $z=a+bi$, where $a,b\in\RR$; we call $a$ the real part of $z$, denoted by $a=\Re(z)$, and $b$ is the imaginary part of $z$, denoted by $b=\Im(z)$. Two complex numbers are equal if and only they have the same real part and the same imaginary part.
+
+We define addition as summing up the real and imaginary parts respectively:
+\[(a+bi)+(c+di)=(a+c)+(b+d)i.\]
+Multiplication is defined as
+\[(a+bi)(c+di)=(ac-bd)+(ad+bc)i\]
+where we have made use of the relation $i^2=-1$. Before discussing division, we define 
+
+\section{Geometric Representation of Complex Numbers}
+
+\section{$\CC$ As Metric Space}
 We can identify $\CC$ with the plane $\RR^2$ by taking
 real and imaginary parts. Thus we have mutually inverse bijections
 \[z\mapsto(\Re z,\Im z)\]
@@ -35,7 +46,7 @@ Let $z,w\in\CC$. Then
 \end{enumerate}
 \end{proof}
 
-\section{Topological properties of $\CC$}
+\section{Topology of $\CC$}
 One can make sense of the notion of open set, closure, interior and so on by identifying $\CC$ with $\RR^2$.
 
 \begin{definition}

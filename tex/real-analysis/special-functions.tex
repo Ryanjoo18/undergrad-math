@@ -1,28 +1,33 @@
-\chapter{Some Special Functions}
+\chapter{Some Special Functions}\label{chap:special-functions}
 \section{Power Series}
-\begin{definition}
-\vocab{Analytic functions} are functions that can be represented by \vocab{power series}, i.e. functions of the form
+\begin{definition}[Analytic function]
+An \vocab{analytic function}\index{analytic function} is a function that can be represented by a power series, i.e., functions of the form
 \[f(x)=\sum_{n=0}^\infty c_n x^n\]
 or, more generally,
 \[f(x)=\sum_{n=0}^\infty c_n(x-a)^n.\]
 \end{definition}
 
-The \vocab{radius of convergence} is the maximum $R$ such that $f(x)$ converges in $(-R,R)$.
+As a matter of convenience, we shall often take $a=0$ without any loss of generality.
 
-\begin{theorem}
-Suppose the series 
-\[ \sum_{n=0}^\infty c_nx^n \]
-converges for $x\in(-R,R)$. Then
+We shall restrict ourselves to real values of $x$. The \vocab{radius of convergence} is the maximum $R$ such that $f(x)$ converges in $(-R,R)$. If $f(x)$ converges for all $x\in(-R,R)$, for some $R>0$, we say that $f$ is expanded in a power series about the point $x=0$.
+
+\begin{proposition}
+Suppose the series $\displaystyle\sum_{n=0}^\infty c_nx^n$ converges for $x\in(-R,R)$. Then
 \begin{enumerate}[label=(\arabic*)]
-\item $\sum_{n=0}^\infty c_nx^n$ converges uniformly on the closed interval $[-R+\epsilon,R-\epsilon]$ for all $\epsilon>0$;
+\item $\displaystyle\sum_{n=0}^\infty c_nx^n$ converges uniformly on $[-R+\epsilon,R-\epsilon]$ for all $\epsilon>0$;
 \item $f(x)$ is continuous and differentiable on $(-R,R)$, and 
-\[ f^\prime(x)=\sum_{n=1}^\infty nc_nx^{n-1}. \]
+\[f^\prime(x)=\sum_{n=1}^\infty nc_nx^{n-1}.\]
 \end{enumerate}
-\end{theorem}
+\end{proposition}
 
 \begin{proof} \
 \begin{enumerate}[label=(\arabic*)]
 \item Let $\epsilon>0$ be given. For $|x|\le R-\epsilon$, we have
+\[|c_nx^n|\le|c_n(R-\epsilon)^n|\]
+and since
+\[\sum c_n(R-\epsilon)^n\]
+converges absolutely (every power series converges absolutely in the interior of its internal of convergence, by the root test), Theorem 7.10 show that $\displaystyle\sum_{n=0}^\infty c_nx^n$ uniformly converges on $[-R+\epsilon,R-\epsilon]$.
+
 \item 
 \end{enumerate}
 \end{proof}
@@ -47,24 +52,42 @@ for $x\in(-R,R)$
 
 \section{Exponential and Logarithmic Functions}
 \begin{definition}[Exponential function]
-We define the exponential function as
+The \vocab{exponential function}\index{exponential function} is defined as
 \begin{equation}
-\exp(z)=\sum_{n=0}^\infty\frac{z^n}{n!}.
+\exp(z)\coloneqq\sum_{n=0}^\infty\frac{z^n}{n!}.
 \end{equation}
 \end{definition}
 
-\begin{lemma}
+\begin{proposition}
 $\exp(z)$ converges for every $z\in\CC$.
-\end{lemma}
+\end{proposition}
 
 \begin{proof}
 Ratio test.
 \end{proof}
 
-
+Note that
+\[\exp(z)\exp(w)=\sum_{n=0}^{\infty}\frac{(z+w)^n}{n!}=\exp(z+w).\]
+Thus $\exp(z)\exp(-z)=1$. Further,
+\[\exp^\prime(z)=\lim_{h\to0}\frac{\exp(z+h)-\exp(z)}{h}=\lim_{h\to0}\frac{\exp(z+h)-1}{h}\exp(z).\]
+Let $\exp(1)=e$. So $\exp(n)=\exp(1+\cdots+1)=\exp(1)\cdots\exp(1)=e^n$. This holds for any $n\in\QQ$. Furthermore, $\exp(x)=e^x=\sup e^p$ ($p<x$, $p$ rational).
 
 \section{Trigonometric Functions}
+\begin{definition}[Trigonometric functions]
+We define cosine and sine\index{trigonometric functions} as follows:
+\begin{equation}
+\begin{split}
+\cos(x)&=\frac{\exp(ix)+\exp(-ix)}{2}\\
+\sin(x)&=\frac{\exp(ix)-\exp(-ix)}{2i}
+\end{split}
+\end{equation}
+\end{definition}
 
+It is clear, from the above definition, that
+\[\exp(ix)=\cos(x)+i\sin(x),\]
+which is sometimes called \emph{Euler's identity}.
+
+Further, $\cos^\prime(x)=-\sin(x)$ and $\sin^\prime(x)=\cos(x)$.
 
 \section{Algebraic Completeness of the Complex Field}
 We now prove that the complex field is \vocab{algebraically complete}; that is, every non-constant polynomial with complex coefficients has a complex root.
@@ -80,22 +103,48 @@ Then $P(z)=0$ for some complex number $z$.
 \end{proof}
 
 \section{Fourier Series}
-\begin{definition}
-A \vocab{trigonometric polynomial} is a finite sum of the form
+\begin{definition}[Trigonometric polynomial]
+A \vocab{trigonometric polynomial}\index{trigonometric polynomial} is a finite sum of the form
 \[f(x)=a_0+\sum_{n=1}^\infty(a_n\cos nx+b_n\sin nx)\]
 for $x\in\RR$, where $a_0,\dots,a_N,b_1,\dots,b_N\in\CC$.
 \end{definition}
 
-On account of the identities (?), we can write the above in the form
+We can write the above in the form
 \[f(x)=\sum_{n=-N}^N c_ne^{inx}.\]
 It is clear that every trigonometric polynomial is periodic, with period $2\pi$.
 
+It follows that
+\[\frac{1}{2\pi}\int_{-\pi}^{\pi}e^{inx}\dd{x}=\begin{cases}
+1&\text{if }n=0\\
+0&\text{if }n=\pm1,\pm2,\dots
+\end{cases}\]
 
+\begin{definition}[Fourier coefficients]
+If $f$ is an integrable function on $[-\pi,\pi]$, the numbers $c_m$ defined by
+\[c_m=\frac{1}{2\pi}\int_{-\pi}^{\pi}f(x)e^{inx}\dd{x}\]
+for all integers $m$ are called the \vocab{Fourier coefficients}\index{Fourier coefficients} of $f$.
+\end{definition}
+
+\begin{definition}[Fourier series]
+The series
+\[\sum_{n=-\infty}^{\infty}c_ne^{inx}\]
+formed with the Fourier coefficients is called the \vocab{Fourier series}\index{Fourier series} of $f$.
+\end{definition}
+
+\begin{definition}[Orthogonal system of functions]
+Let $(\phi_n)$ be a sequence of complex functionns on $[a,b]$ such that
+\[\int_{a}^{b}\phi_n(x)\overline{\phi_m(x)}\dd{x}=0\quad(n\neq m)\]
+Then $(\phi_n)$ is said to be an \vocab{orthogonal system of functions}\index{orthogonal system of functions} on $[a,b]$. If in addition
+\[\int_{a}^{b}\absolute{\phi_b(x)}^2\dd{x}=1\]
+for all $n$, $(\phi_n)$ is said to be \vocab{orthonormal}.
+\end{definition}
 
 \section{Gamma Function}
 \begin{definition}[Gamma function]
-For $0<x<\infty$,
-\[\Gamma(x)\coloneqq\int_0^\infty t^{x-1}e^{-t}\dd{t}.\]
+For $0<x<\infty$, the \vocab{Gamma function}\index{Gamma function} is defined as
+\begin{equation}
+\Gamma(x)\coloneqq\int_0^\infty t^{x-1}e^{-t}\dd{t}.
+\end{equation}
 The integral converges for these $x$. (When $x<1$, both $0$ and $\infty$ have to be looked at.)
 \end{definition}
 
@@ -134,7 +183,7 @@ then $f(x)=\Gamma(x)$.
 \end{proof}
 
 \begin{definition}[Beta function]
-For $x>0$ and $y>0$, the beta function is defined as
+For $x>0$ and $y>0$, the \vocab{beta function}\index{beta functions} is defined as
 \[B(x,y)\coloneqq\int_0^1 t^{x-1}(1-t)^{y-1}\dd{t}.\]
 \end{definition}
 

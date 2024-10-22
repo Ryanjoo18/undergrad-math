@@ -1,11 +1,11 @@
-\documentclass[10pt,a4paper]{extreport}
+\documentclass[11pt,a4paper]{book}
 \usepackage[top=1.0in, bottom=1.0in, left=1.0in, right=1.0in, heightrounded]{geometry}
-\usepackage{tgpagella} % text only
-\usepackage{mathpazo}  % math & text
 
 \usepackage{ryan}
 \usepackage[bottom]{footmisc}
 \usepackage{pdfpages}
+
+\usepackage{imakeidx}
 
 \pagestyle{fancy}
 \fancyhf{}
@@ -14,83 +14,117 @@
 \renewcommand{\headrulewidth}{0.4pt}
 \renewcommand{\arraystretch}{1.5}
 
+% command to provide stretchy vertical space in proportion
+\newcommand\nbvspace[1][3]{\vspace*{\stretch{#1}}}
+
+\newif\ifprelim
+\newif\iflinalg
+\newif\ifabsalg
+\newif\ifranalysis
+\newif\ifcanalysis
+\newif\iftop
+\newif\ifmisc
+
+\raggedbottom
+
 \usepackage[
 backend=biber,
 style=alphabetic,
-sorting=anyt
+sorting=nyt
 ]{biblatex}
 \addbibresource{biblio.bib}
 
+\makeindex
+
 \begin{document}
-\input{tex/frontmatter/title-page.tex}
+%%%%%%%%%%%%%%% [TOPICS] %%%%%%%%%%%%%%%
+\prelimtrue %Prelim
+\linalgtrue %Linear Algebra
+\absalgtrue %Abstract Algebra
+\ranalysistrue %Real Analysis
+\canalysistrue %Complex Analysis
+%\toptrue %Topology
+%\misctrue %Misc
+
+\input{tex/frontmatter.tex}
+
+\mainmatter
+%%%%%%%%%%%%%%% PRELIMINARY
+\ifprelim
+    \part{Preliminaries}\label{part:prelim}
+    \input{tex/prelim/proofs.tex}
+    \input{tex/prelim/set-theory.tex}
+\else
+
+\fi
+
+%%%%%%%%%%%%%%% LINEAR ALGEBRA
+\iflinalg
+    \part{Linear Algebra}\label{part:linear-algebra}
+    \input{tex/linear-algebra/vector-spaces.tex}
+    \input{tex/linear-algebra/finite-dim-vector-spaces.tex}
+    \input{tex/linear-algebra/linear-maps.tex}
+    \input{tex/linear-algebra/polynomials.tex}
+    \input{tex/linear-algebra/eigen.tex}
+\else
+
+\fi
+
+%%%%%%%%%%%%%%% ABSTRACT ALGEBRA
+\ifabsalg
+    \part{Abstract Algebra}\label{part:abstract-algebra}
+    \input{tex/abstract-algebra/group-theory.tex}
+    \input{tex/abstract-algebra/ring-theory.tex}
+    \input{tex/abstract-algebra/modules-vec-spaces.tex}
+    \input{tex/abstract-algebra/field-theory.tex}
+\else
+
+\fi
+
+%%%%%%%%%%%%%%% REAL ANALYSIS
+\ifranalysis
+    \part{Real Analysis}\label{part:real-analysis}
+    \input{tex/real-analysis/number-systems.tex}
+    \input{tex/real-analysis/basic-topology.tex}
+    \input{tex/real-analysis/sequences-series.tex}
+    \input{tex/real-analysis/continuity.tex}
+    \input{tex/real-analysis/differentiation.tex}
+    \input{tex/real-analysis/integration.tex}
+    \input{tex/real-analysis/sequences-series-functions.tex}
+    \input{tex/real-analysis/special-functions.tex}
+\else
+
+\fi
+
+%%%%%%%%%%%%%%% COMPLEX ANALYSIS
+\ifcanalysis
+    \part{Complex Analysis}\label{part:complex-analysis}
+    \input{tex/complex-analysis/complex-plane.tex}
+    \input{tex/complex-analysis/complex-functions.tex}
+\else
+
+\fi
+
+%%%%%%%%%%%%%%% TOPOLOGY
+\iftop
+    \part{Topology}\label{part:topology}
+    \input{tex/topology.tex}
+\else
+
+\fi
+
+%%%%%%%%%%%%%%% MISC
+\ifmisc
+    \part{Miscellaneous Topics}
+    \input{tex/misc/graph-theory.tex}
+    \input{tex/misc/logic.tex}
+\else
+
+\fi
 \pagebreak
 
-\pagenumbering{roman}
-\input{tex/frontmatter/copyright.tex}
-\pagebreak
-
-\setcounter{page}{1}
-\input{tex/frontmatter/author.tex}
-\pagebreak
-
-\input{tex/frontmatter/preface.tex}
-\pagebreak
-
-\tableofcontents
-\pagebreak
-%\printglossary[type=\acronymtype]
-
-\pagenumbering{arabic}
-\setcounter{page}{1}
-\part{Preliminaries}\label{part:prelim}
-\input{tex/prelim/proofs.tex}
-\input{tex/prelim/set-theory.tex}
-
-\part{Linear Algebra}\label{part:linear-algebra}
-\input{tex/linear-algebra/vector-spaces.tex}
-\input{tex/linear-algebra/finite-dim-vector-spaces.tex}
-\input{tex/linear-algebra/linear-maps.tex}
-
-\part{Abstract Algebra}\label{part:abstract-algebra}
-\input{tex/abstract-algebra/group-theory.tex}
-%\input{tex/abstract-algebra/ring-theory.tex}
-%\input{tex/abstract-algebra/field-theory.tex}
-
-\part{Real Analysis}\label{part:real-analysis}
-\input{tex/real-analysis/number-systems.tex}
-\input{tex/real-analysis/basic-topology.tex}
-\input{tex/real-analysis/sequences-series.tex}
-\input{tex/real-analysis/continuity.tex}
-\input{tex/real-analysis/differentiation.tex}
-\input{tex/real-analysis/integration.tex}
-\input{tex/real-analysis/sequences-series-functions.tex}
-\input{tex/real-analysis/special-functions.tex}
-
-\part{Complex Analysis}\label{part:complex-analysis}
-\input{tex/complex-analysis/complex-plane.tex}
-\input{tex/complex-analysis/complex-functions.tex}
-
-\part{Topology}\label{part:topology}
-\input{tex/topology.tex}
-
-%\part{Single Variable Calculus}
-%\input{tex/single-calculus/calculus.tex}
-
-%\part{Multivariable Calculus}
-%\input{tex/multi-calculus/vector-functions.tex}
-%\input{tex/multi-calculus/partial-derivatives.tex}
-%\input{tex/multi-calculus/multiple-integrals.tex}
-%\input{tex/multi-calculus/vector-calculus.tex}
-
-%\input{tex/discrete.tex}
-
-%\input{tex/stats.tex}
-\pagebreak
-
-%\printbibliography[type=book,title={Books}]
+\backmatter
 \printbibliography[title={Bibliography}]
 
-%Lecture notes by the University of Oxford.
-%Lecture notes by the University of Cambridge. %https://dec41.user.srcf.net/notes/ & https://thirdsgames.co.uk/maths.html
-%Lecture notes on MIT OpenCourseWare.
+\printindex
 \end{document}

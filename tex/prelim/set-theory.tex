@@ -14,8 +14,9 @@ Some basic sets (of numbers) you should be familiar with:
 
 The \vocab{empty set} is the set with no elements, denoted by $\emptyset$.
 
-$A$ is a \vocab{subset} of $B$ if every element of $A$ is in $B$, denoted by $A \subseteq B$.
-\[ A \subseteq B \iff \forall x, x\in A \implies x\in B \]
+$A$ is a \vocab{subset} of $B$ if every element of $A$ is in $B$, denoted by $A \subseteq B$:
+\[A\subseteq B\iff \forall x, x\in A \implies x\in B.\]
+We denote $A\subsetneq B$ to mean that $A\subseteq B$ and $A\neq B$.
 
 \begin{proposition}[$\subseteq$ is transitive]
 If $A \subseteq B$ and $B \subseteq C$, then $A \subseteq C$.
@@ -33,10 +34,7 @@ $A$ is a \vocab{proper subset} of $B$ if $A \subseteq B$ and $A \neq B$, denoted
 Using this definition, we have the relationship 
 \[ \NN \subset \ZZ \subset \QQ \subset \RR \]
 
-\begin{itemize}
-\item $A$ and $B$ are \vocab{equal} if and only if they contain the same elements, denoted by $A=B$.
-
-To prove that $A$ and $B$ are equal, we simply need to prove that $A \subseteq B$ and $A \subseteq B$.
+$A$ and $B$ are \vocab{equal} if and only if they contain the same elements, denoted by $A=B$. To prove that $A$ and $B$ are equal, we simply need to prove that $A \subseteq B$ and $A \subseteq B$.
 
 \begin{proof}
 We have 
@@ -48,7 +46,7 @@ A = B &\iff (\forall x)[x \in A \iff x \in B] \\
 \end{align*}
 \end{proof}
 
-\item Some frequently occurring subsets of the real numbers are known as \vocab{intervals}, which can be visualised as sections of the real line:
+Some frequently occurring subsets of the real numbers are known as \vocab{intervals}, which can be visualised as sections of the real line:
 \begin{itemize}
 \item Open interval
 \[ (a,b) = \{x\in\RR \mid a<x<b\} \]
@@ -57,21 +55,17 @@ A = B &\iff (\forall x)[x \in A \iff x \in B] \\
 \item Half open interval
 \[ (a,b] = \{x\in\RR \mid a<x\le b\} \]
 \end{itemize}
+More generally, we define an $k$-cell as
+\[\{(x_1,\dots,x_n)\in\RR^k\mid a_i\le x_i\le b_i (1\le i\le k)\}.\]
+For example, a $1$-cell is an interval, a $2$-cell is a rectangle, and a $3$-cell is a rectangular solid. In this regard, we can think of a $k$-cell as a higher-dimensional version of a rectangle or rectangular solid; it is the Cartesian product of $k$ closed intervals in $\RR$.
 
-\item The \vocab{power set} $\mathcal{P}(A)$ of $A$ is the set of all subsets of $A$ (including the set itself and the empty set).
+The \vocab{power set} $\mathcal{P}(A)$ of $A$ is the set of all subsets of $A$ (including the set itself and the empty set):
+\[\mathcal{P}(A)=\{S\mid S\subseteq A\}.\]
 
-\item An \vocab{ordered pair} is denoted by $(a,b)$, where the order of the elements matters. Two pairs $(a_1,b_1)$ and $(a_2,b_2)$ are equal if and only if $a_1=a_2$ and $b_1=b_2$. 
+An \vocab{ordered pair} is denoted by $(a,b)$, where the order of the elements matters. Two pairs $(a_1,b_1)$ and $(a_2,b_2)$ are equal if and only if $a_1=a_2$ and $b_1=b_2$.  Similarly, we have ordered triples $(a,b,c)$, quadruples $(a,b,c,d)$ and so on. If there are $n$ elements it is called an \vocab{$n$-tuple}.
 
-Similarly, we have ordered triples $(a,b,c)$, quadruples $(a,b,c,d)$ and so on. If there are $n$ elements it is called an $n$-tuple.
-
-\item 
-\end{itemize}
-
-The \vocab{Cartesian product} of sets $A$ and $B$, denoted by $A \times B$, is the set of all ordered pairs with the first element of the pair coming from $A$ and the
-second from $B$:
-\begin{equation}
-A \times B = \{(a,b) \mid a \in A, b \in B\}
-\end{equation}
+The \vocab{Cartesian product} of sets $A$ and $B$, denoted by $A \times B$, is the set of all ordered pairs with the first element of the pair coming from $A$ and the second from $B$:
+\[A\times B\coloneqq\{(a,b)\mid a\in A,b\in B\}.\]
 More generally, we define $A_1 \times A_2 \times \cdots \times A_n$ to be the set of all ordered $n$-tuples $(a_1, a_2, \dots, a_n)$, where $a_i \in A_i$ for $1 \le i \le n$. If all the $A_i$ are the same, we write the product as $A^n$.
 
 \begin{example}
@@ -160,7 +154,7 @@ By double inclusion, the first result holds. The second result follows similarly
 De Morgan’s laws extend naturally to any number of sets, so if $\{A_i \mid i \in I\}$ is a family of subsets of $S$, then
 \[ \brac{\bigcap_{i\in I}A_i}^c = \bigcup_{i\in I}A_i^c \quad \text{and} \quad \brac{\bigcup_{i\in I}A_i}^c = \bigcap_{i\in I}A_i^c \]
 
-\begin{exercise}{}{}
+\begin{exercise}
 Prove the following:
 \begin{enumerate}
 \item $\brac{\bigcup_{i\in I}A_i}\cup B=\bigcup_{i\in I}(A_i\cup B)$
@@ -179,7 +173,7 @@ Let $S\subset A\times B$. Express the set $A_S$ of all elements of $A$ which app
 
 \section{Relations}
 \begin{definition}[Relation]
-$R$ is a \vocab{relation} between $A$ and $B$ if and only if $R\subseteq A\times B$.
+$R$ is a \vocab{relation}\index{relation} between $A$ and $B$ if and only if $R\subseteq A\times B$.
 
 $a \in A$ and $b \in B$ are \vocab{related} if $(a,b) \in R$, denoted $a R b$.
 \end{definition}
@@ -191,10 +185,10 @@ A relation is a set of ordered pairs.
 Visually speaking, a relation is uniquely determined by a simple bipartite graph over $A$ and $B$. On the bipartite graph, this is usually represented by an edge between $a$ and $b$.
 
 \begin{definition}[Binary relation]
-A \vocab{binary relation} in $A$ is a relation between $A$ and itself, i.e. $R \subseteq A \times A$.
+A \vocab{binary relation}\index{binary relation} in $A$ is a relation between $A$ and itself, i.e. $R \subseteq A \times A$.
 \end{definition}
 
-$A$ and $B$ are the \vocab{domain} and \vocab{range} of $R$ respectively, denoted by $\dom R$ and $\ran R$ respectively, if and only if $A \times B$ is the smallest Cartesian product of which $R$ is a subset.
+$A$ and $B$ are the \vocab{domain}\index{domain} and \vocab{range}\index{range} of $R$ respectively, denoted by $\dom R$ and $\ran R$ respectively, if and only if $A \times B$ is the smallest Cartesian product of which $R$ is a subset.
 
 \begin{example}
 Given $R=\{(1,a),(1,b),(2,b),(3,b)\}$, then $\dom R=\{1,2,3\}$ and $\ran R=\{a,b\}$.
@@ -223,36 +217,25 @@ The relation $\le$ on $R$ is reflexive, anti-symmetric, and transitive, but not 
 \end{example}
 
 \begin{definition}
-A \vocab{partial order} on a non-empty set $A$ is a relation $\le$ on $A$ satisfying
+A \vocab{partial order}\index{partial order} on a non-empty set $A$ is a relation $\le$ on $A$ satisfying
 \begin{enumerate}[label=(\roman*)]
 \item reflexivity,
 \item anti-symmetry,
 \item transitivity.
 \end{enumerate} 
 
-A \vocab{total ordering} on $A$ is a partial ordering on $A$ such that if for every $x, y \in A$, either $xRy$ or $yRx$ (or both).
+A \vocab{total ordering}\index{total ordering} on $A$ is a partial ordering on $A$ such that if for every $x, y \in A$, either $xRy$ or $yRx$ (or both).
 
-A \vocab{well ordering} on $A$ is a total ordering on $A$ such that every non-empty subset of $A$ has a minimal element, i.e. for each non-empty $B\subseteq A$ there exists some $s\in B$ such that $s\le b$ for all $b\in B$.
+A \vocab{well ordering}\index{well ordering} on $A$ is a total ordering on $A$ such that every non-empty subset of $A$ has a minimal element, i.e. for each non-empty $B\subseteq A$ there exists some $s\in B$ such that $s\le b$ for all $b\in B$.
 \end{definition}
 
-\begin{example}[Less than]
-The relation $<$ on $R$ is not reflexive, symmetric, or anti-symmetric, but it is transitive.
+\begin{example}
+You should verify the following:
+\begin{itemize}
+\item Less than: the relation $<$ on $R$ is not reflexive, symmetric, or anti-symmetric, but it is transitive.
+\item Not equal to: the relation $\neq$ on $R$ is not reflexive, anti-symmetric or transitive, but it is symmetric.
+\end{itemize}
 \end{example}
-
-\begin{example}[Not equal to]
-The relation $\neq$ on $R$ is not reflexive, anti-symmetric or transitive, but it is symmetric.
-\end{example}
-
-\begin{exercise}{Congruence modulo $n$}{}
-Let $n \ge 2$ be an integer, and define $R$ on $\ZZ$ by saying $aRb$ if and only if $a-b$ is a multiple of $n$. Prove that $R$ is reflexive, symmetric and transitive.
-\end{exercise}
-\begin{proof} \
-\begin{enumerate}[label=(\roman*)]
-\item Reflexivity: For any $a \in \ZZ$ we have $aRa$ as 0 is a multiple of $n$.
-\item Symmetry: If $aRb$ then $a-b=kn$ for some integer $k$. So $b-a=-kn$, and hence $bRa$.
-\item Transitivity: If $aRb$ and $bRc$ then $a-b=kn$ and $b-c=ln$ for integers $k,l$. So then $a-c=(a-b)+(b-c)=(k+l)n$, and hence $aRc$.
-\end{enumerate}
-\end{proof}
 
 \begin{definition}
 Let the non-empty set $A$ be partially ordered by $\le$.
@@ -293,7 +276,7 @@ This follows from elementary set theory. We refer the reader to \textit{Real and
 One important type of relation is an equivalence relation. An equivalence relation is a way of saying two objects are, in some particular sense, ``the same''.
 
 \begin{definition}[Equivalence relation]
-A binary relation $R$ on $A$ is an \vocab{equivalence relation} if it is reflexive, symmetric and transitive.
+A binary relation $R$ on $A$ is an \vocab{equivalence relation}\index{equivalence relation} if it is reflexive, symmetric and transitive.
 \end{definition}
 
 \begin{notation}
@@ -303,13 +286,9 @@ We use the symbol $\sim$ to denote the equivalence relation $R$ in $A \times A$:
 An equivalence relation provides a way of grouping together elements that can be viewed as being the same:
 
 \begin{definition}[Equivalence class]
-Given an equivalence relation $\sim$ on a set $A$, and given $x \in A$, the \vocab{equivalence class} of $x$ is
+Given an equivalence relation $\sim$ on a set $A$, and given $x \in A$, the \vocab{equivalence class}\index{equivalence class} of $x$ is
 \[[x]\coloneqq\{y\in A\mid y\sim x\}.\]
 \end{definition}
-
-\begin{example}[Congruence modulo $n$]
-For the equivalence relation of congruence modulo $n$, the equivalence class of 1 is the set $1 = \{\dots, -n+1, 1, n+1, 2n+1, \dots\}$; that is, all the integers that are congruent to 1 modulo $n$.
-\end{example}
 
 Properties of equivalence classes:
 \begin{itemize}
@@ -323,14 +302,14 @@ You can translate these properties into the point of view from the elements: Eve
 \item All elements belong to an equivalence class
 \end{itemize}
 
-\begin{definition}
-The \vocab{set of equivalence classes} (quotient sets) are the set of all equivalence classes, denoted by $A/\sim$.
+\begin{definition}[Quotient set]
+The \vocab{quotient set}\index{quotient set} is the set of all equivalence classes, denoted by $A/\sim$.
 \end{definition}
 
 Grouping the elements of a set into equivalence classes provides a partition of the set, which we define as follows:
 
 \begin{definition}[Partition]
-A \vocab{partition} of a set $A$ is a collection of subsets $\{A_i\subseteq A\mid i\in I\}$, where $I$ is an indexing set, with the property that
+A \vocab{partition}\index{partition of set} of a set $A$ is a collection of subsets $\{A_i\subseteq A\mid i\in I\}$, where $I$ is an indexing set, with the property that
 \begin{enumerate}[label=(\roman*)]
 \item $A_i \neq \emptyset$ for all $i \in I$ (all the subsets are non-empty)
 \item $\bigcup_{i\in I} Ai = A$ (every member of $A$ lies in one of the subsets)
@@ -339,14 +318,69 @@ A \vocab{partition} of a set $A$ is a collection of subsets $\{A_i\subseteq A\mi
 The subsets are called the \vocab{parts} of the partition.
 \end{definition}
 
-\begin{example}[Odd and even natural numbers]
-$\{\{n \in \NN \mid n \text{ is divisible by } 2\}, \{n \in \NN \mid n+1 \text{ is divisible by } 2\}\}$ forms a partition of the natural numbers, into evens and odds.
+\begin{example}[Modular arithmetic]
+Let $n$ be a fixed positive integer. Define a relation on $\ZZ$ by
+\[a\sim b\iff n\mid(b-a).\]
+\begin{proposition}
+$a\sim b$ is a equivalence relation.
+\end{proposition}
+\begin{proof} \
+\begin{enumerate}[label=(\roman*)]
+\item $a\sim a$, thus the relation is reflexive.
+\item $a\sim b\implies b\sim a$ for any integers $a$ and $b$, thus the relation is symmetric.
+\item If $a\sim b$ and $b\sim c$ then $n\mid(a-b)$ and $n\mid(b-c)$, so $n\mid(a-b)+(b-c)=(a-c)$, so $a\sim c$ and the relation is transitive.
+\end{enumerate}
+\end{proof}
+
+\begin{notation}
+We write $a\equiv b\pmod n$ if $a\sim b$.
+\end{notation}
+
+\begin{notation}
+For any $k\in\ZZ$ we denote the equivalence class of $a$ by $\overline{a}$, called the \vocab{congruence class} (residue class) of $a$ mod $n$, consisting of the integers which differ from $a$ by an integral multiple of $n$; that is,
+\[\overline{a}=\{a+kn\mid k\in\ZZ\}.\]
+\end{notation}
+
+There are precisely $n$ distinct equivalence classes mod $n$, namely
+\[\overline{0},\overline{1},\dots,\overline{n-1}\]
+determined by the possible remainders after division by $n$ and these residue classes partition the integers $\ZZ$. The set of equivalence classes under this equivalence relation is denoted by $\ZZ/n\ZZ$, and called the \vocab{integers modulo $n$}.
+
+We can define addition and multiplication for the elements of $\ZZ/n\ZZ$ as follows: for any $\overline{a},\overline{b}\in\ZZ/n\ZZ$,
+\begin{enumerate}
+\item Addition: $\overline{a}+\overline{b}=\overline{a+b}$
+\item Multiplication: $\overline{a}\cdot\overline{b}=\overline{a\cdot b}$
+\end{enumerate}
+
+This means that to compute the sum / product of two elements $\overline{a},\overline{b}\in\ZZ/n\ZZ$, take any \vocab{representative} integer $a\in\overline{a}$ and any representative integer $b\in\overline{b}$, and add / multiply integers $a$ and $b$ as usual in $\ZZ$, then take the equivalence class containing the result.
+
+\begin{proposition}
+Addition and mulltiplication on $\ZZ/n\ZZ$ are well-defined; that is, they do not depend on the choices of representatives for the classes involved. More precisely, if $a_1,a_2\in\ZZ$ and $b_1,b_2\in\ZZ$ with $\overline{a_1}=\overline{b_1}$ and $\overline{a_2}=\overline{b_2}$, then $\overline{a_1+a_2}=\overline{b_1+b_2}$ and $\overline{a_1a_2}=\overline{b_1b_2}$, i.e., If
+\[a_1\equiv b_1\pmod n,\quad a_2\equiv b_2\pmod n\]
+then
+\[a_1+a_2\equiv b_1+b_2\pmod n,\quad a_1a_2\equiv b_1b_2\pmod n.\]
+\end{proposition}
+
+\begin{proof}
+Suppose $a_1\equiv b_1\pmod n$, i.e., $n\mid(a_1-b_1)$. Then $a_1=b_1+sn$ for some integer $s$. Similarly, $a_2\equiv b_2\pmod n$ means $a_2=b_2+tn$ for some integer $t$.
+
+Then $a_1+a_2=(b_1+b_2)+(s+t)n$ so that $a_1+a_2\equiv b_1+b_2\pmod n$, which shows that the sum of the residue classes is independent of the representatives chosen.
+
+Similarly, $a_1a_2=(b_1+sn)(b_2+tn)=b_1b_2+(b_1t+b_2s+stn)n$ shows that $a_1a_2\equiv b_1b_2\pmod n$ and so the product of the residue classes is also independent of the representatives chosen.
+\end{proof}
+
+An important subset of $\ZZ/n\ZZ$ consists of the collection of residue classes which have a multiplicative inverse in $\ZZ/n\ZZ$:
+\[(\ZZ/n\ZZ)^\times\coloneqq\{\overline{a}\in\ZZ/n\ZZ\mid\exists\overline{c}\in\ZZ/n\ZZ,\overline{a}\cdot\overline{c}=\overline{1}\}.\]
+
+\begin{proposition}
+$(\ZZ/n\ZZ)^\times$ is also the collection of residue classes whose representatives are relatively prime to $n$:
+\[(\ZZ/n\ZZ)^\times=\{\overline{a}\in\ZZ/n\ZZ\mid(a,n)=1\}.\]
+\end{proposition}
 \end{example}
 \pagebreak
 
 \section{Functions}
 \begin{definition}[Function]
-A \vocab{function} $f:X\to Y$ is a mapping of every element of $X$ to some element of $Y$.
+A \vocab{function}\index{function} $f:X\to Y$ is a mapping of every element of $X$ to some element of $Y$.
 
 $X$ and $Y$ are known as the \vocab{domain} and \vocab{codomain} of $f$ respectively.
 \end{definition}
@@ -357,11 +391,11 @@ The definition requires that a unique element of the codomain is assigned for ev
 
 \begin{definition}
 Given a function $f:X \to Y$, the \vocab{image} (or range) of $f$ is
-\[ f(X) = \{f(x) \mid x \in X\} \subseteq Y \]
+\[f(X)\coloneqq\{f(x)\mid x\in X\}\subseteq Y.\]
 More generally, given $A \subseteq X$, the image of $A$ under $f$ is
-\[ f(A) = \{f(x) \mid x \in A\} \subseteq Y \]
+\[f(A)\coloneqq\{f(x)\mid x\in A\}\subseteq Y.\]
 Given $B \subseteq Y$, the \vocab{pre-image} of $B$ under $f$ is
-\[ f^{-1}(B) = \{x \mid f(x) \in B\} \subseteq X \]
+\[f^{-1}(B)\coloneqq\{x\mid f(x)\in B\}\subseteq X.\]
 \end{definition}
 
 \begin{remark}
@@ -403,17 +437,17 @@ If the domain is unambiguous, the subscript may be removed.
 \end{notation}
 
 \begin{definition}[Injectivity]
-$f:X\to Y$ is \vocab{injective} if each element of $Y$ has at most one element of $X$ that maps to it.
+$f:X\to Y$ is \vocab{injective}\index{injectivity (function)} if each element of $Y$ has at most one element of $X$ that maps to it.
 \[\forall x_1,x_2\in X,\:f(x_1)=f(x_2) \implies x_1=x_2\]
 \end{definition}
 
 \begin{definition}[Surjectivity]
-$f:X\to Y$ is \vocab{surjective} if every element of $Y$ is mapped to at least one element of $X$.
+$f:X\to Y$ is \vocab{surjective}\index{surjectivity (function)} if every element of $Y$ is mapped to at least one element of $X$.
 \[ \forall y\in Y,\:\exists x\in X \suchthat f(x)=y \]
 \end{definition}
 
 \begin{definition}[Bijectivity]
-$f:X\to Y$ is \vocab{bijective} if it is both injective and surjective: each element of $Y$ is mapped to a unique element of $X$.
+$f:X\to Y$ is \vocab{bijective}\index{bijectivity (function)} if it is both injective and surjective: each element of $Y$ is mapped to a unique element of $X$.
 \end{definition}
 
 \begin{notation}
@@ -438,8 +472,8 @@ Given two functions $f:X\to Y$ and $g:Y\to Z$, the \vocab{composition} $g\circ f
 The composition of functions is not commutative. However, composition is associative, as the following results shows:
 
 \begin{proposition}[Associativity]
-Let $f:X\to Y$, $g:Y\to Z$, $h:Z\to W$ be three functions. Then
-\[ f \circ (g \circ h) = (f \circ g) \circ h. \]
+Let $f:X\to Y$, $g:Y\to Z$, $h:Z\to W$. Then
+\[f\circ (g\circ h)=(f\circ g)\circ h.\]
 \end{proposition}
 
 \begin{proof}
@@ -450,6 +484,7 @@ Let $x \in X$. Then, by the definition of composition, we have
 \begin{proposition}[Composition preserves injectivity]
 If $f:X \to Y$ is injective and $g:Y \to Z$ is injective, then $g \circ f:X \to Z$ is injective.
 \end{proposition}
+
 \begin{proof}
 Let $f:X \to Y$ and $g:Y \to Z$ be arbitrary injective functions. We want prove that the function $g \circ f:X \to Z$ is also injective.
 
@@ -544,7 +579,7 @@ For the second part of (i), suppose $f(x_1) = f(x_2)$ for some $x_1, x_2 \in X$.
 Recalling that $\id_X$ is the identity map on $X$, we can define invertibility:
 
 \begin{definition}[Invertibility]
-A function $f:X\to Y$ is \vocab{invertible} if there exists $g:Y\to X$ such that $g\circ f=\id_X$ and $f\circ g=\id_Y$. $g$ is known as the \vocab{inverse} of $f$, denoted by $g=f^{-1}$.
+A function $f:X\to Y$ is \vocab{invertible}\index{invertibility (function)} if there exists $g:Y\to X$ such that $g\circ f=\id_X$ and $f\circ g=\id_Y$. $g$ is known as the \vocab{inverse} of $f$, denoted by $g=f^{-1}$.
 \end{definition}
 
 \begin{remark}
@@ -606,17 +641,16 @@ It is also possible to define left-inverse and right-inverse functions as functi
 A function $f:X \to Y$ is \vocab{left invertible} if there exists a function $g:Y \to X$ such that $g \circ f = \id_X$, and is \vocab{right invertible} if there exists a function $h: Y \to X$ such that $f \circ h = \id_Y$.
 \end{definition}
 
-As may be somewht apparent from the previous proof, being left- and right-invertible is equivalent to being injective and surjective, respectively. We leave this as an exercise to show.
+As may be somewhat apparent from the previous proof, being left- and right-invertible is equivalent to being injective and surjective, respectively. We leave this as an exercise to show.
 \pagebreak
 
-\subsection{Monotonicity}
-\begin{definition}
+\begin{definition}[Monotonicity]
 $f:[a,b]\to\RR$ is called
 \begin{enumerate}[label=(\arabic*)]
 \item \vocab{increasing}, if any $a<x_1\le x_2<b$, there is $f(x_1)\le f(x_2)$;
 \item \vocab{decreasing}, if any $a<x_1\le x_2<b$, there is $f(x_1)\ge f(x_2)$;
 \end{enumerate}
-$f$ is \vocab{monotonic} if it is increasing or decreasing.
+$f$ is \vocab{monotonic}\index{monotonicity} if it is increasing or decreasing.
 \end{definition}
 
 Suppose $f(x)$ is continuous in $[a,b]$. To locate the roots of $f(x)=0$:
@@ -628,182 +662,56 @@ Furthermore, if $f$ is either strictly increasing or decreasing in $[a,b]$, then
 \item If $f(a)$ and $f(b)$ have \vocab{same} signs, i.e. $f(a)f(b)>0$, then there is an even number of roots (counting repeated) in $[a,b]$.
 \end{itemize}
 
-\subsection{Convexity and concavity}
-\begin{definition}
+\begin{definition}[Convexity]
 A function $f$ is \vocab{convex} if for all $x_1,x_2\in D_f$ and $0\le t\le 1$, we have
-\[ f(tx_1+(1-t)x_2)\le tf(x_1)+(1-t)f(x_2). \]
-Note that equality holds when $x_1=x_2$.
-\end{definition}
+\[ f(tx_1+(1-t)x_2)\le tf(x_1)+(1-t)f(x_2).\]
+$f$ is \vocab{strictly convex} if the $\le$ sign above is replaced with a strict inequality $<$.
 
-\begin{definition}
-A function $f$ is \vocab{strictly convex} if for all $x_1,x_2\in D_f$ with $x_1\neq x_2$ and $0<t<1$, we have
-\[ f(tx_1+(1-t)x_2)<tf(x_1)+(1-t)f(x_2). \]
-\end{definition}
-
-\begin{definition}
-A function $f$ is \vocab{concave} if for all $x_1,x_2\in D_f$ and $0\le t\le 1$, we have
+Similarly, $f$ is \vocab{concave} if for all $x_1,x_2\in D_f$ and $0\le t\le 1$, we have
 \[ f(tx_1+(1-t)x_2)\ge tf(x_1)+(1-t)f(x_2). \]
-Note that equality holds when $x_1=x_2$.
+$f$ is \vocab{strictly concave} if the $\ge$ sign above is replaced with a strict inequality $>$.
 \end{definition}
-
-\begin{definition}
-A function $f$ is \vocab{strictly concave} if for all $x_1,x_2\in D_f$ with $x_1\neq x_2$ and $0<t<1$, we have
-\[ f(tx_1+(1-t)x_2)>tf(x_1)+(1-t)f(x_2). \]
-\end{definition}
-
-\subsection{Other functions}
-\subsubsection{Piecewise Functions}
-A function that has its domain divided into \vocab{separate partitions} and each partition of the domain given a different formula or rule is known as a \vocab{piecewise funtion}, i.e. a function defined ``piece-wise''.
-
-\begin{definition}[Absolute value function]
-\[ f(x)=|x|=\begin{cases}
--x & x<0, \\
-x & x\ge0.
-\end{cases} \]
-\end{definition}
-
-\begin{definition}[Floor function]
-The \vocab{floor function} $f(x)=\floor{x}$ is defined as the greatest integer smaller than or equal to $x$.
-
-For $x\in\RR$ and $n\in\ZZ$,
-\[ \floor{x}=n\iff n\le x<n+1. \]
-\end{definition}
-
-\begin{definition}[Ceiling function]
-The ceiling function $f(x)=\ceiling{x}$ is the direct opposite of the floor function; it maps all real numbers in the domain to the smallest integer not smaller than it.
-\[ \ceiling{x}=\begin{cases}
-\floor{x}+1 & x\notin\ZZ \\
-\floor{x} & x\in\ZZ
-\end{cases} \]
-\end{definition}
-
-\begin{exercise}
-Prove that
-\begin{enumerate}[label=(\alph*)]
-\item $\floor{\sqrt{x}}=\floor{\sqrt{\floor{x}}}$
-\item $\ceiling{\sqrt{x}}=\ceiling{\sqrt{\ceiling{x}}}$
-\end{enumerate}
-\end{exercise}
-
-\begin{solution} \
-\begin{enumerate}[label=(\alph*)]
-\item \begin{align*}
-&\floor{\sqrt{x}}=n \\
-&\iff n\le\sqrt{x}<n+1 \quad \text{[by definition of floor function]} \\
-&\iff n^2\le x<(n+1)^2 \quad \text{[square both sides]} \\
-&\iff n^2\le\floor{x}\le x<(n+1)^2 \\
-&\iff n\le\sqrt{\floor{x}}<n+1 \quad \text{[take square root throughout]} \\
-&\iff \floor{\sqrt{\floor{x}}}=n \quad \text{[by definition of floor function]}
-\end{align*}
-
-\item \begin{align*}
-&\ceiling{\sqrt{x}}=n+1 \\
-&\iff n<\sqrt{x}\le n+1 \quad \text{[by definition of ceiling function]} \\
-&\iff n^2<x\le(n+1)^2 \quad \text{[square both sides]} \\
-&\iff n^2<x\le\ceiling{x}\le(n+1)^2 \\
-&\iff n<\sqrt{\ceiling{x}}\le n+1 \quad \text{[take square root throughout]} \\
-&\iff \ceiling{\sqrt{\ceiling{x}}}=n+1 \quad \text{[by definition of ceiling function]}
-\end{align*}
-\end{enumerate}
-\end{solution}
-
-\subsubsection{Symmetrical Functions}
-There are special functions with some form of geometric symmetry.
-
-\begin{itemize}
-\item Even Functions
-
-$f$ is \vocab{even} if $f(-x)=f(x)$ for every $x\in D_f$.
-
-The graph of an even function is symmetric about the $y$-axis.
-
-\item Odd Functions
-
-$f$ is \vocab{odd} if $f(-x)=-f(x)$ for every $x\in D_f$.
-
-The graph of an odd function is symmetric about the origin.
-
-\item Periodic Functions
-
-$f$ is \vocab{periodic} if $f(x+p)=f(x)$ for every $x\in D_f$, where $p$ is a positive constant. The smallest such $p$ is known as the period.
-\end{itemize}
-
-\begin{exercise}{}{}
-For a triangle $ABC$ with corresponding angles $a$, $b$ and $c$, show that
-\[ \sin a+\sin b+\sin c\le\frac{3\sqrt{3}}{2} \]
-and determine when equality holds. (Hint: $y=\sin x$ is concave)
-\end{exercise}
-
-\begin{solution}
-Since $f(x)=\sin x$ is strictly concave on $[0,\pi]$,
-\begin{align*}
-&\frac{1}{3}f(a)+\frac{1}{3}f(b)+\frac{1}{3}f(c) \\
-&= \frac{1}{3}f(a)+\frac{2}{3}\brac{\frac{1}{2}f(b)+\frac{1}{2}f(c)} \\
-&\le \frac{1}{3}f(a)+\frac{2}{3}\brac{f\brac{\frac{b}{2}+\frac{c}{2}}} \quad \text{[Concavity Inequality]} \\
-&\le f\brac{\frac{a}{3}+\frac{2}{3}\brac{\frac{b+c}{2}}} \quad \text{[Concavity Inequality]} \\
-&= f\brac{\frac{a+b+c}{3}}
-\end{align*}
-Hence 
-\[ \sin a+\sin b+\sin c=f(a)+f(b)+f(c)\le3f\brac{\frac{a+b+c}{3}}=3\sin\frac{\pi}{3}=\frac{3\sqrt{3}}{2}. \]
-Equality holds when $a=b=c$, i.e. when $ABC$ is an equilateral triangle.
-\end{solution}
 \pagebreak
 
-\section{Boundedness}
+\section{Ordered Sets and Boundedness}
 Let $S$ be a set.
 \begin{definition}[Order]
-An \vocab{order} on $S$ is a relation, denoted by $<$, with the following properties:
+An \vocab{order}\index{order} on $S$ is a binary relation, denoted by $<$, with the following properties:
 \begin{enumerate}[label=(\roman*)]
-\item (\textbf{trichotomy}) $\forall x,y \in S$, one and only one of the statements
-\[ x<y, \quad x=y, \quad y<x \]
-is true.
-\item (\textbf{transitivity}) $\forall x,y,z \in S$, if $x<y$ and $y<z$, then $x<z$.
+\item Trichotomy: $\forall x,y \in S$, one and only one of the following statements is true:
+\[x<y,\quad x=y,\quad y<x.\]
+\item Transitivity: $\forall x,y,z \in S$, if $x<y$ and $y<z$, then $x<z$.
 \end{enumerate}
+We call $(S,<)$ an \vocab{ordered set}.
 \end{definition}
 
 \begin{notation}
 $x \le y$ indicates that $x<y$ or $x=y$, without specifying which of these two is to hold. In other words, $x\le y$ is the negation of $x>y$.
 \end{notation}
 
-\begin{definition}[Ordered set]
-An \vocab{ordered set} is a set $S$ in which an order is defined.
-\end{definition}
-
-\begin{example}
-$\QQ$ is an ordered set if $r<s$ is defined to mean that $s-r$ is a positive rational number.
-\end{example}
-
-\begin{definition}
+\begin{definition}[Boundedness]
 Suppose $S$ is an ordered set, and $E\subset S$.
-\begin{enumerate}[label=(\arabic*)]
-\item $M\in S$ is an \vocab{upper bound} of $E$ if $x\le M$ for all $x\in E$.
-
-$E$ is \vocab{bounded above} if there exists an upper bound $M\in S$.
-
-\item $m\in S$ is a \vocab{lower bound} of $E$ if $x\ge m$ for all $x\in E$.
-
-$E$ is \vocab{bounded below} if there exists a lower bound $m\in S$.
-
-\item $E$ is \vocab{bounded} in $S$ if it is bounded above and below.
-\end{enumerate}
+\begin{itemize}
+\item If there exists $\beta\in S$ such that $x\le\beta$ for all $x\in E$, we say that $E$ is \vocab{bounded above}, and call $\beta$ an \vocab{upper bound} of $E$.
+\item If there exists $\beta\in S$ such that $x\ge\beta$ for all $x\in E$, we say that $E$ is \vocab{bounded below}, and call $\beta$ a \vocab{lower bound} of $E$.
+\end{itemize}
+$E$ is \vocab{bounded} in $S$ if it is bounded above and below.
 \end{definition}
 
 \begin{definition}[Supremum]
-Suppose $S$ is an ordered set, $E\subset S$, and $E$ is bounded above. Suppose there exists $\alpha\in S$ with the following properties:
+Suppose $S$ is an ordered set, $E\subset S$, and $E$ is bounded above. We call $\alpha\in S$ the \vocab{supremum}\index{supremum} of $E$, denoted by $\alpha=\sup E$, if it satisfies the following properties:
 \begin{enumerate}[label=(\roman*)]
 \item $\alpha$ is an upper bound for $E$;
 \item if $\beta<\alpha$ then $\beta$ is not an upper bound of $E$, i.e. $\exists x\in S\suchthat x>\beta$ (least upper bound).
 \end{enumerate}
-Then we call $\alpha$ the \vocab{supremum} of $E$, and we write $\alpha=\sup E$.
 \end{definition}
 
 \begin{definition}[Infimum]
-Suppose there exists $\alpha\in S$ with the following properties:
+We cal $\alpha\in S$ the \vocab{infimum}\index{infimum} of $E$, denoted by $\alpha=\inf E$, if it satisfies the following properties:
 \begin{enumerate}[label=(\roman*)]
 \item $\alpha$ is a lower bound for $E$;
 \item if $\beta>\alpha$ then $\beta$ is not a lower bound of $E$, i.e. $\exists x\in S\suchthat x<\beta$ (greatest lower bound).
 \end{enumerate}
-Then we call $\alpha$ the \vocab{infimum} of $E$, and we write $\alpha=\inf E$.
 \end{definition}
 
 \begin{proposition}[Uniqueness of suprenum]
@@ -821,32 +729,34 @@ Since $N \le M$ and $M \le N$, thus $M=N$. Therefore, a supremum for a set is un
 \end{proof}
 
 \begin{definition}
-An ordered set $S$ is said to have the \vocab{least-upper-bound property} (l.u.b.) if the following is true: if non-empty $E\subset S$ is bounded above, then $\sup E$ exists in $S$.
+An ordered set $S$ is said to have the \vocab{least-upper-bound property} (l.u.b.) if the following is true: if non-empty $E\subset S$ is bounded above, then $\sup E\in S$.
+
+Similarly, $S$ has the greatest-lower-bound property if the following is true: if non-empty $E\subset S$ is bounded below, then $\inf E\in S$.
 \end{definition}
 
 We shall now show that there is a close relation between greatest lower bounds and least upper bounds, and that every ordered set with the least-upper-bound property also has the greatest-lower-bound property.
 
 \begin{theorem}
-Suppose $S$ is an ordered set with the least-upper-bound property, $B\subset S$, $B$ is not empty, and $B$ is bounded below. Let $L$ be the set of all lower bounds of $B$. Then
-\[ \alpha=\sup L \]
-exists in $S$, and $\alpha=\inf B$.
-
-In particular, $\inf B$ exists in $S$.
+Suppose $S$ is an ordered set. If $S$ has the least-upper-bound property, then $S$ has the greatest-lower-bound property.
 \end{theorem}
 
 \begin{proof}
-Since $B$ is bounded below, $L$ is not empty. Since $L$ consists of exactly those $y\in S$ which satisfy the inequality $y\le x$ for every $x\in B$, we see that every $x\in B$ is an upper bound of $L$. Thus $L$ is bounded above. Our hypothesis about $S$ thus implies that $L$ has a supremum in $S$; call it $\alpha$.
+Suppose $B\subset S$, $B\neq\emptyset$ is bounded below. We want to show that $\inf B\in S$. To do so, let $L\subset S$ be the set of all lower bounds of $B$; that is, $L=\{y\in S\mid y\le x\forall x\in B\}$. If we can show that $\inf B=\sup L$, then we are done.
 
-If $\gamma<\alpha$ then $\gamma$ is not an upper bound of $L$, hence $\gamma\notin B$. It follows that $\alpha\le x$ for every $x\in B$. Thus $\alpha\in L$.
+Since $B$ is bounded below, $L\neq\emptyset$. Since every $x\in B$ is an upper bound of $L$, $L$ is bounded above. Then since $S$ has the least-upper-bound property, we have that $\sup L\in S$.
 
-If $\alpha<\beta$ then $\beta\notin L$, since $\alpha$ is an upper bound of $L$.
+To show that $\sup L=\inf B$, we need to show that $\sup L$ is a lower bound of $B$, and $\sup L$ is the greatest of the lower bounds.
 
-We have shown that $\alpha\in L$ but $\beta\notin L$ if $\beta>\alpha$. In other words, $\alpha$ is a lower bound of $B$, but $\beta$ is not if $\beta>\alpha$. This means that $\alpha=\inf B$.
+Suppose $\gamma<\sup L$, then $\gamma$ is not an upper bound of $L$. Since $B$ is the set of upper bounds of $L$, $\gamma\notin B$. Considering the contrapositive, if $\gamma\in B$, then $\gamma\ge\sup L$. Hence $\sup L$ is a lower bound of $B$, and thus $\sup L\in L$.
+
+If $\sup L<\beta$ then $\beta\notin L$, since $\sup L$ is an upper bound of $L$. In other words, $\sup L$ is a lower bound of $B$, but $\beta$ is not if $\beta>\sup L$. This means that $\sup L=\inf B$.
 \end{proof}
 
+\begin{corollary}
+If $S$ has the greatest-lower-bound property, then it has the least-upper-bound property.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+Hence $S$ has the least-upper-bound property if and only if $S$ has the greatest-lower-bound property.
+\end{corollary}
 
 \begin{theorem}[Comparison Theorem]
 Let $S, T \subset \RR$ be non-empty sets such that $s \le t$ for every $s \in S$ and $t \in T$. If $T$ has a supremum, then so does $S$, and $\sup S \le \sup T$.
@@ -888,6 +798,7 @@ So $\inf T$ exists and $\inf T = -\sup S$.
 \begin{proposition}[Approximation Property]
 Let $S \subseteq \RR$ be non-empty and bounded above. For any $\epsilon > 0$, there is $s_\epsilon \in S$ such that $\sup S-\epsilon < s_\epsilon \le \sup S$.
 \end{proposition}
+
 \begin{proof}
 Take $\epsilon > 0$.
 
@@ -897,20 +808,6 @@ Then $\sup S-\epsilon$ is an upper bound for $S$, but $\sup S-\epsilon < \sup S$
 
 Hence there is $s_\epsilon \in S$ with $\sup S-\epsilon<s_\epsilon$.
 \end{proof}
-\pagebreak
-
-\begin{prbm}
-Consider the set $\{\frac{1}{n} \mid n\in\ZZ^{+}\}$.
-\begin{enumerate}[label=(\alph*)]
-\item Show that $\max S = 1$.
-\item Show that if $d$ is a lower bound for $S$, then $d \le 0$.
-\item Use (b) to show that $0 = \inf S$.
-\end{enumerate}
-\end{prbm}
-
-\begin{proof}
-
-\end{proof}
 
 If we are dealing with rational numbers, the sup/inf of a set may not exist. For example, a set of numbers in $\QQ$, defined by $\{[\pi\cdot10^n]/10^n\}$.
 3,3.1,3.14,3.141,3.1415,3.14159,...
@@ -918,23 +815,30 @@ But this set does not have an infimum in $\QQ$.
 
 By ZFC, we have the Completeness Axiom, which states that any non-empty set $A \subset \RR$ that is bounded above has a supremum; in other words, if $A$ is a non-empty set of real numbers that is bounded above, there exists a $M \in \RR$ such that $M = \sup A$.
 
+\begin{exercise}
+Consider the set
+\[\crbrac{\frac{1}{n}\mid n\in\ZZ^{+}}.\]
+\begin{enumerate}[label=(\alph*)]
+\item Show that $\max S=1$.
+\item Show that if $d$ is a lower bound for $S$, then $d \le 0$.
+\item Use (b) to show that $0 = \inf S$.
+\end{enumerate}
+\end{exercise}
 
-
-
-\begin{prbm}
+\begin{exercise}
 Find, with proof, the supremum and/or infimum of $\{\frac{1}{n}\}$.
-\end{prbm}
+\end{exercise}
 
-\begin{proof}
+\begin{solution}
 For the suprenum,
 \[ \sup\crbrac{\frac{1}{n}} = \max\crbrac{\frac{1}{n}} = 1. \]
 For the infinum, for all positive $a$ we can pick $n=[\frac{1}{a}]+1$, then $a>\frac{1}{n}$. Hence 
 \[ \inf\crbrac{\frac{1}{n}}=0. \]
-\end{proof}
+\end{solution}
 
-\begin{prbm}
+\begin{exercise}
 Find, with proof, the supremum and/or infimum of $\{\sin n\}$.
-\end{prbm}
+\end{exercise}
 
 \begin{proof}
 The answer is easy to guess: $\pm1$
@@ -1095,7 +999,7 @@ Let $S_i$ be finite sets. Then
 By induction.
 \end{proof}
 
-The following more elegant proof was presented to the author by Dr. Ho Weng Kin during a H3 Mathematics lecture in 2024.
+The following is an alternative proof.
 
 \begin{proof}
 Let $U$ be a finite set (interpreted as the universal set), and $S\subseteq U$. Define the characteristic/indicator function of $S$ by

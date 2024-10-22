@@ -1,43 +1,113 @@
-\chapter{Ring Theory}
-\section{Definition}
-A ring is just a set where you can add, subtract, and multiply. In some rings you can divide, and in others you can't. There are many familiar examples of rings, the main ones falling into two camps: ``number systems'' and ``functions''.
+\chapter{Ring Theory}\label{chap:ring-theory}
+\section{Introduction to Rings}
+\begin{definition}[Ring]
+A \vocab{ring} is a set $R$ together with two binary operations, addition and multiplication, denoted $+$ and $\times$, satisfying the following axioms:
+\begin{enumerate}[label=(\roman*)]
+\item $(R,+)$ is an abelian group;
+\item $\times$ is associative: $a\times(b\times c)=(a\times b)\times c$ for all $a,b,c\in R$;
+\item Distributive laws: $a\times(b+c)=(a\times b)+(a\times c)$ and $(a+b)\times c=(a\times c)+(b\times c)$ for all $a,b,c\in R$.
+\end{enumerate}
+
+$R$ is \vocab{commutative} if multiplication is commutative.
+
+$R$ is said to have an \vocab{identity} if there exists $1\in R$ with $1\times a=a\times1=a$ for all $a\in R$.
+\end{definition}
+
+\begin{notation}
+We simply write $ab$ rather than $a\times b$ for $a,b\in R$.
+\end{notation}
+
+\begin{notation}
+The additive identity of $R$ is denoted by $0$; the additive inverse of $a\in R$ is denoted by $-a$.
+\end{notation}
 
 \begin{definition}
-A \vocab{ring} is a set $R$ endowed with two binary operations, addition and multiplication, denoted $+$ and $\times$, with elements $0,1\in R$, which maps $+: R \times R \to R$ and $\times: R \times R \to R$, subject to three axioms:
-\begin{enumerate}
-\item $(R,+)$ is an abelian group with identity $0$.
-\item $(R,\times)$ is a commutative semigroup, i.e. $a \times (b \times c) = (a \times b) \times c$, $a \times 1 = 1 \times a = a$, and $a \times b = b \times a$ for all $a, b, c \in R$.
-\item Distributivity: $a \times (b + c) = a \times b + a \times c$ for all $a, b, c \in R$.
-\end{enumerate}
+A ring $R$ with identity $1$, where $1\neq0$, is called a \vocab{division ring} if every $a\in R$, $a\neq0$ has a multiplicative inverse, i.e. there exists $b\in R$ such that $ab=ba=1$.
+
+A commutative division ring is called a \vocab{field}.
 \end{definition}
 
 \begin{example}
-Examples of rings:
-\begin{itemize}
-\item $\ZZ$: the integers $\dots,-2,-1,0,1,2,\dots$ with usual addition and multiplication, form a ring. Note that we cannot always divide, since 1/2 is no longer an integer.
+$\ZZ$ under usual addition and multiplication is a commutative ring with identity $1$.
 
-\item $2\ZZ$: the even integers $\dots,-4,-2,0,2,4,\dots$
+$\QQ$, $\RR$, $\CC$ are field.
 
-\item $\ZZ[x]$: this is the set of polynomials whose coefficients are integers. 
-
-It is an extension of $\ZZ$, in the sense that we allow all the integers, plus an “extra symbol” $x$, which we are allowed to multiply and add, giving rise to $x^2$, $x^3$, etc., as well as $2x$, $3x$, etc. Adding up various combinations of these gives all the possible integer polynomials.
-
-\item $\ZZ[x,y,z]$: polynomials in three variables with integer coefficients. 
-
-This is an extension of the previous ring. In fact you can continue adding variables to get larger and larger rings.
-
-\item $\ZZ/n\ZZ$: integers mod $n$. 
-
-These are equivalence classes of the integers under the equivalence relation “congruence mod n”. If we just think about addition (and subtraction), this is exactly the cyclic group of order $n$. However, when we call it a ring, it means we are also using the operation of multiplication.
-
-\item $\QQ$, $\RR$, $\CC$
-\end{itemize}
+$\ZZ/n\ZZ$ is a commutative ring with identity $\bar{1}$ under addition and multiplication of residue classes.
 \end{example}
 
-Ideals, homomorphisms, quotient rings, isomorphism theorems. Prime and maximal ideals. Fields. The characteristic of a field. Field of fractions of an
-integral domain.
-Factorization in rings; units, primes and irreducibles. Unique factorization in principal ideal domains, and
-in polynomial rings. Gauss’ Lemma and Eisenstein’s irreducibility criterion.
-Rings $\ZZ[\alpha]$ of algebraic integers as subsets of $\CC$ and quotients of $\ZZ[x]$. Examples of Euclidean domains and
-uniqueness and non-uniqueness of factorization. Factorization in the ring of Gaussian integers; representation of integers as sums of two squares.
-Ideals in polynomial rings. Hilbert basis theorem
+\begin{proposition}
+Let $R$ be a ring. Then
+\begin{enumerate}[label=(\arabic*)]
+\item $0a=a0=0$ for all $a\in R$.
+\item $(-a)b=a(-b)=-(ab)$ for all $a,b\in R$.
+\item $(-a)(-b)=ab$ for all $a,b\in R$.
+\item if $R$ has identity $1$, then the identity is unique and $-a=(-1)a$.
+\end{enumerate}
+\end{proposition}
+
+\begin{definition}
+Let $R$ be a ring. A non-zero element $a\in R$ is called a \vocab{zero divisor} if there exists $b\in R$, $b\neq0$ such that either $ab=0$ or $ba=0$.
+
+Assume $R$ has an identity $1\neq0$. $u\in R$ is called a \vocab{unit} in $R$ if there exists $v\in R$ such that $uv=vu=1$. The set of units in $R$ is denoted by $R^\times$.
+\end{definition}
+
+\begin{proposition}
+The units in a ring $R$ form a group under multiplication.
+\end{proposition}
+
+We thus call $R^\times$ the \vocab{group of units} of $R$.
+
+\begin{definition}
+A commutative ring with identity $1\neq0$ is called an \vocab{integral domain} if it has no zero divisors.
+\end{definition}
+
+The absence of zero divisors in integral domains give these rings a cancellation property:
+
+\begin{proposition}
+Let $R$ be a ring. $a,b,c\in R$, $a$ is not a zero divisor. If $ab=ac$, then either $a=0$ or $b=c$. In particular, for any $a,b,c$ in an integral domain and $ab=ac$, then either $a=0$ or $b=c$.
+\end{proposition}
+
+\begin{corollary}
+Any finite integral domain is a field.
+\end{corollary}
+
+\begin{definition}[Subring]
+$S\subset R$ is a \vocab{subring} of ring $R$ if $S$ is a subgroup of $R$ that is closed under multiplication.
+\end{definition}
+
+\begin{example}[Quadratic integer rings]
+
+\end{example}
+
+\begin{example}[Polynomial rings]
+
+\end{example}
+
+\begin{example}[Matrix rings]
+
+\end{example}
+
+\begin{example}[Group rings]
+
+\end{example}
+
+A ring homomorphism is a map from one ring to another that respects the additive and multiplicative structures:
+
+\begin{definition}[Ring homomorphism]
+Let $R$ and $S$ be rings. A \vocab{ring homomorphism} is a map $\phi:R\to S$ satisfying
+\begin{enumerate}[label=(\roman*)]
+\item $\phi(a+b)=\phi(a)+\phi(b)$ for all $a,b\in R$;
+\item $\phi(ab)=\phi(a)\phi(b)$ for all $a,b\in R$.
+\end{enumerate}
+\end{definition}
+
+\begin{definition}
+The \vocab{kernel} of the ring homomorphism $\phi$, denoted by $\ker\phi$ is the set of elements of $R$ that map to $0$ in $S$:
+\[\ker\phi\coloneqq\{a\in R\mid\phi(a)=0\}\]
+\end{definition}
+
+\begin{definition}[Isomorphism]
+A bijective ring homomorphism is called an \vocab{isomorphism}, denoted by $R\cong S$.
+\end{definition}
+
+%Ideals, quotient rings, isomorphism theorems. Prime and maximal ideals. Field of fractions of an integral domain. Factorization in rings; units, primes and irreducibles. Unique factorization in principal ideal domains, and in polynomial rings. Gauss’ Lemma and Eisenstein’s irreducibility criterion. Rings $\ZZ[\alpha]$ of algebraic integers as subsets of $\CC$ and quotients of $\ZZ[x]$. Examples of Euclidean domains and uniqueness and non-uniqueness of factorization. Factorization in the ring of Gaussian integers; representation of integers as sums of two squares. Ideals in polynomial rings. Hilbert basis theorem

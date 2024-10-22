@@ -1,14 +1,15 @@
 \chapter{Sequence and Series of Functions}
 \section{Uniform Convergence}
 \begin{definition}[Pointwise convergence]
-Suppose $\{f_n\}$, $n=1,2,3,\dots$ is a sequence of functions defined on a set $E$, and suppose that the sequence of numbers $\{f_n(x)\}$ converges for every $x\in E$. We can then define a function $f$ by
-\[ f(x)=\lim_{n\to\infty}f_n(x). \]
-We say that $\{f_n\}$ \vocab{converges pointwise} to $f$ on $E$, denoted by $f_n\to f$, and $f$ is the \vocab{limit}, or the \vocab{limit function}, of $\{f_n\}$.
-\[\forall\epsilon>0,\forall x\in E,\exists N\in\NN\suchthat\forall n>N,|f_n(x)-f(x)|<\epsilon.\]
+Suppose $(f_n)$ is a sequence of functions defined on a set $E$, and suppose that $\brac{f_n(x)}$ converges for every $x\in E$. We can then define a function $f$ by
+\[f(x)=\lim_{n\to\infty}f_n(x)\quad(\forall x\in E)\]
+We say that $(f_n)$ \vocab{converges pointwise}\index{pointwise convergence} to $f$ on $E$, denoted by $f_n\to f$, if
+\[\forall\epsilon>0,\quad\forall x\in E,\quad\exists N\in\NN,\quad\forall n>N,\quad\absolute{f_n(x)-f(x)}<\epsilon.\]
+$f$ is called the \textbf{limit} or limit function of $(f_n)$.
 
 Similarly, if $\sum f_n(x)$ converges for every $x\in E$, and if we define
-\[ f(x)=\sum_{n=1}^\infty f_n(x) \]
-the function $f$ is called the \vocab{sum of the series} $\sum f_n$.
+\[f(x)=\sum_{n=1}^\infty f_n(x)\quad(\forall x\in E)\]
+the function $f$ is called the \textbf{sum of the series} $\sum f_n$.
 \end{definition}
 
 Most properties are not preserved by pointwise continuity; that is, $f$ does not inherit most properties of $f_n$.
@@ -49,14 +50,72 @@ We define a sequence of functions as follows:
 \end{example}
 
 \begin{definition}[Uniform convergence]
-We say that $\{f_n\}$ \vocab{uniformly converges} to $f$ over $E$, if 
-\[\forall\epsilon>0, \exists N\in\NN\suchthat \forall x\in E,\forall n>N,|f_n(x)-f(x)|<\epsilon.\]
-We denote this by $f_n\rightrightarrows f$.
+We say that $(f_n)$ \vocab{uniformly converges}\index{uniform convergence} to $f$ over $E$, denoted by $f_n\rightrightarrows f$, if 
+\[\forall\epsilon>0,\quad\exists N\in\NN,\quad\forall x\in E,\quad\forall n>N,\quad\absolute{f_n(x)-f(x)}<\epsilon.\]
+For series, we say that the series $\sum f_n(x)$ converges uniformly on $E$ if the sequence of partial sums $(S_n)$ defined by
+\[S_n(x)=\sum_{i=1}^{n}f_i(x)\]
+converges uniformly on $E$.
 \end{definition}
 
 Uniform convergence is stronger than pointwise convergence, since $N$ is uniform (or ``fixed'') for all $x\in E$; for pointwise convergence, the choice of $N$ is determined by $x$.
 
-\begin{definition}
+The Cauchy criterion for uniform convergence is as follows.
+
+\begin{lemma}[Cauchy criterion]
+$(f_n)\rightrightarrows f$ if and only if
+\[\forall\epsilon>0,\quad\exists N\in\NN,\quad\forall x\in E,\quad\forall n,m\ge N,\quad\absolute{f_n(x)-f_m(x)}\le\epsilon.\]
+\end{lemma}
+
+\begin{proof} \
+
+\fbox{$\implies$} Suppose $f_n\rightrightarrows f$ on $E$. Let $\epsilon>0$ be given. Then there exists $N\in\NN$ such that for all $x\in E$, for all $n>N$,
+\[\absolute{f_n(x)-f(x)}<\frac{\epsilon}{2}.\]
+Then for all $n,m>N$,
+\begin{align*}
+|f_n(x)-f_m(x)|
+&=\absolute{\brac{f_n(x)-f(x)}-\brac{f_m(x)-f(x)}}\\
+&\le|f_n(x)-f(x)|+|f_m(x)-f(x)|\\
+&<\frac{\epsilon}{2}+\frac{\epsilon}{2}=\epsilon
+\end{align*}
+by triangle inequality.
+
+\fbox{$\impliedby$} Conversely, suppose the Cauchy condition holds. By Theorem 3.11, the sequence $\brac{f_n(x)}$ converges, for every $x$, to a limit which we may call $f(x)$. Thus $(f_n)\to f$ on $E$. We have to prove that the convergence is uniform.
+
+Let $\epsilon>0$ be given. Choose $N\in\NN$ such that (13) holds. Fix $n$, and let $m\to\infty$ in (13). Since $f_m(x)\to f(x)$ as $m\to\infty$, thus for all $n\ge N$ and for all $x\in E$,
+\[\absolute{f_n(x)-f(x)}\le\epsilon,\]
+which completes the proof.
+\end{proof}
+
+The following criterion is sometimes useful.
+
+\begin{proposition}
+Suppose $f_n\to f$ on $E$. Let
+\[M_n=\sup_{x\in E}\absolute{f_n(x)-f(x)}.\]
+Then $f_n\rightrightarrows f$ on $E$ if and only if $M_n\to0$ as $n\to\infty$.
+\end{proposition}
+
+For series, there is a very convenient test for uniform convergence, due to Weierstrass.
+
+\begin{lemma}[Weierstrass M-test]
+Suppose $(f_n)$ is a sequence of functions defined on $E$, and suppose there exists $(M_n)\in\RR^+$ such that $|f_n(x)|\le M_n$ for all $n\ge1$ and for all $x\in E$.
+
+Then $\sum f_n$ converges uniformly on $E$ if $\sum M_n$ converges.
+\end{lemma}
+
+\section{Uniform Convergence and Continuity}
+We now consider properties preserved by uniform convergence.
+
+\begin{proposition}
+Suppose $f_n\rightrightarrows f$ on $E$. Let $x\in E$ be a limit point, let
+\[\lim_{t\to x}f_n(t)=A_n.\]
+Then $(A_n)$ converges, and $\displaystyle\lim_{t\to x}f(t)=\lim_{n\to\infty}A_n$.
+\end{proposition}
+
+\begin{proposition}
+Let $(f_n)$ be a sequence of continuous functions on $E$, $f_n\rightrightarrows f$. Then $f$ is continuous in $E$.
+\end{proposition}
+
+\begin{definition}[Supremum norm]
 If $X$ is a metric space, we denote the set of all complex-valued, continuous, bounded functions with domain $X$ by $C(X)$.
 
 If $f\in C(X)$, we define 
@@ -79,50 +138,9 @@ Check that $\norm{f}$ satisfies the conditions for a norm:
 $\brac{C(X),\norm{\cdot}}$ is a metric space.
 \end{proposition}
 
-\begin{lemma}[Cauchy criterion]
-$\{f_n\}\rightrightarrows f$ if and only if
-\[\forall\epsilon>0,\exists N\in\NN\suchthat\forall x\in E,\forall n,m>N,|f_n(x)-f_m(x)|<\epsilon.\]
-\end{lemma}
-
-\begin{proof} \
-
-($\implies$) Suppose $f_n\rightrightarrows f$, then
-\[\forall\epsilon>0, \exists N\in\NN\suchthat \forall x\in E,\forall n>N,|f_n(x)-f(x)|<\frac{\epsilon}{2}.\]
-Then for all $n,m>N$,
-\begin{align*}
-|f_n(x)-f_m(x)|
-&=\absolute{\brac{f_n(x)-f(x)}-\brac{f_m(x)-f(x)}}\\
-&\le|f_n(x)-f(x)|+|f_m(x)-f(x)|\\
-&<\frac{\epsilon}{2}+\frac{\epsilon}{2}=\epsilon
-\end{align*}
-by triangle inequality.
-
-($\impliedby$) 
-\[\forall\epsilon>0,\exists N\in\NN\suchthat\forall x\in E,\forall n,m>N,|f_n(x)-f_m(x)|<\epsilon.\]
-
-\end{proof}
-
-The uniform convergence of series is defined similarly: 
-
-\begin{lemma}[Cauchy criterion]
-
-\end{lemma}
-
-\begin{theorem}[Weierstrass M-test]
-$\sum_{n=1}^\infty f_n(x)$ uniformly converges if
-\[\exists\{M_n\}\in\RR^+\suchthat|f_n(x)|<M_n,\sum_{n=1}^\infty M_n\text{ convergent}\]
-where $\sum_{n=1}^\infty M_n$ is convergent if
-\[\forall\epsilon>0,\exists N\in\NN\suchthat\forall n,m>N,\sum_{k=m+1}^n M_k<\epsilon.\]
-\end{theorem}
-
-\section{Uniform Convergence and Continuity}
-We now consider properties preserved by uniform convergence.
-
-
-
 \section{Uniform Convergence and Integration}
 \begin{theorem}
-Assume $\{f_n\}$ is a sequence of functions defined over $[a,b]$ and each $f_n\in R_\alpha[a,b]$. If $f_n\to f$, then $f\in R_\alpha[a,b]$, and
+Assume $(f_n)$ is a sequence of functions defined over $[a,b]$ and each $f_n\in R_\alpha[a,b]$. If $f_n\to f$, then $f\in R_\alpha[a,b]$, and
 \[ \lim_{n\to\infty}\int_a^bf_n\dd{\alpha}=\int_a^bf\dd{\alpha}. \]
 \end{theorem}
 
@@ -140,12 +158,12 @@ converges uniformly. Then it follows
 \begin{proof}
 Consider the sequence of partial sums 
 \[ f_n(x)\coloneqq\sum_{k=0}^na_k(x), \quad n=0,1,\dots \]
-It follows $f_n\in R_\alpha[a,b]$ and $f_n\rightrightarrows f$. Apply above theorem to $\{f_n\}$ and the conclusion follows.
+It follows $f_n\in R_\alpha[a,b]$ and $f_n\rightrightarrows f$. Apply above theorem to $(f_n)$ and the conclusion follows.
 \end{proof}
 
 \section{Uniform Convergence and Differentiation}
 \begin{theorem}
-$\{f_n\}$ differentiable on $[a,b]$, $\exists x_0\in[a,b]\suchthat f_n(x_0)\to y_0=f(x_0)$ and $f_n^\prime\rightrightarrows f^\prime$. Then $f_n\rightrightarrows f$ on $[a,b]$, and $f$ is differentiable, $f^\prime(x)=\lim_{n\to\infty}f_n^\prime(x)$ for any $x\in[a,b]$.
+$(f_n)$ differentiable on $[a,b]$, $\exists x_0\in[a,b]\suchthat f_n(x_0)\to y_0=f(x_0)$ and $f_n^\prime\rightrightarrows f^\prime$. Then $f_n\rightrightarrows f$ on $[a,b]$, and $f$ is differentiable, $f^\prime(x)=\lim_{n\to\infty}f_n^\prime(x)$ for any $x\in[a,b]$.
 \end{theorem}
 
 \begin{proof}
